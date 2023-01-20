@@ -5,15 +5,15 @@
 /* ======== css variables ============ */
 :root {
 
-  --primary-color: #1ED760;
-  --secondary-color: rgb(255,255,255);
-  --body-bg: #121212;
+  --primary-color: #a1ff69;
+  --secondary-color: #BCBDC3;
+  --heading-color: #fff;
+  --body-bg: #13252f;
+  --small-text-color: #acb2b2;
   --font-name: "Montserrat", sans-serif;
-  --card-bg: #181818;
-  --navbar: #000000;
-  --gray: #B3B3B3;
-  --footer: rgb(24,24,24);
+  --card-bg: #2b3138;
 }
+
 
 
 
@@ -32,10 +32,7 @@ body {
   font-family: var(--font-name);
   color: var(--secondary-color); 
   width: 100%;
-  height: 100vh; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height: 100vh; 
   
 }
 
