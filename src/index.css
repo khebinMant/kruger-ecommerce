@@ -7,11 +7,12 @@
 
   --primary-color: #a1ff69;
   --secondary-color: #BCBDC3;
+  --third-color: #29495d;
   --heading-color: #fff;
   --body-bg: #13252f;
   --small-text-color: #acb2b2;
   --font-name: "Montserrat", sans-serif;
-  --card-bg: #2b3138;
+  --card-bg: #2d383e;
 }
 
 
@@ -63,3 +64,4 @@ li, ul{
   list-style-type: none;
   text-decoration: none;
 }
+

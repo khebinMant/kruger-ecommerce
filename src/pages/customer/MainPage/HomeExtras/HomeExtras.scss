@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 3em;
+    font-size: 1.3rem;
 }
 
 .feature{
@@ -17,12 +18,17 @@
 
 .feature__title{
     color: var(--heading-color);
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 700;
+
 }
 
 
 .feature__subtitle{
     font-size: 16px;
     color: var(--primary-color);
+
 }
 
 .feature__title span{
@@ -31,8 +37,9 @@
 
 
 .features p{
+    line-height: 30px;
     text-align: center;
-    font-size: 14px;
+    font-size: 1rem;
     color: var(--small-text-color);
 }
 
@@ -51,7 +58,7 @@
     justify-content: center;
     align-items: center;
     width: 70%;
-    gap: .5em;
+    gap: 1em;
 }
 
 .feature__img{

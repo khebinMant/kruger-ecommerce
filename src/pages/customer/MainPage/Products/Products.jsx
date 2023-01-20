@@ -8,10 +8,13 @@ const Products = () => {
   //   };
 
   return (
-    <section className="products_main">
-      <Product />
-      <Product />
-      <Product />
+    <section className="products_container">
+      <h2 className="products_container_title">Top Products</h2>
+      <section className="products_main">
+        <Product />
+        <Product />
+        <Product />
+      </section>
     </section>
   );
 };
