@@ -12,7 +12,7 @@ const CustomerNavBar = () => {
   return (
     <header className="header">
       <NavLink className="header__logo-navlink" to="/">
-        <h1 className="header__logo">Kruger</h1>
+        <h1 className="header__logo">KrugerCell</h1>
       </NavLink>
       <i
         onClick={handleHamClick}

@@ -6,11 +6,11 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 2em;
     .aboutus_card {
         width: 200px;
         height: 280px;
-        background: var(--card-bg);
+        background: var(--secondary-card);
         padding: 2rem 1.5rem;
         border-radius: 10px;
         
