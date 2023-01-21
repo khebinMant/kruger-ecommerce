@@ -1,22 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Navigate } from "react-router-dom";
 import { signIn } from "../../helpers/users/signIn";
 import { signUp } from "../../helpers/users/signUp";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser } from "../../store/user/userSlice";
 
 const Login = () => {
   const [todayDate, setTodayDate] = useState("");
   const signUpForm=useRef(null);
   const loginForm=useRef(null);
   const navigation = useNavigate();
+
+  const dispatch = useDispatch ();
+  const user = useSelector((state) => state.users.currentUser);
   
 
    //los estados del mensaje warning
    const [warningMessage,setWarningMessage]=useState("This is a test message");
    const warningRef=useRef(null);
-  useEffect(() => {
 
+  useEffect(() => {
     const date = "" + new Date().getFullYear() + "-"
       + (new Date().getMonth() + 1) + "-" + new Date().getDate();
     setTodayDate(date);
@@ -90,6 +94,8 @@ function emptyFields (){
       if(resp){
         //login successfull
         localStorage.setItem("currentUser",JSON.stringify(resp));
+        dispatch(setCurrentUser(resp));
+        console.log(user)
         navigation('/');
       }else{
         //login failed 
