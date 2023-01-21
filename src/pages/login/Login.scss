@@ -6,10 +6,19 @@
     justify-content: center;
     align-items: center;
 }
-
+.wariningContiner{
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background: black;
+    text-align: center;
+    display: none;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+}
 .sign_main{
     width: 320px;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
     border-radius: 10px;
     background-color: var(--card-bg);
