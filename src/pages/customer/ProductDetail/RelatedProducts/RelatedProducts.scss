@@ -1,0 +1,18 @@
+.relatedproducts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    gap: 3em;
+    h2{
+        text-align: center;
+    }
+    &_main{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+
+      
+    }
+}
