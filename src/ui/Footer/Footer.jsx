@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Footer.scss";
 
 const Footer = () => {
@@ -17,24 +18,34 @@ const Footer = () => {
       <div className="footer_container">
         <ul className="footer_container_list">
           <h3>Main</h3>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Home</li>
-          <li>About Us</li>
+          <NavLink to={"/"}>Home</NavLink>
+          <NavLink to="/about">About us</NavLink>
+          <NavLink to={"/contact"}>Contact us</NavLink>
+          <NavLink to="/about">About Us</NavLink>
         </ul>
         <ul className="footer_container_list">
           <h3>Products</h3>
-          <li>All products</li>
-          <li>Cart</li>
-          <li>All products</li>
-          <li>Cart</li>
+          <NavLink to={"/search"}>All products</NavLink>
+          <NavLink to={"/search"}>Explore</NavLink>
+          <NavLink to={"/search"}>All services</NavLink>
+          <NavLink to={"/cart"}>Cart</NavLink>
         </ul>
         <ul className="footer_container_list">
           <h3>Social</h3>
-          <li>All products</li>
-          <li>Cart</li>
-          <li>All products</li>
-          <li>Cart</li>
+          <div className="footer_container_list_social">
+            <NavLink>
+              <i class="fa-brands fa-twitter"></i>
+            </NavLink>
+            <NavLink>
+              <i class="fa-brands fa-facebook"></i>
+            </NavLink>
+            <NavLink>
+              <i class="fa-brands fa-linkedin"></i>
+            </NavLink>
+            <NavLink>
+              <i class="fa-solid fa-envelope"></i>
+            </NavLink>
+          </div>
         </ul>
       </div>
     </div>

@@ -135,3 +135,34 @@
   justify-content: center;
   align-items: center;
 }
+
+
+.pagination {
+  display: flex;
+  border: 2px solid #304857;
+  border-radius: 10px;
+  margin: 0px 0 40px 0;
+}
+
+.pagination__item {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 12px 20px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  
+  &:hover{
+    background-color: var(--primary-color);
+    color: var(--body-bg);
+  }
+}
+
+.pagination__item:not(:last-child) {
+  /* Right border */
+  border-right: 1px solid var(--primary-color);
+}
+
+.pagination__item--active {
+  background-color: #d1d5db;
+}

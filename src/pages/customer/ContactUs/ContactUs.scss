@@ -1,5 +1,5 @@
 
-.sign{
+.contact{
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -7,67 +7,85 @@
     align-items: center;
     margin: 20px 0 60px 0;
 }
-.wariningContiner{
-    padding: 10px;
-    font-size: 1rem;
-    color: white;
-    background: black;
-    text-align: center;
-    display: none;
-    font-family: sans-serif;
-    font-size: 1.2rem;
-}
-.sign_main{
-    width: 320px;
-    height: 600px;
+
+.contact_main{
+    width: 360px;
     overflow: hidden;
     border-radius: 10px;
     background-color: var(--card-bg);
     box-shadow: 5px 20px 50px #000;
 
 
-    .sign_check{
-        display: none;
-    }
     
     
-    
-    .sign_signup{
+    .contact_container{
             position: relative;
             width: 100%;
             height: 100%;
+            text-align: center;
     }
     
     
-    .sign_label{
+    .contact_label{
         color: var(--primary-color);
         font-size: 2.3rem;
         display: flex;
         justify-content: center;
-        margin: 60px;
+        margin: 60px 60px 10px 60px;
         font-weight: bold;
         cursor: pointer;
         transition: .5s ease-in-out;
     }
     
-    .sign_input{
+  .contact_item_container{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.contact_item{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: center;
+
+    }
+
+    .contact_label_text{
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .contact_input{
         width: 60%;
         height: 20px;
         background: #e0dede;
         display: flex;
         justify-content: center;
-        padding: 20px;
-        margin: 20px auto;
+        padding: 20px 20px 20px 14px;
         border: none;
         outline: none;
         border-radius: 5px;
+    
+        
+       
+    }
+
+    .contact_input_text{
+        padding-bottom: 140px;
+        align-items: flex-start;
+        text-align: start;
+        justify-content: start;
     }
     
     
-    .sign_btn{
+    .contact_btn{
         width: 60%;
         height: 40px;
-        margin: 10px auto;
+        margin: 30px auto;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -94,34 +112,7 @@
     }
     
     
-    .sign_login{
-        height: 580px;
-        border-radius: 60% / 10%;
-        transform: translateY(-180px);
-        transition: .8s ease-in-out;
-        background-color: rgb(58, 69, 77);
-        width: 100%;
-    }
-    
-    
-    .sign_login label{
-        color: #ffffff;
-        transform: scale(.6);
-    }
-    
+ 
     
 }
 
-#ckk{
-    display: none;
-}
-#chk:checked ~ .sign_login{
-    transform: translateY(-600px);
-}
-#chk:checked ~ .sign_login label{
-    margin-top: 10px;
-    transform: scale(1);
-}
-#chk:checked ~ .sign_signup label{
-    transform: scale(.6);
-}

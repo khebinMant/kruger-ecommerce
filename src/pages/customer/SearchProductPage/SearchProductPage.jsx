@@ -58,6 +58,14 @@ const SearchProductPage = () => {
           <Product item={item} />
         ))}
       </div>
+
+      <div class="pagination">
+        <div class="pagination__item">1</div>
+        <div class="pagination__item">2</div>
+        <div class="pagination__item">3</div>
+        <div class="pagination__item">4</div>
+        <div class="pagination__item">5</div>
+      </div>
     </div>
   );
 };
