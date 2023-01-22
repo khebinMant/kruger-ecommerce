@@ -5,6 +5,7 @@ import "./App.css";
 import AboutUs from "./pages/customer/AboutUs/AboutUs";
 import Cart from "./pages/customer/Cart/Cart";
 import ContactUs from "./pages/customer/ContactUs/ContactUs";
+import Faq from "./pages/customer/Faq/Faq";
 import MainPage from "./pages/customer/MainPage/MainPage";
 import ProductDetail from "./pages/customer/ProductDetail/ProductDetail";
 import SearchProductPage from "./pages/customer/SearchProductPage/SearchProductPage";
@@ -38,7 +39,7 @@ function App() {
         <Route path="/service/:id" element="" />
         <Route path="/services" element="all services" />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/faq" element="" />
+        <Route path="/faq" element={<Faq />} />
         <Route path="/testimonials/:id" element="" />
         <Route path="/cart" element={<Cart />} />
         <Route element={<ProtectedRoutes />}>

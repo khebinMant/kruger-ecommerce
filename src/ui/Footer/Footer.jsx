@@ -21,7 +21,7 @@ const Footer = () => {
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to="/about">About us</NavLink>
           <NavLink to={"/contact"}>Contact us</NavLink>
-          <NavLink to="/about">About Us</NavLink>
+          <NavLink to="/faq">FAQ</NavLink>
         </ul>
         <ul className="footer_container_list">
           <h3>Products</h3>
