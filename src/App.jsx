@@ -7,6 +7,7 @@ import Cart from "./pages/customer/Cart/Cart";
 import ContactUs from "./pages/customer/ContactUs/ContactUs";
 import Faq from "./pages/customer/Faq/Faq";
 import MainPage from "./pages/customer/MainPage/MainPage";
+import Payment from "./pages/customer/Payment/Payment";
 import ProductDetail from "./pages/customer/ProductDetail/ProductDetail";
 import SearchProductPage from "./pages/customer/SearchProductPage/SearchProductPage";
 import Login from "./pages/login/Login";
@@ -41,9 +42,9 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/testimonials/:id" element="" />
-        <Route path="/cart" element={<Cart />} />
         <Route element={<ProtectedRoutes />}>
-          <Route path="/payment" element={<Cart />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/payment" element={<Payment />} />
         </Route>
       </Routes>
       <Footer />
