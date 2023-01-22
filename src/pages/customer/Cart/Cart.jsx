@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Cart.scss";
 import CartItem from "./CartItem/CartItem";
 
@@ -26,7 +27,9 @@ const Cart = () => {
             </div>
             <div class="cart_total-amount">$6.18</div>
           </div>
-          <button class="cart_button">Checkout</button>
+          <NavLink to="/payment">
+            <button class="cart_button">Checkout</button>
+          </NavLink>
         </div>
       </div>
     </div>

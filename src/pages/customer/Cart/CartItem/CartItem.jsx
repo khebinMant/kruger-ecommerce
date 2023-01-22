@@ -11,8 +11,8 @@ const CartItem = () => {
         />
       </div>
       <div class="cart_about">
-        <h1 class="cart_title">Apple Juice</h1>
-        <h3 class="cart_subtitle">250ml</h3>
+        <h2 class="cart_title">Iphone 11</h2>
+        <h3 class="cart_subtitle">Apple</h3>
         <div className="cart_about_img">
           <img src="https://www.vodafone.com.au/images/devices/apple/iphone-14-pro-max/iphone-14-pro-max-deep-purple-feature1-m.jpg" />
         </div>
