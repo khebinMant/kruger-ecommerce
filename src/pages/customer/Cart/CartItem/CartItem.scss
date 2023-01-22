@@ -1,0 +1,137 @@
+.cart-items{
+	margin: auto;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    background-color: var(--secondary-card);
+
+}
+.cart_image-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	width: 100px;
+    height: 100px;
+    padding: 10px;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+.cart_about{
+	height: 100%;
+	width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+
+    &_img{
+        height: 30px;
+        width: 30px;
+
+        @media (max-width:800px) {
+            height: 20px;
+            width: 20px;
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+}
+.cart_title{
+	font-size: 1.2rem;
+	font-weight: 800;
+	color: var(--primary-color);
+      @media (max-width:860px) {
+        font-size: .8rem;
+    }
+}
+.cart_subtitle{
+	line-height: 10px;
+	font-size: .8rem;
+	font-weight: 600;
+	color: #909090;
+    @media (max-width:800px) {
+        font-size: .6rem;
+    }
+}
+
+.cart_counter{
+	width: 15%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+    
+    @media (max-width:800px) {
+        width: 20%;
+    }
+}
+.cart_btn{
+    width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	background-color: var(--body-bg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	font-weight: 900;
+	color: var(--primary-color);
+	cursor: pointer;
+
+    @media (max-width:800px) {
+        width: 20px;
+        height: 20px;
+        font-size: 16px;
+
+    }
+}
+.cart_count{
+	font-size: 20px;
+	font-weight: 600;
+	color: #909090;
+    @media (max-width:800px) {
+        font-size: 14px;
+    }
+}
+
+.cart_prices{
+	height: 100%;
+	text-align: right;
+    padding-right: 15px;
+}
+.cart_amount{
+	padding-top: 20px;
+	font-size: 26px;
+	font-weight: 800;
+	color: var(--primary-color);
+
+    @media (max-width:800px) {
+        font-size: 1rem;
+    }
+}
+.cart_extras{
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 14px;
+    
+    @media (max-width:800px) {
+        font-size: 10px;
+    }
+}
+.cart_save{
+    cursor: pointer;
+	color: var(--secondary-color);
+}
+.cart_remove{
+	color: #E44C4C;
+	cursor: pointer;
+}

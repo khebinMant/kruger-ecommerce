@@ -40,8 +40,8 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/faq" element="" />
         <Route path="/testimonials/:id" element="" />
+        <Route path="/cart" element={<Cart />} />
         <Route element={<ProtectedRoutes />}>
-          <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<Cart />} />
         </Route>
       </Routes>
