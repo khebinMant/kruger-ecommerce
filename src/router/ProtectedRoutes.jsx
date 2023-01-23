@@ -2,9 +2,9 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoutes = () => {
-  const isLogged = localStorage.getItem("token");
+  const isLogged = localStorage.getItem("currentUser");
 
-  if (isLogged) {
+  if (isLogged.token) {
     return <Outlet />;
   } else {
     return <Navigate to="/login" />;
