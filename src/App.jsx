@@ -1,11 +1,28 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { MainRouter } from "./router/MainRouter";
+import { setCurrentUser } from "./store/user/userSlice";
+import CustomerNavBar from "./ui/CustomerNavBar/CustomerNavBar";
+import Footer from "./ui/Footer/Footer";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
 
-  return <div className="App"></div>;
+  useEffect(() => {
+    const currentU = localStorage.getItem("currentUser");
+    if (currentU) {
+      const jsonUser = JSON.parse(currentU);
+      dispatch(setCurrentUser(jsonUser));
+    }
+  }, []);
+  return (
+    <>
+      <CustomerNavBar />
+      <MainRouter/>
+      <Footer />
+    </>
+  );
 }
 
 export default App;

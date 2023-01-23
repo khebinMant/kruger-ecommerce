@@ -10,9 +10,16 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
+    "axios": "^1.2.3",
+    "primeicons": "^6.0.1",
+    "primereact": "^8.7.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.6.2"
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.6.2",
+    "react-slick": "^0.29.0",
+    "sass": "^1.57.1",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

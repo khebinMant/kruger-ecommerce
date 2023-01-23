@@ -1,0 +1,26 @@
+.services_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 100px;
+    gap: 3em;
+
+
+    &_title{
+        font-size: 3rem;
+        font-weight: 700;
+
+    }
+}
+
+.services_main{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
