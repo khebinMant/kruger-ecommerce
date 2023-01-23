@@ -123,7 +123,32 @@
       align-items: center;
       background-color: #1c313e;
     }
-    .header__item:last-child .header__navlink {
-      border-right: 1px solid #ccc9;
-    }
+
+  }
+
+
+  .mega-menu {
+    position: relative;
+  }
+  
+  .mega-menu:hover .mega-menu__content {
+    display: block;
+  }
+  
+  .mega-menu__content {
+    border: none;
+    margin-top: -1px;
+    display: none;
+  
+    /* Absolute position */
+    left: 0px;
+    position: absolute;
+    top: 100%;
+  
+    /* Take full width */
+    width: 100%;
+  
+    /* Displayed on top of other elements */
+    background: #fff;
+    z-index: 9999;
   }
