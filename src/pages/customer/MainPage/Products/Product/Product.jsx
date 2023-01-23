@@ -9,8 +9,8 @@ const Product = ({ item }) => {
         <header className="card-home__header">
           <img
             className="card-home__img"
-            src="https://guide-images.cdn.ifixit.com/igi/o4OjCNmNeOhvsS1P.medium"
-            alt=""
+            src={item.images[0].uri}
+            alt="ss"
           />
         </header>
         <div className="card-home__body">
