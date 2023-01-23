@@ -1,0 +1,32 @@
+
+.encourage{
+    width: 100%;
+    height: 600px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+
+    &_title{
+        color: var(--heading-color);
+        font-size: 4rem;
+    
+    }
+}
+
+.spacer{
+    aspect-ratio: 900/600;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layer1{
+    z-index: -1;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    background-image: url("../../../../assets/svg/layout1.svg");
+}

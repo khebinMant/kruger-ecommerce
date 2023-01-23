@@ -5,7 +5,7 @@
 /* ======== css variables ============ */
 :root {
 
-  --primary-color: #a1ff69;
+  --primary-color: #a1ff69 !important;
   --secondary-color: #BCBDC3;
   --third-color: #29495d;
   --heading-color: #fff;

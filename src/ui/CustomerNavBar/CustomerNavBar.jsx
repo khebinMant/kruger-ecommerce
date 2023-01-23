@@ -47,16 +47,66 @@ const CustomerNavBar = () => {
       ></i>
       <nav ref={navbar} className="header__nav header__nav--close">
         <ul className="header__list">
-          <li className="header__item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__navlink active-link" : "header__navlink"
-              }
-              to="/search"
-            >
-              <p>Explore</p>
-            </NavLink>
-          </li>
+          <div className="header__item mega-menu header__navlink">
+            <div class="mega-menu__item mega-menu__trigger">
+              <div>
+                <p>Explore</p>
+              </div>
+
+              <div class="mega-menu__content">
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/"
+                  >
+                    <p>Home</p>
+                  </NavLink>
+                </li>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/search"
+                  >
+                    <p>Search</p>
+                  </NavLink>
+                </li>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/products"
+                  >
+                    <p>All products</p>
+                  </NavLink>
+                </li>
+
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/services"
+                  >
+                    <p>All services</p>
+                  </NavLink>
+                </li>
+              </div>
+            </div>
+          </div>
+
           <li className="header__item">
             <NavLink
               className={({ isActive }) =>
@@ -68,16 +118,53 @@ const CustomerNavBar = () => {
               <p>{loginTxt}</p>
             </NavLink>
           </li>
-          <li className="header__item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__navlink active-link" : "header__navlink"
-              }
-              to="/about"
-            >
-              <p>About us</p>
-            </NavLink>
-          </li>
+          <div className="header__item mega-menu header__navlink">
+            <div class="mega-menu__item mega-menu__trigger">
+              <div>
+                <p>About</p>
+              </div>
+
+              <div class="mega-menu__content">
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/contact"
+                  >
+                    <p>Contact us</p>
+                  </NavLink>
+                </li>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/about"
+                  >
+                    <p>About us</p>
+                  </NavLink>
+                </li>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/faq"
+                  >
+                    <p>FAQ</p>
+                  </NavLink>
+                </li>
+              </div>
+            </div>
+          </div>
+
           <li className="header__item">
             <NavLink
               className={({ isActive }) =>

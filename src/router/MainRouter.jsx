@@ -21,19 +21,20 @@ import { CartsView } from "../pages/admin/Carts/CartsView";
 import { ReviewsView } from "../pages/admin/Reviews/ReviewsView";
 import { AnalitycsView } from "../pages/admin/Analytics/AnalitycsView";
 
+import AllServices from "../pages/customer/AllServices/AllServices";
+import AllProducts from "../pages/customer/AllProducts/AllProducts";
 
 export const MainRouter = () => {
-
   return (
-      <Routes>
+    <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<SearchProductPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/products" element="all products" />
+        <Route path="/products" element={<AllProducts />} />
         <Route path="/service/:id" element="" />
-        <Route path="/services" element="all services" />
+        <Route path="/services" element={<AllServices />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/testimonials/:id" element="" />
@@ -41,7 +42,6 @@ export const MainRouter = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<Payment />} />
         </Route>
-
 
         <Route path="/admin" element={<AdminMainPage/>} >
             <Route path="" element={<AnalitycsView/>}/>
@@ -54,6 +54,7 @@ export const MainRouter = () => {
             <Route path="carts" element={<CartsView/>}/>
             <Route path="reviews" element={<ReviewsView/>}/>
         </Route>
-    </Routes>
+        </Routes>
+
   );
 };
