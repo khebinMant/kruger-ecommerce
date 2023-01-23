@@ -11,6 +11,15 @@ import Faq from "../pages/customer/Faq/Faq";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Cart from "../pages/customer/Cart/Cart";
 import Payment from "../pages/customer/Payment/Payment";
+import { ProductsView } from "../pages/admin/Products/ProductsView";
+import { AdminMainPage } from "../pages/admin/AdminMainPage";
+import { CustomersView } from "../pages/admin/Customers/CustomersView";
+import { ServicesView } from "../pages/admin/Services/ServicesView";
+import { AdminsView } from "../pages/admin/Admins/AdminsView";
+import { CouponsView } from "../pages/admin/Coupons/CouponsView";
+import { CartsView } from "../pages/admin/Carts/CartsView";
+import { ReviewsView } from "../pages/admin/Reviews/ReviewsView";
+import { AnalitycsView } from "../pages/admin/Analytics/AnalitycsView";
 
 
 export const MainRouter = () => {
@@ -31,6 +40,19 @@ export const MainRouter = () => {
         <Route element={<ProtectedRoutes />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<Payment />} />
+        </Route>
+
+
+        <Route path="/admin" element={<AdminMainPage/>} >
+            <Route path="" element={<AnalitycsView/>}/>
+            <Route path="analitycs" element={<AnalitycsView/>}/>
+            <Route path="customers" element={<CustomersView/>}/>
+            <Route path="admins" element={<AdminsView/>}/>
+            <Route path="products" element={<ProductsView/>}/>
+            <Route path="services" element={<ServicesView/>}/>
+            <Route path="coupons" element={<CouponsView/>}/>
+            <Route path="carts" element={<CartsView/>}/>
+            <Route path="reviews" element={<ReviewsView/>}/>
         </Route>
     </Routes>
   );
