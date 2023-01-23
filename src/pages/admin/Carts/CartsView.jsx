@@ -12,7 +12,7 @@ import { Dialog } from "primereact/dialog";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
 import '../AdminMainPage.css';
-import { getAllCoupons } from "../../../helpers/coupons/getAllCoupons";
+import { getAllCarts } from "../../../helpers/carts/getAllCarts";
 
 let emptyCoupon = {
   name: "",
@@ -71,7 +71,7 @@ export const CartsView = () => {
   };
 
   const getCoupons = async () => {
-    const responseCoupons = await Promise.resolve(getAllCoupons());
+    const responseCoupons = await Promise.resolve(getAllCarts());
     setCoupons(responseCoupons);
     setIsLoading(false);
   };
