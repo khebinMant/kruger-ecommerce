@@ -1,39 +1,41 @@
 import React, { useEffect, useState } from "react";
 import Product from "../MainPage/Products/Product/Product";
-import { productsData } from "../MainPage/Products/dummy";
 import "./Allproducts.scss";
-import { getAllProducts } from "../../../helpers/products/getAllProducts";
+import { useGetProductsQuery } from "../../../store/services/apiCore";
 
 const AllProducts = () => {
-
   const [products, setProducts] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+
+  const { data, isFetching, error } = useGetProductsQuery();
 
   useEffect(() => {
     getProducts();
   }, []);
 
   const getProducts = async () => {
-    const responseProducts = await Promise.resolve(getAllProducts());
-    setProducts(responseProducts.filter(product=>product.type ==='PRODUCT'));
-    setIsLoading(false);
+    const responseProducts = await data;
+    setProducts(
+      responseProducts.filter((product) => product.type === "PRODUCT")
+    );
   };
+
+  if (isFetching) return "Loading";
+  if (error) return "Error";
 
   return (
     <>
-      {
-        isLoading?
+      {isLoading ? (
         <p>estoy cargando</p>
-        :
-      <div className="show_products">
-        <h2 className="show_products_title">All Products</h2>
-        <div className="show_products_container">
-          {products.map((item) => (
-            <Product item={item} />
-          ))}
+      ) : (
+        <div className="show_products">
+          <h2 className="show_products_title">All Products</h2>
+          <div className="show_products_container">
+            {products.map((item) => (
+              <Product item={item} />
+            ))}
+          </div>
         </div>
-      </div>
-      }
+      )}
     </>
   );
 };
