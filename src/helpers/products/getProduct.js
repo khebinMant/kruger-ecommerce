@@ -1,13 +1,13 @@
 import { backEndApi } from "../../api/backEndApi"
 
 export const getProduct= async (id)=>{
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    const config = {
-        headers: { Authorization: `Bearer ${currentUser.token}` }
-    };
+    // const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    // const config = {
+    //     headers: { Authorization: `Bearer ${currentUser.token}` }
+    // };
     try{
 
-        const resp = await backEndApi.get(`/products/${id}`, config)
+        const resp = await backEndApi.get(`/products/${id}`)
         return resp.data
 
     }catch(error){

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Product.scss";
 
 const Product = ({ item }) => {
+
   return (
     <NavLink to={`/product/${item.id}`}>
       <article className="card-home">

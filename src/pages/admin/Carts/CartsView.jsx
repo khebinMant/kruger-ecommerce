@@ -216,6 +216,21 @@ export const CartsView = () => {
     setCoupon(_coupon);
   };
 
+  const imageBodyTemplate = (rowData) => {
+
+      return (
+        <img
+          src={`${rowData.user.imageUrl}`}
+          onError={(e) =>
+            (e.target.src =
+              "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
+          }
+          alt={rowData.user.email}
+          className="product-image"
+        />
+      );
+  };
+
   const leftToolbarTemplate = () => {
     return (
       <React.Fragment>
@@ -354,32 +369,49 @@ export const CartsView = () => {
               style={{ minWidth: "1rem" }}
             ></Column>
             <Column
-              field="type"
-              header="Tipo"
+              field="image"
+              header="Image"
+              body={imageBodyTemplate}
+            ></Column>
+            <Column
+              field="user.firstName"
+              header="Nombre cliente"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
             <Column
-              field="quantity"
-              header="Cantidad"
+              field="user.lastName"
+              header="Apellido cliente"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
             <Column
-              field="code"
-              header="Código"
+              field="status"
+              header="Status"
+              sortable
+              style={{ minWidth: "2rem" }}
+            ></Column>
+            <Column
+              field="order.totalPrice"
+              header="Total de compra"
+              sortable
+              style={{ minWidth: "2rem" }}
+            ></Column>
+            <Column
+              field="order.coupon.code"
+              header="Cupon"
               sortable
               style={{ minWidth: "0.5rem" }}
             ></Column>
             <Column
-              field="status"
-              header="Estado del cupón"
+              field="order.shipmentDate"
+              header="Fecha de compra"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
             <Column
-              field="created"
-              header="Fecha de creación"
+              field="order.items.length"
+              header="Cantidad de artículos adquiridos"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
