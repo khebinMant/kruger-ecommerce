@@ -17,6 +17,16 @@
     position: relative;
     z-index: 2;
   }
+  .header__logo {
+    img{
+      position: absolute;
+      top: -60px;
+      left: 10px;
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+  }
   .header__userName{
     font-size: 1  rem;
     margin: 0;
@@ -96,7 +106,14 @@
       background-color: #1c313e;
     }
     .header__logo {
-      font-size: 30px;
+      img{
+        position: absolute;
+        top: -60px;
+        left: 10px;
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+      }
     }
     .header__menu-ham{
       display: none;
