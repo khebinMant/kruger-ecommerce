@@ -53,7 +53,7 @@
     .sign_input{
         width: 60%;
         height: 20px;
-        background: #e0dede;
+        background: var(--secondary-card);
         display: flex;
         justify-content: center;
         padding: 20px;
@@ -112,6 +112,25 @@
     
 }
 
+
+
+.spacer{
+    aspect-ratio: 900/600;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layer3{
+    z-index: -1;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    background-image: url("../../assets/svg/layout3.svg");
+}
+
+
 #ckk{
     display: none;
 }
@@ -125,3 +144,5 @@
 #chk:checked ~ .sign_signup label{
     transform: scale(.6);
 }
+
+

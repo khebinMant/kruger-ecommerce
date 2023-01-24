@@ -2,7 +2,7 @@
 
 
 .cart__checkout {
-  width: 90%;
+  width: 100%;
   position: relative;
   background-color: var(--secondary-card);
   overflow: hidden;
@@ -69,7 +69,7 @@ h6 {
 /*ORDER*/
 .cart__order {
   color: var(--primary-color);
-  width: 50%;
+  width: 60%;
   padding: 30px 30px;
   background-color: var(--card-bg);
   z-index: 1;
@@ -160,8 +160,8 @@ Payment
   height: 48px;
   padding: 2px 0px;
   margin-bottom: 2px;
-  background-color: #f4f5f9;
-  border: 1px solid #d2d4de;
+  background-color: #404A4F;
+  border: 1px solid #1C313E;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,6 +219,7 @@ Payment
 }
 
 .cart__button-cta {
+  cursor: pointer;
   margin-top: 10px;
   width: 100%;
   height: 45px;

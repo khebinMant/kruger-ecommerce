@@ -17,6 +17,16 @@
     position: relative;
     z-index: 2;
   }
+  .header__logo {
+    img{
+      position: absolute;
+      top: -60px;
+      left: 10px;
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+  }
   .header__userName{
     font-size: 1  rem;
     margin: 0;
@@ -96,7 +106,14 @@
       background-color: #1c313e;
     }
     .header__logo {
-      font-size: 30px;
+      img{
+        position: absolute;
+        top: -60px;
+        left: 10px;
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+      }
     }
     .header__menu-ham{
       display: none;
@@ -123,7 +140,32 @@
       align-items: center;
       background-color: #1c313e;
     }
-    .header__item:last-child .header__navlink {
-      border-right: 1px solid #ccc9;
-    }
+
+  }
+
+
+  .mega-menu {
+    position: relative;
+  }
+  
+  .mega-menu:hover .mega-menu__content {
+    display: block;
+  }
+  
+  .mega-menu__content {
+    border: none;
+    margin-top: -1px;
+    display: none;
+  
+    /* Absolute position */
+    left: 0px;
+    position: absolute;
+    top: 100%;
+  
+    /* Take full width */
+    width: 100%;
+  
+    /* Displayed on top of other elements */
+    background: #fff;
+    z-index: 9999;
   }
