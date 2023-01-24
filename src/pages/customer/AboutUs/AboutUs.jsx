@@ -108,6 +108,7 @@ const AboutUs = () => {
           </li>
         </ul>
       </div>
+      <div className="spacer layer3"></div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { setCurrentUser } from "../../store/user/userSlice";
 import "./CustomerNavBar.scss";
+import { Badge } from 'primereact/badge';
 
 const CustomerNavBar = () => {
   const navbar = useRef();
@@ -10,6 +11,7 @@ const CustomerNavBar = () => {
   const navigation = useNavigate();
   const user = useSelector((state) => state.users.currentUser);
   const dispatch = useDispatch();
+  const {cart} = useSelector(state => state.cart)
 
   useEffect(() => {
     user ? setLoginTxt("Log out") : setLoginTxt("Login");
@@ -47,16 +49,66 @@ const CustomerNavBar = () => {
       ></i>
       <nav ref={navbar} className="header__nav header__nav--close">
         <ul className="header__list">
-          <li className="header__item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__navlink active-link" : "header__navlink"
-              }
-              to="/search"
-            >
-              <p>Explore</p>
-            </NavLink>
-          </li>
+          <div className="header__item mega-menu header__navlink">
+            <div class="mega-menu__item mega-menu__trigger">
+              <div>
+                <p>Explore</p>
+              </div>
+
+              <div class="mega-menu__content">
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/"
+                  >
+                    <p>Home</p>
+                  </NavLink>
+                </li>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/search"
+                  >
+                    <p>Search</p>
+                  </NavLink>
+                </li>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/products"
+                  >
+                    <p>All products</p>
+                  </NavLink>
+                </li>
+
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/services"
+                  >
+                    <p>All services</p>
+                  </NavLink>
+                </li>
+              </div>
+            </div>
+          </div>
+
           <li className="header__item">
             <NavLink
               className={({ isActive }) =>
@@ -68,16 +120,53 @@ const CustomerNavBar = () => {
               <p>{loginTxt}</p>
             </NavLink>
           </li>
-          <li className="header__item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__navlink active-link" : "header__navlink"
-              }
-              to="/about"
-            >
-              <p>About us</p>
-            </NavLink>
-          </li>
+          <div className="header__item mega-menu header__navlink">
+            <div class="mega-menu__item mega-menu__trigger">
+              <div>
+                <p>About</p>
+              </div>
+
+              <div class="mega-menu__content">
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/contact"
+                  >
+                    <p>Contact us</p>
+                  </NavLink>
+                </li>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/about"
+                  >
+                    <p>About us</p>
+                  </NavLink>
+                </li>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/faq"
+                  >
+                    <p>FAQ</p>
+                  </NavLink>
+                </li>
+              </div>
+            </div>
+          </div>
+
           <li className="header__item">
             <NavLink
               className={({ isActive }) =>
@@ -85,7 +174,8 @@ const CustomerNavBar = () => {
               }
               to="/cart"
             >
-              <p>Cart</p>
+              <p style={{marginRight:'20px'}}>Cart</p>
+              <i className="pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge" style={{ fontSize: '2rem' }}><Badge value={cart.items.length || 0} ></Badge></i>
             </NavLink>
           </li>
         </ul>

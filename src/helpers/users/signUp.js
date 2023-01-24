@@ -1,4 +1,4 @@
-import { userApi } from "../../api/userApi"
+import { backEndApi } from "../../api/backEndApi";
 
 
 export const signUp = async (user) => {
@@ -7,7 +7,7 @@ export const signUp = async (user) => {
         console.log("adding user");
         console.log(user);
         //llamando el endpoint de user para crear un user
-        resp = await userApi.post("create", user);
+        resp = await backEndApi.post("/users/create", user);
         
         
         return resp.data;

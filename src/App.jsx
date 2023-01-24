@@ -4,6 +4,7 @@ import { MainRouter } from "./router/MainRouter";
 import { setCurrentUser } from "./store/user/userSlice";
 import CustomerNavBar from "./ui/CustomerNavBar/CustomerNavBar";
 import Footer from "./ui/Footer/Footer";
+
 import "./App.css";
 
 function App() {

@@ -1,0 +1,147 @@
+
+/*MAIN INFO HOME STYLES*/
+
+.header__info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 200px 100px 20px 100px;
+    position: relative;
+}
+
+.header__info-content{
+    width: 50%;
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+}
+
+.header__info-content h3{
+    letter-spacing: .5px;
+    color: var(--heading-color);
+}
+
+
+.header__info-title{
+    color: var(--heading-color);
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.header__info-title span{
+    color: var(--primary-color);
+}
+
+
+.header__info-img{
+    width: 50%;
+}
+
+
+
+
+.header__info-btns{
+    display: flex;
+    gap: 1em;
+}
+
+.header__info-btns button{
+    width: 30%;
+    padding: 14px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+}
+
+.header__info-btns button:nth-child(1){
+    background-color: var(--primary-color);
+    color: var(--body-bg);
+    font-weight: 800;
+}
+
+.header__info-btns button:nth-child(2){
+    background-color: transparent ;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 800;
+}
+
+
+.header__info-trust{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    margin: 10px 0 30px 0;
+    font-size: 12px;
+}
+
+.header__info-trust div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: .5em;
+}
+
+
+.header__info-trust .fa-solid{
+    padding: 7px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 50%;
+    font-size: 10px;
+
+}
+
+
+
+
+
+
+@media (max-width: 700px) {
+    .header__info{
+        flex-direction: column;
+        width: 100%;
+        padding: 60px 20px;
+    }
+    .header__info-content{
+        width: 100%;
+    }
+    
+    .header__info-img{
+        width: 100%;
+    }
+
+    .header__info-btns{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+    }
+    
+}
+
+
+@media (min-width:800px) {
+    .header__info-trust{
+        display: flex;
+        justify-content: flex-start;
+        gap: 2em;
+        margin-bottom: 30px;
+    }
+    
+    
+}
+
+.layer2{
+    background-image: url("../../../../assets/svg/layout2.svg");
+    position: absolute;
+    top: 0px;
+    left: 0;
+    z-index: -1;
+}
