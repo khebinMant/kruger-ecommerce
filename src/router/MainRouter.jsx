@@ -11,6 +11,9 @@ import Faq from "../pages/customer/Faq/Faq";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Cart from "../pages/customer/Cart/Cart";
 import Payment from "../pages/customer/Payment/Payment";
+import Profile from "../pages/customer/Profile/Profile";
+import "primereact/resources/themes/saga-green/theme.css";
+import "primereact/resources/primereact.min.css";                  //core css
 
 
 export const MainRouter = () => {
@@ -31,6 +34,8 @@ export const MainRouter = () => {
         <Route element={<ProtectedRoutes />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/profile" element={<Profile />} />
+
         </Route>
     </Routes>
   );
