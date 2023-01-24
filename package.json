@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.5",
     "@reduxjs/toolkit": "^1.9.1",
+    "animate.css": "^4.1.1",
     "axios": "^1.2.3",
     "primeicons": "^6.0.1",
     "primereact": "^8.7.3",

@@ -6,7 +6,7 @@ export const cartSlice = createSlice({
         cart: {
             totalPrice:0,
             status:"CREATED",
-            shipmentAddress: "",
+            shipmentAddress: {},
             items:[]
         },
         searchedProduct:'',
@@ -21,15 +21,7 @@ export const cartSlice = createSlice({
             state.cart.totalPrice += action.payload.item.price * action.payload.item.quantity
         },
         deleteItemToCart:(state,action)=>{
-            let i;
-            state.cart.items.map((item, index)=>{
-                if(item.productId === action.payload.productId){
-                    i = index;
-                }
-                return item;
-            });
-
-            state.cart.items.splice(i,1)
+            state.cart.items.splice(action.payload.index,1)
         },
         updateTotalPrice:(state,action)=>{
             state.cart.totalPrice -= action.payload.price

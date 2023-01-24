@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux"
 import { postOrder } from "../../helpers/orders/postOrder"
 import { addItemToCart, deleteItemToCart, resetCart, setCurrentCart, setShipmentAddress, updateItemQuantity, updateTotalPrice } from "./cartSlice"
 
@@ -20,11 +19,15 @@ export const startCreateOrder = (shipmentAddress) =>{
     return async (dispatch, getState)=>{
         
         const  currentUser  = getState().users.currentUser
-        console.log(currentUser)
 
         dispatch(setShipmentAddress({shipmentAddress}))
 
-        const response = await Promise.resolve(postOrder(getState().cart.cart,currentUser.id));
+        let _order = {
+            ...getState().cart.cart,
+            addressId: shipmentAddress.id
+        }
+
+        const response = await Promise.resolve(postOrder(_order,currentUser.id));
         console.log(response);
 
         //Limpiar el carrito
@@ -37,13 +40,13 @@ export const startCreateOrder = (shipmentAddress) =>{
     }
 }
 
-export const startDeleteItemFromCart = (item) =>{
+export const startDeleteItemFromCart = (item, index) =>{
     return async (dispatch, getState)=>{
 
         const {productId} = item
         let price = item.price * item.quantity 
-        //Despachar
-        dispatch(deleteItemToCart({productId}))
+        // //Despachar
+        dispatch(deleteItemToCart({productId, index}))
         dispatch(updateTotalPrice({price}))
         
         const  cart  = getState().cart.cart
@@ -71,7 +74,6 @@ export const startUpdateQuantityItemToCart = (item) =>{
 
         let newPrice = oldPrice + (item.quantity * item.price)
         
-        console.log(item)
         //Despachar
         dispatch(updateItemQuantity({item,newPrice}))
 

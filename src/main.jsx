@@ -9,6 +9,7 @@ import "./styles/button.scss";
 import "primereact/resources/themes/arya-green/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+import 'animate.css';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

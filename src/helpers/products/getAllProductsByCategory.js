@@ -1,9 +1,8 @@
 import { backEndApi } from "../../api/backEndApi"
 
-export const getProduct= async (id)=>{
+export const getAllProductsByCategory = async (categoryId)=>{
     try{
-
-        const resp = await backEndApi.get(`/products/${id}`)
+        const resp = await backEndApi.get(`/products/all?categoryId=${categoryId}`)
         return resp.data
 
     }catch(error){

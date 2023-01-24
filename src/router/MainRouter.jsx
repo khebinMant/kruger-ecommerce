@@ -23,8 +23,15 @@ import { AnalitycsView } from "../pages/admin/Analytics/AnalitycsView";
 
 import AllServices from "../pages/customer/AllServices/AllServices";
 import AllProducts from "../pages/customer/AllProducts/AllProducts";
+import { useDispatch } from "react-redux";
+import { getCurrentCart } from "../store/cart/thunks"
 
 export const MainRouter = () => {
+
+  const dispatch = useDispatch()
+  dispatch(getCurrentCart() )
+
+
   return (
     <Routes>
         <Route path="/" element={<MainPage />} />

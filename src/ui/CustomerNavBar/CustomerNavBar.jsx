@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { setCurrentUser } from "../../store/user/userSlice";
 import "./CustomerNavBar.scss";
+import { Badge } from 'primereact/badge';
 
 const CustomerNavBar = () => {
   const navbar = useRef();
@@ -10,6 +11,7 @@ const CustomerNavBar = () => {
   const navigation = useNavigate();
   const user = useSelector((state) => state.users.currentUser);
   const dispatch = useDispatch();
+  const {cart} = useSelector(state => state.cart)
 
   useEffect(() => {
     user ? setLoginTxt("Log out") : setLoginTxt("Login");
@@ -172,7 +174,8 @@ const CustomerNavBar = () => {
               }
               to="/cart"
             >
-              <p>Cart</p>
+              <p style={{marginRight:'20px'}}>Cart</p>
+              <i className="pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge" style={{ fontSize: '2rem' }}><Badge value={cart.items.length || 0} ></Badge></i>
             </NavLink>
           </li>
         </ul>
