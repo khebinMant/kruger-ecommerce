@@ -4,7 +4,7 @@ import { productsData } from "../../MainPage/Products/dummy";
 import "./RelatedProducts.scss";
 import { getAllProductsByCategory } from "../../../../helpers/products/getAllProductsByCategory";
 
-const RelatedProducts = ({item}) => {
+const RelatedProducts = ({product}) => {
 
   const [relatedProducts, setRelatedProducts] = useState()
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +14,7 @@ const RelatedProducts = ({item}) => {
   }, [])
 
   const getRelatedProducts = async() =>{
-    const responseRelatedProd = await Promise.resolve(getAllProductsByCategory(item.category.id))
+    const responseRelatedProd = await Promise.resolve(getAllProductsByCategory(product.category.id))
     setRelatedProducts(responseRelatedProd);
     setIsLoading(false);
   }

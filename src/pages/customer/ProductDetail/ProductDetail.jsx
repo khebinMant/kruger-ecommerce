@@ -14,7 +14,6 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
 
   const [product, setProduct] = useState();
-  const [reviews, setReviews] = useState()
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
 
@@ -27,9 +26,6 @@ const ProductDetail = () => {
     const responseProduct = await Promise.resolve(getProduct(params.id));
     setProduct(responseProduct)
     dispatch(setSelectedProduct(responseProduct))
-
-    const reponseReviews = await Promise.resolve(getReviews());
-    setReviews(reponseReviews.filter(review => review.productId === responseProduct.id))
     setIsLoading(false);
   }
   return (
@@ -54,9 +50,9 @@ const ProductDetail = () => {
               ></iframe>
             </div>
 
-            <Reviews reviews={reviews}/>
+            <Reviews product={product}/>
 
-            <RelatedProducts item={product}/>
+            <RelatedProducts product={product}/>
           </div>
         </section>
       }
