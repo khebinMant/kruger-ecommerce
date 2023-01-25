@@ -127,6 +127,7 @@ const Profile = () => {
 
     return (
 
+        <div>
 
         <TabView activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}>
             <TabPanel header="Personal">
@@ -173,6 +174,7 @@ const Profile = () => {
                 </div>
             </TabPanel>
         </TabView>
+        </div>
 
 
     );
