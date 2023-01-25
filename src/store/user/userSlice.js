@@ -6,7 +6,7 @@ export const userSlice = createSlice({
         currentUser: null,
         
     }, reducers:{
-        setCurrentUser : (state, {payload})=>{
+        setCurrentUser : (state=initialState, {payload})=>{
             state.currentUser = payload
           },
   

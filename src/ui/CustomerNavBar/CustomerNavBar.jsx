@@ -35,13 +35,15 @@ const CustomerNavBar = () => {
       <div className="header_logo_username_container">
         {" "}
         <NavLink className="header__logo-navlink" to="/">
-          <h1 className="header__logo">Kruger</h1>
+          <h1 className="header__logo">
+            <img src="./images/logo.png" alt="main logo" />
+          </h1>
         </NavLink>
-        {user && (
-          <NavLink className="header_user_name_nav" to="/">
-            <p className="header__userName">{user.firstName.toUpperCase()}</p>
+        {user!=null && 
+          <NavLink className="header_user_name_nav" to="/profile">
+            <p className="header__userName">{user.firstName?.toUpperCase()}</p>
           </NavLink>
-        )}
+        }
       </div>
       <i
         onClick={handleHamClick}

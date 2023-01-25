@@ -1,0 +1,130 @@
+.analitycs{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0 0 100px 0;
+
+}
+.analitycs_stats{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    &_content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        flex-wrap: wrap;
+
+
+           
+           .item {
+            color: var(--heading-color);
+
+            width: 220px;
+            height: 220px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+           }
+           
+           .item:hover {
+            transform: scale(0.95);
+            transition: all 0.3s;
+           }
+           
+           .item svg {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 7px;
+           }
+           
+           .item--1 {
+            background: #333354;
+           }
+           
+           .item--2 {
+            background: #654b3a;
+           }
+           
+           .item--3 {
+            background: #336744;
+           }
+           
+           .item--4 {
+            background: #67475d;
+           }
+           
+           .quantity {
+            font-size: 2rem;
+            font-weight: 600;
+           }
+           
+           .text {
+            font-size:1rem;
+            font-family: inherit;
+            font-weight: 600;
+           }
+           
+           .text--1 {
+            color: rgba(149,149,255,1);
+           }
+           
+           .text--2 {
+            color: rgba(252,161,71,1);
+           }
+           
+           .text--3 {
+            color: rgba(66,193,110,1);
+           }
+           
+           .text--4 {
+            color: rgba(220,91,183,1);
+           }
+      
+    }
+.analitycs_stats_chart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-card);
+    width: 320px;
+    height: 300px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+}
+.analitycs_right{
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.analitycs_end{
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    &_chart{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 0;
+        background-color: var(--secondary-card);
+        width: 400px;
+        height: 260px;
+        border-radius: 10px;
+    }
+}

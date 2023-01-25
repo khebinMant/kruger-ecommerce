@@ -12,6 +12,9 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.5",
+    "@nivo/bar": "^0.80.0",
+    "@nivo/core": "^0.80.0",
+    "@nivo/geo": "^0.80.0",
     "@reduxjs/toolkit": "^1.9.1",
     "animate.css": "^4.1.1",
     "axios": "^1.2.3",
@@ -22,6 +25,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.2",
     "react-slick": "^0.29.0",
+    "recharts": "^2.3.2",
     "sass": "^1.57.1",
     "scss": "^0.2.4"
   },

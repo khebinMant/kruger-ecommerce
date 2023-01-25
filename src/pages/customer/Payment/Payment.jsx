@@ -172,8 +172,8 @@ const Payment = () => {
               />
             </p>
           </div>
-          <button class="cart__button-cta" title="Confirm your purchase">
-            <span onClick={createOrder} >COMPRAR</span>
+          <button onClick={createOrder} class="cart__button-cta" title="Confirm your purchase">
+            <span>COMPRAR</span>
           </button>
         </div>
       </div>
