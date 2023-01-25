@@ -6,9 +6,8 @@ import { store } from "./store/store";
 import App from "./App";
 import "./index.css";
 import "./styles/button.scss";
-
-
-
+import "primereact/resources/themes/arya-green/theme.css";
+import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import 'animate.css';
 

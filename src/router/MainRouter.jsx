@@ -13,8 +13,6 @@ import Cart from "../pages/customer/Cart/Cart";
 import Payment from "../pages/customer/Payment/Payment";
 
 import Profile from "../pages/customer/Profile/Profile";
-import "primereact/resources/themes/saga-green/theme.css";
-import "primereact/resources/primereact.min.css";                  //core css
 
 import { ProductsView } from "../pages/admin/Products/ProductsView";
 import { AdminMainPage } from "../pages/admin/AdminMainPage";
