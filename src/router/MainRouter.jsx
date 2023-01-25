@@ -57,7 +57,7 @@ export const MainRouter = () => {
         </Route>
 
         <Route path="/admin" element={<AdminMainPage/>} >
-            <Route path="" element={<AnalitycsView/>}/>
+            <Route path="" element={<ProductsView/>}/>
             <Route path="analitycs" element={<AnalitycsView/>}/>
             <Route path="customers" element={<CustomersView/>}/>
             <Route path="admins" element={<AdminsView/>}/>
