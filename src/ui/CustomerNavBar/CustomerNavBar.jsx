@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { setCurrentUser } from "../../store/user/userSlice";
 import "./CustomerNavBar.scss";
-import { Badge } from 'primereact/badge';
+import { Badge } from "primereact/badge";
+import UserCicle from "./UserCircle/UserCicle";
 
 const CustomerNavBar = () => {
   const navbar = useRef();
@@ -11,10 +12,10 @@ const CustomerNavBar = () => {
   const navigation = useNavigate();
   const user = useSelector((state) => state.users.currentUser);
   const dispatch = useDispatch();
-  const {cart} = useSelector(state => state.cart)
+  const { cart } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    user ? setLoginTxt("Log out") : setLoginTxt("Login");
+    user ? setLoginTxt(<UserCicle />) : setLoginTxt("Login");
   }, [user]);
 
   const handleHamClick = () => {
@@ -39,11 +40,6 @@ const CustomerNavBar = () => {
             <img src="./images/logo.png" alt="main logo" />
           </h1>
         </NavLink>
-        {user!=null && 
-          <NavLink className="header_user_name_nav" to="/profile">
-            <p className="header__userName">{user.firstName?.toUpperCase()}</p>
-          </NavLink>
-        }
       </div>
       <i
         onClick={handleHamClick}
@@ -111,17 +107,6 @@ const CustomerNavBar = () => {
             </div>
           </div>
 
-          <li className="header__item">
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "header__navlink active-link" : "header__navlink"
-              }
-              onClick={handleLoginClick}
-              to="/login"
-            >
-              <p>{loginTxt}</p>
-            </NavLink>
-          </li>
           <div className="header__item mega-menu header__navlink">
             <div class="mega-menu__item mega-menu__trigger">
               <div>
@@ -169,6 +154,57 @@ const CustomerNavBar = () => {
             </div>
           </div>
 
+          <div className="header__item mega-menu header__navlink">
+            <div class="mega-menu__item mega-menu__trigger">
+              <div>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    onClick={handleLoginClick}
+                    to="/login"
+                  >
+                    <p>{loginTxt}</p>
+                  </NavLink>
+                </li>
+              </div>
+
+              <div class="mega-menu__content">
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/about"
+                  >
+                    <p>Profile</p>
+                  </NavLink>
+                </li>
+
+                {user != null && (
+                  <li className="header__item">
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "header__navlink active-link"
+                          : "header__navlink"
+                      }
+                      to="/hola"
+                      onClick={handleLoginClick}
+                    >
+                      <p>Log out</p>
+                    </NavLink>
+                  </li>
+                )}
+              </div>
+            </div>
+          </div>
+
           <li className="header__item">
             <NavLink
               className={({ isActive }) =>
@@ -176,8 +212,12 @@ const CustomerNavBar = () => {
               }
               to="/cart"
             >
-              <p style={{marginRight:'20px'}}>Cart</p>
-              <i className="pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge" style={{ fontSize: '2rem' }}><Badge value={cart.items.length || 0} ></Badge></i>
+              <i
+                className="pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge"
+                style={{ fontSize: "2rem" }}
+              >
+                <Badge value={cart.items.length || 0}></Badge>
+              </i>
             </NavLink>
           </li>
         </ul>
