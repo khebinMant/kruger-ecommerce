@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const ReviewsView = () => {
-  return (
-    <div>ReviewsView</div>
-  )
-}
+  return <div>ReviewsView</div>;
+};
