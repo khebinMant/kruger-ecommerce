@@ -1,4 +1,4 @@
-import { userApi } from "../../api/userApi"
+import { backEndApi } from "../../api/backEndApi";
 
 
 export const changePassword = async (request,userId) => {

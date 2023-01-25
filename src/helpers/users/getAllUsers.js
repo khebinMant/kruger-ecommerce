@@ -1,4 +1,4 @@
-import { backEndApi } from "../../api/backEndApi"
+import { backEndApi } from "../../api/backEndApi";
 
 export const getAllUsers= async ()=>{
     try{

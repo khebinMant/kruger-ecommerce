@@ -22,16 +22,23 @@ const Profile = () => {
     const [profilePhoto, setProfilePhoto] = useState();
     const dispatch=useDispatch();
     useEffect(() => {
+        
         //setting the today's date
         const date = "" + new Date().getFullYear() + "-"
             + (new Date().getMonth() + 1) + "-" + new Date().getDate();
         setTodayDate(date);
         //setting the default profile photo in case there is no photo selected
         if(photoRef.current){
-            user?.imageUrl ? setProfilePhoto(user.imageUrl): photoRef.current.src=defaultUserPhoto;
-        }
-       
+            console.log(user);
 
+            if(user&&user.imageUrl){
+                console.log(" not null");
+                setProfilePhoto(user.imageUrl)
+            }else{
+                photoRef.current.src=defaultUserPhoto;
+                console.log("null");
+            } 
+        }
     }, [user])
 
     async function handleChangePassword(e) {
@@ -125,7 +132,7 @@ const Profile = () => {
             <TabPanel header="Personal">
                 <div className='personalProfile'>
                     <div className='profileImageCont'>
-                        <img className='profilePhoto' ref={photoRef} src={`data:image/jpeg;base64,${profilePhoto}`} />
+                        <img className='profilePhoto' ref={photoRef} src={profilePhoto?`data:image/jpeg;base64,${profilePhoto}`:defaultUserPhoto} />
                         <img className='pickPhoto' src={camera} onClick={() => { document.getElementById('file-picker').click() }} />
                         <input id='file-picker' accept="image/png, image/jpeg" className='invisible-file-picker' type="file" onChange={handlePhotoPick} />
                     </div>
