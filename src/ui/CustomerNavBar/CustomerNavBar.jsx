@@ -174,45 +174,43 @@ const CustomerNavBar = () => {
 
               <div class="mega-menu__content">
                 {user != null && (
-                  <li className="header__item">
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "header__navlink active-link"
-                          : "header__navlink"
-                      }
-                      onClick={handleLoginClick}
-                    >
-                      <p>Log out</p>
-                    </NavLink>
-                  </li>
+                  <>
+                    <li className="header__item">
+                      <NavLink
+                        className={"header__navlink"}
+                        onClick={handleLoginClick}
+                      >
+                        <p>Log out</p>
+                      </NavLink>
+                    </li>
+
+                    <li className="header__item">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "header__navlink active-link"
+                            : "header__navlink"
+                        }
+                        to="/profile"
+                      >
+                        <p>Profile</p>
+                      </NavLink>
+                    </li>
+
+                    <li className="header__item">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "header__navlink active-link"
+                            : "header__navlink"
+                        }
+                        to="/profile"
+                      >
+                        <p>My Orders</p>
+                      </NavLink>
+                    </li>
+                  </>
                 )}
-
-                <li className="header__item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "header__navlink active-link"
-                        : "header__navlink"
-                    }
-                    to="/profile"
-                  >
-                    <p>Profile</p>
-                  </NavLink>
-                </li>
-
-                <li className="header__item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "header__navlink active-link"
-                        : "header__navlink"
-                    }
-                    to="/profile"
-                  >
-                    <p>My Orders</p>
-                  </NavLink>
-                </li>
               </div>
             </div>
           </div>
