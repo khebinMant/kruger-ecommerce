@@ -173,19 +173,6 @@ const CustomerNavBar = () => {
               </div>
 
               <div class="mega-menu__content">
-                <li className="header__item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "header__navlink active-link"
-                        : "header__navlink"
-                    }
-                    to="/about"
-                  >
-                    <p>Profile</p>
-                  </NavLink>
-                </li>
-
                 {user != null && (
                   <li className="header__item">
                     <NavLink
@@ -194,13 +181,38 @@ const CustomerNavBar = () => {
                           ? "header__navlink active-link"
                           : "header__navlink"
                       }
-                      to="/hola"
                       onClick={handleLoginClick}
                     >
                       <p>Log out</p>
                     </NavLink>
                   </li>
                 )}
+
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/profile"
+                  >
+                    <p>Profile</p>
+                  </NavLink>
+                </li>
+
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/profile"
+                  >
+                    <p>My Orders</p>
+                  </NavLink>
+                </li>
               </div>
             </div>
           </div>
