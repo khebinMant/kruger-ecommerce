@@ -11,6 +11,11 @@ import Faq from "../pages/customer/Faq/Faq";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Cart from "../pages/customer/Cart/Cart";
 import Payment from "../pages/customer/Payment/Payment";
+
+import Profile from "../pages/customer/Profile/Profile";
+import "primereact/resources/themes/saga-green/theme.css";
+import "primereact/resources/primereact.min.css";                  //core css
+
 import { ProductsView } from "../pages/admin/Products/ProductsView";
 import { AdminMainPage } from "../pages/admin/AdminMainPage";
 import { CustomersView } from "../pages/admin/Customers/CustomersView";
@@ -20,6 +25,7 @@ import { CouponsView } from "../pages/admin/Coupons/CouponsView";
 import { CartsView } from "../pages/admin/Carts/CartsView";
 import { ReviewsView } from "../pages/admin/Reviews/ReviewsView";
 import { AnalitycsView } from "../pages/admin/Analytics/AnalitycsView";
+
 
 import AllServices from "../pages/customer/AllServices/AllServices";
 import AllProducts from "../pages/customer/AllProducts/AllProducts";
@@ -48,6 +54,8 @@ export const MainRouter = () => {
         <Route element={<ProtectedRoutes />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/profile" element={<Profile />} />
+
         </Route>
 
         <Route path="/admin" element={<AdminMainPage/>} >
