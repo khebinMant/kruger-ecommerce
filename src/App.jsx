@@ -14,15 +14,14 @@ function App() {
     if (currentU) {
       const jsonUser = JSON.parse(currentU);
       dispatch(setCurrentUser(jsonUser));
-
     }
   }, []);
   return (
-    <>
+    <div className="main">
       <CustomerNavBar />
-      <MainRouter/>
+      <MainRouter />
       <Footer />
-    </>
+    </div>
   );
 }
 

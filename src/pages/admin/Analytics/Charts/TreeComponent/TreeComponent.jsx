@@ -204,20 +204,17 @@ class CustomizedContent extends PureComponent {
 
 const TreeComponent = () => {
   return (
-    <div className="chart" style={{ height: "500px", width: "1000px" }}>
-      <div className="title">hola</div>
-      <ResponsiveContainer width="100%" height="100%">
-        <Treemap
-          width={400}
-          height={200}
-          data={data}
-          dataKey="size"
-          stroke="#fff"
-          fill="#8884d8"
-          content={<CustomizedContent colors={COLORS} />}
-        />
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" height="100%">
+      <Treemap
+        width={400}
+        height={200}
+        data={data}
+        dataKey="size"
+        stroke="#fff"
+        fill="#8884d8"
+        content={<CustomizedContent colors={COLORS} />}
+      />
+    </ResponsiveContainer>
   );
 };
 
