@@ -9,6 +9,7 @@ const LineView = () => {
         <h2>Line Chart</h2>
         <LineComponent />
       </div>
+      <div className="spacer layer2"></div>
     </div>
   );
 };
