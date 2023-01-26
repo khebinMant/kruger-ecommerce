@@ -40,3 +40,40 @@
 }
 
   
+.TEST_ADMIN_SIDEBAR{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 10px;
+}
+
+
+.p-panelmenu-header-link{
+    border-radius: 14px 14px 0 0 !important;
+    border: none !important;
+    background-color: var(--secondary-card) !important;
+    color: #fff !important;
+
+}
+
+.p-panelmenu-content{
+    border: none !important;
+    background-color: var(--secondary-card) !important;
+
+}
+
+.btn_admin_container{
+    position: relative;
+    width: 100%;
+}
+
+.p-button.p-button-icon-only{
+    position: absolute;
+    z-index: 10;
+    background-color: var(--primary-color);
+    color: var(--body-bg);
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+
+}
