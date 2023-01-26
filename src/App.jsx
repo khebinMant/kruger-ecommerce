@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="main">
     {
-        currentUser===null || currentUser.role === 'CUSTOMER'?
+        currentUser === null || currentUser.role === 'CUSTOMER'?
         <CustomerNavBar />
         :
         <AdminNavBar/>

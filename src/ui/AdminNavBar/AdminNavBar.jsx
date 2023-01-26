@@ -166,8 +166,6 @@ const AdminNavBar = () => {
                         ? "header__navlink active-link"
                         : "header__navlink"
                     }
-                    onClick={handleLoginClick}
-                    to="/login"
                   >
                     <p>{loginTxt}</p>
                   </NavLink>
