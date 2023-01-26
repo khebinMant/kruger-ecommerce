@@ -353,7 +353,7 @@ export const ProductsView = () => {
 
   const actionBodyTemplate = (rowData) => {
     return (
-      <div style={{display:'flex', flexDirection:'row'}}>
+      <div style={{display:'flex', flexDirection:'row', position:'relative'}}>
         <Button
           icon="pi pi-external-link"
           className="p-button-rounded p-button-primary"
@@ -405,6 +405,7 @@ export const ProductsView = () => {
   const deleteProductDialogFooter = (
     <>
       <Button
+        style={{position:'static'}}
         label="No"
         icon="pi pi-times"
         className="p-button-text"

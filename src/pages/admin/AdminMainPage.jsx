@@ -187,7 +187,7 @@ export const AdminMainPage = () => {
               <PanelMenu
                 className="TEST_ADMIN_SIDEBAR"
                 model={items}
-                style={{ left: 0, width: "22rem" }}
+                style={{ left: 0, width: "18rem" }}
               />
             </div>
           </Sidebar>
@@ -197,7 +197,7 @@ export const AdminMainPage = () => {
         <Button
           icon="pi pi-arrow-right"
           onClick={() => setVisibleLeft(true)}
-          className="mr-2"
+          className="mr-2 p_btn_arrow"
         />
       </div>
       <Outlet />
