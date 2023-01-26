@@ -8,6 +8,7 @@ import AdminCircle from "./AdminCircle/AdminCircle"
 import { useEffect } from "react";
 
 const AdminNavBar = () => {
+
   const navbar = useRef();
   const [loginTxt, setLoginTxt] = useState("");
   const navigation = useNavigate();
@@ -16,7 +17,7 @@ const AdminNavBar = () => {
   const { cart } = useSelector((state) => state.cart);
   
   useEffect(() => {
-    user ? setLoginTxt(<AdminCircle />) : setLoginTxt("Login");
+    user ? setLoginTxt(<AdminCircle user={user} />) : setLoginTxt("Login");
   }, [user]);
 
   const handleHamClick = () => {

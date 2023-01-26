@@ -45,7 +45,7 @@ export const ProductsView = () => {
   const dt = useRef(null);
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
-  const [imagesCopy, setImagesCopy] = useState([]);
+  const [newImages, setNewImages] = useState([]);
   const maxNumber = 69;
 
 
@@ -59,15 +59,13 @@ export const ProductsView = () => {
 
   const onChange = (imageList, addUpdateIndex) => {
     console.log(imageList, addUpdateIndex);
-    // console.log(imagesCopy)
 
     let indexAdd;
     let newImg;
     let temp = [];
 
     if(addUpdateIndex==undefined){
-      
-      console.log("estoy eliminando")
+      //estoy borrando
       setImages(imageList)
     }
     else{
@@ -77,7 +75,6 @@ export const ProductsView = () => {
         url: null,
         created: new Date()
       }
-      console.log("estoy creando")
 
       for (let index = 0; index < imageList.length; index++) {
         if(index === indexAdd){
@@ -87,10 +84,43 @@ export const ProductsView = () => {
           temp.push(imageList[index])
         }      
       }
-      console.log(temp)
       setImages(temp);
     }
   };
+  
+
+  const onChangeNewImages = (imageList, addUpdateIndex) =>{
+    console.log(imageList, addUpdateIndex);
+
+    setNewImages(imageList)
+
+    let indexAdd;
+    let newImg;
+    let temp = [];
+
+    if(addUpdateIndex==undefined){
+      //estoy borrando
+      setNewImages(imageList)
+    }
+    else{
+      indexAdd = addUpdateIndex[0]
+      newImg = {
+        uri:imageList[indexAdd].data_url,
+        url: null,
+        created: new Date()
+      }
+      for (let index = 0; index < imageList.length; index++) {
+        if(index === indexAdd){
+          temp.push(newImg)
+        }
+        else{
+          temp.push(imageList[index])
+        }      
+      }
+      setNewImages(temp);
+    }
+
+  }
 
   const formatCurrency = (value) => {
     return value.toLocaleString("es-ES", {
@@ -128,6 +158,7 @@ export const ProductsView = () => {
 
   const openNew = () => {
     setProduct(emptyProduct);
+    setNewImages([]);
     setSubmitted(false);
     setProductDialog(true);
   };
@@ -151,7 +182,6 @@ export const ProductsView = () => {
       let _products = [...products];
       let _product = { ...product };
       _product.images = images;
-      console.log( _product.images)
       if (product.id) {
         const responsePutProduct = updateProduct(_product);
         if (responsePutProduct) {
@@ -172,6 +202,9 @@ export const ProductsView = () => {
           });
         }
       } else {
+        _product.images = newImages
+        _product.status = 'NOT_POPULAR' //dede ser dinámico
+        _product.type = "PRODUCT"
         const responsePostProduct = await createProduct(_product);
         if (responsePostProduct) {
           _product.id = responsePostProduct.id;
@@ -201,7 +234,6 @@ export const ProductsView = () => {
   const editProduct = (product) => {
     setImages(product.images)
     setProduct({ ...product });
-    setImagesCopy(product.images)
     setProductDialog(true);
   };
 
@@ -500,7 +532,7 @@ export const ProductsView = () => {
   
         <Dialog
           visible={productDialog}
-          style={{ width: "450px" }}
+          style={{ width: "700px" }}
           header="Información del producto"
           modal
           className="p-fluid"
@@ -593,7 +625,50 @@ export const ProductsView = () => {
                   </div>
                 )}
               </ImageUploading>
-            :<></>
+            :<>
+            <ImageUploading
+                multiple
+                value={newImages}
+                onChange={onChangeNewImages}
+                maxNumber={maxNumber}
+                dataURLKey="data_url"
+              >
+                {({
+                  imageList,
+                  onImageUpload,
+                  onImageRemoveAll,
+                  onImageUpdate,
+                  onImageRemove,
+                  isDragging,
+                  dragProps,
+                }) => (
+                  // write your building UI
+                  <div className="upload__image-wrapper">
+                    <Button 
+                      className="p-button-secondary"
+                      style={{color:isDragging?'red':'', width:'100%', height:'50px', marginTop:'20px', justifyContent:'center'}}
+                      onClick={onImageUpload}
+                      {...dragProps}
+                    >
+                      Agrega o arrastra imágenes
+                    </Button >
+                    &nbsp;
+                    {imageList.map((image, index) => (
+
+                      <div key={index} className="image-item">
+                        <img src={image['uri'] || image.url} alt="" width="100" />
+                          <Button 
+                            onClick={() => onImageRemove(index)}
+                            icon="pi pi-trash"
+                            className="p-button-rounded p-button-danger"
+                          >
+                          </Button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </ImageUploading>
+            </>
           }
           <div className="field">
             <label htmlFor="description">Descripción</label>
