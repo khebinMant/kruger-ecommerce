@@ -8,6 +8,7 @@ const BarView = () => {
       <div className="show_chart">
         <h2>Bar Chart</h2>
         <BarComponent />
+        <div className="spacer layer2"></div>
       </div>
     </div>
   );

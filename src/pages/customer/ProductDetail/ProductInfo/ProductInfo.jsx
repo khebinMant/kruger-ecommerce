@@ -57,11 +57,11 @@ export const ProductInfo = ({item}) => {
     
   return (
       <div className="productinfo">
-          <Toast ref={toast} position="bottom-right" />
+          <Toast ref={toast} position="top-left" />
 
           <div className="productinfo_details">
             <div className="big-img">
-              <img className='animate__animated animate__fadeIn' src={product.images[indexT].uri} alt="" />
+              <img className='animate__animated animate__fadeIn' src={product.images[indexT].url || product.images[indexT].uri} alt="" />
             </div>
             <DetailsThumb
               images={product.images}

@@ -38,3 +38,47 @@
         width: 100%;
     }
 }
+
+  
+.TEST_ADMIN_SIDEBAR{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 10px;
+}
+
+
+.p-panelmenu-header-link{
+    border-radius: 14px 14px 0 0 !important;
+    border: none !important;
+    background-color: var(--secondary-card) !important;
+    color: #fff !important;
+
+}
+
+.p-panelmenu-content{
+    border: none !important;
+    background-color: var(--secondary-card) !important;
+
+}
+
+.btn_admin_container{
+    position: relative;
+    width: 100%;
+}
+
+.p_btn_add{
+    background-color: var(--primary-color) !important;
+}
+
+.p_btn_arrow{
+    position: absolute !important;
+    z-index: 10 !important;
+    background-color: var(--primary-color) !important;
+    color: var(--body-bg) !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    top:15px !important;
+    left: 2px !important;
+}

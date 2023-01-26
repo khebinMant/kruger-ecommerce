@@ -9,6 +9,7 @@ const AreaView = () => {
         <h2>Area Chart</h2>
         <AreaComponent />
       </div>
+      <div className="spacer layer2"></div>
     </div>
   );
 };

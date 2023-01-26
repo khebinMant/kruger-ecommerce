@@ -9,6 +9,7 @@ const SankeyView = () => {
         <h2>Sankey Chart</h2>
         <SankeyComponent />
       </div>
+      <div className="spacer layer2"></div>
     </div>
   );
 };

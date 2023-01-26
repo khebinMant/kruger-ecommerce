@@ -63,7 +63,7 @@ const CartItem = ({item,index}) => {
         <div class="cart-items">
           <div class="cart_image-box">
             <img
-              src={product.images[0].uri}
+              src={product.images[0].url || product.images[0].uri}
               style={{ height: "80px" }}
             />
           </div>
@@ -76,7 +76,7 @@ const CartItem = ({item,index}) => {
                 <div className="cart_about_container">
                   {
                     product.images.map((image, index)=>(
-                      <img key={index} src={image.uri} />
+                      <img key={index} src={image.url || image.uri} />
                     ))
                   }
 
@@ -100,7 +100,7 @@ const CartItem = ({item,index}) => {
             }
           </div>
           <div class="cart_prices">
-            <div class="cart_amount">{item.price *  item.quantity}$</div>
+            <div class="cart_amount">{ Math.round((item.price *  item.quantity)* 100)/100}$</div>
           </div>
             {
               location.pathname === "/cart" &&             

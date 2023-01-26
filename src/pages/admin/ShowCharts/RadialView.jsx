@@ -9,6 +9,7 @@ const RadialView = () => {
         <h2>Radial Chart</h2>
         <RadialComponent />
       </div>
+      <div className="spacer layer2"></div>
     </div>
   );
 };

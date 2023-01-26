@@ -9,6 +9,7 @@ const TreeView = () => {
         <h2>Tree Chart</h2>
         <TreeComponent />
       </div>
+      <div className="spacer layer2"></div>
     </div>
   );
 };

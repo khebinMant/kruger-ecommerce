@@ -16,6 +16,7 @@ import { Toolbar } from "primereact/toolbar";
 import { Dialog } from "primereact/dialog";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
+import { Checkbox } from "primereact/checkbox";
 import '../AdminMainPage.css';
 
 let emptyProduct = {
@@ -24,6 +25,7 @@ let emptyProduct = {
   stock: "",
   price: "",
   category: null,
+  status:null
 };
 
 export const ServicesView = () => {
@@ -38,6 +40,7 @@ export const ServicesView = () => {
   const [submitted, setSubmitted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, serCategories] = useState();
+  const [check, setCheked] = useState()
 
   const [globalFilter, setGlobalFilter] = useState(null);
   const toast = useRef(null);
@@ -76,7 +79,7 @@ export const ServicesView = () => {
 
   const getCategories = async () => {
     const responseCategories = await Promise.resolve(getAllCategories());
-    serCategories(responseCategories);
+    serCategories(responseCategories.filter(category=>category.name==='Servicio'));
     setIsLoading(false);
   };
 
@@ -118,7 +121,7 @@ export const ServicesView = () => {
           toast.current.show({
             severity: "success",
             summary: "Genial!",
-            detail: "Producto actualizado",
+            detail: "Servicio actualizado",
             life: 3000,
           });
         } else {
@@ -130,6 +133,8 @@ export const ServicesView = () => {
           });
         }
       } else {
+        _product.images = null;
+        _product.type = "SERVICE"
         const responsePostProduct = await createProduct(_product);
         if (responsePostProduct) {
           _product.id = responsePostProduct.id;
@@ -180,7 +185,7 @@ export const ServicesView = () => {
       toast.current.show({
         severity: "success",
         summary: "Eliminado!",
-        detail: "Producto eliminado",
+        detail: "Servicio eliminado",
         life: 3000,
       });
     } else {
@@ -236,7 +241,7 @@ export const ServicesView = () => {
         <Button
           label="Añadir"
           icon="pi pi-plus"
-          className="p-button-success mr-2"
+          className="p-button-success mr-2 p_btn_add"
           onClick={openNew}
         />
         <Button
@@ -248,31 +253,6 @@ export const ServicesView = () => {
         />
       </React.Fragment>
     );
-  };
-
-  const imageBodyTemplate = (rowData) => {
-    if(rowData.images.length == 0){
-      return(
-        <img
-        src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png"
-        alt= "something"
-        className="product-image"
-      />
-      )
-    }
-    else{
-      return (
-        <img
-          src={`${rowData.images[0].uri}`}
-          onError={(e) =>
-            (e.target.src =
-              "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
-          }
-          alt={rowData.images[0].uri}
-          className="product-image"
-        />
-      );
-    }
   };
 
   const priceBodyTemplate = (rowData) => {
@@ -298,7 +278,7 @@ export const ServicesView = () => {
 
   const header = (
     <div className="table-header">
-      <h5 className="mx-0 my-1">Administrar Productos</h5>
+      <h5 className="mx-0 my-1">Administrar Servicios</h5>
       <span className="p-input-icon-left">
         <i className="pi pi-search" />
         <InputText
@@ -368,7 +348,7 @@ export const ServicesView = () => {
         <Toast ref={toast} />
   
         <div className="card">
-          <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
+          <Toolbar className="mb-4" right={leftToolbarTemplate}></Toolbar>
   
           <DataTable
             ref={dt}
@@ -397,19 +377,14 @@ export const ServicesView = () => {
               style={{ minWidth: "1rem" }}
             ></Column>
             <Column
-              field="image"
-              header="Image"
-              body={imageBodyTemplate}
-            ></Column>
-            <Column
               field="name"
               header="Nombre"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
             <Column
-              field="description"
-              header="Descripción"
+              field="status"
+              header="Destacado"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
@@ -505,23 +480,6 @@ export const ServicesView = () => {
             )}
           </div>
           <div className="field">
-            <label htmlFor="photoUrl">Foto</label>
-            <InputTextarea
-              id="photoUrl"
-              value={product.photoUrl}
-              onChange={(e) => onInputChange(e, "photoUrl")}
-              required
-              rows={3}
-              cols={20}
-              className={classNames({
-                "p-invalid": submitted && !product.photoUrl,
-              })}
-            />
-            {submitted && !product.photoUrl && (
-              <small className="p-error">La Foto es obligatoria es obligatoria.</small>
-            )}
-          </div>
-          <div className="field">
             <label htmlFor="description">Descripción</label>
             <InputTextarea
               id="description"
@@ -551,6 +509,20 @@ export const ServicesView = () => {
             {submitted && !product.category && (
               <small className="p-error">La categoria es obligatoria.</small>
             )}
+          </div>
+          <div className="field">
+            <label  htmlFor="status">POPULAR</label>
+            <Checkbox   
+              type="checkbox"
+              onChange={(e) => {
+                  product.status === true?
+                  product.status = false
+                  :
+                  product.status = true
+                  setCheked(!product.status)
+                }} 
+              checked={product.status}>
+            </Checkbox  >
           </div>
         </Dialog>
   

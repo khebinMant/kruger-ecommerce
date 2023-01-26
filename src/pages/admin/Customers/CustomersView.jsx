@@ -44,31 +44,11 @@ export const CustomersView = () => {
     getUsers();
   }, []);
 
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-
-  const createUser = async (user) => {
-    // const responsePostUser = await Promise.resolve(postUser(user));
-    // return responsePostUser;
-  };
-
-  const updateUser = async (user) => {
-    // const responsePutUser = await Promise.resolve(putUser(user));
-    // return responsePutUser;
-  };
-
   const removeUser = async (userId) => {
     // const responseDeleteUser = await Promise.resolve(deleteUser(userId));
     // return responseDeleteUser;
   };
 
-  const getCategories = async () => {
-    // const responseCategories = await Promise.resolve(getAllCategories());
-    // serCategories(responseCategories);
-    setIsLoading(false);
-  };
 
   const getUsers = async () => {
     const responseUsers = await Promise.resolve(getAllUsers());
@@ -94,62 +74,7 @@ export const CustomersView = () => {
   const hideDeleteUsersDialog = () => {
     setDeleteUsersDialog(false);
   };
-  const saveUser = async () => {
-    setSubmitted(true);
 
-    if (user.name.trim()) {
-      let _users = [...users];
-      let _user = { ...user };
-      if (user.id) {
-        const responsePutUser = updateUser(_user);
-        if (responsePutUser) {
-          const index = findIndexById(user.id);
-          _users[index] = _user;
-          toast.current.show({
-            severity: "success",
-            summary: "Genial!",
-            detail: "Usero actualizado",
-            life: 3000,
-          });
-        } else {
-          toast.current.show({
-            severity: "error",
-            summary: "Algo salio mal!",
-            detail: "No se pudo actualizar el cliente",
-            life: 3000,
-          });
-        }
-      } else {
-        const responsePostUser = await createUser(_user);
-        if (responsePostUser) {
-          _user.id = responsePostUser.id;
-          _users.push(_user);
-          toast.current.show({
-            severity: "success",
-            summary: "Genial!",
-            detail: "Usero creado",
-            life: 3000,
-          });
-        } else {
-          toast.current.show({
-            severity: "error",
-            summary: "Algo salio mal!",
-            detail: "No se pudo crear el cliente",
-            life: 3000,
-          });
-        }
-      }
-
-      setUsers(_users);
-      setUserDialog(false);
-      setUser(emptyUser);
-    }
-  };
-
-  const editUser = (user) => {
-    setUser({ ...user });
-    setUserDialog(true);
-  };
 
   const confirmDeleteUser = (user) => {
     setUser(user);
@@ -166,7 +91,7 @@ export const CustomersView = () => {
       toast.current.show({
         severity: "success",
         summary: "Eliminado!",
-        detail: "Usero eliminado",
+        detail: "Usuario eliminado",
         life: 3000,
       });
     } else {
@@ -220,12 +145,6 @@ export const CustomersView = () => {
     return (
       <React.Fragment>
         <Button
-          label="Añadir"
-          icon="pi pi-plus"
-          className="p-button-success mr-2"
-          onClick={openNew}
-        />
-        <Button
           label="Eliminar"
           icon="pi pi-trash"
           className="p-button-danger"
@@ -240,7 +159,7 @@ export const CustomersView = () => {
 
       return (
         <img
-          src={`${rowData.imageUrl}`}
+          src={rowData.imageUrl?(rowData.imageUrl.startsWith("http")? rowData.imageUrl :`data:image/jpeg;base64,${rowData.imageUrl}`):'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}
           onError={(e) =>
             (e.target.src =
               "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
@@ -249,18 +168,11 @@ export const CustomersView = () => {
           className="product-image"
         />
       );
-
   };
-
 
   const actionBodyTemplate = (rowData) => {
     return (
       <>
-        <Button
-          icon="pi pi-pencil"
-          className="p-button-rounded p-button-success mr-2"
-          onClick={() => editUser(rowData)}
-        />
         <Button
           icon="pi pi-trash"
           className="p-button-rounded p-button-warning"
@@ -290,12 +202,6 @@ export const CustomersView = () => {
         icon="pi pi-times"
         className="p-button-text"
         onClick={hideDialog}
-      />
-      <Button
-        label="Guardar"
-        icon="pi pi-check"
-        className="p-button-text"
-        onClick={saveUser}
       />
     </>
   );
@@ -342,7 +248,7 @@ export const CustomersView = () => {
         <Toast ref={toast} />
   
         <div className="card">
-          <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
+          <Toolbar className="mb-4" right={leftToolbarTemplate}></Toolbar>
   
           <DataTable
             ref={dt}
@@ -376,8 +282,8 @@ export const CustomersView = () => {
               body={imageBodyTemplate}
             ></Column>
             <Column
-              field="userName"
-              header="User name"
+              field="verified"
+              header="Verificado"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
@@ -522,7 +428,7 @@ export const CustomersView = () => {
             />
             {user && (
               <span>
-                Estas seguro que quiere eliminar: <b>{user.name}</b>?
+                Estas seguro que quiere eliminar: <b>{user.firstName} {user.lastName}</b>?
               </span>
             )}
           </div>
