@@ -81,6 +81,7 @@ export const MainRouter = () => {
         <Route path="coupons" element={<CouponsView />} />
         <Route path="carts" element={<CartsView />} />
         <Route path="reviews" element={<ReviewsView />} />
+        <Route path="customers" element={<CustomersView />} />
       </Route>
     </Routes>
   );

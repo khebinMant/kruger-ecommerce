@@ -1,13 +1,15 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { MainRouter } from "./router/MainRouter";
 import { setCurrentUser } from "./store/user/userSlice";
 import CustomerNavBar from "./ui/CustomerNavBar/CustomerNavBar";
 import Footer from "./ui/Footer/Footer";
 import "./App.css";
+import AdminNavBar from "./ui/AdminNavBar/AdminNavBar";
 
 function App() {
   const dispatch = useDispatch();
+  const {currentUser} = useSelector(state => state.users)
 
   useEffect(() => {
     const currentU = localStorage.getItem("currentUser");
@@ -18,7 +20,12 @@ function App() {
   }, []);
   return (
     <div className="main">
-      <CustomerNavBar />
+    {
+        currentUser===null || currentUser.role === 'CUSTOMER'?
+        <CustomerNavBar />
+        :
+        <AdminNavBar/>
+    }
       <MainRouter />
       <Footer />
     </div>
