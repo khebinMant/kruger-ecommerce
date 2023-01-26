@@ -44,26 +44,23 @@ const data0 = {
 
 const SankeyComponent = () => {
   return (
-    <div className="chart" style={{ height: "500px", width: "1000px" }}>
-      <div className="title">hola</div>
-      <ResponsiveContainer width="100%" height="100%">
-        <Sankey
-          width={960}
-          height={500}
-          data={data0}
-          nodePadding={50}
-          margin={{
-            left: 200,
-            right: 200,
-            top: 100,
-            bottom: 100,
-          }}
-          link={{ stroke: "#77c878" }}
-        >
-          <Tooltip />
-        </Sankey>
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" height="100%">
+      <Sankey
+        width={960}
+        height={500}
+        data={data0}
+        nodePadding={50}
+        margin={{
+          left: 200,
+          right: 200,
+          top: 100,
+          bottom: 100,
+        }}
+        link={{ stroke: "#77c878" }}
+      >
+        <Tooltip />
+      </Sankey>
+    </ResponsiveContainer>
   );
 };
 

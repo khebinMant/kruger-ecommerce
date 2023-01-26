@@ -35,22 +35,19 @@ const data = [
 ];
 const FunnelComponent = () => {
   return (
-    <div className="chart" style={{ height: "500px", width: "1000px" }}>
-      <div className="title">hola</div>
-      <ResponsiveContainer width="100%" height="100%">
-        <FunnelChart width={730} height={250}>
-          <Tooltip />
-          <Funnel dataKey="value" data={data} isAnimationActive>
-            <LabelList
-              position="right"
-              fill="#000"
-              stroke="none"
-              dataKey="name"
-            />
-          </Funnel>
-        </FunnelChart>
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" height="100%">
+      <FunnelChart width={730} height={250}>
+        <Tooltip />
+        <Funnel dataKey="value" data={data} isAnimationActive>
+          <LabelList
+            position="right"
+            fill="#000"
+            stroke="none"
+            dataKey="name"
+          />
+        </Funnel>
+      </FunnelChart>
+    </ResponsiveContainer>
   );
 };
 

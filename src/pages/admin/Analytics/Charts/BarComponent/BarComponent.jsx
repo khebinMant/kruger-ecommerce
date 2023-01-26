@@ -57,30 +57,27 @@ const data = [
 
 const BarComponent = () => {
   return (
-    <div className="chart" style={{ height: "500px", width: "1000px" }}>
-      <div className="title">hola</div>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="pv" stackId="a" fill="#a1ff69" />
-          <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart
+        width={500}
+        height={300}
+        data={data}
+        margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="pv" stackId="a" fill="#a1ff69" />
+        <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+      </BarChart>
+    </ResponsiveContainer>
   );
 };
 
