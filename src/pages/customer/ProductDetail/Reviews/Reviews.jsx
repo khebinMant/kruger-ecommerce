@@ -65,7 +65,7 @@ const Reviews = ({product}) => {
               <div className="box-top">
                 <div className="profile">
                   <div className="profile-img">
-                    <img src={review.user.imageUrl?review.user.imageUrl:'https://w7.pngwing.com/pngs/686/219/png-transparent-youtube-user-computer-icons-information-youtube-hand-silhouette-avatar-thumbnail.png'} />
+                    <img src={review.user.imageUrl?(review.user.imageUrl.startsWith("http")? review.user.imageUrl:  `data:image/jpeg;base64,${review.user.imageUrl}`):'https://w7.pngwing.com/pngs/686/219/png-transparent-youtube-user-computer-icons-information-youtube-hand-silhouette-avatar-thumbnail.png'} />
                   </div>
                   <div className="name-user">
                     <strong>{review.user.firstName} {review.user.lastName}</strong>
