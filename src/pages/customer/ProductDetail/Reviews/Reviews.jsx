@@ -1,10 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Reviews.scss";
 import { Rating } from 'primereact/rating';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { Button } from 'primereact/button';
+import { postReview } from "../../../../helpers/reviews/postReview";
+import { useSelector } from "react-redux";
+import { getReviews } from "../../../../helpers/reviews/getReviews";
 
-const Reviews = ({reviews}) => {
+const Reviews = ({product}) => {
+
+
+  const [reviews, setReviews] = useState()
+  const [isLoading, setIsLoading] = useState(true);
+  const [reviewT, setReviewT] = useState('');
+  const [rating, setRaiting] = useState(1);
+  const { currentUser } = useSelector(state => state.users)
+  const [canEdit, setCanEdit] = useState(false)
+
+  const createReview = async () =>{
+    if(reviewT==''){
+        return
+    }
+    console.log(rating)
+
+    let reviewObj = {
+        raiting: rating,
+        text: reviewT,
+        productId: product.id,
+        userId: currentUser.id
+    }
+
+    const response = await Promise.resolve(postReview(reviewObj));
+    setRaiting(1)
+    setReviewT('')
+  }
+
+  useEffect(() => {
+    getSelectedProductReviews();
+  }, [createReview]);
+
+ 
+  const getSelectedProductReviews = async() =>{
+
+    const reponseReviews = await Promise.resolve(getReviews());
+    setReviews(reponseReviews.filter(review => review.productId === product.id))
+    setIsLoading(false);
+    currentUser?setCanEdit(false):setCanEdit(true)
+
+  }
 
   return (
+    isLoading?
+    <p>Estoy cargando</p>
+    :
     <section className="testimonials">
       <div className="testimonial-heading">
         <h2>Reseñas</h2>
@@ -37,6 +85,14 @@ const Reviews = ({reviews}) => {
           ))
         }
       </div>
+        <div className="card">
+        <span className="p-float-label" style={{marginTop:20}}>
+          <InputTextarea disabled={canEdit} style={{width:'80vw'}} value={reviewT} onChange={(e) => setReviewT(e.target.value)} />
+          <label htmlFor="reseña">Reseña</label>
+        </span>
+        <Rating disabled={canEdit} style={{marginTop:20}} value={rating} cancel={false} onChange={(e) => setRaiting(e.value)} />   
+        <Button disabled={canEdit} onClick={createReview} style={{marginTop:50}} label="Enviar" icon="pi pi-check" />
+        </div>
     </section>
   );
 };

@@ -12,7 +12,7 @@ const Product = ({ item }) => {
           item.images?
           <img
             className="card-home__img"
-            src={item.images[0].uri}
+            src={item.images[0].url || item.images[0].uri}
             alt="ss"
           />
           :<></>
