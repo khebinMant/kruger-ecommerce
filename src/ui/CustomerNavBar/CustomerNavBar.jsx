@@ -47,6 +47,8 @@ const CustomerNavBar = () => {
       ></i>
       <nav ref={navbar} className="header__nav header__nav--close">
         <ul className="header__list">
+        {
+          cart.items.length!==0?
           <div className="header__item mega-menu header__navlink">
             <div class="mega-menu__item mega-menu__trigger">
               <div>
@@ -59,16 +61,17 @@ const CustomerNavBar = () => {
                   >
                     <i
                       className="pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge jump"
-                      style={{ fontSize: "2rem" }}
+                      style={{ fontSize: "1.5rem" }}
                     >
                       <Badge value={cart.items.length || 0}></Badge>
                     </i>
                   </NavLink>
                 </li>
               </div>
-              
               </div>
               </div>
+              :<></>
+        }
           <div className="header__item mega-menu header__navlink">
             <div class="mega-menu__item mega-menu__trigger">
               <div>

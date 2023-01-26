@@ -14,7 +14,7 @@ const Products = () => {
 
   const getProducts = async () => {
     const responseProducts = await Promise.resolve(getAllProducts());
-    setProducts(responseProducts.filter(product=>product.type ==='PRODUCT' && product.status === 'POPULAR'));
+    setProducts(responseProducts.filter(product=>product.type ==='PRODUCT' && product.status === true));
     setIsLoading(false);
   };
 

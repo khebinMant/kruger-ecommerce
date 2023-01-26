@@ -53,6 +53,7 @@ const Login = () => {
       password: e.target[4].value,
       addresses: [],
       role: "CUSTOMER",
+      companyId:1
     };
     //calling create user enpoint in the back
     const resp = await signUp(user);

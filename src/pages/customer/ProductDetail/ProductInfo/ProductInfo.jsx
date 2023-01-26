@@ -57,7 +57,7 @@ export const ProductInfo = ({item}) => {
     
   return (
       <div className="productinfo">
-          <Toast ref={toast} position="bottom-right" />
+          <Toast ref={toast} position="top-left" />
 
           <div className="productinfo_details">
             <div className="big-img">

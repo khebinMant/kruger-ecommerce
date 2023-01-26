@@ -1,5 +1,6 @@
 import React from "react";
 import "./AdminCircle.scss";
+import defaultUserPhoto from "../../../assets/defaultUserPhoto.jpg";
 
 const AdminCircle = ({user}) => {
   return (

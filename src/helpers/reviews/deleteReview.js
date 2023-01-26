@@ -1,6 +1,6 @@
 import { backEndApi } from "../../api/backEndApi"
 
-export const postReview= async (review)=>{
+export const deleteReview = async (reviewId)=>{
 
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const config = {
@@ -8,7 +8,7 @@ export const postReview= async (review)=>{
     };
     try{
 
-        const resp = await backEndApi.post(`/reviews`,review, config)
+        const resp = await backEndApi.delete(`/reviews/${reviewId}`,config)
         return resp.data
 
     }catch(error){

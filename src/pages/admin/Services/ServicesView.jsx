@@ -16,6 +16,7 @@ import { Toolbar } from "primereact/toolbar";
 import { Dialog } from "primereact/dialog";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
+import { Checkbox } from "primereact/checkbox";
 import '../AdminMainPage.css';
 
 let emptyProduct = {
@@ -24,6 +25,7 @@ let emptyProduct = {
   stock: "",
   price: "",
   category: null,
+  status:null
 };
 
 export const ServicesView = () => {
@@ -38,6 +40,7 @@ export const ServicesView = () => {
   const [submitted, setSubmitted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, serCategories] = useState();
+  const [check, setCheked] = useState()
 
   const [globalFilter, setGlobalFilter] = useState(null);
   const toast = useRef(null);
@@ -118,7 +121,7 @@ export const ServicesView = () => {
           toast.current.show({
             severity: "success",
             summary: "Genial!",
-            detail: "Producto actualizado",
+            detail: "Servicio actualizado",
             life: 3000,
           });
         } else {
@@ -130,6 +133,8 @@ export const ServicesView = () => {
           });
         }
       } else {
+        _product.images = null;
+        _product.type = "SERVICE"
         const responsePostProduct = await createProduct(_product);
         if (responsePostProduct) {
           _product.id = responsePostProduct.id;
@@ -180,7 +185,7 @@ export const ServicesView = () => {
       toast.current.show({
         severity: "success",
         summary: "Eliminado!",
-        detail: "Producto eliminado",
+        detail: "Servicio eliminado",
         life: 3000,
       });
     } else {
@@ -273,7 +278,7 @@ export const ServicesView = () => {
 
   const header = (
     <div className="table-header">
-      <h5 className="mx-0 my-1">Administrar Productos</h5>
+      <h5 className="mx-0 my-1">Administrar Servicios</h5>
       <span className="p-input-icon-left">
         <i className="pi pi-search" />
         <InputText
@@ -378,8 +383,8 @@ export const ServicesView = () => {
               style={{ minWidth: "2rem" }}
             ></Column>
             <Column
-              field="description"
-              header="Descripción"
+              field="status"
+              header="Destacado"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
@@ -475,23 +480,6 @@ export const ServicesView = () => {
             )}
           </div>
           <div className="field">
-            <label htmlFor="photoUrl">Foto</label>
-            <InputTextarea
-              id="photoUrl"
-              value={product.photoUrl}
-              onChange={(e) => onInputChange(e, "photoUrl")}
-              required
-              rows={3}
-              cols={20}
-              className={classNames({
-                "p-invalid": submitted && !product.photoUrl,
-              })}
-            />
-            {submitted && !product.photoUrl && (
-              <small className="p-error">La Foto es obligatoria es obligatoria.</small>
-            )}
-          </div>
-          <div className="field">
             <label htmlFor="description">Descripción</label>
             <InputTextarea
               id="description"
@@ -521,6 +509,20 @@ export const ServicesView = () => {
             {submitted && !product.category && (
               <small className="p-error">La categoria es obligatoria.</small>
             )}
+          </div>
+          <div className="field">
+            <label  htmlFor="status">POPULAR</label>
+            <Checkbox   
+              type="checkbox"
+              onChange={(e) => {
+                  product.status === true?
+                  product.status = false
+                  :
+                  product.status = true
+                  setCheked(!product.status)
+                }} 
+              checked={product.status}>
+            </Checkbox  >
           </div>
         </Dialog>
   

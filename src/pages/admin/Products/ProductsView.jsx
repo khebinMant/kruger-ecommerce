@@ -17,6 +17,7 @@ import { Dialog } from "primereact/dialog";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
 import ImageUploading from 'react-images-uploading';
+import { Checkbox } from "primereact/checkbox";
 
 import '../AdminMainPage.css';
 
@@ -26,7 +27,10 @@ let emptyProduct = {
   stock: "",
   price: "",
   category: null,
+  youtubeLink:"",
+  status:null
 };
+
 
 export const ProductsView = () => {
 
@@ -40,6 +44,7 @@ export const ProductsView = () => {
   const [submitted, setSubmitted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, serCategories] = useState();
+  const [check, setCheked] = useState()
   const [globalFilter, setGlobalFilter] = useState(null);
   const toast = useRef(null);
   const dt = useRef(null);
@@ -158,6 +163,7 @@ export const ProductsView = () => {
 
   const openNew = () => {
     setProduct(emptyProduct);
+    setCheked(false);
     setNewImages([]);
     setSubmitted(false);
     setProductDialog(true);
@@ -203,7 +209,6 @@ export const ProductsView = () => {
         }
       } else {
         _product.images = newImages
-        _product.status = 'NOT_POPULAR' //dede ser dinámico
         _product.type = "PRODUCT"
         const responsePostProduct = await createProduct(_product);
         if (responsePostProduct) {
@@ -295,6 +300,7 @@ export const ProductsView = () => {
   };
 
   const onInputChange = (e, name) => {
+
     const val = (e.target && e.target.value) || "";
     let _product = { ...product };
     _product[`${name}`] = val;
@@ -377,16 +383,19 @@ export const ProductsView = () => {
           icon="pi pi-external-link"
           className="p-button-rounded p-button-primary"
           onClick={() => navigate(`/product/${rowData.id}`,{ replace: true })}
+          title="Ir al producto"
         />
         <Button
           icon="pi pi-pencil"
           className="p-button-rounded p-button-success mr-2"
           onClick={() => editProduct(rowData)}
+          title="Editar el producto"
         />
         <Button
           icon="pi pi-trash"
           className="p-button-rounded p-button-danger"
           onClick={() => confirmDeleteProduct(rowData)}
+          title="Eliminar el producto"
         />
       </div>
     );
@@ -505,8 +514,8 @@ export const ProductsView = () => {
               style={{ minWidth: "2rem" }}
             ></Column>
             <Column
-              field="description"
-              header="Descripción"
+              field="status"
+              header="Destacado"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
@@ -599,6 +608,20 @@ export const ProductsView = () => {
             />
             {submitted && !product.price && (
               <small className="p-error">El Precio es obligatoria.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="youtubeLink">YouTube Link Video</label>
+            <InputText
+              id="youtubeLink"
+              value={product.youtubeLink}
+              onChange={(e) => onInputChange(e, "youtubeLink")}
+              className={classNames({
+                "p-invalid": submitted && !product.youtubeLink,
+              })}
+            />
+            {submitted && !product.youtubeLink && (
+              <small className="p-error">El link del video es obligatoria.</small>
             )}
           </div>
           {
@@ -720,6 +743,20 @@ export const ProductsView = () => {
             {submitted && !product.category && (
               <small className="p-error">La categoria es obligatoria.</small>
             )}
+          </div>
+          <div className="field">
+            <label  htmlFor="status">POPULAR</label>
+            <Checkbox   
+              type="checkbox"
+              onChange={(e) => {
+                  product.status === true?
+                  product.status = false
+                  :
+                  product.status = true
+                  setCheked(!product.status)
+                }} 
+              checked={product.status}>
+            </Checkbox  >
           </div>
         </Dialog>
   

@@ -13,6 +13,8 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
 import '../AdminMainPage.css';
 import { getAllUsers } from "../../../helpers/users/getAllUsers";
+import { postAdmin } from "../../../helpers/users/postAdmin";
+import { deleteUser } from "../../../helpers/users/deleteUser";
 
 let emptyUser = {
   name: "",
@@ -44,30 +46,14 @@ export const AdminsView = () => {
     getUsers();
   }, []);
 
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-
-  const createUser = async (user) => {
-    // const responsePostUser = await Promise.resolve(postUser(user));
-    // return responsePostUser;
-  };
-
-  const updateUser = async (user) => {
-    // const responsePutUser = await Promise.resolve(putUser(user));
-    // return responsePutUser;
+  const createAdmin = async (user) => {
+    const responsePostUser = await Promise.resolve(postAdmin(user));
+    return responsePostUser;
   };
 
   const removeUser = async (userId) => {
-    // const responseDeleteUser = await Promise.resolve(deleteUser(userId));
-    // return responseDeleteUser;
-  };
-
-  const getCategories = async () => {
-    // const responseCategories = await Promise.resolve(getAllCategories());
-    // serCategories(responseCategories);
-    setIsLoading(false);
+    const responseDeleteUser = await Promise.resolve(deleteUser(userId));
+    return responseDeleteUser;
   };
 
   const getUsers = async () => {
@@ -96,8 +82,7 @@ export const AdminsView = () => {
   };
   const saveUser = async () => {
     setSubmitted(true);
-
-    if (user.name.trim()) {
+    if (user.firstName.trim()) {
       let _users = [...users];
       let _user = { ...user };
       if (user.id) {
@@ -108,7 +93,7 @@ export const AdminsView = () => {
           toast.current.show({
             severity: "success",
             summary: "Genial!",
-            detail: "Usero actualizado",
+            detail: "Usuario actualizado",
             life: 3000,
           });
         } else {
@@ -120,14 +105,18 @@ export const AdminsView = () => {
           });
         }
       } else {
-        const responsePostUser = await createUser(_user);
+        _user.imageUrl = 'https://w7.pngwing.com/pngs/686/219/png-transparent-youtube-user-computer-icons-information-youtube-hand-silhouette-avatar-thumbnail.png'
+        _user.role = 'ADMIN'
+        _user.addresses = []
+        const responsePostUser = await createAdmin(_user);
         if (responsePostUser) {
           _user.id = responsePostUser.id;
+          _user.verified =  responsePostUser.verified
           _users.push(_user);
           toast.current.show({
             severity: "success",
             summary: "Genial!",
-            detail: "Usero creado",
+            detail: "Admin creado",
             life: 3000,
           });
         } else {
@@ -166,7 +155,7 @@ export const AdminsView = () => {
       toast.current.show({
         severity: "success",
         summary: "Eliminado!",
-        detail: "Usero eliminado",
+        detail: "Admin eliminado",
         life: 3000,
       });
     } else {
@@ -240,7 +229,7 @@ export const AdminsView = () => {
 
       return (
         <img
-          src={`${rowData.imageUrl}`}
+          src={rowData.imageUrl?(rowData.imageUrl.startsWith("http")? rowData.imageUrl :`data:image/jpeg;base64,${rowData.imageUrl}`):'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}
           onError={(e) =>
             (e.target.src =
               "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
@@ -256,11 +245,6 @@ export const AdminsView = () => {
   const actionBodyTemplate = (rowData) => {
     return (
       <>
-        <Button
-          icon="pi pi-pencil"
-          className="p-button-rounded p-button-success mr-2"
-          onClick={() => editUser(rowData)}
-        />
         <Button
           icon="pi pi-trash"
           className="p-button-rounded p-button-warning"
@@ -376,8 +360,8 @@ export const AdminsView = () => {
               body={imageBodyTemplate}
             ></Column>
             <Column
-              field="userName"
-              header="User name"
+              field="verified"
+              header="Verificado"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
@@ -422,87 +406,99 @@ export const AdminsView = () => {
   
         <Dialog
           visible={userDialog}
-          style={{ width: "450px" }}
-          header="Información de la user"
+          style={{ width: "500px" }}
+          header="Información del nuevo administrador"
           modal
           className="p-fluid"
           footer={userDialogFooter}
           onHide={hideDialog}
         >
           <div className="field">
-            <label htmlFor="userName">User name</label>
+            <label htmlFor="firstName">Nombre</label>
             <InputText
-              id="userName"
-              value={user.name}
-              onChange={(e) => onInputChange(e, "userName")}
+              id="firstName"
+              value={user.firstName}
+              onChange={(e) => onInputChange(e, "firstName")}
               required
               autoFocus
-              className={classNames({ "p-invalid": submitted && !user.userName })}
+              className={classNames({ "p-invalid": submitted && !user.firstName })}
             />
-            {submitted && !user.name && (
-              <small className="p-error">El User name es obligatorio.</small>
+            {submitted && !user.firstName && (
+              <small className="p-error">El primer nombre es obligatorio.</small>
             )}
           </div>
           <div className="field">
-            <label htmlFor="stock">Stock</label>
+            <label htmlFor="lastName">Apellido</label>
             <InputText
-              id="stock"
-              value={user.stock}
-              onChange={(e) => onInputChange(e, "stock")}
-              className={classNames({
-                "p-invalid": submitted && !user.stock,
-              })}
+              id="lastName"
+              value={user.lastName}
+              onChange={(e) => onInputChange(e, "lastName")}
+              required
+              autoFocus
+              className={classNames({ "p-invalid": submitted && !user.lastName })}
             />
-            {submitted && !user.stock && (
-              <small className="p-error">El Stock es obligatoria.</small>
+            {submitted && !user.lastName && (
+              <small className="p-error">El apellido obligatorio.</small>
             )}
           </div>
           <div className="field">
-            <label htmlFor="photoUrl">Foto</label>
-            <InputTextarea
-              id="photoUrl"
-              value={user.photoUrl}
-              onChange={(e) => onInputChange(e, "photoUrl")}
+            <label htmlFor="email">Correo</label>
+            <InputText
+              id="email"
+              type="email"
+              value={user.email}
+              onChange={(e) => onInputChange(e, "email")}
               required
-              rows={3}
-              cols={20}
-              className={classNames({
-                "p-invalid": submitted && !user.photoUrl,
-              })}
+              autoFocus
+              className={classNames({ "p-invalid": submitted && !user.email })}
             />
-            {submitted && !user.photoUrl && (
-              <small className="p-error">La Foto es obligatoria es obligatoria.</small>
+            {submitted && !user.email && (
+              <small className="p-error">El correo es obligatorio.</small>
             )}
           </div>
           <div className="field">
-            <label htmlFor="description">Descripción</label>
-            <InputTextarea
-              id="description"
-              value={user.description}
-              onChange={(e) => onInputChange(e, "description")}
+            <label htmlFor="password">Contraseña</label>
+            <InputText
+              id="password"
+              type="password"
+              value={user.password}
+              onChange={(e) => onInputChange(e, "password")}
               required
-              rows={3}
-              cols={20}
-              className={classNames({
-                "p-invalid": submitted && !user.description,
-              })}
+              autoFocus
+              className={classNames({ "p-invalid": submitted && !user.password })}
             />
-            {submitted && !user.description && (
-              <small className="p-error">La descripción es obligatoria.</small>
+            {submitted && !user.password && (
+              <small className="p-error">La contraseña es obligatorio.</small>
             )}
           </div>
           <div className="field">
-            <label htmlFor="category">Categoria</label>
-            <Dropdown
-              value={user.category}
+            <label htmlFor="cellPhone">Teléfono</label>
+            <InputText
+              id="cellPhone"
+              type="cellPhone"
+              value={user.cellPhone}
+              onChange={(e) => onInputChange(e, "cellPhone")}
               required
-              options={categories}
-              onChange={(e) => onInputChange(e, "category")}
-              optionLabel="name"
-              placeholder="Selecciona la categoría"
+              autoFocus
+              className={classNames({ "p-invalid": submitted && !user.cellPhone })}
             />
-            {submitted && !user.category && (
-              <small className="p-error">La categoria es obligatoria.</small>
+            {submitted && !user.cellPhone && (
+              <small className="p-error">El teléfono es obligatorio.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="birthDate">Fecha de nacimiento</label>
+            <InputText
+              id="birthDate"
+              type="date"
+              value={user.birthDate}
+              onChange={(e) => onInputChange(e, "birthDate")}
+              required
+              autoFocus
+              className={classNames({ "p-invalid": submitted && !user.birthDate })}
+            />
+            {submitted && !user.birthDate && (
+              <small className="p-error">La fecha de nacimiento es obligatorio.</small>
             )}
           </div>
         </Dialog>
@@ -522,7 +518,7 @@ export const AdminsView = () => {
             />
             {user && (
               <span>
-                Estas seguro que quiere eliminar: <b>{user.name}</b>?
+                Estas seguro que quiere eliminar: <b>{user.firstName} {user.lastName}</b>?
               </span>
             )}
           </div>
