@@ -67,6 +67,10 @@
     width: 100%;
 }
 
+.p_btn_add{
+    background-color: var(--primary-color) !important;
+}
+
 .p_btn_arrow{
     position: absolute !important;
     z-index: 10 !important;
@@ -75,4 +79,6 @@
     width: 40px !important;
     height: 40px !important;
     border-radius: 50% !important;
+    top:15px !important;
+    left: 2px !important;
 }

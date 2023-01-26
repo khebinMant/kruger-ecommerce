@@ -322,6 +322,25 @@ export const ProductsView = () => {
     );
   };
 
+  const rightToolbarTemplate = () => {
+    return (
+      <React.Fragment>
+        <Button
+          label="Añadir"
+          icon="pi pi-plus"
+          className="p-button-success mr-2 p_btn_add"
+          onClick={openNew}
+        />
+        <Button
+          label="Eliminar"
+          icon="pi pi-trash"
+          className="p-button-danger"
+          onClick={confirmDeleteSelected}
+          disabled={!selectedProducts || !selectedProducts.length}
+        />
+      </React.Fragment>
+    );
+  }
   const imageBodyTemplate = (rowData) => {
     if(rowData.images.length == 0){
       return(
@@ -446,7 +465,7 @@ export const ProductsView = () => {
         <Toast ref={toast} />
   
         <div className="card">
-          <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
+          <Toolbar className="mb-4" right={rightToolbarTemplate} ></Toolbar>
   
           <DataTable
             ref={dt}
