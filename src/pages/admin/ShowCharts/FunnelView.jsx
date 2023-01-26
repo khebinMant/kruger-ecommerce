@@ -9,6 +9,7 @@ const FunnelView = () => {
         <h2>Funnel Chart</h2>
         <FunnelComponent />
       </div>
+      <div className="spacer layer2"></div>
     </div>
   );
 };

@@ -9,6 +9,7 @@ const ComposedView = () => {
         <h2>Composed Chart</h2>
         <ComposedComponent />
       </div>
+      <div className="spacer layer2"></div>
     </div>
   );
 };

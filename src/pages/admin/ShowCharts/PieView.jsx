@@ -9,6 +9,7 @@ const PieView = () => {
         <h2>Pie Chart</h2>
         <PieComponent />
       </div>
+      <div className="spacer layer2"></div>
     </div>
   );
 };
