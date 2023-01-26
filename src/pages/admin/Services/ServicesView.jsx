@@ -76,7 +76,7 @@ export const ServicesView = () => {
 
   const getCategories = async () => {
     const responseCategories = await Promise.resolve(getAllCategories());
-    serCategories(responseCategories);
+    serCategories(responseCategories.filter(category=>category.name==='Servicio'));
     setIsLoading(false);
   };
 
@@ -250,31 +250,6 @@ export const ServicesView = () => {
     );
   };
 
-  const imageBodyTemplate = (rowData) => {
-    if(rowData.images.length == 0){
-      return(
-        <img
-        src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png"
-        alt= "something"
-        className="product-image"
-      />
-      )
-    }
-    else{
-      return (
-        <img
-          src={`${rowData.images[0].uri}`}
-          onError={(e) =>
-            (e.target.src =
-              "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
-          }
-          alt={rowData.images[0].uri}
-          className="product-image"
-        />
-      );
-    }
-  };
-
   const priceBodyTemplate = (rowData) => {
     return formatCurrency(rowData.price);
   };
@@ -395,11 +370,6 @@ export const ServicesView = () => {
               header="Id"
               sortable
               style={{ minWidth: "1rem" }}
-            ></Column>
-            <Column
-              field="image"
-              header="Image"
-              body={imageBodyTemplate}
             ></Column>
             <Column
               field="name"

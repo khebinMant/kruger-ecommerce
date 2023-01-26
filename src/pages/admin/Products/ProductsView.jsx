@@ -16,6 +16,8 @@ import { Toolbar } from "primereact/toolbar";
 import { Dialog } from "primereact/dialog";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
+import ImageUploading from 'react-images-uploading';
+
 import '../AdminMainPage.css';
 
 let emptyProduct = {
@@ -38,11 +40,14 @@ export const ProductsView = () => {
   const [submitted, setSubmitted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, serCategories] = useState();
-
   const [globalFilter, setGlobalFilter] = useState(null);
   const toast = useRef(null);
   const dt = useRef(null);
   const navigate = useNavigate();
+  const [images, setImages] = useState([]);
+  const [imagesCopy, setImagesCopy] = useState([]);
+  const maxNumber = 69;
+
 
   useEffect(() => {
     getProducts();
@@ -52,8 +57,43 @@ export const ProductsView = () => {
     getCategories();
   }, []);
 
+  const onChange = (imageList, addUpdateIndex) => {
+    console.log(imageList, addUpdateIndex);
+    // console.log(imagesCopy)
+
+    let indexAdd;
+    let newImg;
+    let temp = [];
+
+    if(addUpdateIndex==undefined){
+      
+      console.log("estoy eliminando")
+      setImages(imageList)
+    }
+    else{
+      indexAdd = addUpdateIndex[0]
+      newImg = {
+        uri:imageList[indexAdd].data_url,
+        url: null,
+        created: new Date()
+      }
+      console.log("estoy creando")
+
+      for (let index = 0; index < imageList.length; index++) {
+        if(index === indexAdd){
+          temp.push(newImg)
+        }
+        else{
+          temp.push(imageList[index])
+        }      
+      }
+      console.log(temp)
+      setImages(temp);
+    }
+  };
+
   const formatCurrency = (value) => {
-    return value.toLocaleString("en-US", {
+    return value.toLocaleString("es-ES", {
       style: "currency",
       currency: "USD",
     });
@@ -76,7 +116,7 @@ export const ProductsView = () => {
 
   const getCategories = async () => {
     const responseCategories = await Promise.resolve(getAllCategories());
-    serCategories(responseCategories);
+    serCategories(responseCategories.filter(category=>category.name!=='Servicio'));
     setIsLoading(false);
   };
 
@@ -110,6 +150,8 @@ export const ProductsView = () => {
     if (product.name.trim()) {
       let _products = [...products];
       let _product = { ...product };
+      _product.images = images;
+      console.log( _product.images)
       if (product.id) {
         const responsePutProduct = updateProduct(_product);
         if (responsePutProduct) {
@@ -156,12 +198,10 @@ export const ProductsView = () => {
     }
   };
 
-  const onCategoryChange = (e) => {
-    setSelectedCategory(e.value);
-  };
-
   const editProduct = (product) => {
+    setImages(product.images)
     setProduct({ ...product });
+    setImagesCopy(product.images)
     setProductDialog(true);
   };
 
@@ -263,12 +303,12 @@ export const ProductsView = () => {
     else{
       return (
         <img
-          src={`${rowData.images[0].uri}`}
+          src={`${rowData.images[0].url || rowData.images[0].uri}`}
           onError={(e) =>
             (e.target.src =
               "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
           }
-          alt={rowData.images[0].uri}
+          alt={rowData.images[0].url || rowData.images[0].uri}
           className="product-image"
         />
       );
@@ -281,7 +321,12 @@ export const ProductsView = () => {
 
   const actionBodyTemplate = (rowData) => {
     return (
-      <>
+      <div style={{display:'flex', flexDirection:'row'}}>
+        <Button
+          icon="pi pi-external-link"
+          className="p-button-rounded p-button-primary"
+          onClick={() => navigate(`/product/${rowData.id}`,{ replace: true })}
+        />
         <Button
           icon="pi pi-pencil"
           className="p-button-rounded p-button-success mr-2"
@@ -289,10 +334,10 @@ export const ProductsView = () => {
         />
         <Button
           icon="pi pi-trash"
-          className="p-button-rounded p-button-warning"
+          className="p-button-rounded p-button-danger"
           onClick={() => confirmDeleteProduct(rowData)}
         />
-      </>
+      </div>
     );
   };
 
@@ -456,7 +501,7 @@ export const ProductsView = () => {
         <Dialog
           visible={productDialog}
           style={{ width: "450px" }}
-          header="Información de la product"
+          header="Información del producto"
           modal
           className="p-fluid"
           footer={productDialogFooter}
@@ -504,23 +549,52 @@ export const ProductsView = () => {
               <small className="p-error">El Precio es obligatoria.</small>
             )}
           </div>
-          <div className="field">
-            <label htmlFor="photoUrl">Foto</label>
-            <InputTextarea
-              id="photoUrl"
-              value={product.photoUrl}
-              onChange={(e) => onInputChange(e, "photoUrl")}
-              required
-              rows={3}
-              cols={20}
-              className={classNames({
-                "p-invalid": submitted && !product.photoUrl,
-              })}
-            />
-            {submitted && !product.photoUrl && (
-              <small className="p-error">La Foto es obligatoria es obligatoria.</small>
-            )}
-          </div>
+          {
+            product.images?
+            <ImageUploading
+                multiple
+                value={images}
+                onChange={onChange}
+                maxNumber={maxNumber}
+                dataURLKey="data_url"
+              >
+                {({
+                  imageList,
+                  onImageUpload,
+                  onImageRemoveAll,
+                  onImageUpdate,
+                  onImageRemove,
+                  isDragging,
+                  dragProps,
+                }) => (
+                  // write your building UI
+                  <div className="upload__image-wrapper">
+                    <Button 
+                      className="p-button-secondary"
+                      style={{color:isDragging?'red':'', width:'100%', height:'50px', marginTop:'20px', justifyContent:'center'}}
+                      onClick={onImageUpload}
+                      {...dragProps}
+                    >
+                      Agrega o arrastra imágenes
+                    </Button >
+                    &nbsp;
+                    {imageList.map((image, index) => (
+
+                      <div key={index} className="image-item">
+                        <img src={image['uri'] || image.url} alt="" width="100" />
+                          <Button 
+                            onClick={() => onImageRemove(index)}
+                            icon="pi pi-trash"
+                            className="p-button-rounded p-button-danger"
+                          >
+                          </Button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </ImageUploading>
+            :<></>
+          }
           <div className="field">
             <label htmlFor="description">Descripción</label>
             <InputTextarea
