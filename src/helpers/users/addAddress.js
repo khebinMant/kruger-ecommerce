@@ -6,7 +6,7 @@ export const addAddress = async (user) => {
         let resp;
         console.log("adding user address");
         //llamando el endpoint de user para agregar un nuevo diccionario
-        resp = await userApi.put(`/update/ubication/${user.id}`, user);
+        resp = await backEndApi.put(`/users/update/ubication/${user.id}`, user);
         
         
         return resp.data;

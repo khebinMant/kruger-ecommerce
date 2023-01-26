@@ -6,7 +6,7 @@ export const changePassword = async (request,userId) => {
         let resp;
         console.log("adding user address");
         //llamando el endpoint de user para agregar un nuevo diccionario
-        resp = await userApi.put(`/update/credentials/${userId}`, request);
+        resp = await backEndApi.put(`/users/update/credentials/${userId}`, request);
         
         
         return resp.data;

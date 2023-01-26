@@ -6,7 +6,7 @@ export const updatePersonalInfo = async (user) => {
         let resp;
         console.log("updating user personal info");
         //llamando el endpoint de user para loggear un user
-        resp = await userApi.put(`/update/personal/${user.id}`, user);
+        resp = await backEndApi.put(`/users/update/personal/${user.id}`, user);
         
         
         return resp.data;
