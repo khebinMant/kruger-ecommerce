@@ -9,6 +9,7 @@ const RadarView = () => {
         <h2>Radar Chart</h2>
         <RadarComponent />
       </div>
+      <div className="spacer layer2"></div>
     </div>
   );
 };

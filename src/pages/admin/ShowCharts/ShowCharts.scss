@@ -14,9 +14,18 @@
     gap: 1em;
 
     h2{
+        margin-top: 70px;
         font-size: 3.4rem;
         font-weight: 900;
         color: var(--heading-color);
 
+        @media (max-width: 800px) {
+            margin-top: 30px;
+        }
+
     }
-}
+
+ 
+
+
+}    
