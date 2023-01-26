@@ -58,7 +58,7 @@ const CustomerNavBar = () => {
                     to="/cart"
                   >
                     <i
-                      className="pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge "
+                      className="pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge jump"
                       style={{ fontSize: "2rem" }}
                     >
                       <Badge value={cart.items.length || 0}></Badge>
