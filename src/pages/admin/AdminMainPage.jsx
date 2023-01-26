@@ -184,17 +184,22 @@ export const AdminMainPage = () => {
             onHide={() => setVisibleLeft(false)}
           >
             <div className="card">
-              <PanelMenu model={items} style={{ left: 0, width: "22rem" }} />
+              <PanelMenu
+                className="TEST_ADMIN_SIDEBAR"
+                model={items}
+                style={{ left: 0, width: "22rem" }}
+              />
             </div>
           </Sidebar>
         </div>
       </div>
-      <Button
-        icon="pi pi-arrow-right"
-        onClick={() => setVisibleLeft(true)}
-        className="mr-2"
-      />
-
+      <div className="btn_admin_container">
+        <Button
+          icon="pi pi-arrow-right"
+          onClick={() => setVisibleLeft(true)}
+          className="mr-2"
+        />
+      </div>
       <Outlet />
     </>
   );
