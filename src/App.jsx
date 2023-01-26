@@ -5,7 +5,9 @@ import { setCurrentUser } from "./store/user/userSlice";
 import CustomerNavBar from "./ui/CustomerNavBar/CustomerNavBar";
 import Footer from "./ui/Footer/Footer";
 import "./App.css";
+import KommunicateChat from "./ChatBot/chat";
 import AdminNavBar from "./ui/AdminNavBar/AdminNavBar";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ function App() {
         <AdminNavBar/>
     }
       <MainRouter />
+      <KommunicateChat />
       <Footer />
     </div>
   );
