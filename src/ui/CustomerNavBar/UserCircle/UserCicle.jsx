@@ -9,7 +9,7 @@ const UserCicle = () => {
     <div className="usercicle">
       <div className="usercicle_img">
         <img
-          src={currentUser?.imageUrl? `data:image/jpeg;base64,${currentUser.imageUrl}`:defaultUserPhoto}
+          src={currentUser?(currentUser.imageUrl.startsWith("http")? currentUser.imageUrl : `data:image/jpeg;base64,${currentUser.imageUrl}`) : defaultUserPhoto}
           alt=""
         />
       </div>

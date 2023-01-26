@@ -192,6 +192,18 @@ const AdminNavBar = () => {
                     </li>
                     <li className="header__item">
                       <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "header__navlink active-link"
+                            : "header__navlink"
+                        }
+                        to="/profile"
+                      >
+                        <p>Editar perfil</p>
+                      </NavLink>
+                    </li>
+                    <li className="header__item">
+                      <NavLink
                         className={"header__navlink"}
                         onClick={handleLoginClick}
                       >

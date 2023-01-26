@@ -189,7 +189,7 @@ const Profile = () => {
                 <TabPanel header="Personal">
                     <div className='personalProfile'>
                         <div className='profileImageCont'>
-                            <img className='profilePhoto' ref={photoRef} src={profilePhoto ? `data:image/jpeg;base64,${profilePhoto}` : defaultUserPhoto} />
+                            <img className='profilePhoto' ref={photoRef} src={profilePhoto?(profilePhoto.startsWith("http") ? profilePhoto : `data:image/jpeg;base64,${profilePhoto}`) : defaultUserPhoto} />
                             <img className='pickPhoto' src={camera} onClick={() => { document.getElementById('file-picker').click() }} />
                             <input id='file-picker' accept="image/png, image/jpeg" className='invisible-file-picker' type="file" onChange={handlePhotoPick} />
                         </div>
