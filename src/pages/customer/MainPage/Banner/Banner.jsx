@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 
 import "./Banner.scss";
@@ -18,50 +19,26 @@ const Banner = () => {
           <div className="slider_img_container">
             <img
               className="slider_img"
-              src="https://firstsportz.com/wp-content/uploads/2020/11/IMG-20201120-WA0013-1024x576.jpg"
+              src="https://images.unsplash.com/photo-1624204731525-995bd565b9c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHw%3D&w=1000&q=80"
               alt=""
             />
           </div>
-          <p className="slider_text_l">
-            Lo que puedas
-            <span> necesitar</span>
-          </p>
-          <button className="slider_btn">More Info</button>
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
-        </div>
-        <div className="slider_item">
-          <div className="slider_img_container">
-            <img
-              className="slider_img"
-              src="https://images.hindustantimes.com/tech/img/2021/03/17/960x540/gsmarena_000_1615983838874_1615983847615.jpg"
-              alt=""
-            />
+          <div className="text-box">
+            <p>Envio</p>
+            <h2>GRATIS</h2>
+            <h3>Kruger Cell</h3>
+
+            <div className="row">
+              <NavLink to={"/products"}>All products</NavLink>
+              <NavLink to={"/services"}>All services</NavLink>
+              <span>Explore what we offer for you</span>
+            </div>
           </div>
-          <p className="slider_text_l">
-            Las mejores
-            <span> marcas</span>{" "}
-          </p>
-          <button className="slider_btn">More Info</button>
+
           <div class="circle-banner"></div>
           <div class="circle-banner2"></div>
         </div>
-        <div className="slider_item">
-          <div className="slider_img_container">
-            <img
-              className="slider_img"
-              src="https://img.uswitch.com/qhi9fkhtpbo3/2I5HUWlH6ni5gFaTZGtPKu/66448238943ce07fae036c104066b076/refurbished_iphones_image.jpg?w=770&auto=webp&quality=55,45"
-              alt=""
-            />
-          </div>
-          <p className="slider_text_l">
-            Tu nuevo
-            <span> celular</span>
-          </p>
-          <button className="slider_btn">More Info</button>
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
-        </div>
+
         <div className="slider_item">
           <div className="slider_img_container">
             <img
@@ -70,11 +47,162 @@ const Banner = () => {
               alt=""
             />
           </div>
-          <p className="slider_text_l">
-            Todo en un solo
-            <span> lugar</span>
-          </p>
-          <button className="slider_btn">More Info</button>
+          <div className="text-box">
+            <p>Tu nuevo</p>
+            <h2>CELU</h2>
+            <h3>Kruger Cell</h3>
+
+            <div className="row">
+              <NavLink to={"/products"}>All products</NavLink>
+              <NavLink to={"/services"}>All services</NavLink>
+              <span>Explore what we offer for you</span>
+            </div>
+          </div>
+
+          <div class="circle-banner"></div>
+          <div class="circle-banner2"></div>
+        </div>
+
+        <div className="slider_item">
+          <div className="slider_img_container">
+            <img
+              className="slider_img"
+              src="https://firstsportz.com/wp-content/uploads/2020/11/IMG-20201120-WA0013-1024x576.jpg"
+              alt=""
+            />
+          </div>
+          <div className="text-box">
+            <p>Las mejores</p>
+            <h2>MARCAS</h2>
+            <h3>Kruger Cell</h3>
+
+            <div className="row">
+              <NavLink to={"/products"}>All products</NavLink>
+              <NavLink to={"/services"}>All services</NavLink>
+              <span>Explore what we offer for you</span>
+            </div>
+          </div>
+
+          <div class="circle-banner"></div>
+          <div class="circle-banner2"></div>
+        </div>
+
+        <div className="slider_item">
+          <div className="slider_img_container">
+            <img
+              className="slider_img"
+              src="https://www.movilzona.es/app/uploads-movilzona.es/2019/08/iPhone-XR-sobre-fondo-negro.jpg"
+              alt=""
+            />
+          </div>
+          <div className="text-box">
+            <p>Renuevate</p>
+            <h2>AQUI</h2>
+            <h3>Kruger Cell</h3>
+
+            <div className="row">
+              <NavLink to={"/products"}>All products</NavLink>
+              <NavLink to={"/services"}>All services</NavLink>
+              <span>Explore what we offer for you</span>
+            </div>
+          </div>
+
+          <div class="circle-banner"></div>
+          <div class="circle-banner2"></div>
+        </div>
+
+        <div className="slider_item">
+          <div className="slider_img_container">
+            <img
+              className="slider_img"
+              src="https://sfractus-images.cleo.media/unsafe/0x0:2048x1152/980x0/images/Huawei-P50-Pro-6084.jpg"
+              alt=""
+            />
+          </div>
+          <div className="text-box">
+            <p>10%</p>
+            <h2>MENOS</h2>
+            <h3>Kruger Cell</h3>
+
+            <div className="row">
+              <NavLink to={"/products"}>All products</NavLink>
+              <NavLink to={"/services"}>All services</NavLink>
+              <span>Explore what we offer for you</span>
+            </div>
+          </div>
+
+          <div class="circle-banner"></div>
+          <div class="circle-banner2"></div>
+        </div>
+
+        <div className="slider_item">
+          <div className="slider_img_container">
+            <img
+              className="slider_img"
+              src="https://images.unsplash.com/photo-1549546851-c3550b32e3f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&w=1000&q=80"
+              alt=""
+            />
+          </div>
+          <div className="text-box">
+            <p>Los Mejores</p>
+            <h2>PRECIOS</h2>
+            <h3>Kruger Cell</h3>
+
+            <div className="row">
+              <NavLink to={"/products"}>All products</NavLink>
+              <NavLink to={"/services"}>All services</NavLink>
+              <span>Explore what we offer for you</span>
+            </div>
+          </div>
+
+          <div class="circle-banner"></div>
+          <div class="circle-banner2"></div>
+        </div>
+
+        <div className="slider_item">
+          <div className="slider_img_container">
+            <img
+              className="slider_img"
+              src="https://imagekit.androidphoria.com/wp-content/uploads/Fondo-negro-ahorra-bateria-en-movil.jpg"
+              alt=""
+            />
+          </div>
+          <div className="text-box">
+            <p>Compra</p>
+            <h2>ONLINE</h2>
+            <h3>Kruger Cell</h3>
+
+            <div className="row">
+              <NavLink to={"/products"}>All products</NavLink>
+              <NavLink to={"/services"}>All services</NavLink>
+              <span>Explore what we offer for you</span>
+            </div>
+          </div>
+
+          <div class="circle-banner"></div>
+          <div class="circle-banner2"></div>
+        </div>
+
+        <div className="slider_item">
+          <div className="slider_img_container">
+            <img
+              className="slider_img"
+              src="https://imagekit.androidphoria.com/wp-content/uploads/Fondo-negro-para-movil.jpg"
+              alt=""
+            />
+          </div>
+          <div className="text-box">
+            <p>Compra</p>
+            <h2>AHORA</h2>
+            <h3>Kruger Cell</h3>
+
+            <div className="row">
+              <NavLink to={"/products"}>All products</NavLink>
+              <NavLink to={"/services"}>All services</NavLink>
+              <span>Explore what we offer for you</span>
+            </div>
+          </div>
+
           <div class="circle-banner"></div>
           <div class="circle-banner2"></div>
         </div>
