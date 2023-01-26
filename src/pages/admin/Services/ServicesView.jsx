@@ -236,7 +236,7 @@ export const ServicesView = () => {
         <Button
           label="Añadir"
           icon="pi pi-plus"
-          className="p-button-success mr-2"
+          className="p-button-success mr-2 p_btn_add"
           onClick={openNew}
         />
         <Button
@@ -343,7 +343,7 @@ export const ServicesView = () => {
         <Toast ref={toast} />
   
         <div className="card">
-          <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
+          <Toolbar className="mb-4" right={leftToolbarTemplate}></Toolbar>
   
           <DataTable
             ref={dt}
