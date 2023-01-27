@@ -36,6 +36,7 @@ const HomeExtras = () => {
           <p>Compre ahora y únase a millones de clientes satisfechos</p>
         </li>
       </ul>
+      <div className="spacer layer10"></div>
     </section>
   );
 };

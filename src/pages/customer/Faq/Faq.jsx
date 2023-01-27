@@ -129,6 +129,8 @@ const Faq = () => {
           </li>
         </ul>
       </div>
+      <div className="spacer layer10"></div>
+      <div className="spacer layer11"></div>
     </div>
   );
 };

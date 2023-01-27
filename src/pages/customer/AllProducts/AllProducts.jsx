@@ -32,6 +32,7 @@ const AllProducts = () => {
               <Product key={item.id} item={item} />
             ))}
           </div>
+          <div className="spacer layer10"></div>
         </div>
       )}
     </>
