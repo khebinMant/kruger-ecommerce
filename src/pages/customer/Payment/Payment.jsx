@@ -123,7 +123,7 @@ useEffect(()=>{
         <h4>{cartaSubtotal} $</h4>
         <h5 class="cart__total">Total + IVA</h5>
         <h2 id="totalPrice" class="cart__total-value">{ cartFinalPrice} $</h2>
-        <h2 id="priceAfterDiscount"class="cart__total-value-wiith-discount">{ priceAfterDiscount} $</h2>
+        <h2 id="priceAfterDiscount"class="cart__total-value-wiith-discount">{Math.round(priceAfterDiscount *100)/1000 } $</h2>
       </div>
       <div id="payment" class="cart__payment">
         <h2>Pagar</h2>
