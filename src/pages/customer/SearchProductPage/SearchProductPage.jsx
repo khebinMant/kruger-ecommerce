@@ -66,6 +66,7 @@ const SearchProductPage = () => {
         <div class="pagination__item">4</div>
         <div class="pagination__item">5</div>
       </div>
+      <div className="spacer layer11"></div>
     </div>
   );
 };

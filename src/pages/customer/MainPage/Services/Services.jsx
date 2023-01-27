@@ -10,6 +10,7 @@ const Services = () => {
         <Service />
         <Service />
       </div>
+      <div className="spacer layer10"></div>
     </section>
   );
 };

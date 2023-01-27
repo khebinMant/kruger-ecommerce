@@ -28,7 +28,9 @@ const MainInfoHome = () => {
           </div>
         </div>
       </div>
+
       <img className="header__info-img" src="/images/k.svg" alt="" />
+      <div className="spacer layer12"></div>
     </section>
   );
 };
