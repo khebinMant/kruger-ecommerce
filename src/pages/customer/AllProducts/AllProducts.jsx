@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Product from "../MainPage/Products/Product/Product";
 import "./Allproducts.scss";
 import { getAllProducts } from "../../../helpers/products/getAllProducts";
+import Loading from "../../../components/Loading";
 
 const AllProducts = () => {
   const [products, setProducts] = useState();
@@ -13,14 +14,16 @@ const AllProducts = () => {
 
   const getProducts = async () => {
     const responseProducts = await Promise.resolve(getAllProducts());
-    setProducts(responseProducts.filter(product=>product.type ==='PRODUCT'));
+    setProducts(
+      responseProducts.filter((product) => product.type === "PRODUCT")
+    );
     setIsLoading(false);
   };
 
   return (
     <>
       {isLoading ? (
-        <p>estoy cargando</p>
+        <Loading />
       ) : (
         <div className="show_products">
           <h2 className="show_products_title">All Products</h2>
