@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../Cart/CartItem/CartItem";
 import { Toast } from "primereact/toast";
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import Coupon from "./Coupon/Coupon";
 
 import "./Payment.scss";
 import { startCreateOrder } from "../../../store/cart/thunks";
+import { useEffect } from "react";
 
 const Payment = () => {
 
@@ -14,6 +16,18 @@ const Payment = () => {
   const {currentUser} = useSelector(state => state.users)
   const toast = useRef(null);
   const dispatch = useDispatch();
+
+  const[cartFinalPrice,setCartFinalPrice]=useState();
+  const[cartaSubtotal,setCartaSubtotal]=useState();
+  
+  const[priceAfterDiscount,setPriceAfterDiscount]=useState();
+
+useEffect(()=>{
+  setCartaSubtotal(cart?.totalPrice);
+
+  const priceWithIva=Math.round((cart?.totalPrice + cart?.totalPrice *0.12)*100)/100;
+  setCartFinalPrice(priceWithIva);
+},[])
 
   const showWarn = () => {
     toast.current.show({severity:'warn', summary: 'Dirección de envío', detail:'No se ha especificado una dirección de envío', life: 3000});
@@ -24,6 +38,15 @@ const Payment = () => {
     dispatch(startCreateOrder(currentUser.addresses[0]));
     toast.current.show({severity:'success', summary: 'Compra realizada', detail:'Tu compra se ha efectuado correctamente', life: 3000});
   
+  }
+/**
+ * this is a callback method to recive the valid coupone once the customer use it
+ * @param {the coupon that the user has activated} coupon 
+ */
+  function onCouponActivated(activeCoupon){
+    console.log("from payment ",activeCoupon);
+   
+    calculatePrice(activeCoupon);
   }
 
   const reject = () => {
@@ -50,7 +73,36 @@ const Payment = () => {
       confirmOrder() 
     // }
   }
+  function calculatePrice(activeCoupon){
+   
+    if(activeCoupon){
+      console.log("here");
+      const test=applyCoupon(activeCoupon);
+      console.log(test);
+      
+      
+      document.getElementById("totalPrice").style.textDecorationLine="line-through";
+      document.getElementById("totalPrice").style.textDecorationColor="red";
+      document.getElementById("totalPrice").style.color="grey";
+  
+      
+      document.getElementById("priceAfterDiscount").style.display="block";
+      setPriceAfterDiscount(test);
+    }else{
 
+    }
+   
+    
+  }
+
+  function applyCoupon(activeCoupon){
+      if(activeCoupon?.type=="PERCENTAGE"){
+        const percentage= cartFinalPrice*(activeCoupon.quantity/100);
+          return cartFinalPrice-percentage;
+      }else{
+        return cartFinalPrice-activeCoupon?.quantity;
+      }
+  }
 
   return (
     <section class="cart__checkout">
@@ -66,10 +118,12 @@ const Payment = () => {
             ))
           }
         </ul>
+        <Coupon onCouponActivated={onCouponActivated}/>
         <h5>Subtotal</h5>
-        <h4>{cart.totalPrice} $</h4>
+        <h4>{cartaSubtotal} $</h4>
         <h5 class="cart__total">Total + IVA</h5>
-        <h2 class="cart__total-value">{ Math.round((cart.totalPrice + cart.totalPrice *0.12)*100)/100} $</h2>
+        <h2 id="totalPrice" class="cart__total-value">{ cartFinalPrice} $</h2>
+        <h2 id="priceAfterDiscount"class="cart__total-value-wiith-discount">{ priceAfterDiscount} $</h2>
       </div>
       <div id="payment" class="cart__payment">
         <h2>Pagar</h2>

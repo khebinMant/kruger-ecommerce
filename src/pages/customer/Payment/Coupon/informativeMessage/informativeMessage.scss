@@ -1,0 +1,19 @@
+.message-container{
+    display: flex;
+    animation: fade 2s ease 0s;
+    justify-content: center;
+    margin-top: 8px;
+    img{
+        width: 20px;
+    }
+
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+    
+}
