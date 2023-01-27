@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Product.scss";
-
+import serviceBack from "../../../../../assets/serviceBack.png"
 const Product = ({ item }) => {
 
   return (
@@ -12,7 +12,7 @@ const Product = ({ item }) => {
           item.images?
           <img
             className="card-home__img"
-            src={item.images[0].url || item.images[0].uri}
+            src={item.images[0]?(item.images[0].url || item.images[0].uri):serviceBack}
             alt="ss"
           />
           :<></>
@@ -23,7 +23,7 @@ const Product = ({ item }) => {
           <div class="circle"></div>
           <h3 className="card-home__title">{item.name}</h3>
           <section className="card-home__price">
-            <h4 className="card-home__price-label">Price</h4>
+            <h4 className="card-home__price-label">Precio</h4>
             <span className="card-home__price-value">{item.price}</span>
           </section>
           <button className="card-home__btn">

@@ -5,8 +5,113 @@ import PriceFilter from "./Filters/PriceFilter/PriceFilter";
 import CategoryFilter from "./Filters/CategoryFilter/CategoryFilter";
 import Product from "../MainPage/Products/Product/Product";
 import { productsData } from "../MainPage/Products/dummy";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
+import { getAllProducts } from "../../../helpers/products/getAllProducts";
+import { getProductsPaginatedAndSorted } from "../../../helpers/products/getProductsPaginatedAndSorted";
+import { getProductsCategory } from "../../../helpers/products/getProductsCategory";
 
 const SearchProductPage = () => {
+
+  const { parameter } = useSelector(state => state.search)
+  const [pageNumber, setPageNumber] = useState(1)
+  const [currentPage, setCurrentPage] = useState(0)
+  const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  
+  useEffect(() => {
+    getData();
+    // return () => {
+    //   setCurrentPage(0)
+    // }
+  }, [parameter, currentPage]);
+
+  const getData = async() =>{
+    setIsLoading(true);
+    setPageNumber(1)
+    let responsePaginatedProducts;
+    let responseProducts;
+    let pageN;
+      switch (parameter) {
+        case 'all':
+          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(4,currentPage,-1));
+          responseProducts = await Promise.resolve(getAllProducts())
+          setProducts(responsePaginatedProducts)
+          setPageNumber(responseProducts.length / 4)
+
+          setIsLoading(false);
+          break;
+      
+        case 'low':
+          responseProducts = await Promise.resolve(getProductsCategory(3))
+          pageN = responseProducts.length / 4;
+          if(pageN<=currentPage){
+            setCurrentPage(0)
+          }
+          else{
+            setPageNumber(pageN)
+          }
+          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(4,currentPage,3));
+          setProducts(responsePaginatedProducts)
+          setIsLoading(false);
+          break;
+      
+        case 'mid':
+          responseProducts = await Promise.resolve(getProductsCategory(2))
+          pageN = responseProducts.length / 4;
+          if(pageN<=currentPage){
+            setCurrentPage(0)
+          }
+          else{
+            setPageNumber(pageN)
+          }
+          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(4,currentPage,2));
+          setProducts(responsePaginatedProducts)
+          setIsLoading(false);
+          break;
+      
+        case 'high':
+          responseProducts = await Promise.resolve(getProductsCategory(1))
+          pageN = responseProducts.length / 4;
+          if(pageN<=currentPage){
+            setCurrentPage(0)
+          }
+          else{
+            setPageNumber(pageN)
+          }
+          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(4,currentPage,1));
+          setProducts(responsePaginatedProducts)
+          setIsLoading(false);
+          break;
+
+        case 'products':
+          responseProducts = await Promise.resolve(getAllProducts())
+          pageN =responseProducts.filter(product => product.type === 'PRODUCT' ).length / 4;
+          if(pageN<=currentPage){
+            setCurrentPage(0)
+          }
+          else{
+            setPageNumber(pageN)
+          }
+          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(4,currentPage,-1));
+          setProducts(responsePaginatedProducts.filter(product => product.type === 'PRODUCT'))
+          setIsLoading(false);
+          break;
+
+        case 'services':
+          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(4,currentPage,4));
+          responseProducts = await Promise.resolve(getProductsCategory(4))
+          setProducts(responsePaginatedProducts.filter(product => product.type === 'SERVICE'))
+          setPageNumber(responseProducts.filter(product => product.type === 'SERVICE' ).length / 4)
+          setIsLoading(false);
+          break;
+
+        default:
+      }
+  }
+
   return (
     <div className="searchpage">
       <Banner />
@@ -54,18 +159,32 @@ const SearchProductPage = () => {
       </div>
 
       <div className="searchpage_results">
-        {productsData.map((item) => (
-          <Product item={item} />
-        ))}
+        {
+          isLoading && products?
+          <p>estoy cargando</p>
+          :
+          <>
+            {products.map((item) => (
+              <Product item={item} />
+            ))}
+          </>
+        }
+      </div>
+      <div class="pagination">
+        {
+          isLoading && products?
+          <p>estoy cargando</p>
+          :
+          <>
+              {
+                Array.apply(null, { length: pageNumber }).map((e, i) => (
+                  <div onClick={()=>setCurrentPage(i)} class="pagination__item">{i+1}</div>
+                ))
+              }
+          </>
+        }
       </div>
 
-      <div class="pagination">
-        <div class="pagination__item">1</div>
-        <div class="pagination__item">2</div>
-        <div class="pagination__item">3</div>
-        <div class="pagination__item">4</div>
-        <div class="pagination__item">5</div>
-      </div>
     </div>
   );
 };
