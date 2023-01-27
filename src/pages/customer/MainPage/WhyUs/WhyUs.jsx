@@ -32,6 +32,7 @@ const WhyUs = () => {
           </li>
         </ul>
       </div>
+      <div className="spacer layer10"></div>
     </section>
   );
 };

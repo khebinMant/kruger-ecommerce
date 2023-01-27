@@ -7,7 +7,7 @@
     text-align: center;
     padding: 100px;
     gap: 3em;
-
+    position: relative;
 
     &_title{
         font-size: 3rem;
@@ -27,3 +27,11 @@
     
 }
 
+
+.layer10{
+    z-index: -1;
+    position: absolute;
+    top: 170px;
+    left: 0;
+    background-image: url("../../../../assets/svg/layout10.svg");
+}

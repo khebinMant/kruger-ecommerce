@@ -6,7 +6,7 @@
     align-items: center;
     gap: 2em;
     padding: 100px 0;
-
+    position: relative;
 
     &_title{
         font-size: 3rem;
@@ -19,3 +19,13 @@
         gap: 2em;
     }
 }
+
+
+.layer10{
+    z-index: -1;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    background-image: url("../../../assets/svg/layout10.svg");
+  }
+  
