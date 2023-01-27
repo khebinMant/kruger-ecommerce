@@ -6,6 +6,7 @@ import CartItem from "./CartItem/CartItem";
 import { Toast } from "primereact/toast";
 import { resetCart } from "../../../store/cart/cartSlice";
 
+
 const Cart = () => {
 
   const {cart} = useSelector(state => state.cart)
@@ -35,6 +36,8 @@ const Cart = () => {
         </div>
 
         <hr />
+        
+        
         <div class="cart_checkout">
           <div class="cart_total">
             <div>
