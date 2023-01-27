@@ -10,8 +10,8 @@ const Footer = () => {
           <img src="./images/logo.png" />
         </div>
         <div className="footer_text">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam
-          vero natus ut nulla, fugiat pariatur!
+          Descubre el poder de la tecnología con nuestra amplia selección de
+          dispositivos de última generación
         </div>
       </div>
 
