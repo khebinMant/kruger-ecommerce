@@ -29,9 +29,9 @@ const Banner = () => {
             <h3>Kruger Cell</h3>
 
             <div className="row">
-              <NavLink to={"/products"}>All products</NavLink>
-              <NavLink to={"/services"}>All services</NavLink>
-              <span>Explore what we offer for you</span>
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
             </div>
           </div>
 
@@ -53,9 +53,9 @@ const Banner = () => {
             <h3>Kruger Cell</h3>
 
             <div className="row">
-              <NavLink to={"/products"}>All products</NavLink>
-              <NavLink to={"/services"}>All services</NavLink>
-              <span>Explore what we offer for you</span>
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
             </div>
           </div>
 
@@ -77,9 +77,9 @@ const Banner = () => {
             <h3>Kruger Cell</h3>
 
             <div className="row">
-              <NavLink to={"/products"}>All products</NavLink>
-              <NavLink to={"/services"}>All services</NavLink>
-              <span>Explore what we offer for you</span>
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
             </div>
           </div>
 
@@ -101,9 +101,9 @@ const Banner = () => {
             <h3>Kruger Cell</h3>
 
             <div className="row">
-              <NavLink to={"/products"}>All products</NavLink>
-              <NavLink to={"/services"}>All services</NavLink>
-              <span>Explore what we offer for you</span>
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
             </div>
           </div>
 
@@ -125,9 +125,9 @@ const Banner = () => {
             <h3>Kruger Cell</h3>
 
             <div className="row">
-              <NavLink to={"/products"}>All products</NavLink>
-              <NavLink to={"/services"}>All services</NavLink>
-              <span>Explore what we offer for you</span>
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
             </div>
           </div>
 
@@ -149,9 +149,9 @@ const Banner = () => {
             <h3>Kruger Cell</h3>
 
             <div className="row">
-              <NavLink to={"/products"}>All products</NavLink>
-              <NavLink to={"/services"}>All services</NavLink>
-              <span>Explore what we offer for you</span>
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
             </div>
           </div>
 
@@ -173,9 +173,9 @@ const Banner = () => {
             <h3>Kruger Cell</h3>
 
             <div className="row">
-              <NavLink to={"/products"}>All products</NavLink>
-              <NavLink to={"/services"}>All services</NavLink>
-              <span>Explore what we offer for you</span>
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
             </div>
           </div>
 
@@ -197,9 +197,9 @@ const Banner = () => {
             <h3>Kruger Cell</h3>
 
             <div className="row">
-              <NavLink to={"/products"}>All products</NavLink>
-              <NavLink to={"/services"}>All services</NavLink>
-              <span>Explore what we offer for you</span>
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
             </div>
           </div>
 
