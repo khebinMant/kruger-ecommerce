@@ -1,0 +1,42 @@
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .input {
+    min-height: 50px;
+    width: 60%;
+    min-width: 120px;
+    max-width: 450px;
+    padding: 0 1rem;
+    color: var(--secondary-color);
+    font-size: 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px 0 0 6px;
+    background-color: transparent;
+  }
+  
+  .button--submit {
+    min-height: 50px;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    background-color: var(--primary-color);
+    color: var(--body-bg);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+  }
+  
+  .button--submit:hover {
+    background-color: rgb(199, 255, 115);
+  }
+  
+  .input:focus, .input:focus-visible {
+    border-color: var(--secondary-color);
+    outline: none;
+  }
+  
