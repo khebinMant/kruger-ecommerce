@@ -195,7 +195,9 @@ const SearchProductPage = () => {
             {products.map((item) => (
               item.type === 'PRODUCT'?
               <Product item={item} />:
-              <Service/>
+              item.type === 'SERVICE'?
+              <Service/>:
+              <></>
             ))}
           </>
           :
@@ -206,7 +208,9 @@ const SearchProductPage = () => {
             {products.map((item) => (
               item.type === 'PRODUCT'?
               <Product item={item} />:
-              <Service/>
+              item.type === 'SERVICE'?
+              <Service/>:
+              <></>
             ))}
           </>
         }

@@ -208,7 +208,19 @@ export const ProductsView = () => {
           });
         }
       } else {
-        _product.images = newImages
+        if(newImages.length === 0){
+          _product.images = [
+            {
+              uri:null,
+              url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Flag_of_Unknow.svg/800px-Flag_of_Unknow.svg.png",
+              created: new Date()
+            }
+          ]
+          //lo mismo para el link de youtube
+        }
+        else{
+          _product.images = newImages
+        }
         _product.type = "PRODUCT"
         const responsePostProduct = await createProduct(_product);
         if (responsePostProduct) {

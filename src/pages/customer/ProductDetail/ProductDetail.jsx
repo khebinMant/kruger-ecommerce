@@ -43,7 +43,7 @@ const ProductDetail = () => {
               <iframe
                 width="90%"
                 height="400px"
-                src={product.youtubeLink}
+                src={product.youtubeLink.startsWith("http")?product.youtubeLink:'https://www.youtube.com/embed/BvdrrLtUWs8'}
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
