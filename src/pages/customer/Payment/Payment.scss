@@ -48,9 +48,23 @@ h5 > span {
 }
 
 .cart__total-value{
-  color: var(--primary-color)
+  color: var(--primary-color);
+  transition: all 2s;
+  animation: fade 2s linear ;
 }
-
+.discount-container{
+  display: none;
+  animation: fade 2s linear ;
+}
+@keyframes fade {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+  
+}
 
 h6 {
   
@@ -299,7 +313,49 @@ Payment
   top: 20%;
   opacity: 0.8;
 }
+.no-direcciones-cont{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+   .add-direction{
+    padding: 10px;
+    font-size: 1.0rem;
+    margin: 8px;
+    border-radius: 8px;
+    background-color: #A1FF69;
+    color: #13252F;
+    border-style: none;
+   }
+   .add-direction:hover{
+    color: #A1FF69;
+    background: transparent;
+    border-style: solid;
+    border-color: #A1FF69;
+    cursor: pointer;
+   }
+   .add-direction span:after{
+    content: "+";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -40px;
+   }
+   .add-direction:hover span{
+    padding-right: 35px;
+    font-weight: bold;
+   }
+   .add-direction:hover span:after{
+    opacity: 1;
+  right: 0;
+   }
+   .add-direction span {
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+}
 .cart__wave:before {
   height: 360px;
   width: 360px;

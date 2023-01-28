@@ -3,27 +3,133 @@ import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../Cart/CartItem/CartItem";
 import { Toast } from "primereact/toast";
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import Coupon from "./Coupon/Coupon";
 
 import "./Payment.scss";
 import { startCreateOrder } from "../../../store/cart/thunks";
+import { useEffect } from "react";
+import { Dropdown } from "primereact/dropdown";
+import { useNavigate } from "react-router-dom";
+import { setTotalPriceWithIva, updateTotalPrice } from "../../../store/cart/cartSlice";
+
 
 const Payment = () => {
 
-  
-  const {cart} = useSelector(state => state.cart)
-  const {currentUser} = useSelector(state => state.users)
+
+  const { cart } = useSelector(state => state.cart)
+  const { currentUser } = useSelector(state => state.users)
   const toast = useRef(null);
   const dispatch = useDispatch();
 
+  const navigation = useNavigate();
+
+
+  const [coupon, setCoupon] = useState(null);
+  const [chosenAddress, setChosenAddress] = useState();
+
+  const[cartaFinalPrice,setCartaFinalPrice]=useState(0);
+  const [cartaSubtotal, setCartaSubtotal] = useState(0);
+  const [priceAfterDiscount, setPriceAfterDiscount] = useState(0);
+
+  const [order,setOrder]=useState(null);
+ 
+
+
+  useEffect(() => {
+    //este es el precio total que esta en la carta antes de agregar la iva
+    setCartaSubtotal(cart?.totalPrice);
+    //agregar la iva al totlaPrice 
+    const priceWithIva = Math.round((cart?.totalPrice + cart?.totalPrice * 0.12) * 100) / 100;
+    setCartaFinalPrice(priceWithIva);
+
+  }, [])
+
   const showWarn = () => {
-    toast.current.show({severity:'warn', summary: 'Dirección de envío', detail:'No se ha especificado una dirección de envío', life: 3000});
+    toast.current.show({ severity: 'warn', summary: 'Dirección de envío', detail: 'No se ha especificado una dirección de envío', life: 3000 });
   }
 
   const accept = async () => {
-    //TODO ESO DEBE SER DINAMICO MEDIANTE UN DROPDOWN
-    dispatch(startCreateOrder(currentUser.addresses[0]));
-    toast.current.show({severity:'success', summary: 'Compra realizada', detail:'Tu compra se ha efectuado correctamente', life: 3000});
-  
+    //si hay un cupon el precio final de la carta sera el precio despues del descuento
+    //caso contrario seria el precio final
+    if(!coupon){
+      dispatch(setTotalPriceWithIva({price:cartaFinalPrice}));
+    }else{
+      dispatch(setTotalPriceWithIva({price:priceAfterDiscount}));
+    }
+    dispatch(startCreateOrder(chosenAddress, coupon? coupon : null, cartaSubtotal));
+    //resetear todos los campos y enviar el usuario al home page
+    //resetStates();
+    toast.current.show({ severity: 'success', summary: 'Compra realizada', detail: 'Tu compra se ha efectuado correctamente', life: 3000 });
+    const orderCreated={...cart,
+      address:chosenAddress,
+      usedCoupon:coupon? coupon : null,
+      orderSubTotal:cartaSubtotal};
+    setOrder(orderCreated);
+
+  }
+
+  /**
+   * llama este metodo cuando se termina de reializar una compra
+   * para resetear los campos y mandar al cliente al home page
+   */
+const resetStates=()=>{
+  setCartaFinalPrice(0);
+  setCartaSubtotal(0);
+  document.getElementById("discount-container").style.display = "none";
+  document.getElementById("totalPrice").style.textDecorationLine = "none";
+  document.getElementById("totalPrice").style.color = "#A1FF69";
+  setPriceAfterDiscount(0);
+  setTimeout(()=>{
+    navigation("/")
+  },1500)
+
+}
+
+  /**
+   * this is a callback method to recive the valid coupone once the customer use it
+   * @param {the coupon that the user has activated} coupon 
+   */
+  function onCouponActivated(activeCoupon) {
+    setCoupon(activeCoupon);
+    showCouponResults(activeCoupon);
+  }
+
+  /**
+   * this method will call applyCoupon method to calculate the price
+   * and will show the price after applying the discount
+   * @param {the coupon that the user entered} activeCoupon 
+   */
+  function showCouponResults(activeCoupon) {
+    if (activeCoupon) {
+
+      applyCoupon(activeCoupon);
+      document.getElementById("totalPrice").style.textDecorationLine = "line-through";
+      document.getElementById("totalPrice").style.textDecorationColor = "red";
+      document.getElementById("totalPrice").style.color = "grey";
+      document.getElementById("discount-container").style.display = "block";
+      
+    }
+
+  }
+/**
+ * llama este metodo para actualizar el precio segun el coupon validado
+ * @param {es el coupon que el usuario ha validado} activeCoupon 
+ */
+  function applyCoupon(activeCoupon) {
+    if (activeCoupon?.type == "PERCENTAGE") {
+      const percentage = cartaFinalPrice * (activeCoupon.quantity / 100);
+       setPriceAfterDiscount(cartaFinalPrice - percentage);
+    } else {
+      setPriceAfterDiscount( cartaFinalPrice - activeCoupon.quantity);
+    }
+  }
+/**
+ * al selecionar una opcion del dropdown se pasara esa opcion
+ * como parametro en este metodo
+ * @param {el dropdown de ubicaciones } e 
+ */
+  const onUbiacitonSelected = (e) => {
+    setChosenAddress(e.value);
   }
 
   const reject = () => {
@@ -31,24 +137,34 @@ const Payment = () => {
   }
 
   const confirmOrder = () => {
+    if(chosenAddress){
     confirmDialog({
-        message: 'Estas seguro de realizar estac compra con los datos proporcionados?',
-        header: 'Confirma tu compra',
-        icon: 'pi pi-exclamation-triangle',
-        accept,
-        reject
+      message: 'Estas seguro de realizar estac compra con los datos proporcionados?',
+      header: 'Confirma tu compra',
+      icon: 'pi pi-exclamation-triangle',
+      accept,
+      reject
     });
+  }else{
+    toast.current.show({severity: 'warn', summary: 'Dirección de envío', detail: 'No se ha especificado una dirección de envío', life: 3000 })
+  }
   };
 
-  const createOrder = ()=>{
+  const createOrder = () => {
     //TODO CREAR VALIDACIONES PARA EL FORMULARIO DE LA TARJETA
     //DROPDOWN DE DIRECCIONES DE ENVÍO DEL CLIENTE
     // if(shipmentAddress==''){
     //     showWarn()
     // }
     // else{
-      confirmOrder() 
+    confirmOrder()
     // }
+  }
+  /**
+   * enviar el usuario al profile page para que agrega una dierccion nueva
+   */
+  const addDirectionClick = () => {
+    navigation("/profile");
   }
 
 
@@ -61,15 +177,23 @@ const Payment = () => {
         <h5>Order #0101</h5>
         <ul class="cart__order-list">
           {
-            cart.items.map((item,index) =>(
-                <CartItem  item={item} key={index} index={index}/>
+            cart.items.map((item, index) => (
+              <CartItem item={item} key={index} index={index} />
             ))
           }
         </ul>
+        <Coupon onCouponActivated={onCouponActivated} />
         <h5>Subtotal</h5>
-        <h4>{cart.totalPrice} $</h4>
+        <h4>{cartaSubtotal} $</h4>
         <h5 class="cart__total">Total + IVA</h5>
-        <h2 class="cart__total-value">{ Math.round((cart.totalPrice + cart.totalPrice *0.12)*100)/100} $</h2>
+        <h2 id="totalPrice" class="cart__total-value">{cartaFinalPrice} $</h2>
+        <div id="discount-container" className="discount-container">
+          <h3>{coupon?.type == "PERCENTAGE"? `- ${coupon?.quantity}%`
+          :`-$${coupon?.quantity}`}</h3>
+          <hr/>
+        <h2 id="priceAfterDiscount" class="cart__total-value-wiith-discount">
+          {Math.round(priceAfterDiscount * 100) / 100} $</h2>
+          </div>
       </div>
       <div id="payment" class="cart__payment">
         <h2>Pagar</h2>
@@ -140,16 +264,18 @@ const Payment = () => {
             />
           </p>
 
-          <p class="cart__field">
-            <input
-              type="text"
-              id="cardnumber"
-              name="cardnumber"
-              placeholder="Addressing"
-              pattern="\d*"
-              title="Card Number"
-            />
-          </p>
+
+          {currentUser?.addresses ? <Dropdown  value={chosenAddress} options={currentUser?.addresses}
+            onChange={(e) => { onUbiacitonSelected(e) }}
+            optionLabel="address" placeholder="Elige ubicacion" /> :
+            <div className="no-direcciones-cont">
+              <h4>No tienes direcciones agregados!</h4>
+              <button className="add-direction" onClick={addDirectionClick}>
+                <span>Agrega un nuevo direccion</span>
+              </button>
+            </div>
+          }
+
           <div className="cart__card-form__bottom">
             <p class="cart__field cart__space">
               <input

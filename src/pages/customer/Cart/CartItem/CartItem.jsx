@@ -4,6 +4,7 @@ import { getProduct } from "../../../../helpers/products/getProduct";
 import { startDeleteItemFromCart, startUpdateQuantityItemToCart } from "../../../../store/cart/thunks";
 import { useLocation } from "react-router-dom";
 import "./CartItem.scss";
+import defaultImg from "../../../../assets/default.png"
 
 const CartItem = ({item,index}) => {
   
@@ -63,7 +64,7 @@ const CartItem = ({item,index}) => {
         <div class="cart-items">
           <div class="cart_image-box">
             <img
-              src={product.images[0].url || product.images[0].uri}
+              src={product.images[0]?(product.images[0].url || product.images[0].uri):defaultImg}
               style={{ height: "80px" }}
             />
           </div>

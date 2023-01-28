@@ -33,11 +33,12 @@ const Reviews = ({product}) => {
     const response = await Promise.resolve(postReview(reviewObj));
     setRaiting(1)
     setReviewT('')
+    getSelectedProductReviews()
   }
 
   useEffect(() => {
     getSelectedProductReviews();
-  }, [createReview]);
+  }, []);
 
  
   const getSelectedProductReviews = async() =>{

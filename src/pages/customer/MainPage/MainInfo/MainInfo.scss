@@ -7,14 +7,14 @@
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    padding: 200px 100px 20px 100px;
+    padding: 20% 100px 20px 100px;
     position: relative;
 }
 
 .header__info-content{
     width: 50%;
     display: flex;
-    gap: 2em;
+    gap: 1em;
     flex-direction: column;
 }
 
@@ -26,7 +26,7 @@
 
 .header__info-title{
     color: var(--heading-color);
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
 }
 
@@ -43,6 +43,7 @@
 
 
 .header__info-btns{
+    margin-top: 30px;
     display: flex;
     gap: 1em;
 }
@@ -107,7 +108,7 @@
     .header__info{
         flex-direction: column;
         width: 100%;
-        padding: 60px 20px;
+        padding: 30% 20px 60px 20px;
     }
     .header__info-content{
         width: 100%;
@@ -145,3 +146,15 @@
     left: 0;
     z-index: -1;
 }
+
+
+
+
+.layer12{
+    z-index: -1;
+    position: absolute;
+    top: 170px;
+    left: 0;
+    background-image: url("../../../../assets/svg/layout10.svg");
+}
+

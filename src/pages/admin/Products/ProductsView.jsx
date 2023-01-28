@@ -5,7 +5,6 @@ import { postProduct } from "../../../helpers/products/postProduct";
 import { getAllCategories } from "../../../helpers/categories/getAllCategories";
 import { deleteProduct } from "../../../helpers/products/deleteProduct";
 import { putProduct } from "../../../helpers/products/putProduct";
-import { Checking } from "../../../components/Checking";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Column } from "primereact/column";
@@ -20,6 +19,7 @@ import ImageUploading from 'react-images-uploading';
 import { Checkbox } from "primereact/checkbox";
 
 import '../AdminMainPage.css';
+import Loading from "../../../components/Loading";
 
 let emptyProduct = {
   name: "",
@@ -28,7 +28,10 @@ let emptyProduct = {
   price: "",
   category: null,
   youtubeLink:"",
-  status:null
+  status:null,
+  brand:"",
+  weight:0,
+  processor:''
 };
 
 
@@ -208,7 +211,18 @@ export const ProductsView = () => {
           });
         }
       } else {
-        _product.images = newImages
+        if(newImages.length === 0){
+          _product.images = [
+            {
+              uri:null,
+              url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Flag_of_Unknow.svg/800px-Flag_of_Unknow.svg.png",
+              created: new Date()
+            }
+          ]
+        }
+        else{
+          _product.images = newImages
+        }
         _product.type = "PRODUCT"
         const responsePostProduct = await createProduct(_product);
         if (responsePostProduct) {
@@ -468,7 +482,7 @@ export const ProductsView = () => {
     <>
     {
       isLoading ? (
-      <Checking />
+      <Loading />
     ) : (
       <div className="datatable-crud-demo">
         <Toast ref={toast} />
@@ -608,6 +622,48 @@ export const ProductsView = () => {
             />
             {submitted && !product.price && (
               <small className="p-error">El Precio es obligatoria.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="brand">Marca</label>
+            <InputText
+              id="brand"
+              value={product.brand}
+              onChange={(e) => onInputChange(e, "brand")}
+              className={classNames({
+                "p-invalid": submitted && !product.brand,
+              })}
+            />
+            {submitted && !product.brand && (
+              <small className="p-error">La marca es obligatoria.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="weight">Peso(gr)</label>
+            <InputText
+              id="weight"
+              value={product.weight}
+              onChange={(e) => onInputChange(e, "weight")}
+              className={classNames({
+                "p-invalid": submitted && !product.weight,
+              })}
+            />
+            {submitted && !product.weight && (
+              <small className="p-error">El peso es obligatorio.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="processor">Procesador</label>
+            <InputText
+              id="processor"
+              value={product.processor}
+              onChange={(e) => onInputChange(e, "processor")}
+              className={classNames({
+                "p-invalid": submitted && !product.processor,
+              })}
+            />
+            {submitted && !product.processor && (
+              <small className="p-error">El Procesador es obligatorio.</small>
             )}
           </div>
           <div className="field">

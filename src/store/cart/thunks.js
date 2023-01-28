@@ -14,7 +14,7 @@ export const startAddItemToCart = (item) =>{
     }
 }
 
-export const startCreateOrder = (shipmentAddress) =>{
+export const startCreateOrder = (shipmentAddress,orderCoupon= null,orderSubTotal) =>{
   
     return async (dispatch, getState)=>{
         
@@ -24,11 +24,15 @@ export const startCreateOrder = (shipmentAddress) =>{
 
         let _order = {
             ...getState().cart.cart,
-            addressId: shipmentAddress.id
+            addressId: shipmentAddress.id,
+            coupon: orderCoupon,
+            subTotal:orderSubTotal
         }
 
+  
+
         const response = await Promise.resolve(postOrder(_order,currentUser.id));
-        console.log(response);
+
 
         //Limpiar el carrito
         dispatch(resetCart())

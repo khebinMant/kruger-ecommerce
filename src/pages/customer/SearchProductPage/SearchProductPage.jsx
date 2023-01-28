@@ -5,19 +5,105 @@ import PriceFilter from "./Filters/PriceFilter/PriceFilter";
 import CategoryFilter from "./Filters/CategoryFilter/CategoryFilter";
 import Product from "../MainPage/Products/Product/Product";
 import { productsData } from "../MainPage/Products/dummy";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
+import { getAllProducts } from "../../../helpers/products/getAllProducts";
+import { getProductsPaginatedAndSorted } from "../../../helpers/products/getProductsPaginatedAndSorted";
+import { getProductsCategory } from "../../../helpers/products/getProductsCategory";
+import Service from "../MainPage/Services/Service/Service";
+import Loading from "../../../components/Loading";
 
 const SearchProductPage = () => {
+
+  const { parameter, from, to } = useSelector(state => state.search)
+  const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [name, setName] = useState('')
+  const dispath = useDispatch();
+  
+  useEffect(() => {
+    getData();
+  }, [parameter, from, to]);
+
+  const getData = async() =>{
+    let response;
+    switch (parameter) {
+      case 'all':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response);
+        setIsLoading(false)       
+        break;
+      case 'products':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.type === 'PRODUCT'));
+        setIsLoading(false)       
+        break;
+      case 'services':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.type === 'SERVICE'));
+        setIsLoading(false)       
+        break;
+      case 'low':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.category.name === 'Gama Baja'));
+        setIsLoading(false)       
+        break;
+      case 'mid':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.category.name === 'Gama Media'));
+        setIsLoading(false)       
+        break;
+      case 'high':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.category.name === 'Gama Alta'));
+        setIsLoading(false)       
+        break;
+      case 'price':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(product => product.price>= from && product.price<= to))
+        setIsLoading(false)       
+        break;
+      default:
+        break;
+    }
+
+  }
+  const onChangeName = async (e)=>{
+    let response;
+    setName(e.target.value.toLowerCase()); 
+    if(e.target.value.trim().length === 0){
+      response = await Promise.resolve(getAllProducts()) 
+      setProducts(response)
+      setIsLoading(false)       
+    }
+    else{
+      response = await Promise.resolve(getAllProducts()) 
+      setProducts(response.filter(prod => prod.name.toLowerCase().includes(name.toLowerCase())))
+      setIsLoading(false)       
+    }
+  }
+
+  const clearSearch = async()=>{
+    setName('')
+    let response = await Promise.resolve(getAllProducts()) 
+    setProducts(response)
+    setIsLoading(false)    
+  }
+
   return (
     <div className="searchpage">
       <Banner />
-      <h2 className="searchpage_title">Find your product</h2>
+      <h2 className="searchpage_title">Encuentra tus productos</h2>
       <form class="searchpage_form">
         <label for="search">
           <input
             class="searchpage_input"
             type="text"
+            value={name}
             required=""
-            placeholder="Find your product"
+            onChange={onChangeName}
+            placeholder="Buscar producto"
             id="search"
           />
           <div class="searchpage_fancy-bg"></div>
@@ -32,7 +118,7 @@ const SearchProductPage = () => {
               </g>
             </svg>
           </div>
-          <button class="searchpage_close-btn" type="reset">
+          <button onClick={clearSearch} class="searchpage_close-btn" type="reset">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -54,18 +140,36 @@ const SearchProductPage = () => {
       </div>
 
       <div className="searchpage_results">
-        {productsData.map((item) => (
-          <Product item={item} />
-        ))}
+        {
+          isLoading?
+          <Loading/>
+          :
+          <>
+            {products.map((item) => (
+              item.type === 'PRODUCT'
+              ?
+              <Product key={item.id} item={item} />
+              :
+              <Service key={item.id} item={item}/>
+            ))}
+          </>
+        }
+      </div>
+      <div class="pagination">
+        <div class="pagination__item">
+          1
+        </div>
+        <div class="pagination__item">
+          2
+        </div>
+        <div class="pagination__item">
+          3
+        </div>
+        <div class="pagination__item">
+          4
+        </div>
       </div>
 
-      <div class="pagination">
-        <div class="pagination__item">1</div>
-        <div class="pagination__item">2</div>
-        <div class="pagination__item">3</div>
-        <div class="pagination__item">4</div>
-        <div class="pagination__item">5</div>
-      </div>
     </div>
   );
 };

@@ -5,7 +5,6 @@ import { postProduct } from "../../../helpers/products/postProduct";
 import { getAllCategories } from "../../../helpers/categories/getAllCategories";
 import { deleteProduct } from "../../../helpers/products/deleteProduct";
 import { putProduct } from "../../../helpers/products/putProduct";
-import { Checking } from "../../../components/Checking";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Column } from "primereact/column";
@@ -18,6 +17,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
 import { Checkbox } from "primereact/checkbox";
 import '../AdminMainPage.css';
+import Loading from "../../../components/Loading";
 
 let emptyProduct = {
   name: "",
@@ -25,7 +25,9 @@ let emptyProduct = {
   stock: "",
   price: "",
   category: null,
-  status:null
+  status:null,
+  brand:"",
+  processor:''
 };
 
 export const ServicesView = () => {
@@ -266,11 +268,13 @@ export const ServicesView = () => {
           icon="pi pi-pencil"
           className="p-button-rounded p-button-success mr-2"
           onClick={() => editProduct(rowData)}
+          title="Editar el servicio"
         />
         <Button
           icon="pi pi-trash"
           className="p-button-rounded p-button-warning"
           onClick={() => confirmDeleteProduct(rowData)}
+          title="Eliminar el servicio"
         />
       </>
     );
@@ -342,7 +346,7 @@ export const ServicesView = () => {
     <>
     {
       isLoading ? (
-      <Checking />
+      <Loading />
     ) : (
       <div className="datatable-crud-demo">
         <Toast ref={toast} />
@@ -480,7 +484,35 @@ export const ServicesView = () => {
             )}
           </div>
           <div className="field">
-            <label htmlFor="description">Descripción</label>
+            <label htmlFor="brand">Cantidad(GB)</label>
+            <InputText
+              id="brand"
+              value={product.brand}
+              onChange={(e) => onInputChange(e, "brand")}
+              className={classNames({
+                "p-invalid": submitted && !product.brand,
+              })}
+            />
+            {submitted && !product.brand && (
+              <small className="p-error">La marca es obligatoria.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="processor">Redes sociales</label>
+            <InputText
+              id="processor"
+              value={product.processor}
+              onChange={(e) => onInputChange(e, "processor")}
+              className={classNames({
+                "p-invalid": submitted && !product.processor,
+              })}
+            />
+            {submitted && !product.processor && (
+              <small className="p-error">El Procesador es obligatorio.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="description">Tiempo</label>
             <InputTextarea
               id="description"
               value={product.description}

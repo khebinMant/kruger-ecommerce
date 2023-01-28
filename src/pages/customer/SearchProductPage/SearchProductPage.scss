@@ -4,6 +4,7 @@
     align-items: center;
     flex-direction: column;
     gap: 2em;
+    position: relative;
 
 
 .searchpage_title{
@@ -158,6 +159,12 @@
   }
 }
 
+.pagination__item__selected{
+  background-color: var(--primary-color);
+
+}
+
+
 .pagination__item:not(:last-child) {
   /* Right border */
   border-right: 1px solid var(--primary-color);
@@ -166,3 +173,15 @@
 .pagination__item--active {
   background-color: #d1d5db;
 }
+
+
+
+
+.layer11{
+  z-index: -1;
+  position: absolute;
+  top: 570px;
+  left: 0;
+  background-image: url("../../../assets/svg/layout10.svg");
+}
+

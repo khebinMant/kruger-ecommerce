@@ -7,11 +7,12 @@
     gap: 1.5rem;
     font-size: 1.3rem;
     padding: 100px;
+    position: relative;
 }
 
 .whyUs__title{
     color: var(--heading-color);
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
 
 }
@@ -22,7 +23,7 @@
 
 .whyUs p{
     color: var(--small-text-color);
-    font-size: 1rem;
+    font-size: .9rem;
     line-height: 30px;
 }
 
@@ -37,7 +38,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 2em;
+    gap: 1em;
 }
 
 .whyUs__list{
@@ -54,6 +55,7 @@
     display: flex;
     flex-direction: column;
     gap: .5em;
+    font-size: 1.2rem;
 }
 
 .whyUs__item:nth-child(1) h3{
@@ -74,3 +76,14 @@
         gap: 1em;
     }
 }
+
+
+
+.layer10{
+    z-index: -1;
+    position: absolute;
+    top: 170px;
+    left: 0;
+    background-image: url("../../../../assets/svg/layout10.svg");
+}
+

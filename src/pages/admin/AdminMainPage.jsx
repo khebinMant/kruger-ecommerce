@@ -47,7 +47,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Servicios",
-          icon: "pi pi-tags",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/services");
@@ -80,8 +80,32 @@ export const AdminMainPage = () => {
       },
     },
     {
+      label: "Text Editor",
+      icon: "pi pi-file-edit",
+      command: () => {
+        setVisibleLeft(false);
+        navigate("/admin/text-editor");
+      },
+    },
+    {
+      label: "Todo",
+      icon: "pi pi-folder-open",
+      command: () => {
+        setVisibleLeft(false);
+        navigate("/admin/todo");
+      },
+    },
+    {
+      label: "Calendar",
+      icon: "pi pi-calendar",
+      command: () => {
+        setVisibleLeft(false);
+        navigate("/admin/calendar");
+      },
+    },
+    {
       label: "Analitycs",
-      icon: "pi pi-shopping-cart",
+      icon: "pi pi-chart-line",
       command: () => {
         setVisibleLeft(false);
         navigate("/admin/analitycs");
@@ -89,11 +113,11 @@ export const AdminMainPage = () => {
     },
     {
       label: "Charts",
-      icon: "pi pi-fw pi-pencil",
+      icon: "pi pi-chart-line",
       items: [
         {
           label: "Line",
-          icon: "pi pi-tag",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/line");
@@ -101,7 +125,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Area",
-          icon: "pi pi-tags",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/area");
@@ -109,7 +133,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Bar",
-          icon: "pi pi-tag",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/bar");
@@ -117,7 +141,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Composed",
-          icon: "pi pi-tags",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/composed");
@@ -125,7 +149,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Funnel",
-          icon: "pi pi-tag",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/funnel");
@@ -133,7 +157,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Pie",
-          icon: "pi pi-tags",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/pie");
@@ -141,7 +165,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Radar",
-          icon: "pi pi-tags",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/radar");
@@ -149,7 +173,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Radial",
-          icon: "pi pi-tag",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/radial");
@@ -157,7 +181,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Sankey",
-          icon: "pi pi-tags",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/sankey");
@@ -165,7 +189,7 @@ export const AdminMainPage = () => {
         },
         {
           label: "Tree",
-          icon: "pi pi-tags",
+          icon: "pi pi-chart-line",
           command: () => {
             setVisibleLeft(false);
             navigate("/admin/tree");

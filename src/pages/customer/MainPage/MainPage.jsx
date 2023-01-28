@@ -7,6 +7,9 @@ import WhyUs from "./WhyUs/WhyUs";
 import Services from "./Services/Services";
 import MainInfoHome from "./MainInfo/MainInfo";
 import EncourageUser from "./EncourageUser/EncourageUser";
+import ExtraCards from "./ExtraCards/ExtraCards";
+import PixelArt from "./PixelArt/PixelArt";
+import NewArrivals from "./NewArrivals/NewArrivals";
 
 const MainPage = () => {
   return (
@@ -17,7 +20,10 @@ const MainPage = () => {
       <Products />
       <HomeExtras />
       <Services />
+      <NewArrivals />
       <WhyUs />
+      <ExtraCards />
+      <PixelArt />
       <EncourageUser />
     </div>
   );

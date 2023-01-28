@@ -7,7 +7,7 @@
     text-align: center;
     padding: 100px;
     gap: 3em;
-
+    position: relative;
 
     &_title{
         font-size: 3rem;
@@ -20,7 +20,18 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap: 1.5rem;
+    gap: 2.5rem;
     justify-content: center;
     align-items: center;
+
+    
+}
+
+
+.layer10{
+    z-index: -1;
+    position: absolute;
+    top: 170px;
+    left: 0;
+    background-image: url("../../../../assets/svg/layout10.svg");
 }

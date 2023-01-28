@@ -1,0 +1,42 @@
+.coupon-container{
+    display: flex;
+    flex-direction: row;
+   /* width: 100%;*/
+    gap: 10px;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    input{
+        padding: 15px!important;
+        border-radius: 10px!important;
+        border-style: none!important;
+        background-color: rgba(133, 180, 106, 0.4901960784)!important;
+        color: white!important;
+        font-size: 1.2rem!important;
+        font-weight: bold!important;
+        font-family: "Montserrat", sans-serif!important;
+    }
+    
+    ::-webkit-input-placeholder{
+        color: #233741!important;
+        font-family: "Montserrat", sans-serif!important;
+    }
+    .validar-btn{
+        padding: 15px!important;
+        border-radius: 8px!important;
+        background-color: #A1FF69!important;
+        color: #13252F!important;
+
+    }
+    .validar-btn:hover{
+        cursor: pointer!important;
+        background-color: #13252F!important;
+        color: #A1FF69!important;
+        border-style: solid!important;
+        border-color: #A1FF69!important;
+    }
+    .mesasge-container{
+        text-align: center;
+    }
+}
+
+    
