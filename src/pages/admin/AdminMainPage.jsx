@@ -80,6 +80,30 @@ export const AdminMainPage = () => {
       },
     },
     {
+      label: "Text Editor",
+      icon: "pi pi-shopping-cart",
+      command: () => {
+        setVisibleLeft(false);
+        navigate("/admin/text-editor");
+      },
+    },
+    {
+      label: "Todo",
+      icon: "pi pi-shopping-cart",
+      command: () => {
+        setVisibleLeft(false);
+        navigate("/admin/todo");
+      },
+    },
+    {
+      label: "Calendar",
+      icon: "pi pi-shopping-cart",
+      command: () => {
+        setVisibleLeft(false);
+        navigate("/admin/calendar");
+      },
+    },
+    {
       label: "Analitycs",
       icon: "pi pi-shopping-cart",
       command: () => {
