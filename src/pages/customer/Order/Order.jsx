@@ -75,8 +75,9 @@ export const Order = () => {
                                 </div>
                             </div>
                             <div className='cart__actions'>
-                                <Button label="Cancelar Orden" className="p-button-danger __action" />
-                                <Button style={{backgroundColor:'#A1FF60'}} label="Marcar como recibida" className="p-button-success __action" />
+                                <Button label="Cancelar Orden" className="p-button-danger" />
+                                <Button style={{backgroundColor:'#A1FF60'}} label="Marcar como recibida" className="p-button-success" />
+                                <Button label="Imprimir recibo" className="p-button-secondary" />
                             </div>
                         </div>
                     </Fieldset>

@@ -109,16 +109,16 @@ hr{
 
 }
 .cart__actions{
+    margin-top: 40px;
     color: white;
     top:0;
     right:0;
-    position: absolute;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap:5px;
     @media (max-width: 800px) {
-        width: 20%;
-        height: 20%;
+        width: auto;
+        height: auto;
         font-size: 2px !important;
     }
 }
