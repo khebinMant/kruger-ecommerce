@@ -10,6 +10,7 @@ export const postOrder= async (order,currentUserId)=>{
     // };
 
     try{
+        console.log(order)
         // const resp = await backEndApi.post(`/orders/user/${currentUser.id}`,order, config)
         const resp = await backEndApi.post(`/orders/user/${currentUserId}`,order)
         return resp.data
