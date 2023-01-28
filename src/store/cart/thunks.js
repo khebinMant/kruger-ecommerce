@@ -14,7 +14,7 @@ export const startAddItemToCart = (item) =>{
     }
 }
 
-export const startCreateOrder = (shipmentAddress) =>{
+export const startCreateOrder = (shipmentAddress,cuponId= null,orderSubTotal) =>{
   
     return async (dispatch, getState)=>{
         
@@ -24,8 +24,12 @@ export const startCreateOrder = (shipmentAddress) =>{
 
         let _order = {
             ...getState().cart.cart,
-            addressId: shipmentAddress.id
+            addressId: shipmentAddress.id,
+            coupon: cuponId,
+            subTotal:orderSubTotal
         }
+
+        console.log(_order);
 
         const response = await Promise.resolve(postOrder(_order,currentUser.id));
         console.log(response);
