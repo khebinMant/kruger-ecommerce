@@ -12,6 +12,8 @@ import { setCurrentUser } from '../../../store/user/userSlice';
 import { addAddress } from '../../../helpers/users/addAddress';
 import { changePassword } from '../../../helpers/users/changePassword';
 import { Dropdown } from 'primereact/dropdown';
+import { Toast } from 'primereact/toast';
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 
 
 const Profile = () => {
@@ -24,10 +26,11 @@ const Profile = () => {
 
     const [userDirections, setUserDirections] = useState([]);
     const[city,setCity]=useState();
-    const [selectedAddress,setSelectedAddress]=useState();
 
     const photoRef = useRef(null);
     const [profilePhoto, setProfilePhoto] = useState();
+
+    const toast=useRef(null);
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -46,14 +49,10 @@ const Profile = () => {
     }, [user])
 
     function setUserPhoto (){
-        console.log(user);
-
         if (user && user.imageUrl) {
-            console.log(" not null");
             setProfilePhoto(user.imageUrl)
         } else {
             photoRef.current.src = defaultUserPhoto;
-            console.log("null");
         }
     }
 
@@ -64,12 +63,18 @@ const Profile = () => {
     }
 
     function setResumenofAddresses (){
+        let i=-1;
         const resumen=user.addresses.map((it)=>{
+            i=i+1;
             return {
-                id: it.id,
+                id: i,
                 name:it.province+" "+it.city+" "+it.address};
+                
            });
-           console.log(resumen);
+           resumen.push({
+            id:-1200,
+            name:"[+] Agrega una nueva direcion"
+           });
             setUserDirections(resumen);
     }
 
@@ -82,17 +87,16 @@ const Profile = () => {
             newPassword: e.target[2].value
         }
         //send the request to the server endpoint
-        console.log(changeCredentialsRequest, user);
         const resp = await changePassword(changeCredentialsRequest, user.id);
         document.getElementById("formPersonal").reset();
         if (resp != null) {
-            console.log("success");
+            showWarning("success",'Los cambios se han guardados',"",3000);
         } else {
-            console.log("failed");
+            showWarning("warn",'Porfavor asegurate de los datos ingresados',"",3000);
         }
     }
 
-  async  function changeUbication(e) {
+  async  function handleSubmitUbication(e) {
         e.preventDefault();
         const address =
         {
@@ -103,36 +107,48 @@ const Profile = () => {
             "isMatriz": e.target[4].checked ,
             "status":"CREATED"
         };
-        console.log(e.target[4].checked);
-
         let updatedUser = structuredClone(user);
-        replaceAddressWithnewOne(updatedUser,address);
-        console.log(updatedUser);
+         //si este direcion es matriz entonces el resto de direcciones no pueden ser matriz
+         if(address.isMatriz){
+            updatedUser.addresses.forEach(it=>it.isMatriz=false);
+        }
+        //si el id del item selecionado del DropDown es menos que 0
+        //entonces es agregar nueva direcion 
+        if(city.id<0){
+            updatedUser.addresses.push(address);
+        }else{
+            updatedUser.addresses[city.id]=address;
+        }
         //send the user with updated ubication
-
         const resp =await addAddress(updatedUser);
+        updateLocalStorage(updatedUser,resp);
+
+    }
+
+    const updateLocalStorage=(updatedUser,resp)=>{
+        
         if (resp != null) {
             localStorage.setItem("currentUser", JSON.stringify(updatedUser));
             dispatch(setCurrentUser(updatedUser));
             document.getElementById("formPersonal").reset();
-            console.log("success");
+            setCity(null);
+            //show success message
+           showWarning("success",'Los cambios se han guardados',"",3000);
         } else {
-            console.log("failed");
+            //show failed message
+           showWarning("warn",'No se pudo proccessar la actualizacion',"",3000);
         }
+    }
 
+    const showWarning=(warningType,summary,details="",miliSeconds)=>{
+        
+        toast.current.show({ severity: warningType, summary: summary,
+            detail:details, life: miliSeconds });
     }
-    function replaceAddressWithnewOne(updatedUser,address){
-        updatedUser.addresses.find((obj,index)=>{
-            if(obj.id==selectedAddress.id){
-                updatedUser.addresses[index]=address;
-                console.log("object replaced with new one ");
-                return true;
-            }
-        })
-    }
+  
 
     async function handleUpdatePersonalInfo(e) {
-
+        e.preventDefault();
         let updatedUser = structuredClone(user);
         updatedUser.firstName = personalform.current[0].value ? personalform.current[0].value : user.firstName;
         updatedUser.lastName = personalform.current[1].value ? personalform.current[1].value : user.lastName;
@@ -142,16 +158,9 @@ const Profile = () => {
 
 
         const resp = await updatePersonalInfo(updatedUser);
-        if (resp != null) {
-            localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-            dispatch(setCurrentUser(updatedUser));
-            document.getElementById("formPersonal").reset();
-            console.log("success");
-        } else {
-            console.log("failed");
-        }
-
-
+        updateLocalStorage(updatedUser,resp);
+      
+        document.getElementById("formPersonal").reset();
     }
 
     function onResult(imageFile) {
@@ -163,28 +172,52 @@ const Profile = () => {
         ConvertImageToBase64(e.target.files[0], onResult);
     }
     function onUbiacitonSelected(e){
-        console.log(e);
-        let selectedItem=getAddressSelectedByID(e.value.id);
         setCity(e.target.value);
-        setSelectedAddress(e.value);
-        //fill the form inputs with selected address info
-        ubicationForm.current[0].value=selectedItem.province;
-        ubicationForm.current[1].value=selectedItem.city;
-        ubicationForm.current[2].value=selectedItem.street;
-        ubicationForm.current[3].value=selectedItem.address;
-        ubicationForm.current[4].checked=selectedItem.isMatriz;
-        console.log(selectedItem);
+        
+        if(e.value.id>=0){
+            let selectedItem=user.addresses[e.value.id];
+            //fill the form inputs with selected address info
+            ubicationForm.current[0].value=selectedItem.province;
+            ubicationForm.current[1].value=selectedItem.city;
+            ubicationForm.current[2].value=selectedItem.street;
+            ubicationForm.current[3].value=selectedItem.address;
+            ubicationForm.current[4].checked=selectedItem.isMatriz;
+        }else{
+            //caso que el usuario quiere agregar una nueva direccion
+            document.getElementById("formPersonal").reset();
+        }
+       
 
     }
 
-    function getAddressSelectedByID(id){
-        return user.addresses.find(item=> item.id==id);
+    function handleDeleteUbication(){
+        if(user.addresses[city.id].isMatriz){
+            showWarning("warn","Este es tu direccion matriz, porfavor marca otro direcion como matriz o agrega una direccion matriz","",5000);
+        }else{
+            confirmDialog({
+                message: 'Estas seguro de eliminar la ubicacion?',
+                header: 'Confirma la eliminacion de la ubicacion',
+                icon: 'pi pi-exclamation-triangle',
+                accept,
+                reject
+              });  
+        }
+        
     }
+const accept=()=>{
+    const updatedUser=structuredClone(user);
+    updatedUser.addresses.splice(city.id,1);
+    updateLocalStorage(updatedUser);
+    
+}
+const reject=()=>{
 
+}
     return (
 
         <div>
-
+  <Toast ref={toast}/>
+  <ConfirmDialog />
             <TabView activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}>
                 <TabPanel header="Personal">
                     <div className='personalProfile'>
@@ -212,15 +245,18 @@ const Profile = () => {
                             onChange={(e) => {onUbiacitonSelected(e)}}  optionLabel="name" placeholder="Elige ubicacion" />}
 
                         <br />
-                        <form onSubmit={changeUbication} id="formPersonal" ref={ubicationForm}>
+                        <form onSubmit={handleSubmitUbication} id="formPersonal" ref={ubicationForm}>
                             <input type="text" placeholder='Province' required /><br />
                             <input type="text" placeholder='City' required /><br />
                             <input type="text" placeholder='Street' required /><br />
                             <input type="text" placeholder='Address in detail' required /><br />
                             <div className='matriz-div'><p>Es matriz:</p><input type="checkbox"/></div>
+                       
                             <input className='submit' type="submit" value="Actualizar direccion" />
+                          
                             
                         </form>
+                        {city?.id>=0&&<button className='delete-direccion-btn' onClick={handleDeleteUbication}>Eliminar direccion</button>}
                     </div>
                 </TabPanel>
                 <TabPanel header="Credentials">
