@@ -146,12 +146,11 @@ const SearchProductPage = () => {
           :
           <>
             {products.map((item) => (
-              item.type === 'PRODUCT'?
-              <Product item={item} />:
-              <>
-                <br/>
-                <Service/>
-              </>
+              item.type === 'PRODUCT'
+              ?
+              <Product key={item.id} item={item} />
+              :
+              <Service key={item.id} item={item}/>
             ))}
           </>
         }
