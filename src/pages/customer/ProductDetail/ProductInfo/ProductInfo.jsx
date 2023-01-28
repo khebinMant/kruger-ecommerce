@@ -42,7 +42,7 @@ export const ProductInfo = ({item}) => {
     };
 
     const showSuccess = () => {
-        toast.current.show({severity:'success', summary: 'Agregado', detail:'Prodcuto agregado al carrito', life: 3000});
+        toast.current.show({severity:'success', summary: 'Agregado', detail:'Teléfono agregado al carrito', life: 3000});
     }
 
     const addItemToCart = () =>{

@@ -19,7 +19,10 @@ const Service = ({item}) => {
     }
     dispatch(startAddItemToCart(_product));
     showSuccess()
-}
+  }
+  const showSuccess = () => {
+    toast.current.show({severity:'success', summary: 'Agregado', detail:'Plan agregado al carrito', life: 3000});
+  }
   return (
     <div class="plan-card">
       <Toast ref={toast} position="top-left" />

@@ -28,7 +28,10 @@ let emptyProduct = {
   price: "",
   category: null,
   youtubeLink:"",
-  status:null
+  status:null,
+  brand:"",
+  weight:0,
+  processor:''
 };
 
 
@@ -216,7 +219,6 @@ export const ProductsView = () => {
               created: new Date()
             }
           ]
-          //lo mismo para el link de youtube
         }
         else{
           _product.images = newImages
@@ -620,6 +622,48 @@ export const ProductsView = () => {
             />
             {submitted && !product.price && (
               <small className="p-error">El Precio es obligatoria.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="brand">Marca</label>
+            <InputText
+              id="brand"
+              value={product.brand}
+              onChange={(e) => onInputChange(e, "brand")}
+              className={classNames({
+                "p-invalid": submitted && !product.brand,
+              })}
+            />
+            {submitted && !product.brand && (
+              <small className="p-error">La marca es obligatoria.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="weight">Peso(gr)</label>
+            <InputText
+              id="weight"
+              value={product.weight}
+              onChange={(e) => onInputChange(e, "weight")}
+              className={classNames({
+                "p-invalid": submitted && !product.weight,
+              })}
+            />
+            {submitted && !product.weight && (
+              <small className="p-error">El peso es obligatorio.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="processor">Procesador</label>
+            <InputText
+              id="processor"
+              value={product.processor}
+              onChange={(e) => onInputChange(e, "processor")}
+              className={classNames({
+                "p-invalid": submitted && !product.processor,
+              })}
+            />
+            {submitted && !product.processor && (
+              <small className="p-error">El Procesador es obligatorio.</small>
             )}
           </div>
           <div className="field">
