@@ -26,7 +26,7 @@ const Products = () => {
     <Loading />
   ) : (
     <section className="products_container">
-      <h2 className="products_container_title">Top Products</h2>
+      <h2 className="products_container_title">Top Productos</h2>
       <section className="products_main">
         {products.map((item) => (
           <Product item={item} />

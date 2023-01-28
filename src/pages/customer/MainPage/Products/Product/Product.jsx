@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Product.scss";
-import serviceBack from "../../../../../assets/serviceBack.png"
+import serviceBack from "../../../../../assets/internety-mobil.svg"
 const Product = ({ item }) => {
 
   return (

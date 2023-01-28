@@ -14,8 +14,7 @@ const Coupon = ({onCouponActivated}) => {
 
     const btnRef=useRef(null);
     const inputRef=useRef(null);
-    
-    
+       
 
     function handleOnchange(e){
         setCuponStr(e.target.value);
