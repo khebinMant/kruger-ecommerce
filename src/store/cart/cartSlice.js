@@ -26,6 +26,9 @@ export const cartSlice = createSlice({
         updateTotalPrice:(state,action)=>{
             state.cart.totalPrice -= action.payload.price
         },
+        setTotalPriceWithIva:(state,action)=>{
+            state.cart.totalPrice=action.payload.price
+        },
         updateItemQuantity:(state,action)=>{
             state.cart.items.map((item) =>{
                 if(item.productId === action.payload.item.productId){
@@ -56,4 +59,4 @@ export const cartSlice = createSlice({
 });
 
 
-export const { addItemToCart, deleteItemToCart , updateTotalPrice, resetCart, setCurrentCart, updateItemQuantity, setShipmentAddress, setSearchedProduct, setSelectedProduct} = cartSlice.actions;
+export const { addItemToCart, deleteItemToCart , updateTotalPrice,setTotalPriceWithIva, resetCart, setCurrentCart, updateItemQuantity, setShipmentAddress, setSearchedProduct, setSelectedProduct} = cartSlice.actions;
