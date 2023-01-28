@@ -61,7 +61,7 @@ export const ProductInfo = ({item}) => {
 
           <div className="productinfo_details">
             <div className="big-img">
-              <img className='animate__animated animate__fadeIn' src={product.images[indexT].url || product.images[indexT].uri} alt="" />
+              <img className='animate__animated animate__fadeIn' src={product.images[indexT]?(product.images[indexT].url || product.images[indexT].uri):'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Flag_of_Unknow.svg/800px-Flag_of_Unknow.svg.png'} alt="" />
             </div>
             <DetailsThumb
               images={product.images}

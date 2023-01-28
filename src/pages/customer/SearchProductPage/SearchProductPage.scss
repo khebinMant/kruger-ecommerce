@@ -159,6 +159,12 @@
   }
 }
 
+.pagination__item__selected{
+  background-color: var(--primary-color);
+
+}
+
+
 .pagination__item:not(:last-child) {
   /* Right border */
   border-right: 1px solid var(--primary-color);

@@ -26,7 +26,7 @@ const AllProducts = () => {
         <Loading />
       ) : (
         <div className="show_products">
-          <h2 className="show_products_title">All Products</h2>
+          <h2 className="show_products_title">Todos los Productos</h2>
           <div className="show_products_container">
             {products.map((item) => (
               <Product key={item.id} item={item} />

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Checking } from "../../../components/Checking";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Column } from "primereact/column";
@@ -14,6 +13,7 @@ import { Dropdown } from "primereact/dropdown";
 import '../AdminMainPage.css';
 import { getReviews } from "../../../helpers/reviews/getReviews";
 import { deleteReview } from "../../../helpers/reviews/deleteReview";
+import Loading from "../../../components/Loading";
 
 export const ReviewsView = () => {
 
@@ -222,7 +222,7 @@ export const ReviewsView = () => {
     <>
     {
       isLoading ? (
-      <Checking />
+      <Loading />
     ) : (
       <div className="datatable-crud-demo">
         <Toast ref={toast} />

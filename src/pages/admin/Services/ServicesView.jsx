@@ -5,7 +5,6 @@ import { postProduct } from "../../../helpers/products/postProduct";
 import { getAllCategories } from "../../../helpers/categories/getAllCategories";
 import { deleteProduct } from "../../../helpers/products/deleteProduct";
 import { putProduct } from "../../../helpers/products/putProduct";
-import { Checking } from "../../../components/Checking";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Column } from "primereact/column";
@@ -18,6 +17,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
 import { Checkbox } from "primereact/checkbox";
 import '../AdminMainPage.css';
+import Loading from "../../../components/Loading";
 
 let emptyProduct = {
   name: "",
@@ -342,7 +342,7 @@ export const ServicesView = () => {
     <>
     {
       isLoading ? (
-      <Checking />
+      <Loading />
     ) : (
       <div className="datatable-crud-demo">
         <Toast ref={toast} />

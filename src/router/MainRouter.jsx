@@ -38,6 +38,9 @@ import RadarView from "../pages/admin/ShowCharts/RadarView";
 import RadialView from "../pages/admin/ShowCharts/RadialView";
 import SankeyView from "../pages/admin/ShowCharts/SankeyView";
 import TreeView from "../pages/admin/ShowCharts/TreeView";
+import TextEditor from "../pages/admin/TextEditor/TextEditor";
+import ToDo from "../pages/admin/ToDo/ToDo";
+import CalendarComponent from "../pages/admin/Calendar/CalendarComponent";
 
 export const MainRouter = () => {
   const dispatch = useDispatch();
@@ -82,6 +85,9 @@ export const MainRouter = () => {
         <Route path="carts" element={<CartsView />} />
         <Route path="reviews" element={<ReviewsView />} />
         <Route path="customers" element={<CustomersView />} />
+        <Route path="calendar" element={<CalendarComponent />} />
+        <Route path="todo" element={<ToDo />} />
+        <Route path="text-editor" element={<TextEditor />} />
       </Route>
     </Routes>
   );

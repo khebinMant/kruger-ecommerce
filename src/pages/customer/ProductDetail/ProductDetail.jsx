@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router";
+import Loading from "../../../components/Loading";
 import { getProduct } from "../../../helpers/products/getProduct";
 import { getReviews } from "../../../helpers/reviews/getReviews";
 import { setSelectedProduct } from "../../../store/cart/cartSlice";
@@ -32,7 +33,7 @@ const ProductDetail = () => {
     <>
       {
         isLoading? 
-        <p>estoy cargando</p>
+        <Loading/>
         :
         <section className="productDetail">
           <div className="productDetail_main">
@@ -42,7 +43,7 @@ const ProductDetail = () => {
               <iframe
                 width="90%"
                 height="400px"
-                src={product.youtubeLink}
+                src={product.youtubeLink.startsWith("http")?product.youtubeLink:'https://www.youtube.com/embed/BvdrrLtUWs8'}
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

@@ -1,0 +1,17 @@
+.texteditor{
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-editor-container{
+    width: 90%;
+    
+}
+
+.p-editor-content{
+    height: 500px !important;
+}

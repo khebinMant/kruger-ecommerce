@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Checking } from "../../../components/Checking";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Column } from "primereact/column";
@@ -13,6 +12,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
 import '../AdminMainPage.css';
 import { getAllUsers } from "../../../helpers/users/getAllUsers";
+import Loading from "../../../components/Loading";
 
 let emptyUser = {
   name: "",
@@ -242,7 +242,7 @@ export const CustomersView = () => {
     <>
     {
       isLoading ? (
-      <Checking />
+      <Loading />
     ) : (
       <div className="datatable-crud-demo">
         <Toast ref={toast} />
