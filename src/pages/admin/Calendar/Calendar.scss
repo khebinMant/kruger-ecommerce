@@ -1,0 +1,16 @@
+.calendar{
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.p-calendar{
+    width: 90%;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+}
