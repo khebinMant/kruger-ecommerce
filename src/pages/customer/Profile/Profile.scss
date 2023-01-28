@@ -75,4 +75,21 @@
     input:focus {
         outline: none;
     }
+    .delete-direccion-btn{
+        padding: 15px;
+        margin-bottom: 8px;
+        border-style: none;
+        background-color: red;
+        color: #1E1E1E;
+        border-radius: 10px;
+        
+    }
+    .delete-direccion-btn:hover{
+        background-color: transparent;
+        border-style: solid;
+        border-color: red;
+        color: red;
+        cursor: pointer;
+    }
+
 }

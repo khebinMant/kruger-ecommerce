@@ -30,8 +30,6 @@ const Payment = () => {
   const[cartaFinalPrice,setCartaFinalPrice]=useState(0);
   const [cartaSubtotal, setCartaSubtotal] = useState(0);
   const [priceAfterDiscount, setPriceAfterDiscount] = useState(0);
-
-  const [order,setOrder]=useState(null);
  
 
 
@@ -58,13 +56,9 @@ const Payment = () => {
     }
     dispatch(startCreateOrder(chosenAddress, coupon? coupon : null, cartaSubtotal));
     //resetear todos los campos y enviar el usuario al home page
-    //resetStates();
+    resetStates();
     toast.current.show({ severity: 'success', summary: 'Compra realizada', detail: 'Tu compra se ha efectuado correctamente', life: 3000 });
-    const orderCreated={...cart,
-      address:chosenAddress,
-      usedCoupon:coupon? coupon : null,
-      orderSubTotal:cartaSubtotal};
-    setOrder(orderCreated);
+
 
   }
 
@@ -79,9 +73,7 @@ const resetStates=()=>{
   document.getElementById("totalPrice").style.textDecorationLine = "none";
   document.getElementById("totalPrice").style.color = "#A1FF69";
   setPriceAfterDiscount(0);
-  setTimeout(()=>{
-    navigation("/")
-  },1500)
+
 
 }
 
