@@ -17,124 +17,78 @@ import Loading from "../../../components/Loading";
 const SearchProductPage = () => {
 
   const { parameter, from, to } = useSelector(state => state.search)
-  const [pageNumber, setPageNumber] = useState(1)
-  const [currentPage, setCurrentPage] = useState(0)
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [productsPerPage, setProductsPerPage] = useState(4)
   const [name, setName] = useState('')
   const dispath = useDispatch();
   
   useEffect(() => {
     getData();
-  }, [parameter, currentPage, from, to]);
+  }, [parameter, from, to]);
 
   const getData = async() =>{
-    setIsLoading(true);
-    setPageNumber(1)
-    let responsePaginatedProducts;
-    let responseProducts;
-    let pageN;
-      switch (parameter) {
-        case 'all':
-          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(productsPerPage,currentPage,-1));
-          responseProducts = await Promise.resolve(getAllProducts())
-          setProducts(responsePaginatedProducts)
-          setPageNumber(responseProducts.length / productsPerPage)
+    let response;
+    switch (parameter) {
+      case 'all':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response);
+        setIsLoading(false)       
+        break;
+      case 'products':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.type === 'PRODUCT'));
+        setIsLoading(false)       
+        break;
+      case 'services':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.type === 'SERVICE'));
+        setIsLoading(false)       
+        break;
+      case 'low':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.category.name === 'Gama Baja'));
+        setIsLoading(false)       
+        break;
+      case 'mid':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.category.name === 'Gama Media'));
+        setIsLoading(false)       
+        break;
+      case 'high':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(prod => prod.category.name === 'Gama Alta'));
+        setIsLoading(false)       
+        break;
+      case 'price':
+        response = await Promise.resolve(getAllProducts()) 
+        setProducts(response.filter(product => product.price>= from && product.price<= to))
+        setIsLoading(false)       
+        break;
+      default:
+        break;
+    }
 
-          setIsLoading(false);
-          break;
-      
-        case 'low':
-          responseProducts = await Promise.resolve(getProductsCategory(3))
-          pageN = responseProducts.length / productsPerPage;
-          if(pageN<=currentPage){
-            setCurrentPage(0)
-          }
-          else{
-            setPageNumber(pageN)
-          }
-          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(productsPerPage,currentPage,3));
-          setProducts(responsePaginatedProducts)
-          setIsLoading(false);
-          break;
-      
-        case 'mid':
-          responseProducts = await Promise.resolve(getProductsCategory(2))
-          pageN = responseProducts.length / productsPerPage;
-          if(pageN<=currentPage){
-            setCurrentPage(0)
-          }
-          else{
-            setPageNumber(pageN)
-          }
-          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(productsPerPage,currentPage,2));
-          setProducts(responsePaginatedProducts)
-          setIsLoading(false);
-          break;
-      
-        case 'high':
-          responseProducts = await Promise.resolve(getProductsCategory(1))
-          pageN = responseProducts.length / productsPerPage;
-          if(pageN<=currentPage){
-            setCurrentPage(0)
-          }
-          else{
-            setPageNumber(pageN)
-          }
-          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(productsPerPage,currentPage,1));
-          setProducts(responsePaginatedProducts)
-          setIsLoading(false);
-          break;
-
-        case 'products':
-          responseProducts = await Promise.resolve(getAllProducts())
-          pageN =responseProducts.filter(product => product.type === 'PRODUCT' ).length / productsPerPage;
-          if(pageN<=currentPage){
-            setCurrentPage(0)
-          }
-          else{
-            setPageNumber(pageN)
-          }
-          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(productsPerPage,currentPage,-1));
-          setProducts(responsePaginatedProducts.filter(product => product.type === 'PRODUCT'))
-          setIsLoading(false);
-          break;
-
-        case 'services':
-          responseProducts = await Promise.resolve(getProductsCategory(productsPerPage))
-          pageN = responseProducts.filter(product => product.type === 'SERVICE' ).length / productsPerPage
-          if(pageN<=currentPage){
-            setCurrentPage(0)
-          }
-          else{
-            setPageNumber(pageN)
-          }
-          responsePaginatedProducts = await Promise.resolve(getProductsPaginatedAndSorted(productsPerPage,currentPage,productsPerPage));
-          setProducts(responsePaginatedProducts.filter(product => product.type === 'SERVICE'))
-          setIsLoading(false);
-          break;
-        case 'price':
-          responseProducts = await Promise.resolve(getAllProducts())
-          let filteredByPrice = responseProducts.filter(product => product.price>= from && product.price<= to)
-          setProducts(filteredByPrice)
-          setIsLoading(false);
-          break;
-
-        default:
-      }
   }
-  const onChangeName = async ()=>{
+  const onChangeName = async (e)=>{
+    let response;
+    setName(e.target.value.toLowerCase()); 
+    if(e.target.value.trim().length === 0){
+      response = await Promise.resolve(getAllProducts()) 
+      setProducts(response)
+      setIsLoading(false)       
+    }
+    else{
+      response = await Promise.resolve(getAllProducts()) 
+      setProducts(response.filter(prod => prod.name.toLowerCase().includes(name.toLowerCase())))
+      setIsLoading(false)       
+    }
+  }
 
-      let responseProducts = await Promise.resolve(getAllProducts())
-      if(name){
-        let filteredByName = responseProducts.filter(product => product.name.includes(name))
-        setProducts(filteredByName)
-      }
-      else{
-          dispath(setParatemer('all'))
-      }
-      setIsLoading(false);
+  const clearSearch = async()=>{
+    setName('')
+    let response = await Promise.resolve(getAllProducts()) 
+    setProducts(response)
+    setIsLoading(false)    
   }
 
   return (
@@ -148,7 +102,7 @@ const SearchProductPage = () => {
             type="text"
             value={name}
             required=""
-            onChange={(e)=>{setName(e.target.value); onChangeName()}}
+            onChange={onChangeName}
             placeholder="Buscar producto"
             id="search"
           />
@@ -164,7 +118,7 @@ const SearchProductPage = () => {
               </g>
             </svg>
           </div>
-          <button onClick={()=>setName('')} class="searchpage_close-btn" type="reset">
+          <button onClick={clearSearch} class="searchpage_close-btn" type="reset">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -187,7 +141,6 @@ const SearchProductPage = () => {
 
       <div className="searchpage_results">
         {
-          parameter === 'price' || parameter === 'name'?
           isLoading?
           <Loading/>
           :
@@ -195,45 +148,27 @@ const SearchProductPage = () => {
             {products.map((item) => (
               item.type === 'PRODUCT'?
               <Product item={item} />:
-              item.type === 'SERVICE'?
-              <Service/>:
-              <></>
-            ))}
-          </>
-          :
-          isLoading?
-          <Loading/>
-          :
-          <>
-            {products.map((item) => (
-              item.type === 'PRODUCT'?
-              <Product item={item} />:
-              item.type === 'SERVICE'?
-              <Service/>:
-              <></>
+              <>
+                <br/>
+                <Service/>
+              </>
             ))}
           </>
         }
       </div>
       <div class="pagination">
-        {
-          isLoading && parameter!=='price'  && name === ''?
-          <Loading/>
-          :
-          <>
-              {
-                Array.apply(null, { length: pageNumber }).map((e, i) => (
-                  <div 
-                    onClick={()=>setCurrentPage(i)} 
-                    class="pagination__item"
-                    style={currentPage===i?{backgroundColor:'#A1FF69', color:'black'}:{}}
-                  >
-                    {i+1}
-                  </div>
-                ))
-              }
-          </>
-        }
+        <div class="pagination__item">
+          1
+        </div>
+        <div class="pagination__item">
+          2
+        </div>
+        <div class="pagination__item">
+          3
+        </div>
+        <div class="pagination__item">
+          4
+        </div>
       </div>
 
     </div>
