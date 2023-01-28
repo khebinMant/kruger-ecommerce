@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { useNavigate } from "react-router-dom";
 import { setTotalPriceWithIva, updateTotalPrice } from "../../../store/cart/cartSlice";
-import Recipet from "./Recipet/Recipet";
+
 
 const Payment = () => {
 
@@ -170,7 +170,6 @@ const resetStates=()=>{
 
   return (
     <section class="cart__checkout">
-      {order&&<Recipet order={order}/>}
       <Toast ref={toast} />
       <ConfirmDialog />
       <div class="cart__order">
