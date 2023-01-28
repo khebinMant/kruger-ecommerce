@@ -159,16 +159,14 @@ const SearchProductPage = () => {
           <Loading />
         ) : (
           <>
-            {products.map((item) =>
-              item.type === "PRODUCT" ? (
-                <Product item={item} />
-              ) : (
-                <>
-                  <br />
-                  <Service />
-                </>
-              )
-            )}
+            {products.map((item) => (
+              item.type === 'PRODUCT'
+              ?
+              <Product key={item.id} item={item} />
+              :
+              <Service key={item.id} item={item}/>
+            ))}
+
           </>
         )}
       </div>

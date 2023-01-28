@@ -24,7 +24,8 @@ async function validarCupon(){
     console.log(cuponStr);
     const resp=await validarCupones(cuponStr); 
     console.log(resp);
-        if(resp){
+    console.log(resp);
+        if(resp && resp.status=="NOT_USED"){
             setMessageState(true);
             setMessage("Cupon has been activated!");
             onCouponActivated(resp);

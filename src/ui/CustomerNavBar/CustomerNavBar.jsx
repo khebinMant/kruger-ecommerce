@@ -238,7 +238,7 @@ const CustomerNavBar = () => {
                             ? "header__navlink active-link"
                             : "header__navlink"
                         }
-                        to="/profile"
+                        to="/orders"
                       >
                         <p>Mis ordenes</p>
                       </NavLink>

@@ -41,6 +41,8 @@ import TreeView from "../pages/admin/ShowCharts/TreeView";
 import TextEditor from "../pages/admin/TextEditor/TextEditor";
 import ToDo from "../pages/admin/ToDo/ToDo";
 import CalendarComponent from "../pages/admin/Calendar/CalendarComponent";
+import ProtectedAdminRoutes from "./ProtectedAdminRoutes";
+import { Order } from "../pages/customer/Order/Order";
 
 export const MainRouter = () => {
   const dispatch = useDispatch();
@@ -64,31 +66,33 @@ export const MainRouter = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/orders" element={<Order />} />
       </Route>
-
-      <Route path="/admin" element={<AdminMainPage />}>
-        <Route path="" element={<ProductsView />} />
-        <Route path="analitycs" element={<AnalitycsView />} />
-        <Route path="line" element={<LineView />} />
-        <Route path="area" element={<AreaView />} />
-        <Route path="bar" element={<BarView />} />
-        <Route path="composed" element={<ComposedView />} />
-        <Route path="funnel" element={<FunnelView />} />
-        <Route path="pie" element={<PieView />} />
-        <Route path="radar" element={<RadarView />} />
-        <Route path="radial" element={<RadialView />} />
-        <Route path="sankey" element={<SankeyView />} />
-        <Route path="tree" element={<TreeView />} />
-        <Route path="admins" element={<AdminsView />} />
-        <Route path="products" element={<ProductsView />} />
-        <Route path="services" element={<ServicesView />} />
-        <Route path="coupons" element={<CouponsView />} />
-        <Route path="carts" element={<CartsView />} />
-        <Route path="reviews" element={<ReviewsView />} />
-        <Route path="customers" element={<CustomersView />} />
-        <Route path="calendar" element={<CalendarComponent />} />
-        <Route path="todo" element={<ToDo />} />
-        <Route path="text-editor" element={<TextEditor />} />
+      <Route element={<ProtectedAdminRoutes />}>
+        <Route path="/admin" element={<AdminMainPage />}>
+          <Route path="" element={<ProductsView />} />
+          <Route path="analitycs" element={<AnalitycsView />} />
+          <Route path="line" element={<LineView />} />
+          <Route path="area" element={<AreaView />} />
+          <Route path="bar" element={<BarView />} />
+          <Route path="composed" element={<ComposedView />} />
+          <Route path="funnel" element={<FunnelView />} />
+          <Route path="pie" element={<PieView />} />
+          <Route path="radar" element={<RadarView />} />
+          <Route path="radial" element={<RadialView />} />
+          <Route path="sankey" element={<SankeyView />} />
+          <Route path="tree" element={<TreeView />} />
+          <Route path="admins" element={<AdminsView />} />
+          <Route path="products" element={<ProductsView />} />
+          <Route path="services" element={<ServicesView />} />
+          <Route path="coupons" element={<CouponsView />} />
+          <Route path="carts" element={<CartsView />} />
+          <Route path="reviews" element={<ReviewsView />} />
+          <Route path="customers" element={<CustomersView />} />
+          <Route path="calendar" element={<CalendarComponent />} />
+          <Route path="todo" element={<ToDo />} />
+          <Route path="text-editor" element={<TextEditor />} />
+        </Route>
       </Route>
     </Routes>
   );
