@@ -3,6 +3,7 @@ import Product from "../MainPage/Products/Product/Product";
 import "./Allproducts.scss";
 import { getAllProducts } from "../../../helpers/products/getAllProducts";
 import Loading from "../../../components/Loading";
+import { motion } from "framer-motion";
 
 const AllProducts = () => {
   const [products, setProducts] = useState();
@@ -25,7 +26,12 @@ const AllProducts = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="show_products">
+        <motion.div
+          className="show_products"
+          initial={{ width: 0 }}
+          animate={{ width: "100%" }}
+          exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
+        >
           <h2 className="show_products_title">Todos los Productos</h2>
           <div className="show_products_container">
             {products.map((item) => (
@@ -33,7 +39,7 @@ const AllProducts = () => {
             ))}
           </div>
           <div className="spacer layer10"></div>
-        </div>
+        </motion.div>
       )}
     </>
   );

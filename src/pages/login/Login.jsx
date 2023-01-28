@@ -5,6 +5,7 @@ import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../../store/user/userSlice";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [todayDate, setTodayDate] = useState("");
@@ -109,7 +110,12 @@ const Login = () => {
   }
 
   return (
-    <div className="sign">
+    <motion.div
+      className="sign"
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
+    >
       <div className="sign_main">
         <input
           className="sign_check"
@@ -205,7 +211,7 @@ const Login = () => {
       </div>
 
       <div className="spacer layer3"></div>
-    </div>
+    </motion.div>
   );
 };
 

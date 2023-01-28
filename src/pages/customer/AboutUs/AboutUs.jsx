@@ -1,9 +1,15 @@
 import React from "react";
 import "./AboutUs.scss";
+import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <div className="aboutus">
+    <motion.div
+      className="aboutus"
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
+    >
       <div class="aboutus_card">
         <div class="aboutus_card-info">
           <div class="aboutus_card-avatar">
@@ -109,7 +115,7 @@ const AboutUs = () => {
         </ul>
       </div>
       <div className="spacer layer3"></div>
-    </div>
+    </motion.div>
   );
 };
 

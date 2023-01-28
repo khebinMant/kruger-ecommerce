@@ -1,10 +1,16 @@
 import React from "react";
 import Service from "../MainPage/Services/Service/Service";
 import "./AllServices.scss";
+import { motion } from "framer-motion";
 
 const AllServices = () => {
   return (
-    <div className="show_services">
+    <motion.div
+      className="show_services"
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
+    >
       <h2 className="show_services_title">Todo los Servicios</h2>
       <div className="show_services_container">
         <Service />
@@ -12,7 +18,7 @@ const AllServices = () => {
         <Service />
       </div>
       <div className="spacer layer10"></div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -9,9 +9,9 @@ import "./ProductDetail.scss";
 import { ProductInfo } from "./ProductInfo/ProductInfo";
 import RelatedProducts from "./RelatedProducts/RelatedProducts";
 import Reviews from "./Reviews/Reviews";
+import { motion } from "framer-motion";
 
 const ProductDetail = () => {
-
   const dispatch = useDispatch();
 
   const [product, setProduct] = useState();
@@ -22,28 +22,35 @@ const ProductDetail = () => {
     getSelectedProduct();
   }, []);
 
-
-  const getSelectedProduct = async() =>{
+  const getSelectedProduct = async () => {
     const responseProduct = await Promise.resolve(getProduct(params.id));
-    setProduct(responseProduct)
-    dispatch(setSelectedProduct(responseProduct))
+    setProduct(responseProduct);
+    dispatch(setSelectedProduct(responseProduct));
     setIsLoading(false);
-  }
+  };
   return (
     <>
-      {
-        isLoading? 
-        <Loading/>
-        :
-        <section className="productDetail">
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <motion.section
+          className="productDetail"
+          initial={{ width: 0 }}
+          animate={{ width: "100%" }}
+          exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+        >
           <div className="productDetail_main">
-            <ProductInfo item={product}/>
+            <ProductInfo item={product} />
 
             <div className="productDetail_video">
               <iframe
                 width="90%"
                 height="400px"
-                src={product.youtubeLink.startsWith("http")?product.youtubeLink:'https://www.youtube.com/embed/BvdrrLtUWs8'}
+                src={
+                  product.youtubeLink.startsWith("http")
+                    ? product.youtubeLink
+                    : "https://www.youtube.com/embed/BvdrrLtUWs8"
+                }
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -51,12 +58,12 @@ const ProductDetail = () => {
               ></iframe>
             </div>
 
-            <Reviews product={product}/>
+            <Reviews product={product} />
 
-            <RelatedProducts product={product}/>
+            <RelatedProducts product={product} />
           </div>
-        </section>
-      }
+        </motion.section>
+      )}
     </>
   );
 };

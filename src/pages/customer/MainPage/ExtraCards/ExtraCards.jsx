@@ -1,10 +1,25 @@
 import React from "react";
 import "./ExtraCards.scss";
+import { motion } from "framer-motion";
 
 const ExtraCards = () => {
+  const imgAnimate = {
+    offscreen: { y: 100, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", duration: 1 },
+    },
+  };
   return (
     <div className="extra_card">
-      <div class="card">
+      <motion.div
+        class="card"
+        initial={"offscreen"}
+        whileInView={"onscreen"}
+        viewport={{ once: false, amount: 0.3 }}
+        variants={imgAnimate}
+      >
         <div class="header">
           <div class="img-box">
             <i class="fa-solid fa-lock"></i>
@@ -17,7 +32,7 @@ const ExtraCards = () => {
             Absolutamente todas las transaciones son privadas y 100% seguras
           </p>
         </div>
-      </div>
+      </motion.div>
       <div class="card">
         <div class="header">
           <div class="img-box">
@@ -30,7 +45,13 @@ const ExtraCards = () => {
           <p>Enviamos tu pedido en 24 horas. ¡Disfruta tu nuevo dispositivo!</p>
         </div>
       </div>
-      <div class="card">
+      <motion.div
+        class="card"
+        initial={"offscreen"}
+        whileInView={"onscreen"}
+        viewport={{ once: false, amount: 0.3 }}
+        variants={imgAnimate}
+      >
         <div class="header">
           <div class="img-box">
             <i class="fa-solid fa-people-group"></i>
@@ -43,7 +64,7 @@ const ExtraCards = () => {
             Soporte al cliente dedicado las 24/7 para ayudarte en todo momento
           </p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

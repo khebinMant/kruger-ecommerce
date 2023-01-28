@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import MainPage from "../pages/customer/MainPage/MainPage";
 import Login from "../pages/login/Login";
@@ -45,9 +45,10 @@ import CalendarComponent from "../pages/admin/Calendar/CalendarComponent";
 export const MainRouter = () => {
   const dispatch = useDispatch();
   dispatch(getCurrentCart());
+  const location = useLocation();
 
   return (
-    <Routes>
+    <Routes location={location} key={location.pathname}>
       <Route path="/" element={<MainPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/search" element={<SearchProductPage />} />

@@ -1,9 +1,15 @@
 import React from "react";
 import "./ContactUs.scss";
+import { motion } from "framer-motion";
 
 const ContactUs = () => {
   return (
-    <div className="contact">
+    <motion.div
+      className="contact"
+      initial={{ width: "0%" }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+    >
       <div className="contact_main">
         <div className="contact_container">
           <form>
@@ -64,7 +70,7 @@ const ContactUs = () => {
       </div>
 
       <div className="spacer layer3"></div>
-    </div>
+    </motion.div>
   );
 };
 
