@@ -153,3 +153,41 @@
         background-position: 2000px 0;
     }
   }
+
+
+  @media (max-width: 800px) {
+    .text-box{
+        
+        p{
+            font-size: 30px;
+        }
+    
+        h2{
+            font-size: 70px;
+            line-height: 100px;
+        }
+    
+        h3{
+            font-size: 20px;
+        }
+    
+        .row{
+
+    
+    
+            a{
+                padding: 10px 14px;
+                margin-right: 20px;
+                font-weight: 700;
+                border: 2px solid #fff;
+            }
+    
+            span{
+                font-size: 12px;
+                margin-top: 20px;
+            }
+        }
+
+    }
+  }
+
