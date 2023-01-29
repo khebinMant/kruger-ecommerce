@@ -257,7 +257,7 @@ const resetStates=()=>{
           </p>
 
 
-          {currentUser?.addresses ? <Dropdown  value={chosenAddress} options={currentUser?.addresses}
+          {currentUser?.addresses.length>0 ? <Dropdown  value={chosenAddress} options={currentUser?.addresses}
             onChange={(e) => { onUbiacitonSelected(e) }}
             optionLabel="address" placeholder="Elige ubicacion" /> :
             <div className="no-direcciones-cont">
