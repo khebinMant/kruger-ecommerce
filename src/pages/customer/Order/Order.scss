@@ -71,6 +71,8 @@ hr{
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	flex-direction: column;
+	gap:8px
 }
 .cart_subtotal{
 	font-size: 1.5rem;

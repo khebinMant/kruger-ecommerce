@@ -39,6 +39,8 @@ const OrderItem = ({item}) => {
               </div>
             }
         </div>
+        <Divider />
+
     </>
   );
 };
