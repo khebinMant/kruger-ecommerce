@@ -133,8 +133,8 @@ const Profile = () => {
     const updateLocalStorage=(updatedUser,resp)=>{
         
         if (resp != null) {
-            localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-            dispatch(setCurrentUser(updatedUser));
+            localStorage.setItem("currentUser", JSON.stringify(resp));
+            dispatch(setCurrentUser(resp));
             document.getElementById("formPersonal").reset();
             setCity(null);
             //show success message
