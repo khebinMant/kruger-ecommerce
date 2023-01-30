@@ -55,8 +55,8 @@ a {
 
 h1,
 h2 {
-  font-size: 2.1rem;
-  font-weight: 600;
+  font-size: 3rem;
+  font-weight: 700;
   color: var(--primary-color);
 }
 
@@ -67,3 +67,7 @@ li, ul{
   text-decoration: none;
 }
 
+
+button{
+  padding: 10px 12px;
+}

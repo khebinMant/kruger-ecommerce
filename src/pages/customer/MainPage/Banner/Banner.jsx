@@ -121,7 +121,7 @@ const Banner = () => {
           </div>
           <div className="text-box">
             <p>10%</p>
-            <h2>MENOS</h2>
+            <h2 className="slider_item_title">MENOS</h2>
             <h3>Kruger Cell</h3>
 
             <div className="row">

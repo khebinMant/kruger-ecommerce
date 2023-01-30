@@ -9,7 +9,7 @@ import "./Profile.scss";
 import ConvertImageToBase64 from './ConvertImageToBase64';
 import { updatePersonalInfo } from '../../../helpers/users/updatePersonalInfo';
 import { setCurrentUser } from '../../../store/user/userSlice';
-import { addAddress } from '../../../helpers/users/addAddress';
+import { updateUserUbication } from '../../../helpers/users/updateUserUbication';
 import { changePassword } from '../../../helpers/users/changePassword';
 import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
@@ -76,6 +76,10 @@ const Profile = () => {
             name:"[+] Agrega una nueva direcion"
            });
             setUserDirections(resumen);
+            
+            if(resumen.length==1){
+                setCity(resumen[0]);
+            }
     }
 
     async function handleChangePassword(e) {
@@ -115,12 +119,13 @@ const Profile = () => {
         //si el id del item selecionado del DropDown es menos que 0
         //entonces es agregar nueva direcion 
         if(city.id<0){
+            address.isMatriz=true;
             updatedUser.addresses.push(address);
         }else{
             updatedUser.addresses[city.id]=address;
         }
         //send the user with updated ubication
-        const resp =await addAddress(updatedUser);
+        const resp =await updateUserUbication(updatedUser);
         updateLocalStorage(updatedUser,resp);
 
     }
@@ -128,8 +133,8 @@ const Profile = () => {
     const updateLocalStorage=(updatedUser,resp)=>{
         
         if (resp != null) {
-            localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-            dispatch(setCurrentUser(updatedUser));
+            localStorage.setItem("currentUser", JSON.stringify(resp));
+            dispatch(setCurrentUser(resp));
             document.getElementById("formPersonal").reset();
             setCity(null);
             //show success message
@@ -204,10 +209,13 @@ const Profile = () => {
         }
         
     }
-const accept=()=>{
+const accept=async ()=>{
     const updatedUser=structuredClone(user);
     updatedUser.addresses.splice(city.id,1);
-    updateLocalStorage(updatedUser);
+
+    const resp =await updateUserUbication(updatedUser);
+
+    updateLocalStorage(updatedUser,resp);
     
 }
 const reject=()=>{

@@ -12,6 +12,10 @@
         color: var(--heading-color);
         font-size: 4rem;
     
+        @media (max-width: 800px) {
+            font-size: 3rem;
+
+        }
     }
 }
 
