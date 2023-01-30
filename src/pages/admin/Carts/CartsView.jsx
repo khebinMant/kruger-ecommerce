@@ -13,8 +13,9 @@ import { Dropdown } from "primereact/dropdown";
 import '../AdminMainPage.css';
 import { getAllCarts } from "../../../helpers/carts/getAllCarts";
 import Loading from "../../../components/Loading";
+import { ConfirmPopup } from 'primereact/confirmpopup'; // To use <ConfirmPopup> tag
 
-let emptyCoupon = {
+let emptyCart = {
   name: "",
   description: "",
   stock: "",
@@ -24,16 +25,20 @@ let emptyCoupon = {
 
 export const CartsView = () => {
 
-  const [coupons, setCoupons] = useState();
+  const [carts, setCarts] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [couponDialog, setCouponDialog] = useState(false);
-  const [deleteCouponDialog, setDeleteCouponDialog] = useState(false);
-  const [deleteCouponsDialog, setDeleteCouponsDialog] = useState(false);
-  const [coupon, setCoupon] = useState(emptyCoupon);
-  const [selectedCoupons, setSelectCoupons] = useState(null);
+  const [cartDialog, setCartDialog] = useState(false);
+  const [deleteCartDialog, setDeleteCartDialog] = useState(false);
+  const [deleteCartsDialog, setDeleteCartsDialog] = useState(false);
+  const [cart, setCart] = useState(emptyCart);
+  const [selectedCarts, setSelectCarts] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, serCategories] = useState();
+  const [visible, setVisible] = useState(false);
+  const toastState = useRef(null);
+
+
 
   const [globalFilter, setGlobalFilter] = useState(null);
   const toast = useRef(null);
@@ -41,74 +46,90 @@ export const CartsView = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getCoupons();
+    getCarts();
   }, []);
 
-  useEffect(() => {
-    getCategories();
-  }, []);
+ 
+  const updateCart = async (cart,status) => {
+    
+    let responseUpdate;
 
-
-  const createCoupon = async (coupon) => {
-    // const responsePostCoupon = await Promise.resolve(postCoupon(coupon));
-    // return responsePostCoupon;
+    console.log(status)
+    if(status === 'IN_TRAVEL'){
+      //PONGO EN VIAJE
+    }
+    if(status === 'RECEIVED'){
+      //PONGO COMO RECIBIDO
+    }
+    if(status === 'CANCELED'){
+      //PONGO COMO CANCELADO
+    }
+    // const responsePutCart = await Promise.resolve(putCart(cart));
+    // return responsePutCart;
   };
 
-  const updateCoupon = async (coupon) => {
-    // const responsePutCoupon = await Promise.resolve(putCoupon(coupon));
-    // return responsePutCoupon;
+  const removeCart = async (cartId) => {
+    // const responseDeleteCart = await Promise.resolve(deleteCart(cartId));
+    // return responseDeleteCart;
   };
 
-  const removeCoupon = async (couponId) => {
-    // const responseDeleteCoupon = await Promise.resolve(deleteCoupon(couponId));
-    // return responseDeleteCoupon;
-  };
-
-  const getCategories = async () => {
-    // const responseCategories = await Promise.resolve(getAllCategories());
-    // serCategories(responseCategories);
-    setIsLoading(false);
-  };
-
-  const getCoupons = async () => {
-    const responseCoupons = await Promise.resolve(getAllCarts());
-    setCoupons(responseCoupons);
+  const getCarts = async () => {
+    const responseCarts = await Promise.resolve(getAllCarts());
+    setCarts(responseCarts);
     setIsLoading(false);
   };
 
   const openNew = () => {
-    setCoupon(emptyCoupon);
+    setCart(emptyCart);
     setSubmitted(false);
-    setCouponDialog(true);
+    setCartDialog(true);
   };
 
   const hideDialog = () => {
     setSubmitted(false);
-    setCouponDialog(false);
+    setCartDialog(false);
   };
 
-  const hideDeleteCouponDialog = () => {
-    setDeleteCouponDialog(false);
+  const hideDeleteCartDialog = () => {
+    setDeleteCartDialog(false);
   };
 
-  const hideDeleteCouponsDialog = () => {
-    setDeleteCouponsDialog(false);
+  const accept = () => {
+    toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
   };
-  const saveCoupon = async () => {
+
+  const reject = () => {
+      toast.current.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+  };
+
+  const confirmChangue = (event) => {
+      confirmPopup({
+          target: event.currentTarget,
+          message: 'Are you sure you want to proceed?',
+          icon: 'pi pi-exclamation-triangle',
+          accept: accept(),
+          reject
+      });
+  };
+
+  const hideDeleteCartsDialog = () => {
+    setDeleteCartsDialog(false);
+  };
+  const saveCart = async () => {
     setSubmitted(true);
 
-    if (coupon.name.trim()) {
-      let _coupons = [...coupons];
-      let _coupon = { ...coupon };
-      if (coupon.id) {
-        const responsePutCoupon = updateCoupon(_coupon);
-        if (responsePutCoupon) {
-          const index = findIndexById(coupon.id);
-          _coupons[index] = _coupon;
+    if (cart.name.trim()) {
+      let _carts = [...carts];
+      let _cart = { ...cart };
+      if (cart.id) {
+        const responsePutCart = updateCart(_cart);
+        if (responsePutCart) {
+          const index = findIndexById(cart.id);
+          _carts[index] = _cart;
           toast.current.show({
             severity: "success",
             summary: "Genial!",
-            detail: "Coupono actualizado",
+            detail: "Carto actualizado",
             life: 3000,
           });
         } else {
@@ -120,14 +141,14 @@ export const CartsView = () => {
           });
         }
       } else {
-        const responsePostCoupon = await createCoupon(_coupon);
-        if (responsePostCoupon) {
-          _coupon.id = responsePostCoupon.id;
-          _coupons.push(_coupon);
+        const responsePostCart = await createCart(_cart);
+        if (responsePostCart) {
+          _cart.id = responsePostCart.id;
+          _carts.push(_cart);
           toast.current.show({
             severity: "success",
             summary: "Genial!",
-            detail: "Coupono creado",
+            detail: "Carto creado",
             life: 3000,
           });
         } else {
@@ -140,33 +161,34 @@ export const CartsView = () => {
         }
       }
 
-      setCoupons(_coupons);
-      setCouponDialog(false);
-      setCoupon(emptyCoupon);
+      setCarts(_carts);
+      setCartDialog(false);
+      setCart(emptyCart);
     }
   };
 
-  const editCoupon = (coupon) => {
-    setCoupon({ ...coupon });
-    setCouponDialog(true);
+  const editCart = (cart) => {
+    setCart({ ...cart });
+    setCartDialog(true);
   };
 
-  const confirmDeleteCoupon = (coupon) => {
-    setCoupon(coupon);
-    setDeleteCouponDialog(true);
+  const confirmDeleteCart = (cart) => {
+    setCart(cart);
+    setDeleteCartDialog(true);
   };
 
-  const deleteCouponView = () => {
-    const responseDeleteCoupon = removeCoupon(coupon.id);
-    if (responseDeleteCoupon) {
-      let _coupons = coupons.filter((val) => val.id !== coupon.id);
-      setCoupons(_coupons);
-      setDeleteCouponDialog(false);
-      setCoupon(emptyCoupon);
+
+  const deleteCartView = () => {
+    const responseDeleteCart = removeCart(cart.id);
+    if (responseDeleteCart) {
+      let _carts = carts.filter((val) => val.id !== cart.id);
+      setCarts(_carts);
+      setDeleteCartDialog(false);
+      setCart(emptyCart);
       toast.current.show({
         severity: "success",
         summary: "Eliminado!",
-        detail: "Coupono eliminado",
+        detail: "Carto eliminado",
         life: 3000,
       });
     } else {
@@ -181,8 +203,8 @@ export const CartsView = () => {
 
   const findIndexById = (id) => {
     let index = -1;
-    for (let i = 0; i < coupons.length; i++) {
-      if (coupons[i].id === id) {
+    for (let i = 0; i < carts.length; i++) {
+      if (carts[i].id === id) {
         index = i;
         break;
       }
@@ -192,28 +214,28 @@ export const CartsView = () => {
   };
 
   const confirmDeleteSelected = () => {
-    setDeleteCouponsDialog(true);
+    setDeleteCartsDialog(true);
   };
 
-  const deleteSelectedCoupons = () => {
-    let _coupons = coupons.filter((val) => !selectedCoupons.includes(val));
-    setCoupons(_coupons);
-    setDeleteCouponsDialog(false);
-    setSelectCoupons(null);
+  const deleteSelectedCarts = () => {
+    let _carts = carts.filter((val) => !selectedCarts.includes(val));
+    setCarts(_carts);
+    setDeleteCartsDialog(false);
+    setSelectCarts(null);
     toast.current.show({
       severity: "success",
       summary: "Successful",
-      detail: "Coupons Deleted",
+      detail: "Carts Deleted",
       life: 3000,
     });
   };
 
   const onInputChange = (e, name) => {
     const val = (e.target && e.target.value) || "";
-    let _coupon = { ...coupon };
-    _coupon[`${name}`] = val;
+    let _cart = { ...cart };
+    _cart[`${name}`] = val;
 
-    setCoupon(_coupon);
+    setCart(_cart);
   };
 
   const imageBodyTemplate = (rowData) => {
@@ -235,42 +257,92 @@ export const CartsView = () => {
     return (
       <React.Fragment>
         <Button
-          label="Añadir"
-          icon="pi pi-plus"
-          className="p-button-success mr-2 p_btn_add"
-          onClick={openNew}
-        />
-        <Button
           label="Eliminar"
           icon="pi pi-trash"
           className="p-button-danger"
           onClick={confirmDeleteSelected}
-          disabled={!selectedCoupons || !selectedCoupons.length}
+          disabled={!selectedCarts || !selectedCarts.length}
         />
       </React.Fragment>
     );
   };
 
+  const chechMenuButtons = (rowData) =>{
+
+  }
+
   const actionBodyTemplate = (rowData) => {
-    return (
-      <>
-        <Button
-          icon="pi pi-pencil"
-          className="p-button-rounded p-button-success mr-2"
-          onClick={() => editCoupon(rowData)}
-        />
-        <Button
-          icon="pi pi-trash"
-          className="p-button-rounded p-button-warning"
-          onClick={() => confirmDeleteCoupon(rowData)}
-        />
-      </>
-    );
+
+    if(rowData.status === 'RECEIVED'){
+      return (
+        <div style={{display:'flex', flexDirection:'row'}}>
+          <Button
+                icon="pi pi-trash"
+                className="p-button-rounded p-button-warning"
+                onClick={() => confirmDeleteCart(rowData)}
+                title="Eliminar orden"   
+          />
+        </div>
+      )
+    }
+    if(rowData.status === 'CANCELED'){
+      return (
+        <div style={{display:'flex', flexDirection:'row'}}>
+
+          <Button
+                icon="pi pi-trash"
+                className="p-button-rounded p-button-warning"
+                onClick={() => confirmDeleteCart(rowData)}
+                title="Eliminar orden"   
+          />
+        </div>
+      )
+    }
+    if(rowData.status === 'IN_TRAVEL'){
+      return (
+        <div style={{display:'flex', flexDirection:'row'}}>
+          <Button 
+              icon="pi pi-verified" 
+              className="p-button-rounded p-button-success" 
+              aria-label="Search"   
+              title="Establecer como 'RECIBIDO'"
+              onClick={()=>confirmUpdateCart(rowData,'RECEIVED')}   
+          />
+        </div>
+      )
+    }
+    if(rowData.status === 'PAID'){
+      return (
+        <div style={{display:'flex', flexDirection:'row'}}>
+          <Button 
+            icon="pi pi-telegram" 
+            className="p-button-rounded p-button-info" 
+            aria-label="Search"   
+            title="Establecer como'EN VIAJE'"   
+            onClick={(e)=>confirmChangue(e)}   
+          />
+          <Button 
+            icon="pi pi-verified" 
+            className="p-button-rounded p-button-success" 
+            aria-label="Search"   
+            title="Establecer como'RECIBIDO'"   
+            onClick={()=>updateCart(rowData,'RECEIVED')}   
+          />
+          <Button 
+            icon="pi pi-times" 
+            className="p-button-rounded p-button-danger" 
+            aria-label="Search"   
+            title="Establecer como 'CANCELADO'"  
+            onClick={()=>updateCart(rowData,'CANCELED')}   
+          />
+        </div>
+      )
+    }
   };
 
   const header = (
     <div className="table-header">
-      <h5 className="mx-0 my-1">Administrar Cupones</h5>
+      <h5 className="mx-0 my-1">Administrar Ordenes</h5>
       <span className="p-input-icon-left">
         <i className="pi pi-search" />
         <InputText
@@ -281,7 +353,7 @@ export const CartsView = () => {
       </span>
     </div>
   );
-  const couponDialogFooter = (
+  const cartDialogFooter = (
     <>
       <Button
         label="Cancelar"
@@ -293,39 +365,57 @@ export const CartsView = () => {
         label="Guardar"
         icon="pi pi-check"
         className="p-button-text"
-        onClick={saveCoupon}
+        onClick={saveCart}
       />
     </>
   );
-  const deleteCouponDialogFooter = (
+  const deleteCartDialogFooter = (
+    <>
+      <Button
+        label="Si"
+        icon="pi pi-times"
+        className="p-button-text"
+        onClick={hideDeleteCartDialog}
+      />
+      <Button
+        label="No"
+        icon="pi pi-check"
+        className="p-button-text"
+        onClick={deleteCartView}
+      />
+    </>
+  );
+
+  const deleteCartsDialogFooter = (
     <>
       <Button
         label="No"
         icon="pi pi-times"
         className="p-button-text"
-        onClick={hideDeleteCouponDialog}
+        onClick={hideDeleteCartsDialog}
       />
       <Button
-        label="Yes"
+        label="Si"
         icon="pi pi-check"
         className="p-button-text"
-        onClick={deleteCouponView}
+        onClick={deleteSelectedCarts}
       />
     </>
   );
-  const deleteCouponsDialogFooter = (
+
+  const changueCartStatusDialogFooter = (
     <>
       <Button
-        label="No"
+        label="Si"
         icon="pi pi-times"
         className="p-button-text"
-        onClick={hideDeleteCouponsDialog}
+        onClick={hideDeleteCartDialog}
       />
       <Button
-        label="Yes"
+        label="No"
         icon="pi pi-check"
         className="p-button-text"
-        onClick={deleteSelectedCoupons}
+        onClick={deleteCartView}
       />
     </>
   );
@@ -338,21 +428,22 @@ export const CartsView = () => {
     ) : (
       <div className="datatable-crud-demo">
         <Toast ref={toast} />
-  
+        <Toast ref={toastState} />
+
         <div className="card">
           <Toolbar className="mb-4" right={leftToolbarTemplate}></Toolbar>
   
           <DataTable
             ref={dt}
-            value={coupons}
-            selection={selectedCoupons}
-            onSelectionChange={(e) => setSelectCoupons(e.value)}
+            value={carts}
+            selection={selectedCarts}
+            onSelectionChange={(e) => setSelectCarts(e.value)}
             dataKey="id"
             paginator
             rows={8}
             rowsPerPageOptions={[5, 10, 25]}
             paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-            currentPageReportTemplate="{first} - {last} de {totalRecords} cupones"
+            currentPageReportTemplate="{first} - {last} de {totalRecords} ordenes"
             globalFilter={globalFilter}
             header={header}
             responsiveLayout="scroll"
@@ -370,24 +461,30 @@ export const CartsView = () => {
             ></Column>
             <Column
               field="image"
-              header="Image"
+              header="Cliente"
               body={imageBodyTemplate}
             ></Column>
             <Column
               field="user.firstName"
-              header="Nombre cliente"
+              header="Nombre"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
             <Column
               field="user.lastName"
-              header="Apellido cliente"
+              header="Apellido"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
             <Column
               field="status"
-              header="Status"
+              header="Estado de la orden"
+              sortable
+              style={{ minWidth: "2rem" }}
+            ></Column>
+            <Column
+              field="order.subTotal"
+              header="Subtotal de compra"
               sortable
               style={{ minWidth: "2rem" }}
             ></Column>
@@ -396,12 +493,6 @@ export const CartsView = () => {
               header="Total de compra"
               sortable
               style={{ minWidth: "2rem" }}
-            ></Column>
-            <Column
-              field="order.coupon.code"
-              header="Cupon"
-              sortable
-              style={{ minWidth: "0.5rem" }}
             ></Column>
             <Column
               field="order.shipmentDate"
@@ -425,39 +516,39 @@ export const CartsView = () => {
         </div>
   
         <Dialog
-          visible={couponDialog}
+          visible={cartDialog}
           style={{ width: "450px" }}
-          header="Información de la coupon"
+          header="Información de la cart"
           modal
           className="p-fluid"
-          footer={couponDialogFooter}
+          footer={cartDialogFooter}
           onHide={hideDialog}
         >
           <div className="field">
-            <label htmlFor="couponName">Coupon name</label>
+            <label htmlFor="cartName">Cart name</label>
             <InputText
-              id="couponName"
-              value={coupon.name}
-              onChange={(e) => onInputChange(e, "couponName")}
+              id="cartName"
+              value={cart.name}
+              onChange={(e) => onInputChange(e, "cartName")}
               required
               autoFocus
-              className={classNames({ "p-invalid": submitted && !coupon.couponName })}
+              className={classNames({ "p-invalid": submitted && !cart.cartName })}
             />
-            {submitted && !coupon.name && (
-              <small className="p-error">El Coupon name es obligatorio.</small>
+            {submitted && !cart.name && (
+              <small className="p-error">El Cart name es obligatorio.</small>
             )}
           </div>
           <div className="field">
             <label htmlFor="stock">Stock</label>
             <InputText
               id="stock"
-              value={coupon.stock}
+              value={cart.stock}
               onChange={(e) => onInputChange(e, "stock")}
               className={classNames({
-                "p-invalid": submitted && !coupon.stock,
+                "p-invalid": submitted && !cart.stock,
               })}
             />
-            {submitted && !coupon.stock && (
+            {submitted && !cart.stock && (
               <small className="p-error">El Stock es obligatoria.</small>
             )}
           </div>
@@ -465,16 +556,16 @@ export const CartsView = () => {
             <label htmlFor="photoUrl">Foto</label>
             <InputTextarea
               id="photoUrl"
-              value={coupon.photoUrl}
+              value={cart.photoUrl}
               onChange={(e) => onInputChange(e, "photoUrl")}
               required
               rows={3}
               cols={20}
               className={classNames({
-                "p-invalid": submitted && !coupon.photoUrl,
+                "p-invalid": submitted && !cart.photoUrl,
               })}
             />
-            {submitted && !coupon.photoUrl && (
+            {submitted && !cart.photoUrl && (
               <small className="p-error">La Foto es obligatoria es obligatoria.</small>
             )}
           </div>
@@ -482,76 +573,78 @@ export const CartsView = () => {
             <label htmlFor="description">Descripción</label>
             <InputTextarea
               id="description"
-              value={coupon.description}
+              value={cart.description}
               onChange={(e) => onInputChange(e, "description")}
               required
               rows={3}
               cols={20}
               className={classNames({
-                "p-invalid": submitted && !coupon.description,
+                "p-invalid": submitted && !cart.description,
               })}
             />
-            {submitted && !coupon.description && (
+            {submitted && !cart.description && (
               <small className="p-error">La descripción es obligatoria.</small>
             )}
           </div>
           <div className="field">
             <label htmlFor="category">Categoria</label>
             <Dropdown
-              value={coupon.category}
+              value={cart.category}
               required
               options={categories}
               onChange={(e) => onInputChange(e, "category")}
               optionLabel="name"
               placeholder="Selecciona la categoría"
             />
-            {submitted && !coupon.category && (
+            {submitted && !cart.category && (
               <small className="p-error">La categoria es obligatoria.</small>
             )}
           </div>
         </Dialog>
   
         <Dialog
-          visible={deleteCouponDialog}
+          visible={deleteCartDialog}
           style={{ width: "450px" }}
           header="Confirm"
           modal
-          footer={deleteCouponDialogFooter}
-          onHide={hideDeleteCouponDialog}
+          footer={deleteCartDialogFooter}
+          onHide={hideDeleteCartDialog}
         >
           <div className="confirmation-content">
             <i
               className="pi pi-exclamation-triangle mr-3"
               style={{ fontSize: "2rem" }}
             />
-            {coupon && (
+            {cart && (
               <span>
-                Estas seguro que quiere eliminar: <b>{coupon.name}</b>?
+                Estas seguro que quiere eliminar: <b>{cart.name}</b>?
               </span>
             )}
           </div>
         </Dialog>
   
         <Dialog
-          visible={deleteCouponsDialog}
+          visible={deleteCartsDialog}
           style={{ width: "450px" }}
           header="Confirm"
           modal
-          footer={deleteCouponsDialogFooter}
-          onHide={hideDeleteCouponsDialog}
+          footer={deleteCartsDialogFooter}
+          onHide={hideDeleteCartsDialog}
         >
           <div className="confirmation-content">
             <i
               className="pi pi-exclamation-triangle mr-3"
               style={{ fontSize: "2rem" }}
             />
-            {coupon && (
+            {cart && (
               <span>
-                Estas seguro que deseas eliminar los cupones seleccionadas?
+                Estas seguro que deseas eliminar los ordenes seleccionadas?
               </span>
             )}
           </div>
         </Dialog>
+
+        
       </div>
     )
     }

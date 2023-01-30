@@ -7,6 +7,7 @@ import "./Order.scss";
 import OrderItem from './OrderItem/OrderItem';
 import { Divider } from 'primereact/divider';
 import { Button } from 'primereact/button';
+import { updateCart } from '../../../helpers/carts/updateCart';
 
 export const Order = () => {
 
@@ -19,6 +20,7 @@ export const Order = () => {
     }, [])
     
     const getCarts = async () =>{
+        setIsLoading(true)
         if(currentUser){
             const responseCarts = await Promise.resolve(getCartsByUserId(currentUser.id))
             setCarts(responseCarts)
@@ -48,6 +50,29 @@ export const Order = () => {
             return 'CANCELADO'
         }
     }
+
+    const onCancelOrder = async (cart) =>{
+        let _cart = {
+            id:cart.id,
+            orderId:cart.order.id,
+            userId:cart.user.id,
+            status:'CANCELED'
+        }
+        const responseUpdatedCartStatus = await Promise.resolve(updateCart(_cart))
+        getCarts();
+    }
+
+    const onRecivedOrder = async (cart) =>{
+        let _cart = {
+            id:cart.id,
+            orderId:cart.order.id,
+            userId:cart.user.id,
+            status:'RECEIVED'
+        }
+        const responseUpdatedCartStatus = await Promise.resolve(updateCart(_cart))
+        getCarts();
+    }
+
   return (
     carts?
     isLoading?
@@ -62,7 +87,7 @@ export const Order = () => {
         <div className="cart_items_container">
             {
                 carts.map((cart,index) =>(
-                        <Fieldset key={index}  collapsed legend={`${cart.user.firstName} ${cart.user.lastName}, Compra N°:  ${index+1},  estado: ${getOrderStatus(cart.status)}`} toggleable>
+                        <Fieldset key={index}  collapsed legend={`${cart.user.firstName} ${cart.user.lastName}, Estado: ${getOrderStatus(cart.status)}`} toggleable>
                             {
                                 cart.order.items.map((item,index)=>(
                                     <OrderItem key={index} item={item}/>
@@ -105,9 +130,20 @@ export const Order = () => {
                                 <div class="cart_items">{  Math.round(cart.order.totalPrice * 100)/100}$</div>
                             </div>
                             <div className='cart__actions'>
-                                <Button label="Cancelar Orden" className="p-button-danger" />
-                                <Button style={{backgroundColor:'#A1FF60'}} label="Marcar como recibida" className="p-button-success" />
+                                {
+                                cart.status === 'PAID'?
+                                <Button onClick={()=>onCancelOrder(cart)} label="Cancelar Orden" className="p-button-danger" />
+                                :
+                                cart.status === 'IN_TRAVEL'?
+                                <Button onClick={()=>onRecivedOrder(cart)} style={{backgroundColor:'#A1FF60'}} label="Marcar como recibida" className="p-button-success" />
+                                :
+                                cart.status === 'CANCELED'?
+                                <p>Esta orden fue cancelada</p>:
+                                cart.status === 'RECEIVED'?
                                 <Button label="Imprimir recibo" className="p-button-secondary" />
+                                :
+                                <></>
+                                }
                             </div>
                         </div>
                     </Fieldset>

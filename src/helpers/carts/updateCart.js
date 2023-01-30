@@ -1,6 +1,6 @@
 import { backEndApi } from "../../api/backEndApi"
 
-export const getAllCarts= async ()=>{
+export const updateCart= async (cart)=>{
 
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const config = {
@@ -8,7 +8,7 @@ export const getAllCarts= async ()=>{
     };
 
     try{
-        const resp = await backEndApi.get(`/carts/`,config)
+        const resp = await backEndApi.put(`/carts/${cart.id}`,cart,config)
         return resp.data
 
     }catch(error){
