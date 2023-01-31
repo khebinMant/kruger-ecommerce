@@ -37,7 +37,7 @@ const WhyUs = () => {
         viewport={{ once: false, amount: 0.3 }}
         variants={imgAnimate}
       >
-        <h2 className="whyUs__title">
+        <h2 className=" whyUs__title heading">
           ¿Por qué <span>nosotros?</span>
         </h2>
         <p>

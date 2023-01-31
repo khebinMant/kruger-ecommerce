@@ -32,10 +32,10 @@ const AllProducts = () => {
           animate={{ width: "100%" }}
           exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
         >
-          <h2 className="show_products_title">Todos los Productos</h2>
+          <h2 className="heading show_products_title">Todos los Productos</h2>
           <div className="show_products_container">
-            {products.map((item) => (
-              <Product key={item.id} item={item} />
+            {products.map((item, i) => (
+              <Product key={item.id} item={item} i={i} />
             ))}
           </div>
           <div className="spacer layer10"></div>

@@ -23,7 +23,7 @@ const NewArrivals = () => {
     <section class="new-arrival">
       <div class="title">
         <span>Novedades</span>
-        <h2>Ultimos Dispositivos</h2>
+        <h2 className="heading">Ultimos Dispositivos</h2>
       </div>
 
       <div class="row container">
