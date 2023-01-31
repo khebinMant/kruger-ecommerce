@@ -105,7 +105,7 @@ const SearchProductPage = () => {
   return (
     <div className="searchpage">
       <Banner />
-      <h2 className="searchpage_title">Encuentra tus productos</h2>
+      <h2 className="searchpage_title heading">Encuentra tus productos</h2>
       <form class="searchpage_form">
         <label for="search">
           <input
@@ -159,14 +159,13 @@ const SearchProductPage = () => {
           <Loading />
         ) : (
           <>
-            {products.map((item) => (
-              item.type === 'PRODUCT'
-              ?
-              <Product key={item.id} item={item} />
-              :
-              <Service key={item.id} item={item}/>
-            ))}
-
+            {products.map((item) =>
+              item.type === "PRODUCT" ? (
+                <Product key={item.id} item={item} />
+              ) : (
+                <Service key={item.id} item={item} />
+              )
+            )}
           </>
         )}
       </div>

@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import { getAllProducts } from "../../../helpers/products/getAllProducts";
 import Loading from "../../../components/Loading";
 
-
 const AllServices = () => {
   const [products, setProducts] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -25,21 +24,19 @@ const AllServices = () => {
     );
     setIsLoading(false);
   };
-  return (
-
-    isLoading?
-    <Loading/>
-    :
-        <motion.div
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <motion.div
       className="show_services"
       initial={{ width: 0 }}
       animate={{ width: "100%" }}
       exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
     >
-      <h2 className="show_services_title">Todo los Servicios</h2>
+      <h2 className="heading show_services_title">Todo los Servicios</h2>
       <div className="show_services_container">
-        {products.map((item) => (
-                <Service key={item.id} item={item} />
+        {products.map((item, i) => (
+          <Service key={item.id} item={item} i={i} />
         ))}
       </div>
       <div className="spacer layer10"></div>
