@@ -5,6 +5,7 @@ import { Toast } from 'primereact/toast';
 
 import "./ProductInfo.scss";
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const ProductInfo = ({item}) => {
 
@@ -14,10 +15,22 @@ export const ProductInfo = ({item}) => {
     const dispatch = useDispatch();
     const myRef = useRef();
     const toast = useRef(null);
+    const navigation=useNavigate();
 
     useEffect(() => {
         myRef.current.children[indexT].className = "active";
     }, [])
+
+    const handleComprarAhora =()=>{
+      let _product = {
+        quantity: quantity,
+        price: product.price,
+        productId: product.id
+    }
+    
+    dispatch(startAddItemToCart(_product));
+    navigation("/payment");
+    }
 
     const handleTab = (indexT) => {
         setIndex(indexT)
@@ -113,7 +126,7 @@ export const ProductInfo = ({item}) => {
             <button onClick={addItemToCart} className="productDetail_info_btns_btn1">
               Agregar al carrito
             </button>
-            <button className="productDetail_info_btns_btn2">Comprar ahora</button>
+            <button className="productDetail_info_btns_btn2" onClick={handleComprarAhora}>Comprar ahora</button>
           </div>
         </div>
       </div>

@@ -25,7 +25,10 @@ const CustomerNavBar = () => {
     if (user) {
       setLoginTxt("Login");
       localStorage.removeItem("currentUser");
+      localStorage.removeItem("cart");
       dispatch(setCurrentUser(null));
+      dispatch(resetCart());
+      navigation("/");
     } else {
       navigation("/login");
     }
