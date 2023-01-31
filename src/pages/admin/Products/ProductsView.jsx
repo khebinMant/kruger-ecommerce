@@ -66,14 +66,12 @@ export const ProductsView = () => {
   }, []);
 
   const onChange = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
 
     let indexAdd;
     let newImg;
     let temp = [];
 
     if(addUpdateIndex==undefined){
-      //estoy borrando
       setImages(imageList)
     }
     else{
@@ -98,8 +96,6 @@ export const ProductsView = () => {
   
 
   const onChangeNewImages = (imageList, addUpdateIndex) =>{
-    console.log(imageList, addUpdateIndex);
-
     setNewImages(imageList)
 
     let indexAdd;
@@ -107,7 +103,6 @@ export const ProductsView = () => {
     let temp = [];
 
     if(addUpdateIndex==undefined){
-      //estoy borrando
       setNewImages(imageList)
     }
     else{

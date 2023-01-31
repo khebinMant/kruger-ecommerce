@@ -100,59 +100,59 @@ export const Order = () => {
                                     <OrderItem key={index} item={item}/>
                                 ))
                             }
-                        <div class="cart_checkout">
-                            <div class="cart_total">
-                                <div class="cart_subtotal">Sub-Total</div>
-                                <div class="cart_items">{ Math.round(cart.order.subTotal * 100)/100}$</div>
-                                {
-                                    cart.order.coupon?
-                                    <>
-                                        <div class="cart_subtotal">Descuento por cupón</div>
-                                            <div class="cart_items">
-                                                { 
-                                                    - Math.round(cart.order.coupon.quantity * 100)/100
-                                                }
-                                                {
-                                                    cart.order.coupon.type === 'PERCENTAGE'?
-                                                    `%`:
-                                                    `$`
-                                                }
-                                            </div>
-                                            <div  class="cart_items"> 
-                                                {
-                                                    cart.order.coupon.type === 'PERCENTAGE'?
-                                                    <del>
-                                                        {Math.round((cart.order.subTotal * cart.order.coupon.quantity)*0.01 * 100)/100}$
-                                                    </del>
-                                                    :
-                                                    <del>
-                                                        {Math.round((cart.order.subTotal - cart.order.coupon.quantity) * 100)/100}$
-                                                    </del>
-                                                }
-                                            </div>
-                                    </>
-                                    :<></>
-                                }   
-                                <div class="cart_subtotal">Total + IVA(12%)</div>
-                                <div class="cart_items">{  Math.round(cart.order.totalPrice * 100)/100}$</div>
+                            <div class="cart_checkout">
+                                <div class="cart_total">
+                                    <div class="cart_subtotal">Sub-Total</div>
+                                    <div class="cart_items">{ Math.round(cart.order.subTotal * 100)/100}$</div>
+                                    {
+                                        cart.order.coupon?
+                                        <>
+                                            <div class="cart_subtotal">Descuento por cupón</div>
+                                                <div class="cart_items">
+                                                    { 
+                                                        - Math.round(cart.order.coupon.quantity * 100)/100
+                                                    }
+                                                    {
+                                                        cart.order.coupon.type === 'PERCENTAGE'?
+                                                        `%`:
+                                                        `$`
+                                                    }
+                                                </div>
+                                                <div  class="cart_items"> 
+                                                    {
+                                                        cart.order.coupon.type === 'PERCENTAGE'?
+                                                        <del>
+                                                            {Math.round((cart.order.subTotal * cart.order.coupon.quantity)*0.01 * 100)/100}$
+                                                        </del>
+                                                        :
+                                                        <del>
+                                                            {Math.round((cart.order.subTotal - cart.order.coupon.quantity) * 100)/100}$
+                                                        </del>
+                                                    }
+                                                </div>
+                                        </>
+                                        :<></>
+                                    }   
+                                    <div class="cart_subtotal">Total + IVA(12%)</div>
+                                    <div class="cart_items">{  Math.round(cart.order.totalPrice * 100)/100}$</div>
+                                </div>
+                                <div className='cart__actions'>
+                                    {
+                                        cart.status === 'PAID'?
+                                        <Button onClick={()=>onCancelOrder(cart)} label="Cancelar Orden" className="p-button-danger" />
+                                        :
+                                        cart.status === 'IN_TRAVEL'?
+                                        <Button onClick={()=>onReceivedOrder(cart)} style={{backgroundColor:'#A1FF60'}} label="Marcar como recibida" className="p-button-success" />
+                                        :
+                                        cart.status === 'CANCELED'?
+                                        <p>Esta orden fue cancelada</p>:
+                                        cart.status === 'RECEIVED'?
+                                        <Button onClick={()=>onPrintOrderInvoice(cart)} label="Imprimir recibo" className="p-button-secondary" />
+                                        :
+                                        <></>
+                                    }
+                                </div>
                             </div>
-                            <div className='cart__actions'>
-                                {
-                                cart.status === 'PAID'?
-                                <Button onClick={()=>onCancelOrder(cart)} label="Cancelar Orden" className="p-button-danger" />
-                                :
-                                cart.status === 'IN_TRAVEL'?
-                                <Button onClick={()=>onReceivedOrder(cart)} style={{backgroundColor:'#A1FF60'}} label="Marcar como recibida" className="p-button-success" />
-                                :
-                                cart.status === 'CANCELED'?
-                                <p>Esta orden fue cancelada</p>:
-                                cart.status === 'RECEIVED'?
-                                <Button onClick={()=>onPrintOrderInvoice(cart)} label="Imprimir recibo" className="p-button-secondary" />
-                                :
-                                <></>
-                                }
-                            </div>
-                        </div>
                     </Fieldset>
                 ))
             }
