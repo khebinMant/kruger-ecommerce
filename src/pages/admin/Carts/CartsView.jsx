@@ -1,19 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
-import { classNames } from "primereact/utils";
 import { Toast } from "primereact/toast";
 import { Toolbar } from "primereact/toolbar";
 import { Dialog } from "primereact/dialog";
-import { InputTextarea } from "primereact/inputtextarea";
-import { Dropdown } from "primereact/dropdown";
 import '../AdminMainPage.css';
 import { getAllCarts } from "../../../helpers/carts/getAllCarts";
 import Loading from "../../../components/Loading";
 import { ConfirmPopup } from 'primereact/confirmpopup'; // To use <ConfirmPopup> tag
+import { confirmPopup } from 'primereact/confirmpopup'; // To use confirmPopup method
+import { updateCart } from "../../../helpers/carts/updateCart";
+import { deleteCart } from "../../../helpers/carts/deleteCart";
 
 let emptyCart = {
   name: "",
@@ -27,15 +26,10 @@ export const CartsView = () => {
 
   const [carts, setCarts] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [cartDialog, setCartDialog] = useState(false);
   const [deleteCartDialog, setDeleteCartDialog] = useState(false);
   const [deleteCartsDialog, setDeleteCartsDialog] = useState(false);
   const [cart, setCart] = useState(emptyCart);
   const [selectedCarts, setSelectCarts] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [categories, serCategories] = useState();
-  const [visible, setVisible] = useState(false);
   const toastState = useRef(null);
 
 
@@ -43,34 +37,27 @@ export const CartsView = () => {
   const [globalFilter, setGlobalFilter] = useState(null);
   const toast = useRef(null);
   const dt = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     getCarts();
   }, []);
 
  
-  const updateCart = async (cart,status) => {
-    
+  const updateCartStatus = async (cart, newStatus) => {
     let responseUpdate;
-
-    console.log(status)
-    if(status === 'IN_TRAVEL'){
-      //PONGO EN VIAJE
+    let _cart = {
+      id:cart.id,
+      orderId:cart.order.id,
+      userId:cart.user.id,
+      status:newStatus
     }
-    if(status === 'RECEIVED'){
-      //PONGO COMO RECIBIDO
-    }
-    if(status === 'CANCELED'){
-      //PONGO COMO CANCELADO
-    }
-    // const responsePutCart = await Promise.resolve(putCart(cart));
-    // return responsePutCart;
+    responseUpdate = await Promise.resolve(updateCart(_cart))
+    getCarts();
   };
 
-  const removeCart = async (cartId) => {
-    // const responseDeleteCart = await Promise.resolve(deleteCart(cartId));
-    // return responseDeleteCart;
+  const removeCart = async (cart) => {
+    const responseDeleteCart = await Promise.resolve(deleteCart(cart));
+    return responseDeleteCart;
   };
 
   const getCarts = async () => {
@@ -79,98 +66,16 @@ export const CartsView = () => {
     setIsLoading(false);
   };
 
-  const openNew = () => {
-    setCart(emptyCart);
-    setSubmitted(false);
-    setCartDialog(true);
-  };
-
-  const hideDialog = () => {
-    setSubmitted(false);
-    setCartDialog(false);
-  };
 
   const hideDeleteCartDialog = () => {
     setDeleteCartDialog(false);
   };
 
-  const accept = () => {
-    toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
-  };
-
-  const reject = () => {
-      toast.current.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
-  };
-
-  const confirmChangue = (event) => {
-      confirmPopup({
-          target: event.currentTarget,
-          message: 'Are you sure you want to proceed?',
-          icon: 'pi pi-exclamation-triangle',
-          accept: accept(),
-          reject
-      });
-  };
 
   const hideDeleteCartsDialog = () => {
     setDeleteCartsDialog(false);
   };
-  const saveCart = async () => {
-    setSubmitted(true);
-
-    if (cart.name.trim()) {
-      let _carts = [...carts];
-      let _cart = { ...cart };
-      if (cart.id) {
-        const responsePutCart = updateCart(_cart);
-        if (responsePutCart) {
-          const index = findIndexById(cart.id);
-          _carts[index] = _cart;
-          toast.current.show({
-            severity: "success",
-            summary: "Genial!",
-            detail: "Carto actualizado",
-            life: 3000,
-          });
-        } else {
-          toast.current.show({
-            severity: "error",
-            summary: "Algo salio mal!",
-            detail: "No se pudo actualizar el cliente",
-            life: 3000,
-          });
-        }
-      } else {
-        const responsePostCart = await createCart(_cart);
-        if (responsePostCart) {
-          _cart.id = responsePostCart.id;
-          _carts.push(_cart);
-          toast.current.show({
-            severity: "success",
-            summary: "Genial!",
-            detail: "Carto creado",
-            life: 3000,
-          });
-        } else {
-          toast.current.show({
-            severity: "error",
-            summary: "Algo salio mal!",
-            detail: "No se pudo crear el cliente",
-            life: 3000,
-          });
-        }
-      }
-
-      setCarts(_carts);
-      setCartDialog(false);
-      setCart(emptyCart);
-    }
-  };
-
-  const editCart = (cart) => {
-    setCart({ ...cart });
-    setCartDialog(true);
-  };
+ 
 
   const confirmDeleteCart = (cart) => {
     setCart(cart);
@@ -179,7 +84,7 @@ export const CartsView = () => {
 
 
   const deleteCartView = () => {
-    const responseDeleteCart = removeCart(cart.id);
+    const responseDeleteCart = removeCart(cart);
     if (responseDeleteCart) {
       let _carts = carts.filter((val) => val.id !== cart.id);
       setCarts(_carts);
@@ -201,17 +106,6 @@ export const CartsView = () => {
     }
   };
 
-  const findIndexById = (id) => {
-    let index = -1;
-    for (let i = 0; i < carts.length; i++) {
-      if (carts[i].id === id) {
-        index = i;
-        break;
-      }
-    }
-
-    return index;
-  };
 
   const confirmDeleteSelected = () => {
     setDeleteCartsDialog(true);
@@ -267,9 +161,21 @@ export const CartsView = () => {
     );
   };
 
-  const chechMenuButtons = (rowData) =>{
+  const accept = (cart, newStatus) => {
+    updateCartStatus(cart, newStatus)
+    toast.current.show({ severity: 'info', summary: 'Estado cambiado', detail: `Has cambiado el estado de la orden a ${newStatus}`, life: 3000 });
+  };
 
-  }
+  const confirmUpdateCart = (event, cart, newStatus) => {
+      confirmPopup({
+          target: event.currentTarget,
+          message: '¿Estas seguro que deseas continuar?',
+          icon: 'pi pi-exclamation-triangle',
+          accept:()=>accept(cart, newStatus),
+          reject:()=>{}
+      });
+  };
+  
 
   const actionBodyTemplate = (rowData) => {
 
@@ -301,12 +207,13 @@ export const CartsView = () => {
     if(rowData.status === 'IN_TRAVEL'){
       return (
         <div style={{display:'flex', flexDirection:'row'}}>
+          <ConfirmPopup />
           <Button 
               icon="pi pi-verified" 
               className="p-button-rounded p-button-success" 
               aria-label="Search"   
               title="Establecer como 'RECIBIDO'"
-              onClick={()=>confirmUpdateCart(rowData,'RECEIVED')}   
+              onClick={(e)=>confirmUpdateCart(e, rowData, 'RECEIVED')}   
           />
         </div>
       )
@@ -314,26 +221,27 @@ export const CartsView = () => {
     if(rowData.status === 'PAID'){
       return (
         <div style={{display:'flex', flexDirection:'row'}}>
+          <ConfirmPopup />
           <Button 
             icon="pi pi-telegram" 
             className="p-button-rounded p-button-info" 
             aria-label="Search"   
             title="Establecer como'EN VIAJE'"   
-            onClick={(e)=>confirmChangue(e)}   
+            onClick={(e)=>confirmUpdateCart(e, rowData, 'IN_TRAVEL')}   
           />
           <Button 
             icon="pi pi-verified" 
             className="p-button-rounded p-button-success" 
             aria-label="Search"   
             title="Establecer como'RECIBIDO'"   
-            onClick={()=>updateCart(rowData,'RECEIVED')}   
+            onClick={(e)=>confirmUpdateCart(e, rowData, 'RECEIVED')}   
           />
           <Button 
             icon="pi pi-times" 
             className="p-button-rounded p-button-danger" 
             aria-label="Search"   
             title="Establecer como 'CANCELADO'"  
-            onClick={()=>updateCart(rowData,'CANCELED')}   
+            onClick={(e)=>confirmUpdateCart(e, rowData, 'CANCELED')}   
           />
         </div>
       )
@@ -353,32 +261,17 @@ export const CartsView = () => {
       </span>
     </div>
   );
-  const cartDialogFooter = (
-    <>
-      <Button
-        label="Cancelar"
-        icon="pi pi-times"
-        className="p-button-text"
-        onClick={hideDialog}
-      />
-      <Button
-        label="Guardar"
-        icon="pi pi-check"
-        className="p-button-text"
-        onClick={saveCart}
-      />
-    </>
-  );
+
   const deleteCartDialogFooter = (
     <>
       <Button
-        label="Si"
+        label="No"
         icon="pi pi-times"
         className="p-button-text"
         onClick={hideDeleteCartDialog}
       />
       <Button
-        label="No"
+        label="Si"
         icon="pi pi-check"
         className="p-button-text"
         onClick={deleteCartView}
@@ -515,93 +408,7 @@ export const CartsView = () => {
           </DataTable>
         </div>
   
-        <Dialog
-          visible={cartDialog}
-          style={{ width: "450px" }}
-          header="Información de la cart"
-          modal
-          className="p-fluid"
-          footer={cartDialogFooter}
-          onHide={hideDialog}
-        >
-          <div className="field">
-            <label htmlFor="cartName">Cart name</label>
-            <InputText
-              id="cartName"
-              value={cart.name}
-              onChange={(e) => onInputChange(e, "cartName")}
-              required
-              autoFocus
-              className={classNames({ "p-invalid": submitted && !cart.cartName })}
-            />
-            {submitted && !cart.name && (
-              <small className="p-error">El Cart name es obligatorio.</small>
-            )}
-          </div>
-          <div className="field">
-            <label htmlFor="stock">Stock</label>
-            <InputText
-              id="stock"
-              value={cart.stock}
-              onChange={(e) => onInputChange(e, "stock")}
-              className={classNames({
-                "p-invalid": submitted && !cart.stock,
-              })}
-            />
-            {submitted && !cart.stock && (
-              <small className="p-error">El Stock es obligatoria.</small>
-            )}
-          </div>
-          <div className="field">
-            <label htmlFor="photoUrl">Foto</label>
-            <InputTextarea
-              id="photoUrl"
-              value={cart.photoUrl}
-              onChange={(e) => onInputChange(e, "photoUrl")}
-              required
-              rows={3}
-              cols={20}
-              className={classNames({
-                "p-invalid": submitted && !cart.photoUrl,
-              })}
-            />
-            {submitted && !cart.photoUrl && (
-              <small className="p-error">La Foto es obligatoria es obligatoria.</small>
-            )}
-          </div>
-          <div className="field">
-            <label htmlFor="description">Descripción</label>
-            <InputTextarea
-              id="description"
-              value={cart.description}
-              onChange={(e) => onInputChange(e, "description")}
-              required
-              rows={3}
-              cols={20}
-              className={classNames({
-                "p-invalid": submitted && !cart.description,
-              })}
-            />
-            {submitted && !cart.description && (
-              <small className="p-error">La descripción es obligatoria.</small>
-            )}
-          </div>
-          <div className="field">
-            <label htmlFor="category">Categoria</label>
-            <Dropdown
-              value={cart.category}
-              required
-              options={categories}
-              onChange={(e) => onInputChange(e, "category")}
-              optionLabel="name"
-              placeholder="Selecciona la categoría"
-            />
-            {submitted && !cart.category && (
-              <small className="p-error">La categoria es obligatoria.</small>
-            )}
-          </div>
-        </Dialog>
-  
+          
         <Dialog
           visible={deleteCartDialog}
           style={{ width: "450px" }}

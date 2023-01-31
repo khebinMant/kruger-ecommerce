@@ -62,7 +62,8 @@ export const Order = () => {
         getCarts();
     }
 
-    const onRecivedOrder = async (cart) =>{
+
+    const onReceivedOrder = async (cart) =>{
         let _cart = {
             id:cart.id,
             orderId:cart.order.id,
@@ -71,6 +72,12 @@ export const Order = () => {
         }
         const responseUpdatedCartStatus = await Promise.resolve(updateCart(_cart))
         getCarts();
+    }
+
+    const onPrintOrderInvoice =  async (cart) =>{
+        //TOODO
+        //AQUI LLAMO AL ENDPOINT EN EL SERVIDOR
+        //QUE VA A GENERAR EL REPORTE JASPERSOFT 
     }
 
   return (
@@ -135,12 +142,12 @@ export const Order = () => {
                                 <Button onClick={()=>onCancelOrder(cart)} label="Cancelar Orden" className="p-button-danger" />
                                 :
                                 cart.status === 'IN_TRAVEL'?
-                                <Button onClick={()=>onRecivedOrder(cart)} style={{backgroundColor:'#A1FF60'}} label="Marcar como recibida" className="p-button-success" />
+                                <Button onClick={()=>onReceivedOrder(cart)} style={{backgroundColor:'#A1FF60'}} label="Marcar como recibida" className="p-button-success" />
                                 :
                                 cart.status === 'CANCELED'?
                                 <p>Esta orden fue cancelada</p>:
                                 cart.status === 'RECEIVED'?
-                                <Button label="Imprimir recibo" className="p-button-secondary" />
+                                <Button onClick={()=>onPrintOrderInvoice(cart)} label="Imprimir recibo" className="p-button-secondary" />
                                 :
                                 <></>
                                 }
