@@ -26,10 +26,10 @@ const Products = () => {
     <Loading />
   ) : (
     <section className="products_container">
-      <h2 className="products_container_title">Top Teléfonos</h2>
+      <h2 className="heading">Top Teléfonos</h2>
       <section className="products_main">
-        {products.map((item) => (
-          <Product item={item} />
+        {products.map((item, i) => (
+          <Product item={item} i={i} />
         ))}
       </section>
     </section>

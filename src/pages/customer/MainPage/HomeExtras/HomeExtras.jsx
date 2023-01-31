@@ -31,8 +31,9 @@ const HomeExtras = () => {
     >
       <div className="feature">
         <p className="feature__subtitle">¿Qué ofrecemos?</p>
-        <h2 className="feature__title">Encuentra el dispositivo</h2>
-        <h2 className="feature__title">
+        <h2 className="feature__title heading">
+          Encuentra el dispositivo
+          <br />
           perfecto <span> para ti</span>
         </h2>
         <p className="feature__text">
