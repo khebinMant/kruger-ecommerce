@@ -38,13 +38,18 @@ const renderCustomizedLabel = ({
 
 const PieComponent = ({ customers, orders }) => {
 
-  const {gamaBaja,gamaMedia,gamaAlta,servicio}=useAnalize(orders);  
-  const data = [
+  const {gamaBaja,gamaMedia,gamaAlta,servicio}=useAnalize(orders); 
+  let data;
+  if(orders){ 
+   data = [
     { name: "Gama baja", value: gamaBaja * 100 },
     { name: "Gama media", value: gamaMedia * 100 },
     { name: "Gama alta", value: gamaAlta * 100 },
     { name: "Servicio", value: servicio * 100 }
-  ];
+  ];}else{
+     data = [
+      { name: "No data", value:  1000 }]
+  }
 
 
 

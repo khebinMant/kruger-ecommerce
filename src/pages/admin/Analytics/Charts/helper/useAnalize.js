@@ -7,8 +7,9 @@ const [gamaMedia, setGamaMedia] = useState(0);
 const [gamaAlta, setGamaAlta] = useState(0);
 const [servicio, setServicio] = useState(0);
     useEffect(() => {
+      if(orders){
         loadGamaBaja();
-      
+      }
       }, [orders]);
       
       
