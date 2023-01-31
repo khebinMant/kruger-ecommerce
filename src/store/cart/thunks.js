@@ -83,8 +83,10 @@ export const startUpdateQuantityItemToCart = (item) =>{
         //Despachar
         dispatch(updateItemQuantity({item,newPrice}))
 
+        const  updatedCart  = getState().cart.cart
+
         //Almacenar en el local storage
-        localStorage.setItem('cart', JSON.stringify(cart))
+        localStorage.setItem('cart', JSON.stringify(updatedCart))
 
     }
 }
