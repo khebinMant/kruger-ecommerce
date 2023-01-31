@@ -35,7 +35,7 @@ const Payment = () => {
 
   useEffect(() => {
     //este es el precio total que esta en la carta antes de agregar la iva
-    setCartaSubtotal(cart?.totalPrice);
+    setCartaSubtotal(cart?.totalPrice.toFixed(2));
     //agregar la iva al totlaPrice 
     const priceWithIva = Math.round((cart?.totalPrice + cart?.totalPrice * 0.12) * 100) / 100;
     setCartaFinalPrice(priceWithIva);
