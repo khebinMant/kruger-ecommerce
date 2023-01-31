@@ -47,7 +47,7 @@ const Payment = () => {
   }
 
   const accept = async () => {
-    //si hay un cupon el precio final de la carta sera el precio despues del descuento
+    //si hay un cupon validado, el precio final de la carta sera el precio despues del descuento
     //caso contrario seria el precio final
     if(!coupon){
       dispatch(setTotalPriceWithIva({price:cartaFinalPrice}));
@@ -58,6 +58,9 @@ const Payment = () => {
     //resetear todos los campos y enviar el usuario al home page
     resetStates();
     toast.current.show({ severity: 'success', summary: 'Compra realizada', detail: 'Tu compra se ha efectuado correctamente', life: 3000 });
+    setTimeout(()=>{
+      navigation("/orders")
+    },1000)
 
 
   }
@@ -73,8 +76,6 @@ const resetStates=()=>{
   document.getElementById("totalPrice").style.textDecorationLine = "none";
   document.getElementById("totalPrice").style.color = "#A1FF69";
   setPriceAfterDiscount(0);
-
-
 }
 
   /**

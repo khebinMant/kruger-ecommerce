@@ -5,6 +5,7 @@ import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../../store/user/userSlice";
+import { resetCart } from "../../store/cart/cartSlice";
 import { motion } from "framer-motion";
 
 const Login = () => {
@@ -100,7 +101,6 @@ const Login = () => {
       //login successfull
       localStorage.setItem("currentUser", JSON.stringify(resp));
       dispatch(setCurrentUser(resp));
-      console.log(user);
       navigation("/");
     } else {
       //login failed

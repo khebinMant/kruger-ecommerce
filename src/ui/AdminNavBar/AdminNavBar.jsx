@@ -6,6 +6,7 @@ import { setCurrentUser } from "../../store/user/userSlice";
 import { Badge } from "primereact/badge";
 import AdminCircle from "./AdminCircle/AdminCircle"
 import { useEffect } from "react";
+import { resetCart } from "../../store/cart/cartSlice";
 
 const AdminNavBar = () => {
 
@@ -27,7 +28,10 @@ const AdminNavBar = () => {
     if (user) {
       setLoginTxt("Login");
       localStorage.removeItem("currentUser");
+      localStorage.removeItem("cart");
       dispatch(setCurrentUser(null));
+      dispatch(resetCart());
+      navigation("/");
     } else {
       navigation("/login");
     }

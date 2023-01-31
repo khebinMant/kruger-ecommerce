@@ -1,5 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+const findProductByID=(arr,id)=>{
+    let index=-1;
+   arr.find((it,i)=>
+               {
+                if( it.productId==id){
+                    index=i;
+                }
+               });
+               return index;
+}
 export const cartSlice = createSlice({
     name: 'cart',
     initialState: {
@@ -17,7 +26,13 @@ export const cartSlice = createSlice({
             state.cart = action.payload.cart;
         },
         addItemToCart:(state,action)=>{
-            state.cart.items.push(action.payload.item);
+           
+           const index=findProductByID( state.cart.items,action.payload.item.productId);
+            if(index>=0){
+                state.cart.items[index].quantity+=1;
+            }else{
+                state.cart.items.push(action.payload.item);
+            }
             state.cart.totalPrice += action.payload.item.price * action.payload.item.quantity
         },
         deleteItemToCart:(state,action)=>{
