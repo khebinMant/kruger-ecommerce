@@ -8,38 +8,45 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import useAnalize from "../helper/useAnalize";
 
 import "./LineComponent.scss";
 
-const data = [
-  {
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-];
 
-const LineComponent = () => {
+
+const LineComponent = ({orders}) => {
+  const {gamaBaja,gamaMedia,gamaAlta,servicio}=useAnalize(orders); 
+
+
+  const data = [
+    {
+      uv: gamaBaja,
+      pv: 2400,
+      amt: 2400,
+    },
+    {
+      uv: gamaAlta,
+      pv: 1398,
+      amt: 2210,
+    },
+    {
+      uv: gamaMedia,
+      pv: 9800,
+      amt: 2290,
+    },
+    {
+      uv: 2780,
+      pv: 3908,
+      amt: 2000,
+    },
+    {
+      uv: 1890,
+      pv: 4800,
+      amt: 2181,
+    },
+  ];
+
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
