@@ -16,9 +16,12 @@ const RadarComponent = ({customers,orders}) => {
   const [totalVentas,setTotalVentas]=useState(0);
 
   useEffect(()=>{
-    const ventas=orders?.reduce((acc, it) =>
-    acc + it.totalPrice, 0)
-    setTotalVentas(ventas);
+    if(orders){
+      const ventas=orders.reduce((acc, it) =>
+      acc + it.totalPrice, 0)
+      setTotalVentas(ventas);
+    }
+   
   },[orders]);
 
 

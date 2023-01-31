@@ -47,11 +47,12 @@ export const AnalitycsView = () => {
 
   const loadOrders = async () => {
     const resp = await getAllOrders();
-    setOrders(resp);
+
+    resp ? setOrders(resp) : setOrders(null);
   }
 
   return (
-    <div className="analitycs">
+  <div className="analitycs">
       <div className="analitycs_stats">
         <div className="analitycs_stats_content">
           <div class="item item--1">
@@ -120,16 +121,16 @@ export const AnalitycsView = () => {
           </div>
         </div>
 
-        <div className="analitycs_stats_chart">
+       {<div className="analitycs_stats_chart">
           <RadarComponent customers={customers} orders={orders} />
-        </div>
+        </div>}
       </div>
-      <div className="analitycs_right">
+      { <div className="analitycs_right">
         <div style={{ height: "500px", width: "100%" }}>
           <AreaComponent customers={customers} orders={orders} />
         </div>
-      </div>
-      <div className="analitycs_end">
+      </div>}
+     { <div className="analitycs_end">
         <div className="analitycs_end_chart">
           <BarComponent customers={customers} orders={orders} />
         </div>
@@ -139,10 +140,10 @@ export const AnalitycsView = () => {
           <PieComponent customers={customers} orders={orders} />
 
         </div>
-        <div className="analitycs_end_chart">
+      {  <div className="analitycs_end_chart">
           <LineComponent customers={customers} orders={orders} />
-        </div>
-      </div>
+  </div>}
+      </div>}
     </div>
   );
 };
