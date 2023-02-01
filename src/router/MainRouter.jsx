@@ -43,6 +43,7 @@ import ToDo from "../pages/admin/ToDo/ToDo";
 import CalendarComponent from "../pages/admin/Calendar/CalendarComponent";
 import ProtectedAdminRoutes from "./ProtectedAdminRoutes";
 import { Order } from "../pages/customer/Order/Order";
+import UpdateCompany from "../pages/admin/UpdateCompany/UpdateCompany";
 
 export const MainRouter = () => {
   const dispatch = useDispatch();
@@ -92,6 +93,7 @@ export const MainRouter = () => {
           <Route path="calendar" element={<CalendarComponent />} />
           <Route path="todo" element={<ToDo />} />
           <Route path="text-editor" element={<TextEditor />} />
+          <Route path="empressa" element={<UpdateCompany />} />
         </Route>
       </Route>
     </Routes>

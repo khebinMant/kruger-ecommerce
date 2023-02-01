@@ -1,0 +1,78 @@
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.form-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+
+.image-container{
+
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .company-img{
+        border-radius: 20px;
+        box-shadow: 1px 2px 7px 0px #a1ff69;
+        width: 350px;
+    }
+    .pickPhoto{
+        width: 50px;
+        z-index: 10;
+        position: relative;
+        bottom: 40px;
+    }
+    .pickPhoto:hover {
+        cursor: pointer;
+    }
+    .invisible-file-picker {
+        display: none;
+    }
+}
+
+    .company-form{
+
+        input {
+            padding: 15px;
+            margin-bottom: 8px;
+            border-style: none;
+            background-color: #bddfbd;
+            color: #1C313E;
+            border-radius: 10px;
+            width: 100%;
+            color-scheme: none;
+        }
+
+        .p-inputtext{
+            background: #BDDFBD;
+            border-radius: 15px;
+            color: #13252F;
+        }
+
+
+        ::-webkit-input-placeholder {
+            /* WebKit, Blink, Edge */
+            color: #5b7381;
+        }
+        input:focus {
+            outline: none;
+        }
+        .submit {
+            background-color: #1C313E;
+            color: #A1FF69;
+            font-weight: 600;
+        }
+        .submit:hover {
+            cursor: pointer;
+            background-color: #A1FF69;
+            color: #1C313E;
+        }
+    
+    }
+
+}
+
