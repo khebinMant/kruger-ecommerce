@@ -9,6 +9,7 @@ import { Divider } from "primereact/divider";
 import { Button } from "primereact/button";
 import { updateCart } from "../../../helpers/carts/updateCart";
 import NoOrders from "./NoOrders/NoOrders";
+import { getCartReportById } from "../../../helpers/carts/getCartReportById";
 
 export const Order = () => {
   const [carts, setCarts] = useState();
@@ -78,9 +79,10 @@ export const Order = () => {
   };
 
   const onPrintOrderInvoice = async (cart) => {
-    //TOODO
-    //AQUI LLAMO AL ENDPOINT EN EL SERVIDOR
-    //QUE VA A GENERAR EL REPORTE JASPERSOFT
+    const responseReportCart = await Promise.resolve(getCartReportById(cart))
+
+    window.open(`http://localhost:8082/api/carts/${cart.id}/report`, '_blank', 'noreferrer')  
+
   };
 
   return carts ? (
