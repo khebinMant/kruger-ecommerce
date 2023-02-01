@@ -20,10 +20,17 @@ const SearchProductPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [name, setName] = useState("");
   const dispath = useDispatch();
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(4);
 
   useEffect(() => {
     getData();
   }, [parameter, from, to]);
+
+  useEffect(() => {
+    // setEnd(start+4);
+    console.log(start, end)
+  }, [start]);
 
   const getData = async () => {
     let response;
@@ -78,6 +85,8 @@ const SearchProductPage = () => {
     }
   };
   const onChangeName = async (e) => {
+    setStart(0);
+    setEnd(4);
     let response;
     setName(e.target.value.toLowerCase());
     if (e.target.value.trim().length === 0) {
@@ -101,7 +110,28 @@ const SearchProductPage = () => {
     setProducts(response);
     setIsLoading(false);
   };
+  const handlNextClick = () => {
+    setStart(start => {
+      setEnd(start + 8);
+      return start + 4;
+    });
+  }
 
+  const handleBackClick = () => {
+    if ((start - 4) >= 0) {
+      setStart(start => {
+        setEnd(start);
+        return start - 4;
+      });
+    } else {
+      setStart(0);
+      setEnd(4);
+    }
+  }
+const onFilterClick=()=>{
+  setStart(0);
+  setEnd(4);
+}
   return (
     <div className="searchpage">
       <Banner />
@@ -149,7 +179,7 @@ const SearchProductPage = () => {
           </button>
         </label>
       </form>
-      <div className="searchpage_filters">
+      <div className="searchpage_filters" onClick={onFilterClick}>
         <PriceFilter />
         <CategoryFilter />
       </div>
@@ -159,7 +189,7 @@ const SearchProductPage = () => {
           <Loading />
         ) : (
           <>
-            {products.map((item) =>
+            {products.slice(start, end).map((item) =>
               item.type === "PRODUCT" ? (
                 <Product key={item.id} item={item} />
               ) : (
@@ -170,13 +200,15 @@ const SearchProductPage = () => {
         )}
       </div>
       <div class="pagination">
-        <div class="pagination__item">1</div>
-        <div class="pagination__item">2</div>
-        <div class="pagination__item">3</div>
-        <div class="pagination__item">4</div>
+        {(start - 4) >= 0 && <div class="pagination__item" onClick={handleBackClick}>Anterior</div>}
+        {(start + 5 <= products.length) && <div class="pagination__item" onClick={handlNextClick}>Siguiente</div>}
+
       </div>
     </div>
   );
 };
 
 export default SearchProductPage;
+/*<div class="pagination__item">2</div>
+<div class="pagination__item">3</div>
+<div class="pagination__item">4</div>*/
