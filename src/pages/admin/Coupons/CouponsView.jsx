@@ -13,13 +13,14 @@ import { Dropdown } from "primereact/dropdown";
 import '../AdminMainPage.css';
 import { getAllCoupons } from "../../../helpers/coupons/getAllCoupons";
 import Loading from "../../../components/Loading";
+import { postCoupon } from "../../../helpers/coupons/postCoupon";
+import { InputNumber } from 'primereact/inputnumber';
+import { putCoupon } from "../../../helpers/coupons/putCoupon";
+import { deleteCoupon } from "../../../helpers/coupons/deleteCoupon";
 
 let emptyCoupon = {
-  name: "",
-  description: "",
-  stock: "",
-  price: "",
-  category: null,
+  type: null,
+  quantity:1
 };
 
 export const CouponsView = () => {
@@ -32,43 +33,46 @@ export const CouponsView = () => {
   const [coupon, setCoupon] = useState(emptyCoupon);
   const [selectedCoupons, setSelectCoupons] = useState(null);
   const [submitted, setSubmitted] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [categories, serCategories] = useState();
+  const [selectedType, setSelectedType] = useState(null);
 
   const [globalFilter, setGlobalFilter] = useState(null);
   const toast = useRef(null);
   const dt = useRef(null);
   const navigate = useNavigate();
 
+  const types = [
+    {
+      name:'PERCENTAGE'
+    },
+    {
+      name:'DIRECT'
+    }
+  ]
+
   useEffect(() => {
     getCoupons();
   }, []);
 
-  useEffect(() => {
-    getCategories();
-  }, []);
-
+  const onTypeChange = (e) => {
+    setSelectedType(e.value);
+  }
 
   const createCoupon = async (coupon) => {
-    // const responsePostCoupon = await Promise.resolve(postCoupon(coupon));
-    // return responsePostCoupon;
+    const responsePostCoupon = await Promise.resolve(postCoupon(coupon));
+    return responsePostCoupon;
   };
 
   const updateCoupon = async (coupon) => {
-    // const responsePutCoupon = await Promise.resolve(putCoupon(coupon));
-    // return responsePutCoupon;
+    const responsePutCoupon = await Promise.resolve(putCoupon(coupon));
+    return responsePutCoupon;
   };
 
   const removeCoupon = async (couponId) => {
-    // const responseDeleteCoupon = await Promise.resolve(deleteCoupon(couponId));
-    // return responseDeleteCoupon;
+    const responseDeleteCoupon = await Promise.resolve(deleteCoupon(couponId));
+    return responseDeleteCoupon;
   };
 
-  const getCategories = async () => {
-    // const responseCategories = await Promise.resolve(getAllCategories());
-    // serCategories(responseCategories);
-    setIsLoading(false);
-  };
+
 
   const getCoupons = async () => {
     const responseCoupons = await Promise.resolve(getAllCoupons());
@@ -78,6 +82,7 @@ export const CouponsView = () => {
 
   const openNew = () => {
     setCoupon(emptyCoupon);
+    setSelectedType({});
     setSubmitted(false);
     setCouponDialog(true);
   };
@@ -95,11 +100,12 @@ export const CouponsView = () => {
     setDeleteCouponsDialog(false);
   };
   const saveCoupon = async () => {
-    setSubmitted(true);
+      setSubmitted(true);
 
-    if (coupon.name.trim()) {
       let _coupons = [...coupons];
       let _coupon = { ...coupon };
+      _coupon.type = selectedType.name;
+      _coupon.quantity = _coupon.quantity;
       if (coupon.id) {
         const responsePutCoupon = updateCoupon(_coupon);
         if (responsePutCoupon) {
@@ -123,6 +129,9 @@ export const CouponsView = () => {
         const responsePostCoupon = await createCoupon(_coupon);
         if (responsePostCoupon) {
           _coupon.id = responsePostCoupon.id;
+          _coupon.code = responsePostCoupon.code
+          _coupon.status = responsePostCoupon.status
+          _coupon.created = responsePostCoupon.created
           _coupons.push(_coupon);
           toast.current.show({
             severity: "success",
@@ -143,11 +152,17 @@ export const CouponsView = () => {
       setCoupons(_coupons);
       setCouponDialog(false);
       setCoupon(emptyCoupon);
-    }
+
   };
 
   const editCoupon = (coupon) => {
     setCoupon({ ...coupon });
+    if(coupon.type === 'PERCENTAGE'){
+      setSelectedType({name:'PERCENTAGE'})
+    }
+    else{
+      setSelectedType({name:'DIRECT'})
+    }
     setCouponDialog(true);
   };
 
@@ -215,7 +230,7 @@ export const CouponsView = () => {
 
     setCoupon(_coupon);
   };
-
+  
   const leftToolbarTemplate = () => {
     return (
       <React.Fragment>
@@ -395,88 +410,47 @@ export const CouponsView = () => {
         <Dialog
           visible={couponDialog}
           style={{ width: "450px" }}
-          header="Información de la coupon"
+          header="Información del cupon"
           modal
           className="p-fluid"
           footer={couponDialogFooter}
           onHide={hideDialog}
         >
           <div className="field">
-            <label htmlFor="couponName">Coupon name</label>
+            <label htmlFor="couponName">Tipo de cupon</label>
+            <Dropdown 
+              value={selectedType} 
+              options={types} 
+              onChange={onTypeChange} 
+              optionLabel="name" 
+              placeholder="Tipo de descuento"   
+            />
+            {submitted && !selectedType && (
+              <small className="p-error">El tipo es obligatorio.</small>
+            )}
+          </div>
+          <div className="field">
+            <label htmlFor="quantity">Cantidad</label>
             <InputText
-              id="couponName"
-              value={coupon.name}
-              onChange={(e) => onInputChange(e, "couponName")}
-              required
-              autoFocus
-              className={classNames({ "p-invalid": submitted && !coupon.couponName })}
-            />
-            {submitted && !coupon.name && (
-              <small className="p-error">El Coupon name es obligatorio.</small>
-            )}
-          </div>
-          <div className="field">
-            <label htmlFor="stock">Stock</label>
-            <InputText
-              id="stock"
-              value={coupon.stock}
-              onChange={(e) => onInputChange(e, "stock")}
+              id="quantity"
+              value={coupon.quantity}
+              onChange={(e) => onInputChange(e, "quantity")}
               className={classNames({
-                "p-invalid": submitted && !coupon.stock,
+                "p-invalid": submitted && !coupon.quantity,
               })}
             />
-            {submitted && !coupon.stock && (
-              <small className="p-error">El Stock es obligatoria.</small>
+            {submitted && !coupon.quantity && (
+              <small className="p-error">La cantidad es obligatoria.</small>
             )}
           </div>
-          <div className="field">
-            <label htmlFor="photoUrl">Foto</label>
-            <InputTextarea
-              id="photoUrl"
-              value={coupon.photoUrl}
-              onChange={(e) => onInputChange(e, "photoUrl")}
-              required
-              rows={3}
-              cols={20}
-              className={classNames({
-                "p-invalid": submitted && !coupon.photoUrl,
-              })}
-            />
-            {submitted && !coupon.photoUrl && (
-              <small className="p-error">La Foto es obligatoria es obligatoria.</small>
-            )}
-          </div>
-          <div className="field">
-            <label htmlFor="description">Descripción</label>
-            <InputTextarea
-              id="description"
-              value={coupon.description}
-              onChange={(e) => onInputChange(e, "description")}
-              required
-              rows={3}
-              cols={20}
-              className={classNames({
-                "p-invalid": submitted && !coupon.description,
-              })}
-            />
-            {submitted && !coupon.description && (
-              <small className="p-error">La descripción es obligatoria.</small>
-            )}
-          </div>
-          <div className="field">
-            <label htmlFor="category">Categoria</label>
-            <Dropdown
-              value={coupon.category}
-              required
-              options={categories}
-              onChange={(e) => onInputChange(e, "category")}
-              optionLabel="name"
-              placeholder="Selecciona la categoría"
-            />
-            {submitted && !coupon.category && (
-              <small className="p-error">La categoria es obligatoria.</small>
-            )}
-          </div>
+          {
+            coupon.type === null?
+            <p style={{marginTop:'20px'}}>
+              <b>*El código del cupón se generará automáticamente una vez creado</b>
+            </p>
+            :<></>
+          }
+
         </Dialog>
   
         <Dialog
@@ -494,7 +468,7 @@ export const CouponsView = () => {
             />
             {coupon && (
               <span>
-                Estas seguro que quiere eliminar: <b>{coupon.name}</b>?
+                Estas seguro que quiere eliminar: <b>{coupon.code}</b>?
               </span>
             )}
           </div>
