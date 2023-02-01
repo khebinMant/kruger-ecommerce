@@ -43,6 +43,7 @@ import ToDo from "../pages/admin/ToDo/ToDo";
 import CalendarComponent from "../pages/admin/Calendar/CalendarComponent";
 import ProtectedAdminRoutes from "./ProtectedAdminRoutes";
 import { Order } from "../pages/customer/Order/Order";
+import UpdateCompany from "../pages/admin/UpdateCompany/UpdateCompany";
 import Support from "../pages/customer/Support/Support";
 import AboutCompany from "../pages/customer/AboutCompany/AboutCompany";
 
@@ -96,6 +97,7 @@ export const MainRouter = () => {
           <Route path="calendar" element={<CalendarComponent />} />
           <Route path="todo" element={<ToDo />} />
           <Route path="text-editor" element={<TextEditor />} />
+          <Route path="empressa" element={<UpdateCompany />} />
         </Route>
       </Route>
     </Routes>

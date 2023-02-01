@@ -113,6 +113,8 @@ const SearchProductPage = () => {
   };
   const handlNextClick = () => {
     setStart(start => {
+      //end siempre tiene que estar 4 numeros adelante de start 
+      //agregar 8 al end porque al momento de actualizar end start todavia no esta actualizado
       setEnd(start + 8);
       return start + 4;
     });
