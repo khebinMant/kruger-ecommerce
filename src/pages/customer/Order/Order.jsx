@@ -171,7 +171,7 @@ export const Order = () => {
                     ) : cart.status === "RECEIVED" ? (
                       <Button
                         onClick={() => onPrintOrderInvoice(cart)}
-                        label="Imprimir recibo"
+                        label="Descargar recibo"
                         className="p-button-secondary"
                       />
                     ) : (
