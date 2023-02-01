@@ -43,6 +43,8 @@ import ToDo from "../pages/admin/ToDo/ToDo";
 import CalendarComponent from "../pages/admin/Calendar/CalendarComponent";
 import ProtectedAdminRoutes from "./ProtectedAdminRoutes";
 import { Order } from "../pages/customer/Order/Order";
+import Support from "../pages/customer/Support/Support";
+import AboutCompany from "../pages/customer/AboutCompany/AboutCompany";
 
 export const MainRouter = () => {
   const dispatch = useDispatch();
@@ -61,6 +63,8 @@ export const MainRouter = () => {
       <Route path="/services" element={<AllServices />} />
       <Route path="/contact" element={<ContactUs />} />
       <Route path="/faq" element={<Faq />} />
+      <Route path="/company" element={<AboutCompany />} />
+      <Route path="/support" element={<Support />} />
       <Route path="/testimonials/:id" element="" />
       <Route element={<ProtectedRoutes />}>
         <Route path="/cart" element={<Cart />} />
