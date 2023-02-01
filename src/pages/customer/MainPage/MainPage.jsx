@@ -10,21 +10,25 @@ import EncourageUser from "./EncourageUser/EncourageUser";
 import ExtraCards from "./ExtraCards/ExtraCards";
 import PixelArt from "./PixelArt/PixelArt";
 import NewArrivals from "./NewArrivals/NewArrivals";
+import { useTranslation } from "react-i18next";
+import TranslationChanger from "./TranslationChanger/TranslationChanger";
 
 const MainPage = () => {
+  const { t, i18n } = useTranslation("global");
   return (
     <div className="mainpage">
-      <Banner />
-      <MainInfoHome />
+      <TranslationChanger t={t} i18n={i18n} />
+      <Banner t={t} />
+      <MainInfoHome t={t} />
 
-      <Products />
-      <HomeExtras />
-      <Services />
-      <NewArrivals />
-      <WhyUs />
-      <ExtraCards />
+      <Products t={t} />
+      <HomeExtras t={t} />
+      <Services t={t} />
+      <NewArrivals t={t} />
+      <WhyUs t={t} />
+      <ExtraCards t={t} />
       <PixelArt />
-      <EncourageUser />
+      <EncourageUser t={t} />
     </div>
   );
 };

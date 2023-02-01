@@ -2,7 +2,7 @@ import React from "react";
 import "./WhyUs.scss";
 import { motion } from "framer-motion";
 
-const WhyUs = () => {
+const WhyUs = ({ t }) => {
   const elementAnimate = {
     offscreen: { x: -70, opacity: 0 },
     onscreen: {
@@ -38,28 +38,18 @@ const WhyUs = () => {
         variants={imgAnimate}
       >
         <h2 className=" whyUs__title heading">
-          ¿Por qué <span>nosotros?</span>
+          {t("whyus-main.main")} <span>{t("whyus-main.span")}</span>
         </h2>
-        <p>
-          Ofrecemos una amplia selección de los últimos y mejores dispositivos
-          móviles, con precios competitivos, envío gratis y atención al cliente
-          dedicada para ayudarle en todo momento
-        </p>
+        <p>{t("whyus-main.text")}</p>
         <ul className="whyUs__list">
           <li className="whyUs__item">
-            <h3>Precios competitivos</h3>
-            <p>
-              Trabajamos duro para asegurarnos de que nuestros precios sean
-              competitivos, para que pueda obtener el mejor valor por su dinero.
-            </p>
+            <h3>{t("whyus-main.item-title1")}</h3>
+            <p>{t("whyus-main.item-description1")}</p>
           </li>
 
           <li className="whyUs__item">
-            <h3>Envío gratuito</h3>
-            <p>
-              Ofrecemos envío gratis en todos los pedidos, para que pueda
-              recibir su dispositivo de manera rápida y sin costo adicional.
-            </p>
+            <h3>{t("whyus-main.item-title1")}</h3>
+            <p>{t("whyus-main.item-description1")}</p>
           </li>
         </ul>
       </motion.div>

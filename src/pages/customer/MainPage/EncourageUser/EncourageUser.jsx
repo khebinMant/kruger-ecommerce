@@ -1,10 +1,10 @@
 import React from "react";
 import "./EncourageUser.scss";
 
-const EncourageUser = () => {
+const EncourageUser = ({ t }) => {
   return (
     <section className="encourage">
-      <h2 className="encourage_title">¿Nos das una oportunidad?</h2>
+      <h2 className="encourage_title"> {t("opportunity-main.text")}</h2>
       <div className="spacer layer1"></div>
     </section>
   );

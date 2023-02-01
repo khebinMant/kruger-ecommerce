@@ -2,7 +2,7 @@ import React from "react";
 import "./HomeExtras.scss";
 import { motion } from "framer-motion";
 
-const HomeExtras = () => {
+const HomeExtras = ({ t }) => {
   const elementAnimate = {
     offscreen: { x: -50, opacity: 0 },
     onscreen: {
@@ -30,19 +30,12 @@ const HomeExtras = () => {
       variants={elementAnimate}
     >
       <div className="feature">
-        <p className="feature__subtitle">¿Qué ofrecemos?</p>
+        <p className="feature__subtitle">{t("extra-main.text")}</p>
         <h2 className="feature__title heading">
-          Encuentra el dispositivo
-          <br />
-          perfecto <span> para ti</span>
+          {t("extra-main.main")}
+          <span> {t("extra-main.span")}</span>
         </h2>
-        <p className="feature__text">
-          Aquí encontrarás una amplia variedad de los últimos y mejores
-          dispositivos inteligentes. Tenemos algo para
-          <br />
-          todos, ya sea que estes buscando el último iPhone o un dispositivo
-          Android asequible.
-        </p>
+        <p className="feature__text">{t("extra-main.description")}</p>
       </div>
 
       <ul className="feature__list">
@@ -54,8 +47,10 @@ const HomeExtras = () => {
           variants={imgAnimate}
         >
           <img src="/images/g.svg" alt="feature-img" className="feature__img" />
-          <h5 className="feature__item-title">Variedad de productos</h5>
-          <p>Mantente a la vanguardia de la tecnología con nuestra selección</p>
+          <h5 className="feature__item-title">
+            {t("extra-main.feature-title1")}
+          </h5>
+          <p>{t("extra-main.feature-description1")}</p>
         </motion.li>
         <motion.li
           className="feature__item"
@@ -65,8 +60,10 @@ const HomeExtras = () => {
           variants={imgAnimate}
         >
           <img src="/images/l.svg" alt="feature-img" className="feature__img" />
-          <h5 className="feature__item-title">Compra donde sea</h5>
-          <p>Experimenta la comodidad y satisfacción de comprar online</p>
+          <h5 className="feature__item-title">
+            {t("extra-main.feature-title2")}
+          </h5>
+          <p>{t("extra-main.feature-description2")}</p>
         </motion.li>
         <motion.li
           className="feature__item"
@@ -76,8 +73,10 @@ const HomeExtras = () => {
           variants={imgAnimate}
         >
           <img src="/images/b.svg" alt="feature-img" className="feature__img" />
-          <h5 className="feature__item-title">Pago seguro</h5>
-          <p>Compre ahora y únase a millones de clientes satisfechos</p>
+          <h5 className="feature__item-title">
+            {t("extra-main.feature-title3")}
+          </h5>
+          <p>{t("extra-main.feature-description3")}</p>
         </motion.li>
       </ul>
       <div className="spacer layer10"></div>

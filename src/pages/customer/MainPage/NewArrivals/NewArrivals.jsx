@@ -2,7 +2,7 @@ import React from "react";
 import "./NewArrivals.scss";
 import { motion } from "framer-motion";
 
-const NewArrivals = () => {
+const NewArrivals = ({ t }) => {
   const elementAnimate = {
     offscreen: { x: -40, opacity: 0 },
     onscreen: {
@@ -22,8 +22,8 @@ const NewArrivals = () => {
   return (
     <section class="new-arrival">
       <div class="title">
-        <span>Novedades</span>
-        <h2 className="heading">Ultimos Dispositivos</h2>
+        <span>{t("latest-main.text")}</span>
+        <h2 className="heading">{t("latest-main.main")}</h2>
       </div>
 
       <div class="row container">
@@ -39,9 +39,9 @@ const NewArrivals = () => {
             alt=""
           />
           <h3>
-            Tips <br />
-            Compra Online
-            <span>Infórmate</span>
+            {t("latest-main.item-category1")} <br />
+            {t("latest-main.item-title1")}
+            <span>{t("latest-main.item-text1")}</span>
           </h3>
         </motion.div>
         <motion.div
@@ -56,9 +56,9 @@ const NewArrivals = () => {
             alt=""
           />
           <h3>
-            Nuevos <br />
-            Samsung 3000
-            <span>Pocas Unidades</span>
+            {t("latest-main.item-category3")} <br />
+            {t("latest-main.item-title3")}
+            <span>{t("latest-main.item-text3")}</span>
           </h3>
         </motion.div>
         <motion.div
@@ -73,9 +73,9 @@ const NewArrivals = () => {
             alt=""
           />
           <h3>
-            Tendencias 2023 <br />
-            Iphone 14
-            <span>Disponible</span>
+            {t("latest-main.item-category3")} <br />
+            {t("latest-main.item-title3")}
+            <span>{t("latest-main.item-text3")}</span>
           </h3>
         </motion.div>
       </div>
