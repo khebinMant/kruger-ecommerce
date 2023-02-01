@@ -50,31 +50,33 @@ const CustomerNavBar = () => {
       ></i>
       <nav ref={navbar} className="header__nav header__nav--close">
         <ul className="header__list">
-        {
-          cart.items.length!==0?
-          <div className="header__item mega-menu header__navlink">
-            <div class="mega-menu__item mega-menu__trigger">
-              <div>
-                <li className="header__item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? "header__navlink active-link" : "header__navlink"
-                    }
-                    to="/cart"
-                  >
-                    <i
-                      className="pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge jump"
-                      style={{ fontSize: "1.5rem" }}
+          {cart.items.length !== 0 ? (
+            <div className="header__item mega-menu header__navlink">
+              <div class="mega-menu__item mega-menu__trigger">
+                <div>
+                  <li className="header__item">
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "header__navlink active-link"
+                          : "header__navlink"
+                      }
+                      to="/cart"
                     >
-                      <Badge value={cart.items.length || 0}></Badge>
-                    </i>
-                  </NavLink>
-                </li>
+                      <i
+                        className="pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge jump"
+                        style={{ fontSize: "1.5rem" }}
+                      >
+                        <Badge value={cart.items.length || 0}></Badge>
+                      </i>
+                    </NavLink>
+                  </li>
+                </div>
               </div>
-              </div>
-              </div>
-              :<></>
-        }
+            </div>
+          ) : (
+            <></>
+          )}
           <div className="header__item mega-menu header__navlink">
             <div class="mega-menu__item mega-menu__trigger">
               <div>
@@ -173,22 +175,43 @@ const CustomerNavBar = () => {
                         ? "header__navlink active-link"
                         : "header__navlink"
                     }
+                    to="/company"
+                  >
+                    <p>Compañia</p>
+                  </NavLink>
+                </li>
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
                     to="/faq"
                   >
                     <p>Preguntas frecuentes</p>
                   </NavLink>
                 </li>
-                
+                <li className="header__item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header__navlink active-link"
+                        : "header__navlink"
+                    }
+                    to="/support"
+                  >
+                    <p>Soporte</p>
+                  </NavLink>
+                </li>
               </div>
             </div>
-            
           </div>
 
           <div className="header__item mega-menu header__navlink">
             <div class="mega-menu__item mega-menu__trigger">
               <div>
-                  {
-                    user!==null?
+                {user !== null ? (
                   <li className="header__item">
                     <NavLink
                       className={({ isActive }) =>
@@ -200,7 +223,7 @@ const CustomerNavBar = () => {
                       <p>{loginTxt}</p>
                     </NavLink>
                   </li>
-                  :
+                ) : (
                   <li className="header__item">
                     <NavLink
                       className={({ isActive }) =>
@@ -214,9 +237,8 @@ const CustomerNavBar = () => {
                       <p>{loginTxt}</p>
                     </NavLink>
                   </li>
-                  }
+                )}
               </div>
-              
 
               <div class="mega-menu__content">
                 {user != null && (
@@ -260,8 +282,6 @@ const CustomerNavBar = () => {
               </div>
             </div>
           </div>
-
-         
         </ul>
       </nav>
     </header>
