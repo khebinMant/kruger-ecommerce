@@ -1,0 +1,76 @@
+{
+
+    "welcome-main":{
+        "text1": "Hier gibt es keine Grenzen",
+        "text2": "wählen sie ihre sprache"
+    },
+    "banner-main": {
+        "text": "Kostenloser",
+        "main": "Versand",
+        "brand": "Kruger Cell",
+        "btn1": "Produkte",
+        "btn2": "Dienste",
+        "explore": "Entdecken Sie, was wir Ihnen bieten"
+    },
+    "header-main": {
+        "slogan": "Der einfachste Weg zu kaufen?",
+        "span1": "Produkte?",
+        "presentation": "Warte auf sie an der Tür deines",
+        "span2": "Hauses",
+        "btn1": "Produkte",
+        "btn2": "Dienste",
+        "text1": "100% kostenloser Versand!",
+        "text2": "100% ige Kaufsicherheit"
+    },
+    "phones-main":{
+        "title": "Top Telefone"
+        },
+        "extra-main":{
+        "text": "Was bieten wir an?",
+        "main": "Finde das perfekte Gerät",
+        "span": "für dich",
+        "description": "Hier findest du eine breite Auswahl der neuesten und besten Smartphones. Wir haben für jeden etwas, egal ob du das neueste iPhone oder ein erschwingliches Android-Gerät suchst.",
+        "feature-title1": "PRODUKTVIELFALT",
+        "feature-description1": "Bleibe mit unserer Auswahl immer auf dem neuesten Stand der Technologie",
+        "feature-title2": "KAUF ÜBERALL",
+        "feature-description2": "Erlebe den Komfort und die Zufriedenheit des Online-Kaufs",
+        "feature-title3": "SICHERER ZAHLUNG",
+        "feature-description3": "Kaufe jetzt und schließe dich Millionen zufriedener Kunden an"
+        },
+        "service-main":{
+        "title": "Top Dienstle"
+        },
+        "latest-main":{
+        "text": "Neuheiten",
+        "main": "Neueste Geräte",
+        "item-category1": "Tipps",
+        "item-title1": "Online Kaufen",
+        "item-text1": "Informiere dich",
+        "item-category2": "Tipps",
+        "item-title2": "Online Kaufen",
+        "item-text2": "Informiere dich",
+        "item-category3": "Tipps",
+        "item-title3": "Online Kaufen",
+        "item-text3": "Informiere dich"
+        },
+        "whyus-main":{
+        "main": "Warum",
+        "span": "wir?",
+        "text": "Wir bieten eine breite Auswahl der neuesten und besten Mobilgeräte zu wettbewerbsfähigen Preisen, kostenlosem Versand und einem dedizierten Kundensupport, um Ihnen jederzeit zu helfen",
+        "item-title1": "Wettbewerbsfähige Preise",
+        "item-description1": "Wir arbeiten hart daran, sicherzustellen, dass unsere Preise wettbewerbsfähig sind, damit Sie das beste Preis-Leistungs-Verhältnis erhalten.",
+        "item-title2": "Kostenloser Versand",
+        "item-description2": "Wir bieten kostenlosen Versand für alle Bestellungen, damit Sie Ihr Gerät schnell und ohne zusätzliche Kosten erhalten können."
+        },
+        "extracards-main": {
+            "card-title1": "SICHERHEIT",
+            "card-text1": "Alle Transaktionen sind absolut privat und 100% sicher",
+            "card-title2": "GESCHWINDIGKEIT",
+            "card-text2": "Wir senden Ihre Bestellung innerhalb von 24 Stunden. Genießen Sie Ihr neues Gerät!",
+            "card-title3": "EFFIZIENZ",
+            "card-text3": "Dedizierter Kundensupport rund um die Uhr, um Ihnen jederzeit zu helfen"
+            },
+            "opportunity-main": {
+            "text": "Geben Sie uns eine Chance?"
+            }
+}

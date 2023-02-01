@@ -13,6 +13,7 @@ import { getProductsPaginatedAndSorted } from "../../../helpers/products/getProd
 import { getProductsCategory } from "../../../helpers/products/getProductsCategory";
 import Service from "../MainPage/Services/Service/Service";
 import Loading from "../../../components/Loading";
+import BannerSearch from "./BannerSearch/BannerSearch";
 
 const SearchProductPage = () => {
   const { parameter, from, to } = useSelector((state) => state.search);
@@ -134,7 +135,7 @@ const onFilterClick=()=>{
 }
   return (
     <div className="searchpage">
-      <Banner />
+      <BannerSearch />
       <h2 className="searchpage_title heading">Encuentra tus productos</h2>
       <form class="searchpage_form">
         <label for="search">

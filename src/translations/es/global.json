@@ -1,0 +1,76 @@
+{
+    "welcome-main":{
+        "text1": "Aquí no hay límites",
+        "text2": "escoge tu idioma"
+    },
+
+    "banner-main": {
+        "text": "Envio",
+        "main": "GRATIS",
+        "brand": "Kruger Cell",
+        "btn1": "Productos",
+        "btn2": "Servicios",
+        "explore": "Explora lo que tenemos para ofrecerte"
+    },
+    "header-main": {
+        "slogan": "La forma más fácil de comprar",
+        "span1": "Productos?",
+        "presentation": "Esperalos en la puerta de",
+        "span2": "tu casa",
+        "btn1": "Productos",
+        "btn2": "Servicios",
+        "text1": "Envio 100% gratis!",
+        "text2": "100% seguro al comprar"
+    },
+    "phones-main":{
+        "title": "Top Teléfonos"
+    },
+    "extra-main":{
+        "text": "¿Qué ofrecemos?",
+        "main": "Encuentra el dispositivo perfecto",
+        "span": "para ti",
+        "description": "Aquí encontrarás una amplia variedad de los últimos y mejores dispositivos inteligentes. Tenemos algo para todos, ya sea que estes buscando el último iPhone o un dispositivo Android asequible.",
+        "feature-title1": "VARIEDAD DE PRODUCTOS",
+        "feature-description1": "Mantente a la vanguardia de la tecnología con nuestra selección",
+        "feature-title2": "COMPRA DONDE SEA",
+        "feature-description2": "Experimenta la comodidad y satisfacción de comprar online",
+        "feature-title3": "PAGO SEGURO",
+        "feature-description3": "Compre ahora y únase a millones de clientes satisfechos"
+    },
+    "service-main":{
+        "title": "Top Servicios"
+    },
+    "latest-main":{
+        "text": "Novedades",
+        "main": "Ultimos Dispositivos",
+        "item-category1": "Tips",
+        "item-title1": "Compra Online",
+        "item-text1": "Infórmate",
+        "item-category2": "Tips",
+        "item-title2": "Compra Online",
+        "item-text2": "Infórmate",
+        "item-category3": "Tips",
+        "item-title3": "Compra Online",
+        "item-text3": "Infórmate"
+    },
+    "whyus-main":{
+        "main": "¿Por qué",
+        "span": "nosotros?",
+        "text": "Ofrecemos una amplia selección de los últimos y mejores dispositivos móviles, con precios competitivos, envío gratis y atención al cliente dedicada para ayudarle en todo momento",
+        "item-title1": "Precios competitivos",
+        "item-description1": "Trabajamos duro para asegurarnos de que nuestros precios sean competitivos, para que pueda obtener el mejor valor por su dinero.",
+        "item-title2": "Envío gratuito",
+        "item-description2": "Ofrecemos envío gratis en todos los pedidos, para que pueda recibir su dispositivo de manera rápida y sin costo adicional."
+    },
+    "extracards-main":{
+        "card-title1": "SEGURIDAD",
+        "card-text1": "Absolutamente todas las transaciones son privadas y 100% seguras",
+        "card-title2": "RAPIDEZ",
+        "card-text2": "Enviamos tu pedido en 24 horas. ¡Disfruta tu nuevo dispositivo!",
+        "card-title3": "EFICIENCIA",
+        "card-text3": "Soporte al cliente dedicado las 24/7 para ayudarte en todo momento"
+    },
+    "opportunity-main":{
+        "text": "¿Nos das una oportunidad?"
+    }
+}

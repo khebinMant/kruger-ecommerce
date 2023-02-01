@@ -1,0 +1,76 @@
+{
+    "welcome-main":{
+        "text1": "Here there are no limits",
+        "text2": "choose your language"
+    },
+
+    "banner-main": {
+        "text": "Free",
+        "main": "Shipping",
+        "brand": "Kruger Cell",
+        "btn1": "Products",
+        "btn2": "Services",
+        "explore": "Explore what we offer to you"
+    },
+    "header-main": {
+        "slogan": "The easiest way to buy",
+        "span1": "Products?",
+        "presentation": "Wait for them at the door of",
+        "span2": "your house",
+        "btn1": "Products",
+        "btn2": "Services",
+        "text1": "100% free shipping!",
+        "text2": "100% buying safety"
+    },
+    "phones-main": {
+        "title": "Top Phones"
+        },
+        "extra-main":{
+        "text": "What do we offer?",
+        "main": "Find the perfect device",
+        "span": "for you",
+        "description": "Here you will find a wide variety of the latest and greatest smart devices. We have something for everyone, whether you're looking for the latest iPhone or an affordable Android device.",
+        "feature-title1": "PRODUCT VARIETY",
+        "feature-description1": "Stay ahead of technology with our selection",
+        "feature-title2": "SHOP ANYWHERE",
+        "feature-description2": "Experience the convenience and satisfaction of shopping online",
+        "feature-title3": "SECURE PAYMENT",
+        "feature-description3": "Buy now and join millions of satisfied customers"
+        },
+        "service-main":{
+        "title": "Top Services"
+        },
+        "latest-main":{
+        "text": "Novelties",
+        "main": "Latest Devices",
+        "item-category1": "Tips",
+        "item-title1": "Online shopping",
+        "item-text1": "Get informed",
+        "item-category2": "Tips",
+        "item-title2": "Online shopping",
+        "item-text2": "Get informed",
+        "item-category3": "Tips",
+        "item-title3": "Online shopping",
+        "item-text3": "Get informed"
+        },
+        "whyus-main":{
+        "main": "Why",
+        "span": "us?",
+        "text": "We offer a wide selection of the latest and greatest mobile devices, with competitive prices, free shipping, and dedicated customer support to help you every step of the way.",
+        "item-title1": "Competitive prices",
+        "item-description1": "We work hard to make sure our prices are competitive so you can get the best value for your money.",
+        "item-title2": "Free shipping",
+        "item-description2": "We offer free shipping on all orders, so you can receive your device quickly and without additional cost."
+        },
+        "extracards-main":{
+        "card-title1": "SECURITY",
+        "card-text1": "Absolutely all transactions are private and 100% secure",
+        "card-title2": "SPEED",
+        "card-text2": "We send your order within 24 hours. Enjoy your new device!",
+        "card-title3": "EFFICIENCY",
+        "card-text3": "Dedicated customer support 24/7 to help you at all times"
+        },
+        "opportunity-main":{
+        "text": "Do you give us a chance?"
+        }
+}
