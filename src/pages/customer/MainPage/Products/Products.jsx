@@ -4,7 +4,7 @@ import "./Products.scss";
 import { productsData } from "./dummy";
 import { getAllProducts } from "../../../../helpers/products/getAllProducts";
 import Loading from "../../../../components/Loading";
-const Products = () => {
+const Products = ({ t }) => {
   const [products, setProducts] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,7 +26,7 @@ const Products = () => {
     <Loading />
   ) : (
     <section className="products_container">
-      <h2 className="heading">Top Teléfonos</h2>
+      <h2 className="heading">{t("phones-main.title")}</h2>
       <section className="products_main">
         {products.map((item, i) => (
           <Product item={item} i={i} />

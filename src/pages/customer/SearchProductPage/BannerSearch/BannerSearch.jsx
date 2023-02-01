@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 
-import "./Banner.scss";
+import "./BannerSearch.scss";
 
-const Banner = ({ t }) => {
+const BannerSearch = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -19,19 +19,42 @@ const Banner = ({ t }) => {
           <div className="slider_img_container">
             <img
               className="slider_img"
+              src="https://imagekit.androidphoria.com/wp-content/uploads/Fondo-negro-para-movil.jpg"
+              alt=""
+            />
+          </div>
+          <div className="text-box">
+            <p>Compra</p>
+            <h2>AHORA</h2>
+            <h3>Kruger Cell</h3>
+
+            <div className="row">
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
+            </div>
+          </div>
+
+          <div class="circle-banner"></div>
+          <div class="circle-banner2"></div>
+        </div>
+        <div className="slider_item">
+          <div className="slider_img_container">
+            <img
+              className="slider_img"
               src="https://images.unsplash.com/photo-1624204731525-995bd565b9c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHw%3D&w=1000&q=80"
               alt=""
             />
           </div>
           <div className="text-box">
-            <p>{t("banner-main.text")}</p>
-            <h2>{t("banner-main.main")}</h2>
-            <h3>{t("banner-main.brand")}</h3>
+            <p>Envio</p>
+            <h2>GRATIS</h2>
+            <h3>Kruger Cell</h3>
 
             <div className="row">
-              <NavLink to={"/products"}>{t("banner-main.btn1")}</NavLink>
-              <NavLink to={"/services"}>{t("banner-main.btn2")}</NavLink>
-              <span>{t("banner-main.explore")}</span>
+              <NavLink to={"/products"}>Productos</NavLink>
+              <NavLink to={"/services"}>Servicios</NavLink>
+              <span>Explora lo que tenemos para ofrecerte</span>
             </div>
           </div>
 
@@ -182,33 +205,9 @@ const Banner = ({ t }) => {
           <div class="circle-banner"></div>
           <div class="circle-banner2"></div>
         </div>
-
-        <div className="slider_item">
-          <div className="slider_img_container">
-            <img
-              className="slider_img"
-              src="https://imagekit.androidphoria.com/wp-content/uploads/Fondo-negro-para-movil.jpg"
-              alt=""
-            />
-          </div>
-          <div className="text-box">
-            <p>Compra</p>
-            <h2>AHORA</h2>
-            <h3>Kruger Cell</h3>
-
-            <div className="row">
-              <NavLink to={"/products"}>Productos</NavLink>
-              <NavLink to={"/services"}>Servicios</NavLink>
-              <span>Explora lo que tenemos para ofrecerte</span>
-            </div>
-          </div>
-
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
-        </div>
       </Slider>
     </div>
   );
 };
 
-export default Banner;
+export default BannerSearch;
