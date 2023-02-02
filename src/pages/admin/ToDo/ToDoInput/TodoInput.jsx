@@ -3,16 +3,16 @@ import "./TodoInput.scss";
 
 const TodoInput = () => {
   return (
-    <div class="input-group">
+    <div className="input-group">
       <input
         type="text"
-        class="input"
+        className="input"
         id="text"
         name="text"
         placeholder="Crear ToDo"
         autocomplete="off"
       />
-      <input class="button--submit" value="+" type="submit" />
+      <input className="button--submit" value="+" type="submit" />
     </div>
   );
 };

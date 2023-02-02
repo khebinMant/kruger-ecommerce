@@ -42,11 +42,11 @@ const MainInfoHome = ({ t }) => {
         </div>
         <div className="header__info-trust">
           <div>
-            <i class="fa-solid fa-sack-dollar"></i>
+            <i className="fa-solid fa-sack-dollar"></i>
             <p>{t("header-main.text1")}</p>
           </div>
           <div>
-            <i class="fa-solid fa-check"></i>
+            <i className="fa-solid fa-check"></i>
             <p>{t("header-main.text2")}</p>
           </div>
         </div>

@@ -139,10 +139,10 @@ const onFilterClick=()=>{
     <div className="searchpage">
       <BannerSearch />
       <h2 className="searchpage_title heading">Encuentra tus productos</h2>
-      <form class="searchpage_form">
+      <form className="searchpage_form">
         <label for="search">
           <input
-            class="searchpage_input"
+            className="searchpage_input"
             type="text"
             value={name}
             required=""
@@ -150,12 +150,12 @@ const onFilterClick=()=>{
             placeholder="Buscar producto"
             id="search"
           />
-          <div class="searchpage_fancy-bg"></div>
-          <div class="searchpage_search">
+          <div className="searchpage_fancy-bg"></div>
+          <div className="searchpage_search">
             <svg
               viewBox="0 0 24 24"
               aria-hidden="true"
-              class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr"
+              className="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr"
             >
               <g>
                 <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
@@ -164,12 +164,12 @@ const onFilterClick=()=>{
           </div>
           <button
             onClick={clearSearch}
-            class="searchpage_close-btn"
+            className="searchpage_close-btn"
             type="reset"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              className="h-5 w-5"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -202,9 +202,9 @@ const onFilterClick=()=>{
           </>
         )}
       </div>
-      <div class="pagination">
-        {(start - 4) >= 0 && <div class="pagination__item" onClick={handleBackClick}>Anterior</div>}
-        {(start + 5 <= products.length) && <div class="pagination__item" onClick={handlNextClick}>Siguiente</div>}
+      <div className="pagination">
+        {(start - 4) >= 0 && <div className="pagination__item" onClick={handleBackClick}>Anterior</div>}
+        {(start + 5 <= products.length) && <div className="pagination__item" onClick={handlNextClick}>Siguiente</div>}
 
       </div>
     </div>
@@ -212,6 +212,6 @@ const onFilterClick=()=>{
 };
 
 export default SearchProductPage;
-/*<div class="pagination__item">2</div>
-<div class="pagination__item">3</div>
-<div class="pagination__item">4</div>*/
+/*<div className="pagination__item">2</div>
+<div className="pagination__item">3</div>
+<div className="pagination__item">4</div>*/

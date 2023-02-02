@@ -89,37 +89,37 @@ export const ProductInfo = ({item}) => {
           </p>
           <div className="productDetail_info_stats">
             <div className="productDetail_info_stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
             </div>
             <div className="productDetail_info_price">{product.price} $</div>
           </div>
 
           <ul className="productDetail_info_extras">
             <li className="productDetail_info_extras_item">
-              <i class="fa-solid fa-mobile"></i>
+              <i className="fa-solid fa-mobile"></i>
               <p><b>Vendidos</b></p>
               <p>{product.salesCounter}</p>
             </li>
             <li className="productDetail_info_extras_item">
-              <i class="fa-solid fa-mobile"></i>
+              <i className="fa-solid fa-mobile"></i>
               <p><b>Peso</b></p>
               <p>{product.weight} gr</p>
             </li>
             <li className="productDetail_info_extras_item">
-              <i class="fa-solid fa-mobile"></i>
+              <i className="fa-solid fa-mobile"></i>
               <p><b>Procesador</b></p>
               <p>{product.processor}</p>
             </li>
           </ul>
 
           <div className="productDetail_info_quantity">
-            <i class="fa-solid fa-minus" onClick={decrease}></i>
+            <i className="fa-solid fa-minus" onClick={decrease}></i>
             <div className="productDetail_info_quantity_counter">{quantity}</div>
-            <i class="fa-solid fa-plus"  onClick={increase}></i>
+            <i className="fa-solid fa-plus"  onClick={increase}></i>
           </div>
 
           <div className="productDetail_info_btns">

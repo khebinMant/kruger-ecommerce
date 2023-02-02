@@ -131,13 +131,13 @@ export const ReviewsView = () => {
   const leftToolbarTemplate = () => {
     return (
       <React.Fragment>
-        <Button
+        {/* <Button
           label="Eliminar"
           icon="pi pi-trash"
           className="p-button-danger"
           onClick={confirmDeleteSelected}
           disabled={!selectedReviews || !selectedReviews.length}
-        />
+        /> */}
       </React.Fragment>
     );
   };
@@ -245,11 +245,11 @@ export const ReviewsView = () => {
             header={header}
             responsiveLayout="scroll"
           >
-            <Column
+            {/* <Column
               selectionMode="multiple"
               headerStyle={{ width: "1rem" }}
               exportable={false}
-            ></Column>
+            ></Column> */}
             <Column
               field="id"
               header="Id"

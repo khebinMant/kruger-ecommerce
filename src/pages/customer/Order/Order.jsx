@@ -10,6 +10,7 @@ import { Button } from "primereact/button";
 import { updateCart } from "../../../helpers/carts/updateCart";
 import NoOrders from "./NoOrders/NoOrders";
 import { getCartReportById } from "../../../helpers/carts/getCartReportById";
+import { postCoupon } from "../../../helpers/coupons/postCoupon";
 
 export const Order = () => {
   const [carts, setCarts] = useState();
@@ -74,7 +75,16 @@ export const Order = () => {
       userId: cart.user.id,
       status: "RECEIVED",
     };
+    
     const responseUpdatedCartStatus = await Promise.resolve(updateCart(_cart));
+    let _coupon = {
+      type:'PERCENTAGE',
+      quantity:15,
+      status:"RESERVED",
+      userId:currentUser.id
+    }
+    const responsePostCoupon = await Promise.resolve(postCoupon(_coupon));
+
     getCarts();
   };
 
@@ -90,9 +100,9 @@ export const Order = () => {
       <Loading />
     ) : (
       <div className="cart">
-        <div class="cart_container">
-          <div class="cart_header">
-            <h3 class="cart_heading">Historial de compras</h3>
+        <div className="cart_container">
+          <div className="cart_header">
+            <h3 className="cart_heading">Historial de compras</h3>
           </div>
 
           <div className="cart_items_container">
@@ -108,20 +118,20 @@ export const Order = () => {
                 {cart.order.items.map((item, index) => (
                   <OrderItem key={index} item={item} />
                 ))}
-                <div class="cart_checkout">
-                  <div class="cart_total">
-                    <div class="cart_subtotal">Sub-Total</div>
-                    <div class="cart_items">
+                <div className="cart_checkout">
+                  <div className="cart_total">
+                    <div className="cart_subtotal">Sub-Total</div>
+                    <div className="cart_items">
                       {Math.round(cart.order.subTotal * 100) / 100}$
                     </div>
                     {cart.order.coupon ? (
                       <>
-                        <div class="cart_subtotal">Descuento por cupón</div>
-                        <div class="cart_items">
+                        <div className="cart_subtotal">Descuento por cupón</div>
+                        <div className="cart_items">
                           {-Math.round(cart.order.coupon.quantity * 100) / 100}
                           {cart.order.coupon.type === "PERCENTAGE" ? `%` : `$`}
                         </div>
-                        <div class="cart_items">
+                        <div className="cart_items">
                           {cart.order.coupon.type === "PERCENTAGE" ? (
                             <del>
                               {Math.round(
@@ -147,8 +157,8 @@ export const Order = () => {
                     ) : (
                       <></>
                     )}
-                    <div class="cart_subtotal">Total + IVA(12%)</div>
-                    <div class="cart_items">
+                    <div className="cart_subtotal">Total + IVA(12%)</div>
+                    <div className="cart_items">
                       {Math.round(cart.order.totalPrice * 100) / 100}$
                     </div>
                   </div>

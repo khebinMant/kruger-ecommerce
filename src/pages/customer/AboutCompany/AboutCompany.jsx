@@ -1,15 +1,34 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import Loading from "../../../components/Loading";
+import { getCompany } from "../../../helpers/company/getCompany";
 import "./AboutCompany.scss";
 
 const AboutCompany = () => {
+
+  const [company, setCompany] = useState()
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    getCompanny();
+  }, [])
+  
+  const getCompanny = async ()=>{
+    const responseCompany =  await Promise.resolve(getCompany());
+    setCompany(responseCompany);
+    console.log(responseCompany)
+    setIsLoading(false);
+  }
+
   return (
+    isLoading?
+    <Loading/>
+    :
     <div className="company">
-      <h2 className="heading">About Kruger Cell</h2>
+      <h2 className="heading">About {company.companyName}</h2>
       <p className="company_description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quia
-        consequatur quam accusantium, repellat a quis tempore fugiat dolorum
-        optio corporis autem eius, dolor earum officia corrupti amet magni
-        ipsam.
+        {company.description}
       </p>
       <div className="company_objective">
         <div className="company_objective_info">
@@ -17,9 +36,7 @@ const AboutCompany = () => {
             Our <span>Company</span>
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod nihil
-            laborum dicta. Iste ut laboriosam perspiciatis quasi officiis at
-            tempore!
+            {company.objective}
           </p>
         </div>
         <div className="company_objective_container">
@@ -36,24 +53,22 @@ const AboutCompany = () => {
             <span>Our</span> History
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod nihil
-            laborum dicta. Iste ut laboriosam perspiciatis quasi officiis at
-            tempore!
+            {company.history}
           </p>
         </div>
       </div>
 
       <div className="company_socials">
         <div className="company_socials_card">
-          <i class="fa-brands fa-facebook"></i>
+          <i className="fa-brands fa-facebook"></i>
           <p>Facebook</p>
         </div>
         <div className="company_socials_card">
-          <i class="fa-brands fa-instagram"></i>
+          <i className="fa-brands fa-instagram"></i>
           <p>Instagram</p>
         </div>
         <div className="company_socials_card">
-          <i class="fa-brands fa-linkedin"></i>
+          <i className="fa-brands fa-linkedin"></i>
           <p>Linkedin</p>
         </div>
       </div>
