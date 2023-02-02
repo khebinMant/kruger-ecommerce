@@ -129,20 +129,20 @@ const Login = () => {
         <div className="sign_signup">
           <form onSubmit={handleSignup} ref={signUpForm}>
             <label className="sign_label" for="chk" aria-hidden="true">
-              Sign up
+              Registrate
             </label>
             <input
               className="sign_input"
               type="text"
               name="text"
-              placeholder="First name"
+              placeholder="Nombre"
               required
             />
             <input
               className="sign_input"
               type="text"
               name="text"
-              placeholder="Last name"
+              placeholder="Apellido"
               required
             />
 
@@ -166,7 +166,7 @@ const Login = () => {
               className="sign_input"
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               required
             />
             <button className="sign_btn">Sign up</button>
@@ -202,10 +202,10 @@ const Login = () => {
               className="sign_input"
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               required
             />
-            <button className="sign_btn">Log in</button>
+            <button className="sign_btn">Login</button>
           </form>
         </div>
       </div>

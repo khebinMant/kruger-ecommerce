@@ -14,17 +14,17 @@ const ContactUs = () => {
         <div className="contact_container">
           <form>
             <label className="contact_label" aria-hidden="true">
-              Contact us
+              Contáctanos
             </label>
 
             <div className="contact_item_container">
               <div className="contact_item">
-                <h3 className="contact_label_text">Name</h3>
+                <h3 className="contact_label_text">Nombre</h3>
                 <input
                   className="contact_input"
                   type="text"
                   name="text"
-                  placeholder="Name"
+                  placeholder="Nombre"
                   required
                 />
               </div>
@@ -41,17 +41,17 @@ const ContactUs = () => {
               </div>
 
               <div className="contact_item contact_item_text ">
-                <h3 className="contact_label_text">What do you need us for?</h3>
+                <h3 className="contact_label_text">¿En qué te ayudamos?</h3>
                 <input
                   className="contact_input contact_input_text"
                   type="text"
                   name="text"
-                  placeholder="What do you need us for?"
+                  placeholder="¿En qué te ayudamos?"
                   required
                 />
               </div>
             </div>
-            <button className="contact_btn">Send</button>
+            <button className="contact_btn">Enviar</button>
           </form>
           <i class="login-icon-carrot fa-solid fa-microphone"></i>
           <i class="login-icon-mug-hot fa-solid fa-mobile-screen"></i>

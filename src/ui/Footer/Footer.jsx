@@ -17,18 +17,18 @@ const Footer = () => {
 
       <div className="footer_container">
         <ul className="footer_container_list">
-          <h3>Main</h3>
-          <NavLink to={"/"}>Home</NavLink>
-          <NavLink to="/about">About us</NavLink>
-          <NavLink to={"/contact"}>Contact us</NavLink>
-          <NavLink to="/faq">FAQ</NavLink>
+          <h3>Principal</h3>
+          <NavLink to={"/"}>Inicio</NavLink>
+          <NavLink to="/about">Sobre Nosotros</NavLink>
+          <NavLink to={"/contact"}>Contáctanos</NavLink>
+          <NavLink to="/faq">Preguntas</NavLink>
         </ul>
         <ul className="footer_container_list">
-          <h3>Products</h3>
-          <NavLink to={"/search"}>All products</NavLink>
-          <NavLink to={"/search"}>Explore</NavLink>
-          <NavLink to={"/search"}>All services</NavLink>
-          <NavLink to={"/cart"}>Cart</NavLink>
+          <h3>Explora</h3>
+          <NavLink to={"/products"}>Productos</NavLink>
+          <NavLink to={"/search"}>Buscar</NavLink>
+          <NavLink to={"/services"}>Servicios</NavLink>
+          <NavLink to={"/cart"}>Carrito</NavLink>
         </ul>
         <ul className="footer_container_list">
           <h3>Social</h3>
