@@ -23,7 +23,7 @@ const TranslationChanger = ({ i18n, t }) => {
           <img
             className="translate_main_img"
             src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png"
-            alt="german glad"
+            alt="usa glad"
           />
         </div>
         <div
@@ -33,7 +33,18 @@ const TranslationChanger = ({ i18n, t }) => {
           <img
             className="translate_main_img"
             src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png"
-            alt="usa flag"
+            alt="germany flag"
+          />
+        </div>
+
+        <div
+          className="translate_main_item"
+          onClick={() => i18n.changeLanguage("fr")}
+        >
+          <img
+            className="translate_main_img"
+            src="https://preview.redd.it/uwh91lynuuz31.png?auto=webp&s=0a5c44ba47d471690cad5039d5bc2f409d979ac0"
+            alt="france flag"
           />
         </div>
       </div>

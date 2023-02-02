@@ -16,6 +16,7 @@ import i18next from "i18next";
 import global_es from "./translations/es/global.json";
 import global_en from "./translations/en/global.json";
 import global_de from "./translations/de/global.json";
+import global_fr from "./translations/fr/global.json";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -29,6 +30,9 @@ i18next.init({
     },
     de: {
       global: global_de,
+    },
+    fr: {
+      global: global_fr,
     },
   },
 });

@@ -1,0 +1,75 @@
+{ 
+    "welcome-main":{
+    "text1": "Il n'y a pas de limites ici",
+    "text2": "choisissez votre langue"
+    },
+    "banner-main": {
+    "text": "Livraison",
+    "main": "GRATUITE",
+    "brand": "Kruger Cell",
+    "btn1": "Produits",
+    "btn2": "Services",
+    "explore": "Explorez ce que nous avons à vous offrir"
+    },
+        "header-main": {
+            "slogan": "La manière la plus facile d'acheter",
+            "span1": "Des produits?",
+            "presentation": "Attends-les à la porte de",
+            "span2": "votre maison",
+            "btn1": "Produits",
+            "btn2": "Services",
+            "text1": "Livraison 100% gratuite!",
+            "text2": "100% sécurisé lors de l'achat"
+        },
+        "phones-main":{
+            "title": "Top Téléphones"
+        },
+        "extra-main":{
+            "text": "Que offrons-nous?",
+            "main": "Trouvez le dispositif parfait",
+            "span": "pour vous",
+            "description": "Vous trouverez ici une grande variété des derniers et meilleurs dispositifs intelligents. Nous avons quelque chose pour tout le monde, que vous cherchiez le dernier iPhone ou un dispositif Android abordable.",
+            "feature-title1": "VARIÉTÉ DE PRODUITS",
+            "feature-description1": "Restez à la pointe de la technologie avec notre sélection",
+            "feature-title2": "ACHAT PARTOUT",
+            "feature-description2": "Expérimentez le confort et la satisfaction d'acheter en ligne",
+            "feature-title3": "PAIEMENT SÉCURISÉ",
+            "feature-description3": "Achetez maintenant et rejoignez des millions de clients satisfaits"
+        },
+    "service-main":{
+    "title": "Meilleurs Services"
+    },
+    "latest-main":{
+    "text": "Nouveautés",
+    "main": "Derniers appareils",
+    "item-category1": "Astuces",
+    "item-title1": "Achat en ligne",
+    "item-text1": "Informez-vous",
+    "item-category2": "Astuces",
+    "item-title2": "Achat en ligne",
+    "item-text2": "Informez-vous",
+    "item-category3": "Astuces",
+    "item-title3": "Achat en ligne",
+    "item-text3": "Informez-vous"
+    },
+    "whyus-main":{
+    "main": "Pourquoi nous?",
+    "text": "Nous offrons une grande sélection des derniers et meilleurs appareils mobiles, à des prix compétitifs, avec une livraison gratuite et un support client dédié pour vous aider à tout moment",
+    "item-title1": "Prix compétitifs",
+    "item-description1": "Nous travaillons dur pour nous assurer que nos prix soient compétitifs, pour que vous puissiez obtenir la meilleure valeur pour votre argent.",
+    "item-title2": "Livraison gratuite",
+    "item-description2": "Nous offrons une livraison gratuite sur toutes les commandes, pour que vous puissiez recevoir votre appareil rapidement et sans frais supplémentaires."
+    },
+    "extracards-main":{
+        "card-title1": "SÉCURITÉ",
+        "card-text1": "Toutes les transactions sont absolument privées et 100% sécurisées",
+        "card-title2": "VITESSE",
+        "card-text2": "Nous envoyons votre commande en 24 heures. Profitez de votre nouveau dispositif !",
+        "card-title3": "EFFICACITÉ",
+        "card-text3": "Assistance client dédiée 24/7 pour vous aider à tout moment"
+        },
+    "opportunity-main": {
+        "text": "Nous donnez-vous une opportunité ?"
+    }
+ }
+
