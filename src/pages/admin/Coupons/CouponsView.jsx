@@ -106,6 +106,8 @@ export const CouponsView = () => {
       let _coupon = { ...coupon };
       _coupon.type = selectedType.name;
       _coupon.quantity = _coupon.quantity;
+      _coupon.status = 'NOT_USED';
+      
       if (coupon.id) {
         const responsePutCoupon = updateCoupon(_coupon);
         if (responsePutCoupon) {
