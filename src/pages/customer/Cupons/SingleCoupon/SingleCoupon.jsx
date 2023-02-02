@@ -59,7 +59,7 @@ const SingleCoupon = ({coupon}) => {
           </div>
         </div>
         <div className="card-text">CÓDIGO: {coupon.code}</div>
-        <p className="recent">{coupon.quantity}</p>
+        <p className="recent">{coupon.quantity}{coupon.type==='PERCETAGE'?'%':'$'}</p>
       </div>
     </div>
   );

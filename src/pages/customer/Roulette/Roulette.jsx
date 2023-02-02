@@ -124,12 +124,12 @@ export const Roulette = () => {
             <h1 style={{ marginTop:20 }}>
             <b>Haz activado tu cupón de descuento de bienvenida, úsalo en tus próximas compras. </b>
             </h1>
-            <h3 style={{ lineHeight: 1.5, textIndent: '1rem', marginTop:20 }}>
+            <h2 style={{ lineHeight: 1.5, textIndent: '1rem', marginTop:20 }}>
                <b>Código: </b> {coupons[winPrizeIndex].code}
-            </h3>
-            <h3 style={{ lineHeight: 1.5, textIndent: '1rem', marginTop:20 }}>
+            </h2>
+            <h2 style={{ lineHeight: 1.5, textIndent: '1rem', marginTop:20 }}>
             <b>Cantidad: </b> {coupons[winPrizeIndex].quantity} {coupons[winPrizeIndex].type==='DIRECT'?'$':'%'}
-            </h3>
+            </h2>
         </div>
     </Dialog>
     <div style={{marginTop:150}}>
@@ -141,8 +141,10 @@ export const Roulette = () => {
         spinningTime={5}
         defaultDesignOptions={{ prizesWithText: true }}
       />
-    </div>
-      <Button onClick={handleStart} label="SPIN !" className="p-button-rounded p-button-success" />
+      </div>
+      <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+        <Button style={{width:'50%', justifyContent:'center', marginTop:'30px'}} onClick={handleStart} label="OBTEN TU CUPÓN GRATIS !" className="p-button-rounded p-button-success" />
+      </div>
   </>
   )
 }
