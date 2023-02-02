@@ -37,7 +37,7 @@ const CartItem = ({ item, index }) => {
 
   const decrease = () => {
     if (newQuantity === 1) {
-      setQuantity(1);
+      setNewQuantity(1);
     } else {
       setNewQuantity((count) => count - 1);
     }
