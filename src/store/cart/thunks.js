@@ -22,7 +22,6 @@ export const startCreateOrder = (shipmentAddress,orderCoupon= null,orderSubTotal
 
         dispatch(setShipmentAddress({shipmentAddress}))
 
-        console.log(shipmentAddress)
 
         let _order = {
             ...getState().cart.cart,

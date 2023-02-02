@@ -10,6 +10,7 @@ import { Dialog } from 'primereact/dialog';
 import { useDispatch, useSelector } from 'react-redux';
 import { putCoupon } from '../../../helpers/coupons/putCoupon';
 import { updateCurrentUser } from '../../../store/user/userSlice';
+import { updateVerified } from '../../../helpers/users/updateVerified';
 
 
 export const Roulette = () => {
@@ -87,17 +88,18 @@ export const Roulette = () => {
             type:coupons[winPrizeIndex].type,
             userId:currentUser.id
         }
-        const responsePutCoupon = await Promise.resolve(putCoupon(_cupon));
 
-        //Cambiar el estado del currentUser verified tanto en el store 
         let _user = {...currentUser}
         _user.verified = true;
+        
+        const responsePutCoupon = await Promise.resolve(putCoupon(_cupon));
+        //Guardar en la base de datos el cambio
+        const responseVefied = await Promise.resolve(updateVerified(_user))
+        //Cambiar el estado del currentUser verified en el store
+
         dispatch(updateCurrentUser(_user))
         //Guardar en el local storage el cambio
         localStorage.setItem('currentUser', JSON.stringify(_user))
-        //Guardar en la base de datos el cambio
-
-        // como en la base de datos
         setVisible(false)
     }
 

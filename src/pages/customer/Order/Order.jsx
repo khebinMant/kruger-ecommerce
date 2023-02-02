@@ -10,6 +10,7 @@ import { Button } from "primereact/button";
 import { updateCart } from "../../../helpers/carts/updateCart";
 import NoOrders from "./NoOrders/NoOrders";
 import { getCartReportById } from "../../../helpers/carts/getCartReportById";
+import { postCoupon } from "../../../helpers/coupons/postCoupon";
 
 export const Order = () => {
   const [carts, setCarts] = useState();
@@ -74,7 +75,16 @@ export const Order = () => {
       userId: cart.user.id,
       status: "RECEIVED",
     };
+    
     const responseUpdatedCartStatus = await Promise.resolve(updateCart(_cart));
+    let _coupon = {
+      type:'PERCENTAGE',
+      quantity:15,
+      status:"RESERVED",
+      userId:currentUser.id
+    }
+    const responsePostCoupon = await Promise.resolve(postCoupon(_coupon));
+
     getCarts();
   };
 

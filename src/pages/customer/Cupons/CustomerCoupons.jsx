@@ -42,10 +42,12 @@ const CustomerCoupons = () => {
     <div className="todo__main">
       <div className="todo__container">
       {
+        coupons.length>0?
         coupons.map((coupon,index)=>(
             <SingleCoupon key={index} coupon={coupon}/>
 
         ))
+        :<></>
       }
       </div>
     </div>

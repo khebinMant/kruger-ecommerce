@@ -13,6 +13,7 @@ import { ConfirmPopup } from 'primereact/confirmpopup'; // To use <ConfirmPopup>
 import { confirmPopup } from 'primereact/confirmpopup'; // To use confirmPopup method
 import { updateCart } from "../../../helpers/carts/updateCart";
 import { deleteCart } from "../../../helpers/carts/deleteCart";
+import { postCoupon } from "../../../helpers/coupons/postCoupon";
 
 let emptyCart = {
   name: "",
@@ -161,9 +162,22 @@ export const CartsView = () => {
     );
   };
 
+  const createNewCouponGift = async (cart)=>{
+    let _coupon = {
+      type:'PERCENTAGE',
+      quantity:15,
+      status:"RESERVED",
+      userId:cart.userId
+    }
+    const responsePostCoupon = await Promise.resolve(postCoupon(_coupon));
+  } 
+
   const accept = (cart, newStatus) => {
     updateCartStatus(cart, newStatus)
     toast.current.show({ severity: 'info', summary: 'Estado cambiado', detail: `Has cambiado el estado de la orden a ${newStatus}`, life: 3000 });
+    if(newStatus === 'RECEIVED'){
+      createNewCouponGift(cart)
+    }
   };
 
   const confirmUpdateCart = (event, cart, newStatus) => {
