@@ -19,6 +19,7 @@
        
        .aboutus_card-info {
         display: flex;
+        text-align: center;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -46,7 +47,7 @@
        
        /*Card footer*/
        .aboutus_card-social {
-        transform: translateY(200%);
+        transform: translateY(10%);
         display: flex;
         justify-content: space-around;
         width: 100%;
@@ -60,8 +61,8 @@
        
        .aboutus_card-social__item svg {
         display: block;
-        height: 25px;
-        width: 25px;
+        height: 22px;
+        width: 22px;
         fill: var(--secondary-color);
         cursor: pointer;
         transition: fill 0.2s ease ,transform 0.2s ease;
@@ -70,9 +71,9 @@
        /*Text*/
        .aboutus_card-title {
         color: var(--primary-color);
-        font-size: 1.5em;
+        font-size: 1.1em;
         font-weight: 600;
-        line-height: 2rem;
+        margin-bottom: 10px;
        }
        
        .aboutus_card-subtitle {
@@ -86,7 +87,7 @@
        }
        
        .aboutus_card:hover .aboutus_card-info {
-        transform: translateY(-5%);
+        transform: translateY(-1%);
        }
        
        .aboutus_card:hover .aboutus_card-social {

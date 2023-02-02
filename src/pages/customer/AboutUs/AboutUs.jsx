@@ -10,16 +10,15 @@ const AboutUs = () => {
       animate={{ width: "100%" }}
       exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
     >
-      <div className="aboutus_card">
-        <div className="aboutus_card-info">
-          <div className="aboutus_card-avatar">
-            <img
-              src="https://cdn.profoto.com/cdn/053149e/contentassets/d39349344d004f9b8963df1551f24bf4/profoto-albert-watson-steve-jobs-pinned-image-original.jpg?width=1280&quality=75&format=jpg"
-              alt=""
-            />
+
+      <div class="aboutus_card">
+        <div class="aboutus_card-info">
+          <div class="aboutus_card-avatar">
+            <img src="./images/pepe.jpg" alt="" />
           </div>
-          <div className="aboutus_card-title">Steve Jobs</div>
-          <div className="aboutus_card-subtitle">CEO &amp; Co-Founder</div>
+          <div class="aboutus_card-title">José Andrés Gavilanes</div>
+          <div class="aboutus_card-subtitle">FullStack Developer</div>
+
         </div>
         <ul className="aboutus_card-social">
           <li className="aboutus_card-social__item">
@@ -49,12 +48,13 @@ const AboutUs = () => {
         <div className="aboutus_card-info">
           <div className="aboutus_card-avatar">
             <img
-              src="https://cdn.profoto.com/cdn/053149e/contentassets/d39349344d004f9b8963df1551f24bf4/profoto-albert-watson-steve-jobs-pinned-image-original.jpg?width=1280&quality=75&format=jpg"
+              src="https://avatars.githubusercontent.com/u/52118245?v=4"
               alt=""
             />
           </div>
-          <div className="aboutus_card-title">Steve Jobs</div>
-          <div className="aboutus_card-subtitle">CEO &amp; Co-Founder</div>
+          <div class="aboutus_card-title">Kenan Al-jaber</div>
+          <div class="aboutus_card-subtitle">FullStack Developer</div>
+
         </div>
         <ul className="aboutus_card-social">
           <li className="aboutus_card-social__item">
@@ -84,12 +84,12 @@ const AboutUs = () => {
         <div className="aboutus_card-info">
           <div className="aboutus_card-avatar">
             <img
-              src="https://cdn.profoto.com/cdn/053149e/contentassets/d39349344d004f9b8963df1551f24bf4/profoto-albert-watson-steve-jobs-pinned-image-original.jpg?width=1280&quality=75&format=jpg"
+              src="https://avatars.githubusercontent.com/u/33032880?v=4"
               alt=""
             />
           </div>
-          <div className="aboutus_card-title">Steve Jobs</div>
-          <div className="aboutus_card-subtitle">CEO &amp; Co-Founder</div>
+          <div class="aboutus_card-title">Kevin Mantilla</div>
+          <div class="aboutus_card-subtitle">FullStack Developer</div>
         </div>
         <ul className="aboutus_card-social">
           <li className="aboutus_card-social__item">
