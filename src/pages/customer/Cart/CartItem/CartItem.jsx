@@ -37,7 +37,7 @@ const CartItem = ({ item, index }) => {
 
   const decrease = () => {
     if (newQuantity === 1) {
-      setQuantity(1);
+      setNewQuantity(1);
     } else {
       setNewQuantity((count) => count - 1);
     }
@@ -61,8 +61,8 @@ const CartItem = ({ item, index }) => {
       {isLoading ? (
         <p>Estoy cargando</p>
       ) : (
-        <div class="cart-items">
-          <div class="cart_image-box">
+        <div className="cart-items">
+          <div className="cart_image-box">
             <img
               src={
                 product.images[0]
@@ -72,9 +72,9 @@ const CartItem = ({ item, index }) => {
               style={{ height: "80px" }}
             />
           </div>
-          <div class="cart_about">
-            <h2 class="cart_title">{product.name}</h2>
-            <h3 class="cart_subtitle">{product.brand}</h3>
+          <div className="cart_about">
+            <h2 className="cart_title">{product.name}</h2>
+            <h3 className="cart_subtitle">{product.brand}</h3>
             {location.pathname === "/cart" && (
               <div className="cart_about_img">
                 <div className="cart_about_container">
@@ -86,29 +86,29 @@ const CartItem = ({ item, index }) => {
             )}
           </div>
           {location.pathname === "/cart" && (
-            <div class="cart_counter">
-              <div class="cart_btn" onClick={decrease}>
+            <div className="cart_counter">
+              <div className="cart_btn" onClick={decrease}>
                 -
               </div>
-              <div class="cart_count">{newQuantity}</div>
-              <div class="cart_btn" onClick={increase}>
+              <div className="cart_count">{newQuantity}</div>
+              <div className="cart_btn" onClick={increase}>
                 +
               </div>
             </div>
           )}
-          <div class="cart_prices">
-            <div class="cart_amount">{item.price} $</div>
+          <div className="cart_prices">
+            <div className="cart_amount">{item.price} $</div>
             {location.pathname === "/payment" && <span>({item.quantity})</span>}
           </div>
-          <div class="cart_prices">
-            <div class="cart_amount">
+          <div className="cart_prices">
+            <div className="cart_amount">
               {Math.round(item.price * item.quantity * 100) / 100}$
             </div>
           </div>
           {location.pathname === "/cart" && (
             <div className="cart_extras">
-              <div class="cart_remove">
-                <i onClick={deleteItem} class="fa-solid fa-trash"></i>
+              <div className="cart_remove">
+                <i onClick={deleteItem} className="fa-solid fa-trash"></i>
               </div>
             </div>
           )}

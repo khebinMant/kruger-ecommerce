@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import "./SingleToDo.scss";
+import "./SingleCoupon.scss";
 
-const SingleToDo = () => {
-  const [checked, setChecked] = useState(false);
+const SingleCoupon = ({coupon}) => {
 
-  const handleClick = () => {
-    checked ? setChecked(false) : setChecked(true);
+  const handleCheck = () => {
+    if(coupon.status === 'USED'){
+      return true;
+    }
+    else{
+      return false;
+    }
   };
 
   return (
@@ -44,21 +48,21 @@ const SingleToDo = () => {
       </div>
       <div className="card-desc">
         <div className="card-header">
-          <div className="card-title">Productos</div>
+          <div className="card-title">Cupón de descuento</div>
           <div className="card-menu">
             <input
-              checked={checked}
+              disabled
+              checked={coupon.status==='USED'?true:false}
               className="check"
               type="checkbox"
-              onClick={handleClick}
             />
           </div>
         </div>
-        <div className="card-text">Add products</div>
-        <p className="recent">1/28/2023</p>
+        <div className="card-text">CÓDIGO: {coupon.code}</div>
+        <p className="recent">{coupon.quantity}{coupon.type==='PERCETAGE'?'%':'$'}</p>
       </div>
     </div>
   );
 };
 
-export default SingleToDo;
+export default SingleCoupon;

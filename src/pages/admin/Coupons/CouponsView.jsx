@@ -106,6 +106,8 @@ export const CouponsView = () => {
       let _coupon = { ...coupon };
       _coupon.type = selectedType.name;
       _coupon.quantity = _coupon.quantity;
+      _coupon.status = 'NOT_USED';
+      
       if (coupon.id) {
         const responsePutCoupon = updateCoupon(_coupon);
         if (responsePutCoupon) {
@@ -240,13 +242,13 @@ export const CouponsView = () => {
           className="p-button-success mr-2 p_btn_add"
           onClick={openNew}
         />
-        <Button
+        {/* <Button
           label="Eliminar"
           icon="pi pi-trash"
           className="p-button-danger"
           onClick={confirmDeleteSelected}
           disabled={!selectedCoupons || !selectedCoupons.length}
-        />
+        /> */}
       </React.Fragment>
     );
   };
@@ -357,11 +359,11 @@ export const CouponsView = () => {
             header={header}
             responsiveLayout="scroll"
           >
-            <Column
+            {/* <Column
               selectionMode="multiple"
               headerStyle={{ width: "1rem" }}
               exportable={false}
-            ></Column>
+            ></Column> */}
             <Column
               field="id"
               header="Id"

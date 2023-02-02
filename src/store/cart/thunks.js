@@ -22,7 +22,6 @@ export const startCreateOrder = (shipmentAddress,orderCoupon= null,orderSubTotal
 
         dispatch(setShipmentAddress({shipmentAddress}))
 
-        console.log(shipmentAddress)
 
         let _order = {
             ...getState().cart.cart,
@@ -50,12 +49,16 @@ export const startDeleteItemFromCart = (item, index) =>{
     return async (dispatch, getState)=>{
 
         const {productId} = item
-        let price = item.price * item.quantity 
+        let price = item.price * item.quantity       
         // //Despachar
         dispatch(deleteItemToCart({productId, index}))
         dispatch(updateTotalPrice({price}))
         
         const  cart  = getState().cart.cart
+
+        // if(cart.items.length()===0){
+        //     dispatch(resetCart())
+        // }
         //Almacenar en el local storage
         localStorage.setItem('cart', JSON.stringify(cart))
 

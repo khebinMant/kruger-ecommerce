@@ -129,20 +129,20 @@ const Login = () => {
         <div className="sign_signup">
           <form onSubmit={handleSignup} ref={signUpForm}>
             <label className="sign_label" for="chk" aria-hidden="true">
-              Sign up
+              Registrate
             </label>
             <input
               className="sign_input"
               type="text"
               name="text"
-              placeholder="First name"
+              placeholder="Nombre"
               required
             />
             <input
               className="sign_input"
               type="text"
               name="text"
-              placeholder="Last name"
+              placeholder="Apellido"
               required
             />
 
@@ -166,24 +166,24 @@ const Login = () => {
               className="sign_input"
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               required
             />
             <button className="sign_btn">Sign up</button>
           </form>
-          <i class="login-icon-carrot fa-solid fa-microphone"></i>
-          <i class="login-icon-mug-hot fa-solid fa-mobile-screen"></i>
-          <i class="login-icon-pizza-slice fa-solid fa-mobile-retro"></i>
-          <i class="login-icon-pepper-hot fa-solid fa-comment-sms"></i>
-          <i class="login-icon-ice-cream fa-solid fa-headphones"></i>
-          <i class="login-icon-martini-glass-citrus fa-solid fa-signal"></i>
-          <i class="login-icon-drumstick-bite fa-solid fa-square-phone"></i>
-          <i class="login-icon-burger fa-solid fa-phone"></i>
-          <i class="login-icon-shrimp fa-solid fa-sim-card"></i>
-          <i class="login-icon-wheat-awn fa-solid fa-microchip"></i>
-          <i class="login-icon-cookie-bite fa-solid fa-laptop-code"></i>
-          <i class="login-icon-computer fa-solid fa-computer"></i>
-          <i class="login-icon-phone2 fa-solid fa-mobile-button"></i>
+          <i className="login-icon-carrot fa-solid fa-microphone"></i>
+          <i className="login-icon-mug-hot fa-solid fa-mobile-screen"></i>
+          <i className="login-icon-pizza-slice fa-solid fa-mobile-retro"></i>
+          <i className="login-icon-pepper-hot fa-solid fa-comment-sms"></i>
+          <i className="login-icon-ice-cream fa-solid fa-headphones"></i>
+          <i className="login-icon-martini-glass-citrus fa-solid fa-signal"></i>
+          <i className="login-icon-drumstick-bite fa-solid fa-square-phone"></i>
+          <i className="login-icon-burger fa-solid fa-phone"></i>
+          <i className="login-icon-shrimp fa-solid fa-sim-card"></i>
+          <i className="login-icon-wheat-awn fa-solid fa-microchip"></i>
+          <i className="login-icon-cookie-bite fa-solid fa-laptop-code"></i>
+          <i className="login-icon-computer fa-solid fa-computer"></i>
+          <i className="login-icon-phone2 fa-solid fa-mobile-button"></i>
         </div>
 
         <div className="sign_login">
@@ -203,10 +203,10 @@ const Login = () => {
               className="sign_input"
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               required
             />
-            <button className="sign_btn">Log in</button>
+            <button className="sign_btn">Login</button>
           </form>
           <p className="password_recovery" onClick={()=>{navigation("/password-recovery")}}>¿Olvidaste tu contraseña?</p>
         </div>

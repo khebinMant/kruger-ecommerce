@@ -48,15 +48,15 @@ const showSuccess = () => {
           )}
         </header>
         <div className="card-home__body">
-          <div class="circle"></div>
-          <div class="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
           <h3 className="card-home__title">{item.name}</h3>
           <section className="card-home__price">
             <h4 className="card-home__price-label">Precio</h4>
             <span className="card-home__price-value">{item.price}</span>
           </section>
-          <NavLink to="#" onClick={onAddToCartclick} className="card-home__btn">
-            <i class="fa-solid fa-cart-shopping"></i>
+          <NavLink  to="#" onClick={onAddToCartclick} className="card-home__btn">
+            <i className="fa-solid fa-cart-shopping"></i>
           </NavLink>
         </div>
       </motion.article>

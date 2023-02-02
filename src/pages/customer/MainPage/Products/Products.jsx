@@ -29,7 +29,7 @@ const Products = ({ t }) => {
       <h2 className="heading">{t("phones-main.title")}</h2>
       <section className="products_main">
         {products.map((item, i) => (
-          <Product item={item} i={i} />
+          <Product item={item} i={i} key={i} />
         ))}
       </section>
     </section>

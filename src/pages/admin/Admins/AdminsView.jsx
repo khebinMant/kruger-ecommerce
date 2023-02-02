@@ -214,13 +214,13 @@ export const AdminsView = () => {
           className="p-button-success mr-2 p_btn_add"
           onClick={openNew}
         />
-        <Button
+        {/* <Button
           label="Eliminar"
           icon="pi pi-trash"
           className="p-button-danger"
           onClick={confirmDeleteSelected}
           disabled={!selectedUsers || !selectedUsers.length}
-        />
+        /> */}
       </React.Fragment>
     );
   };
@@ -343,11 +343,11 @@ export const AdminsView = () => {
             header={header}
             responsiveLayout="scroll"
           >
-            <Column
+            {/* <Column
               selectionMode="multiple"
               headerStyle={{ width: "1rem" }}
               exportable={false}
-            ></Column>
+            ></Column> */}
             <Column
               field="id"
               header="Id"
