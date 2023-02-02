@@ -1,7 +1,7 @@
-import React from "react";
 import "./Support.scss";
 
 const Support = () => {
+
   return (
     <div className="support">
       <h2 className="heading">¿Necesitas Ayuda?</h2>
