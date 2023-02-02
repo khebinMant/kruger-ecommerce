@@ -52,7 +52,7 @@ const CustomerNavBar = () => {
         <ul className="header__list">
           {cart.items.length !== 0 ? (
             <div className="header__item mega-menu header__navlink">
-              <div class="mega-menu__item mega-menu__trigger">
+              <div className="mega-menu__item mega-menu__trigger">
                 <div>
                   <li className="header__item">
                     <NavLink
@@ -78,12 +78,12 @@ const CustomerNavBar = () => {
             <></>
           )}
           <div className="header__item mega-menu header__navlink">
-            <div class="mega-menu__item mega-menu__trigger">
+            <div className="mega-menu__item mega-menu__trigger">
               <div>
                 <p>Explorar</p>
               </div>
 
-              <div class="mega-menu__content">
+              <div className="mega-menu__content">
                 <li className="header__item">
                   <NavLink
                     className={({ isActive }) =>
@@ -138,12 +138,12 @@ const CustomerNavBar = () => {
           </div>
 
           <div className="header__item mega-menu header__navlink">
-            <div class="mega-menu__item mega-menu__trigger">
+            <div className="mega-menu__item mega-menu__trigger">
               <div>
                 <p>Acerca de</p>
               </div>
 
-              <div class="mega-menu__content">
+              <div className="mega-menu__content">
                 <li className="header__item">
                   <NavLink
                     className={({ isActive }) =>
@@ -209,7 +209,7 @@ const CustomerNavBar = () => {
           </div>
 
           <div className="header__item mega-menu header__navlink">
-            <div class="mega-menu__item mega-menu__trigger">
+            <div className="mega-menu__item mega-menu__trigger">
               <div>
                 {user !== null ? (
                   <li className="header__item">
@@ -220,7 +220,7 @@ const CustomerNavBar = () => {
                           : "header__navlink"
                       }
                     >
-                      <p>{loginTxt}</p>
+                      <div>{loginTxt}</div>
                     </NavLink>
                   </li>
                 ) : (
@@ -240,7 +240,7 @@ const CustomerNavBar = () => {
                 )}
               </div>
 
-              <div class="mega-menu__content">
+              <div className="mega-menu__content">
                 {user != null && (
                   <>
                     <li className="header__item">
@@ -266,6 +266,19 @@ const CustomerNavBar = () => {
                         to="/orders"
                       >
                         <p>Mis ordenes</p>
+                      </NavLink>
+                    </li>
+
+                    <li className="header__item">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "header__navlink active-link"
+                            : "header__navlink"
+                        }
+                        to="/coupons"
+                      >
+                        <p>Mis cupones</p>
                       </NavLink>
                     </li>
 

@@ -14,50 +14,50 @@ const ExtraCards = ({ t }) => {
   return (
     <div className="extra_card">
       <motion.div
-        class="card"
+        className="card"
         initial={"offscreen"}
         whileInView={"onscreen"}
         viewport={{ once: false, amount: 0.3 }}
         variants={imgAnimate}
       >
-        <div class="header">
-          <div class="img-box">
-            <i class="fa-solid fa-lock"></i>
+        <div className="header">
+          <div className="img-box">
+            <i className="fa-solid fa-lock"></i>
           </div>
-          <h1 class="title"> {t("extracards-main.card-title1")}</h1>
+          <h1 className="title"> {t("extracards-main.card-title1")}</h1>
         </div>
 
-        <div class="content">
+        <div className="content">
           <p>{t("extracards-main.card-text1")}</p>
         </div>
       </motion.div>
-      <div class="card">
-        <div class="header">
-          <div class="img-box">
-            <i class="fa-solid fa-truck"></i>
+      <div className="card">
+        <div className="header">
+          <div className="img-box">
+            <i className="fa-solid fa-truck"></i>
           </div>
-          <h1 class="title">{t("extracards-main.card-title2")}</h1>
+          <h1 className="title">{t("extracards-main.card-title2")}</h1>
         </div>
 
-        <div class="content">
+        <div className="content">
           <p>{t("extracards-main.card-text2")}</p>
         </div>
       </div>
       <motion.div
-        class="card"
+        className="card"
         initial={"offscreen"}
         whileInView={"onscreen"}
         viewport={{ once: false, amount: 0.3 }}
         variants={imgAnimate}
       >
-        <div class="header">
-          <div class="img-box">
-            <i class="fa-solid fa-people-group"></i>
+        <div className="header">
+          <div className="img-box">
+            <i className="fa-solid fa-people-group"></i>
           </div>
-          <h1 class="title">{t("extracards-main.card-title3")}</h1>
+          <h1 className="title">{t("extracards-main.card-title3")}</h1>
         </div>
 
-        <div class="content">
+        <div className="content">
           <p>{t("extracards-main.card-text3")}</p>
         </div>
       </motion.div>

@@ -20,15 +20,15 @@ const NewArrivals = ({ t }) => {
     },
   };
   return (
-    <section class="new-arrival">
-      <div class="title">
+    <section className="new-arrival">
+      <div className="title">
         <span>{t("latest-main.text")}</span>
         <h2 className="heading">{t("latest-main.main")}</h2>
       </div>
 
-      <div class="row container">
+      <div className="row container">
         <motion.div
-          class="col col-1"
+          className="col col-1"
           initial={"offscreen"}
           whileInView={"onscreen"}
           viewport={{ once: false, amount: 0.3 }}
@@ -45,7 +45,7 @@ const NewArrivals = ({ t }) => {
           </h3>
         </motion.div>
         <motion.div
-          class="col col-2"
+          className="col col-2"
           initial={"offscreen"}
           whileInView={"onscreen"}
           viewport={{ once: false, amount: 0.3 }}
@@ -62,7 +62,7 @@ const NewArrivals = ({ t }) => {
           </h3>
         </motion.div>
         <motion.div
-          class="col col-3"
+          className="col col-3"
           initial={"offscreen"}
           whileInView={"onscreen"}
           viewport={{ once: false, amount: 0.3 }}

@@ -35,8 +35,8 @@ const BannerSearch = () => {
             </div>
           </div>
 
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
+          <div className="circle-banner"></div>
+          <div className="circle-banner2"></div>
         </div>
         <div className="slider_item">
           <div className="slider_img_container">
@@ -58,8 +58,8 @@ const BannerSearch = () => {
             </div>
           </div>
 
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
+          <div className="circle-banner"></div>
+          <div className="circle-banner2"></div>
         </div>
 
         <div className="slider_item">
@@ -82,8 +82,8 @@ const BannerSearch = () => {
             </div>
           </div>
 
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
+          <div className="circle-banner"></div>
+          <div className="circle-banner2"></div>
         </div>
 
         <div className="slider_item">
@@ -106,8 +106,8 @@ const BannerSearch = () => {
             </div>
           </div>
 
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
+          <div className="circle-banner"></div>
+          <div className="circle-banner2"></div>
         </div>
 
         <div className="slider_item">
@@ -130,8 +130,8 @@ const BannerSearch = () => {
             </div>
           </div>
 
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
+          <div className="circle-banner"></div>
+          <div className="circle-banner2"></div>
         </div>
 
         <div className="slider_item">
@@ -154,8 +154,8 @@ const BannerSearch = () => {
             </div>
           </div>
 
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
+          <div className="circle-banner"></div>
+          <div className="circle-banner2"></div>
         </div>
 
         <div className="slider_item">
@@ -178,8 +178,8 @@ const BannerSearch = () => {
             </div>
           </div>
 
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
+          <div className="circle-banner"></div>
+          <div className="circle-banner2"></div>
         </div>
 
         <div className="slider_item">
@@ -202,8 +202,8 @@ const BannerSearch = () => {
             </div>
           </div>
 
-          <div class="circle-banner"></div>
-          <div class="circle-banner2"></div>
+          <div className="circle-banner"></div>
+          <div className="circle-banner2"></div>
         </div>
       </Slider>
     </div>

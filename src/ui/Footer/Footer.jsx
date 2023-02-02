@@ -34,16 +34,16 @@ const Footer = () => {
           <h3>Social</h3>
           <div className="footer_container_list_social">
             <NavLink>
-              <i class="fa-brands fa-twitter"></i>
+              <i className="fa-brands fa-twitter"></i>
             </NavLink>
             <NavLink>
-              <i class="fa-brands fa-facebook"></i>
+              <i className="fa-brands fa-facebook"></i>
             </NavLink>
             <NavLink>
-              <i class="fa-brands fa-linkedin"></i>
+              <i className="fa-brands fa-linkedin"></i>
             </NavLink>
             <NavLink>
-              <i class="fa-solid fa-envelope"></i>
+              <i className="fa-solid fa-envelope"></i>
             </NavLink>
           </div>
         </ul>

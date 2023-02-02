@@ -3,8 +3,8 @@ import "./Faq.scss";
 
 const Faq = () => {
   return (
-    <div class="faq">
-      <div class="faq-q">
+    <div className="faq">
+      <div className="faq-q">
         <span>
           <b>¿Cuáles son los métodos de pago disponibles?</b>
         </span>
@@ -16,7 +16,7 @@ const Faq = () => {
           garantizar la seguridad de sus datos financieros.
         </p>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>¿Qué garantía ofrecen en los productos?</b>
         </span>
@@ -28,7 +28,7 @@ const Faq = () => {
           cualquier problema que pueda surgir.
         </p>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>¿Cuáles son las opciones de envío disponibles?</b>
         </span>
@@ -40,7 +40,7 @@ const Faq = () => {
           en todo momento.
         </p>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>¿Cómo hacer una devolución o cambio de producto?</b>
         </span>
@@ -53,7 +53,7 @@ const Faq = () => {
           satisfecho con su compra.
         </p>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>
             ¿Tienen disponibilidad en stock de todos los productos que aparecen
@@ -68,7 +68,7 @@ const Faq = () => {
           ofreceremos alternativas para que pueda elegir.
         </p>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>¿Ofrecen descuentos o promociones especiales?</b>
         </span>
@@ -80,7 +80,7 @@ const Faq = () => {
           promociones.
         </p>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>¿Cómo protegen la privacidad de sus clientes?</b>
         </span>
@@ -92,7 +92,7 @@ const Faq = () => {
           seguridad de sus datos en línea.
         </p>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>
             ¿Ofrecen servicios de reparación y mantenimiento para los productos
@@ -109,7 +109,7 @@ const Faq = () => {
           </li>
         </ul>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>¿Cómo se puede contactar con el servicio al cliente?</b>
         </span>
@@ -121,7 +121,7 @@ const Faq = () => {
           todo momento para garantizar una experiencia de compra satisfactoria.
         </p>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>¿Cuáles son los términos y condiciones de la garantía?</b>
         </span>
@@ -133,7 +133,7 @@ const Faq = () => {
           estaremos encantados de brindar un reemplazo o un reembolso.
         </p>
       </div>
-      <div class="faq-q">
+      <div className="faq-q">
         <span>
           <b>¿Ofrecen envío internacional?</b>
         </span>

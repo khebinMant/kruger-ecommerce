@@ -45,15 +45,15 @@ const AboutCompany = () => {
 
       <div className="company_socials">
         <div className="company_socials_card">
-          <i class="fa-brands fa-facebook"></i>
+          <i className="fa-brands fa-facebook"></i>
           <p>Facebook</p>
         </div>
         <div className="company_socials_card">
-          <i class="fa-brands fa-instagram"></i>
+          <i className="fa-brands fa-instagram"></i>
           <p>Instagram</p>
         </div>
         <div className="company_socials_card">
-          <i class="fa-brands fa-linkedin"></i>
+          <i className="fa-brands fa-linkedin"></i>
           <p>Linkedin</p>
         </div>
       </div>

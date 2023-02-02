@@ -50,8 +50,8 @@ const Services = ({ t }) => {
         {t("service-main.title")}
       </h2>
       <div className="services_main">
-        {products.map((item) => (
-          <Service item={item} />
+        {products.map((item, index) => (
+          <Service item={item} key={index} />
         ))}
       </div>
       <div className="spacer layer10"></div>
