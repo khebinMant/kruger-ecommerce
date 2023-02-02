@@ -46,6 +46,7 @@ import { Order } from "../pages/customer/Order/Order";
 import UpdateCompany from "../pages/admin/UpdateCompany/UpdateCompany";
 import Support from "../pages/customer/Support/Support";
 import AboutCompany from "../pages/customer/AboutCompany/AboutCompany";
+import PasswordRecovery from "../pages/customer/Passwordrecovery/PasswordRecovery";
 
 export const MainRouter = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ export const MainRouter = () => {
       <Route path="/company" element={<AboutCompany />} />
       <Route path="/support" element={<Support />} />
       <Route path="/testimonials/:id" element="" />
+      <Route path="/password-recovery" element={<PasswordRecovery/>} />
       <Route element={<ProtectedRoutes />}>
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />
