@@ -47,7 +47,9 @@ import UpdateCompany from "../pages/admin/UpdateCompany/UpdateCompany";
 import Support from "../pages/customer/Support/Support";
 import AboutCompany from "../pages/customer/AboutCompany/AboutCompany";
 import CustomerCoupons from "../pages/customer/Cupons/CustomerCoupons";
+import Pomodoro from "../pages/admin/Pomodoro/Pomodoro";
 import PasswordRecovery from "../pages/customer/Passwordrecovery/PasswordRecovery";
+
 
 export const MainRouter = () => {
   const dispatch = useDispatch();
@@ -80,6 +82,8 @@ export const MainRouter = () => {
       <Route element={<ProtectedAdminRoutes />}>
         <Route path="/admin" element={<AdminMainPage />}>
           <Route path="" element={<ProductsView />} />
+          <Route path="productivity" element={<Pomodoro />} />
+
           <Route path="analitycs" element={<AnalitycsView />} />
           <Route path="line" element={<LineView />} />
           <Route path="area" element={<AreaView />} />

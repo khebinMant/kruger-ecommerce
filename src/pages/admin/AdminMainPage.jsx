@@ -34,8 +34,6 @@ export const AdminMainPage = () => {
       ],
     },
 
-
-
     {
       label: "Catalogo",
       icon: "pi pi-fw pi-pencil",
@@ -114,6 +112,14 @@ export const AdminMainPage = () => {
       command: () => {
         setVisibleLeft(false);
         navigate("/admin/calendar");
+      },
+    },
+    {
+      label: "Productivity",
+      icon: "pi pi-chart-line",
+      command: () => {
+        setVisibleLeft(false);
+        navigate("/admin/productivity");
       },
     },
     {
