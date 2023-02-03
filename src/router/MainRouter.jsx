@@ -48,6 +48,8 @@ import Support from "../pages/customer/Support/Support";
 import AboutCompany from "../pages/customer/AboutCompany/AboutCompany";
 import CustomerCoupons from "../pages/customer/Cupons/CustomerCoupons";
 import Pomodoro from "../pages/admin/Pomodoro/Pomodoro";
+import PasswordRecovery from "../pages/customer/Passwordrecovery/PasswordRecovery";
+
 
 export const MainRouter = () => {
   const dispatch = useDispatch();
@@ -69,6 +71,7 @@ export const MainRouter = () => {
       <Route path="/company" element={<AboutCompany />} />
       <Route path="/support" element={<Support />} />
       <Route path="/testimonials/:id" element="" />
+      <Route path="/password-recovery" element={<PasswordRecovery/>} />
       <Route element={<ProtectedRoutes />}>
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />

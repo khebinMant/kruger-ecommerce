@@ -198,6 +198,7 @@ const Login = () => {
               placeholder="Email"
               required
             />
+            
             <input
               className="sign_input"
               type="password"
@@ -207,6 +208,7 @@ const Login = () => {
             />
             <button className="sign_btn">Login</button>
           </form>
+          <p className="password_recovery" onClick={()=>{navigation("/password-recovery")}}>¿Olvidaste tu contraseña?</p>
         </div>
       </div>
 

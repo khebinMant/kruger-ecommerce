@@ -16,6 +16,7 @@ export const Order = () => {
   const [carts, setCarts] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { currentUser } = useSelector((state) => state.users);
+  const [src, setSrc] = useState("")
 
   useEffect(() => {
     getCarts();
@@ -90,6 +91,13 @@ export const Order = () => {
 
   const onPrintOrderInvoice = async (cart) => {
     const responseReportCart = await Promise.resolve(getCartReportById(cart))
+    // const blob = new Blob([responseReportCart], { type: 'application/pdf' });
+
+    // const url1 = window.URL.createObjectURL(blob);
+    // window.open(url1);
+    // console.log(url1)
+    // console.log(responseReportCart)
+    // setSrc(URL.createObjectURL(blob));
 
     window.open(`http://localhost:8082/api/carts/${cart.id}/report`, '_blank', 'noreferrer')  
 
@@ -179,11 +187,22 @@ export const Order = () => {
                     ) : cart.status === "CANCELED" ? (
                       <p>Esta orden fue cancelada</p>
                     ) : cart.status === "RECEIVED" ? (
-                      <Button
-                        onClick={() => onPrintOrderInvoice(cart)}
-                        label="Descargar recibo"
-                        className="p-button-secondary"
-                      />
+                      <>
+                        <Button
+                          onClick={() => onPrintOrderInvoice(cart)}
+                          label="Descargar recibo"
+                          className="p-button-secondary"
+                        />
+                        {
+                        src && (
+                              <iframe
+                                title="pdf-viewer"
+                                style={{ width: '100%', height: '500px' }}
+                                src={src}
+                              />
+                          )
+                        }
+                      </>
                     ) : (
                       <></>
                     )}
