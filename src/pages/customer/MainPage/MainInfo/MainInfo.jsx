@@ -25,7 +25,7 @@ const MainInfoHome = ({ t }) => {
       <div className="spacer layer2"></div>
 
       <motion.div
-        className="header__info-content"
+        className="header__info-content floating"
         initial={"offscreen"}
         whileInView={"onscreen"}
         viewport={{ once: false, amount: 0.3 }}
@@ -53,7 +53,7 @@ const MainInfoHome = ({ t }) => {
       </motion.div>
 
       <motion.img
-        className="header__info-img"
+        className="header__info-img floating"
         src="/images/k.svg"
         alt=""
         initial={"offscreen"}

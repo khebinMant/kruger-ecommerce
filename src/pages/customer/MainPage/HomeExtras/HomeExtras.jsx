@@ -46,7 +46,11 @@ const HomeExtras = ({ t }) => {
           viewport={{ once: false, amount: 0.3 }}
           variants={imgAnimate}
         >
-          <img src="/images/g.svg" alt="feature-img" className="feature__img" />
+          <img
+            src="/images/g.svg"
+            alt="feature-img"
+            className="feature__img floating"
+          />
           <h5 className="feature__item-title">
             {t("extra-main.feature-title1")}
           </h5>
@@ -59,7 +63,11 @@ const HomeExtras = ({ t }) => {
           viewport={{ once: false, amount: 0.3 }}
           variants={imgAnimate}
         >
-          <img src="/images/l.svg" alt="feature-img" className="feature__img" />
+          <img
+            src="/images/l.svg"
+            alt="feature-img"
+            className="feature__img floating"
+          />
           <h5 className="feature__item-title">
             {t("extra-main.feature-title2")}
           </h5>
@@ -72,7 +80,11 @@ const HomeExtras = ({ t }) => {
           viewport={{ once: false, amount: 0.3 }}
           variants={imgAnimate}
         >
-          <img src="/images/b.svg" alt="feature-img" className="feature__img" />
+          <img
+            src="/images/b.svg"
+            alt="feature-img"
+            className="feature__img floating"
+          />
           <h5 className="feature__item-title">
             {t("extra-main.feature-title3")}
           </h5>

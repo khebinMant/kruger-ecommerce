@@ -12,11 +12,8 @@ import useAnalize from "../helper/useAnalize";
 
 import "./LineComponent.scss";
 
-
-
-const LineComponent = ({orders}) => {
-  const {gamaBaja,gamaMedia,gamaAlta,servicio}=useAnalize(orders); 
-
+const LineComponent = ({ orders }) => {
+  const { gamaBaja, gamaMedia, gamaAlta, servicio } = useAnalize(orders);
 
   const data = [
     {
@@ -46,10 +43,10 @@ const LineComponent = ({orders}) => {
     },
   ];
 
-
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
+        className="floating"
         width={730}
         height={250}
         data={data}

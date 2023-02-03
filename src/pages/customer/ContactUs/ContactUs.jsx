@@ -10,7 +10,7 @@ const ContactUs = () => {
       animate={{ width: "100%" }}
       exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
     >
-      <div className="contact_main">
+      <div className="contact_main floating">
         <div className="contact_container">
           <form>
             <label className="contact_label" aria-hidden="true">
