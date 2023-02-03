@@ -11,10 +11,11 @@
 
 
     &_container{
+        padding: 0 20px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 2em;
+        gap: 2.5em;
     }
 }
 

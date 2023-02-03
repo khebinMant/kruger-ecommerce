@@ -12,16 +12,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-
-
-const BarComponent = ({customers,orders}) => {
- const [totalVentas,setTotalVentas]=useState(0);
-  useEffect(()=>{
-    const ventas=orders?.reduce((acc, it) =>
-    acc + it.totalPrice, 0)
+const BarComponent = ({ customers, orders }) => {
+  const [totalVentas, setTotalVentas] = useState(0);
+  useEffect(() => {
+    const ventas = orders?.reduce((acc, it) => acc + it.totalPrice, 0);
     setTotalVentas(ventas);
-  },[orders]);
-
+  }, [orders]);
 
   const data = [
     {
@@ -41,7 +37,7 @@ const BarComponent = ({customers,orders}) => {
       uv: totalVentas,
       pv: 9800,
       amt: 2290,
-    }/*,
+    } /*,
     {
       name: "Page D",
       uv: 2780,
@@ -65,13 +61,13 @@ const BarComponent = ({customers,orders}) => {
       uv: 3490,
       pv: 4300,
       amt: 2100,
-    },*/
+    },*/,
   ];
-
 
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
+        className="floating"
         width={500}
         height={300}
         data={data}

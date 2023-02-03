@@ -26,7 +26,7 @@ const NewArrivals = ({ t }) => {
         <h2 className="heading">{t("latest-main.main")}</h2>
       </div>
 
-      <div className="row container">
+      <div className="row container floating">
         <motion.div
           className="col col-1"
           initial={"offscreen"}

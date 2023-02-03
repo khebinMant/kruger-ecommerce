@@ -10,15 +10,13 @@ const AboutUs = () => {
       animate={{ width: "100%" }}
       exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
     >
-
-      <div class="aboutus_card">
+      <div class="aboutus_card floating">
         <div class="aboutus_card-info">
           <div class="aboutus_card-avatar">
             <img src="./images/pepe.jpg" alt="" />
           </div>
           <div class="aboutus_card-title">José Andrés Gavilanes</div>
           <div class="aboutus_card-subtitle">FullStack Developer</div>
-
         </div>
         <ul className="aboutus_card-social">
           <li className="aboutus_card-social__item">
@@ -44,7 +42,7 @@ const AboutUs = () => {
         </ul>
       </div>
 
-      <div className="aboutus_card">
+      <div className="aboutus_card floating">
         <div className="aboutus_card-info">
           <div className="aboutus_card-avatar">
             <img
@@ -54,7 +52,6 @@ const AboutUs = () => {
           </div>
           <div class="aboutus_card-title">Kenan Al-jaber</div>
           <div class="aboutus_card-subtitle">FullStack Developer</div>
-
         </div>
         <ul className="aboutus_card-social">
           <li className="aboutus_card-social__item">
@@ -80,7 +77,7 @@ const AboutUs = () => {
         </ul>
       </div>
 
-      <div className="aboutus_card">
+      <div className="aboutus_card floating">
         <div className="aboutus_card-info">
           <div className="aboutus_card-avatar">
             <img
