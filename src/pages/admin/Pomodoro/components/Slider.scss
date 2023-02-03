@@ -1,0 +1,23 @@
+.pomodoro_slider{
+    height: 40px;
+    border: 3px solid #f54e4e;
+    border-radius: 20px;
+    width: 200px;
+  }
+  
+  .pomodoro_thumb{
+    background-color: #f54e4e;
+    cursor: pointer;
+    width: 35px;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .pomodoro_greenSlider{
+    border: 3px solid var(--primary-color);
+  
+  }
+  
+  .pomodoro_greenSlider .pomodoro_thumb{
+    background-color: var(--primary-color);
+  }
