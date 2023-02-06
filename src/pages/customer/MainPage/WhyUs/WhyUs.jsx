@@ -20,18 +20,18 @@ const WhyUs = ({ t }) => {
     },
   };
   return (
-    <section className="whyUs">
+    <section className="whyUs ">
       <motion.img
         src="/images/j.svg"
         alt=""
-        className="whyUs__img"
+        className="whyUs__img floating"
         initial={"offscreen"}
         whileInView={"onscreen"}
         viewport={{ once: false, amount: 0.3 }}
         variants={elementAnimate}
       />
       <motion.div
-        className="whyUs__info"
+        className="whyUs__info floating"
         initial={"offscreen"}
         whileInView={"onscreen"}
         viewport={{ once: false, amount: 0.3 }}
@@ -47,7 +47,7 @@ const WhyUs = ({ t }) => {
             <p>{t("whyus-main.item-description1")}</p>
           </li>
 
-          <li className="whyUs__item">
+          <li className="whyUs__item ">
             <h3>{t("whyus-main.item-title1")}</h3>
             <p>{t("whyus-main.item-description1")}</p>
           </li>

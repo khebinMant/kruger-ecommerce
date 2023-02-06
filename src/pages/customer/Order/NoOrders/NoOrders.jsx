@@ -3,7 +3,7 @@ import "./NoOrders.scss";
 
 const NoOrders = () => {
   return (
-    <div className="noorders">
+    <div className="noorders floating">
       <h2 className="heading">¡Oops! No tienes ninguna orden</h2>
 
       <div className="noorders__img">

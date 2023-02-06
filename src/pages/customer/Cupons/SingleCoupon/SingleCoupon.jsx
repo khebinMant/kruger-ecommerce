@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import "./SingleCoupon.scss";
 
-const SingleCoupon = ({coupon}) => {
-
+const SingleCoupon = ({ coupon }) => {
   const handleCheck = () => {
-    if(coupon.status === 'USED'){
+    if (coupon.status === "USED") {
       return true;
-    }
-    else{
+    } else {
       return false;
     }
   };
 
   return (
-    <div className="card work">
+    <div className="card work floating">
       <div className="img-section">
         <svg
           fill="#13252f"
@@ -52,14 +50,17 @@ const SingleCoupon = ({coupon}) => {
           <div className="card-menu">
             <input
               disabled
-              checked={coupon.status==='USED'?true:false}
+              checked={coupon.status === "USED" ? true : false}
               className="check"
               type="checkbox"
             />
           </div>
         </div>
         <div className="card-text">CÓDIGO: {coupon.code}</div>
-        <p className="recent">{coupon.quantity}{coupon.type==='PERCETAGE'?'%':'$'}</p>
+        <p className="recent">
+          {coupon.quantity}
+          {coupon.type === "PERCETAGE" ? "%" : "$"}
+        </p>
       </div>
     </div>
   );

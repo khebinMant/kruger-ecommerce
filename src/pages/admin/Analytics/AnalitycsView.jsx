@@ -10,13 +10,12 @@ import RadialComponent from "./Charts/RadialComponent/RadialComponent";
 import SankeyComponent from "./Charts/SankeyComponent/SankeyComponent";
 import TreeComponent from "./Charts/TreeComponent/TreeComponent";
 import { getReviews } from "../../../helpers/reviews/getReviews";
-import { getAllProducts } from "../../../helpers/products/getAllProducts"
+import { getAllProducts } from "../../../helpers/products/getAllProducts";
 import "./Analitycs.scss";
 import { getAllCustomers } from "../../../helpers/users/getAllCustomers";
 import { getAllOrders } from "../../../helpers/orders/getAllOrders";
 
 export const AnalitycsView = () => {
-
   const [reviews, setReviews] = useState();
   const [products, setProducts] = useState();
   const [customers, setCustomers] = useState();
@@ -32,30 +31,29 @@ export const AnalitycsView = () => {
   const loadReviews = async () => {
     const resp = await getReviews();
     setReviews(resp);
-  }
+  };
 
   const loadProducts = async () => {
     const resp = await getAllProducts();
     setProducts(resp);
-
-  }
+  };
 
   const loadCustomers = async () => {
     const resp = await getAllCustomers();
     setCustomers(resp);
-  }
+  };
 
   const loadOrders = async () => {
     const resp = await getAllOrders();
 
     resp ? setOrders(resp) : setOrders(null);
-  }
+  };
 
   return (
-  <div className="analitycs">
+    <div className="analitycs ">
       <div className="analitycs_stats">
         <div className="analitycs_stats_content">
-          <div className="item item--1">
+          <div className="item item--1 floating">
             <svg
               height="24"
               width="24"
@@ -68,10 +66,13 @@ export const AnalitycsView = () => {
                 d="M17 15.245v6.872a.5.5 0 0 1-.757.429L12 20l-4.243 2.546a.5.5 0 0 1-.757-.43v-6.87a8 8 0 1 1 10 0zm-8 1.173v3.05l3-1.8 3 1.8v-3.05A7.978 7.978 0 0 1 12 17a7.978 7.978 0 0 1-3-.582zM12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"
               ></path>
             </svg>
-            <span className="quantity"> {reviews?.length ? reviews.length : 0} </span>
+            <span className="quantity">
+              {" "}
+              {reviews?.length ? reviews.length : 0}{" "}
+            </span>
             <span className="text text--1"> Reviews </span>
           </div>
-          <div className="item item--2">
+          <div className="item item--2 floating">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -84,10 +85,13 @@ export const AnalitycsView = () => {
                 fill="rgba(252,161,71,1)"
               ></path>
             </svg>{" "}
-            <span className="quantity"> {products?.length ? products.length : 0} </span>
+            <span className="quantity">
+              {" "}
+              {products?.length ? products.length : 0}{" "}
+            </span>
             <span className="text text--2"> Products </span>
           </div>
-          <div className="item item--3">
+          <div className="item item--3 floating">
             <svg
               height="24"
               width="24"
@@ -100,10 +104,13 @@ export const AnalitycsView = () => {
                 d="M20.083 15.2l1.202.721a.5.5 0 0 1 0 .858l-8.77 5.262a1 1 0 0 1-1.03 0l-8.77-5.262a.5.5 0 0 1 0-.858l1.202-.721L12 20.05l8.083-4.85zm0-4.7l1.202.721a.5.5 0 0 1 0 .858L12 17.65l-9.285-5.571a.5.5 0 0 1 0-.858l1.202-.721L12 15.35l8.083-4.85zm-7.569-9.191l8.771 5.262a.5.5 0 0 1 0 .858L12 13 2.715 7.429a.5.5 0 0 1 0-.858l8.77-5.262a1 1 0 0 1 1.03 0zM12 3.332L5.887 7 12 10.668 18.113 7 12 3.332z"
               ></path>
             </svg>
-            <span className="quantity"> {customers?.length ? customers.length : 0}</span>
+            <span className="quantity">
+              {" "}
+              {customers?.length ? customers.length : 0}
+            </span>
             <span className="text text--3"> Customers </span>
           </div>
-          <div className="item item--4">
+          <div className="item item--4 floating">
             <svg
               height="24"
               width="24"
@@ -116,34 +123,43 @@ export const AnalitycsView = () => {
                 d="M12 20h8v2h-8C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10a9.956 9.956 0 0 1-2 6h-2.708A8 8 0 1 0 12 20zm0-10a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm-4 4a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm8 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm-4 4a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
               ></path>
             </svg>
-            <span className="quantity"> {orders?.length ? orders.length : 0} </span>
-            <span className="text text--4"> Purchases </span>
+            <span className="quantity">
+              {" "}
+              {orders?.length ? orders.length : 0}{" "}
+            </span>
+            <span className="text text--4 "> Purchases </span>
           </div>
         </div>
 
-       {<div className="analitycs_stats_chart">
-          <RadarComponent customers={customers} orders={orders} />
-        </div>}
+        {
+          <div className="analitycs_stats_chart">
+            <RadarComponent customers={customers} orders={orders} />
+          </div>
+        }
       </div>
-      { <div className="analitycs_right">
-        <div style={{ height: "500px", width: "100%" }}>
-          <AreaComponent customers={customers} orders={orders} />
+      {
+        <div className="analitycs_right">
+          <div style={{ height: "500px", width: "100%" }}>
+            <AreaComponent customers={customers} orders={orders} />
+          </div>
         </div>
-      </div>}
-     { <div className="analitycs_end">
-        <div className="analitycs_end_chart">
-          <BarComponent customers={customers} orders={orders} />
+      }
+      {
+        <div className="analitycs_end">
+          <div className="analitycs_end_chart">
+            <BarComponent customers={customers} orders={orders} />
+          </div>
+
+          <div className="analitycs_end_chart">
+            <PieComponent customers={customers} orders={orders} />
+          </div>
+          {
+            <div className="analitycs_end_chart">
+              <LineComponent customers={customers} orders={orders} />
+            </div>
+          }
         </div>
-
-
-        <div className="analitycs_end_chart">
-          <PieComponent customers={customers} orders={orders} />
-
-        </div>
-      {  <div className="analitycs_end_chart">
-          <LineComponent customers={customers} orders={orders} />
-  </div>}
-      </div>}
+      }
     </div>
   );
 };

@@ -11,19 +11,13 @@ import {
 import { useEffect } from "react";
 import { useState } from "react";
 
+const AreaComponent = ({ customers, orders }) => {
+  const [totalVentas, setTotalVentas] = useState(0);
+  useEffect(() => {
+    const ventas = orders?.reduce((acc, it) => acc + it.totalPrice, 0);
 
-
-const AreaComponent = ({customers,orders}) => {
-
-  const [totalVentas,setTotalVentas]=useState(0);
-  useEffect(()=>{
-    const ventas=orders?.reduce((acc, it) =>
-    acc + it.totalPrice, 0)
- 
     setTotalVentas(ventas);
-  },[orders]);
-
-
+  }, [orders]);
 
   const data = [
     {
@@ -43,7 +37,7 @@ const AreaComponent = ({customers,orders}) => {
       uv: totalVentas,
       pv: 9800,
       amt: 2290,
-    }/*,
+    } /*,
     {
       name: "Page D",
       uv: 2780,
@@ -67,12 +61,13 @@ const AreaComponent = ({customers,orders}) => {
       uv: 3490,
       pv: 4300,
       amt: 2100,
-    },*/
+    },*/,
   ];
 
   return (
     <ResponsiveContainer width="100%" height="100%">
       <AreaChart
+        className="floating"
         width={730}
         height={250}
         data={data}

@@ -14,7 +14,7 @@ const ExtraCards = ({ t }) => {
   return (
     <div className="extra_card">
       <motion.div
-        className="card"
+        className="card floating"
         initial={"offscreen"}
         whileInView={"onscreen"}
         viewport={{ once: false, amount: 0.3 }}
@@ -31,7 +31,7 @@ const ExtraCards = ({ t }) => {
           <p>{t("extracards-main.card-text1")}</p>
         </div>
       </motion.div>
-      <div className="card">
+      <div className="card floating">
         <div className="header">
           <div className="img-box">
             <i className="fa-solid fa-truck"></i>
@@ -44,7 +44,7 @@ const ExtraCards = ({ t }) => {
         </div>
       </div>
       <motion.div
-        className="card"
+        className="card floating"
         initial={"offscreen"}
         whileInView={"onscreen"}
         viewport={{ once: false, amount: 0.3 }}

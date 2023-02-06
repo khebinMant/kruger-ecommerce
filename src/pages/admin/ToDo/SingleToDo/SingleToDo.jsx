@@ -9,7 +9,7 @@ const SingleToDo = () => {
   };
 
   return (
-    <div className="card work">
+    <div className="card work floating">
       <div className="img-section">
         <svg
           fill="#13252f"
