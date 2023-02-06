@@ -30,7 +30,7 @@ const Service = ({ item, i }) => {
   };
   return (
     <motion.div
-      className="plan-card"
+      className="plan-card floating"
       initial={{ opacity: 0, translateX: -50, translateY: -50 }}
       animate={{ opacity: 1, translateX: 0, translateY: 0 }}
       transition={{ duration: 0.3, delay: i * 0.3 }}

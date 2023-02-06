@@ -4,7 +4,7 @@ export const getCartReportById = async (cart)=>{
 
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const config = {
-        headers: { Authorization: `Bearer ${currentUser.token}` }
+        headers: { Authorization: `Bearer ${currentUser.token}`, Accept:'application/pdf'}
     };
 
     try{

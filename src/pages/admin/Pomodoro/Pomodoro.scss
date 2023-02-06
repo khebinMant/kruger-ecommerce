@@ -1,0 +1,121 @@
+.pomodoro{
+    min-height: 100vh;
+  color: white;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+  
+  }
+  
+  .principalContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+  }
+  
+  .buttonContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 1em;
+  }
+  
+  
+  button{
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+  
+  
+  
+  .fa-play,
+  .fa-pause,
+  .fa-gear{
+    color: #30384b;
+    font-size: 25px;
+  }
+  
+  
+  .settingsMainContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  
+  
+  .settingsButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    width: 160px;
+    height: 55px;
+    border-radius: 10px;
+    background-color: var(--secondary-card);
+  
+  }
+  
+  .settingsButton p{
+    color: var(--secondary-color);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  
+  .fa-gear{
+    color: var(--secondary-color);
+    font-size: 20px;
+  }
+  
+  
+
+  
+  
+  .backButtonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .backButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    width: 160px;
+    height: 55px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: var(--secondary-card);
+  }
+  
+  .fa-arrow-left-long{
+    color: var(--secondary-color);
+    font-size: 20px;
+  }
+  
+  .backButton p{
+    color: var(--secondary-color);
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+
+  

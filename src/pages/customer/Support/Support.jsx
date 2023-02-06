@@ -1,16 +1,15 @@
 import "./Support.scss";
 
 const Support = () => {
-
   return (
     <div className="support">
       <h2 className="heading">¿Necesitas Ayuda?</h2>
       <div className="support_img">
-        <img src="./images/support.svg" alt="" />
+        <img src="./images/support.svg" alt="" className="floating" />
       </div>
 
       <div className="support_cards">
-        <div className="card">
+        <div className="card floating">
           <div className="card-top-part">
             <div className="left-part">
               <div className="user-name">
@@ -53,7 +52,7 @@ const Support = () => {
             </div>
           </div>
         </div>
-        <div className="card">
+        <div className="card floating">
           <div className="card-top-part">
             <div className="left-part">
               <div className="user-name">
@@ -96,7 +95,7 @@ const Support = () => {
             </div>
           </div>
         </div>
-        <div className="card">
+        <div className="card floating">
           <div className="card-top-part">
             <div className="left-part">
               <div className="user-name">

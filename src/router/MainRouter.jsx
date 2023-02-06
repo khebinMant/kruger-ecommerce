@@ -47,11 +47,11 @@ import UpdateCompany from "../pages/admin/UpdateCompany/UpdateCompany";
 import Support from "../pages/customer/Support/Support";
 import AboutCompany from "../pages/customer/AboutCompany/AboutCompany";
 import CustomerCoupons from "../pages/customer/Cupons/CustomerCoupons";
+import Pomodoro from "../pages/admin/Pomodoro/Pomodoro";
 import PasswordRecovery from "../pages/customer/Passwordrecovery/PasswordRecovery";
 
-export const MainRouter = () => {
 
-  
+export const MainRouter = () => {
   const dispatch = useDispatch();
   dispatch(getCurrentCart());
   const location = useLocation();
@@ -77,11 +77,13 @@ export const MainRouter = () => {
         <Route path="/payment" element={<Payment />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/orders" element={<Order />} />
-        <Route path="/coupons" element={<CustomerCoupons/>}/>
+        <Route path="/coupons" element={<CustomerCoupons />} />
       </Route>
       <Route element={<ProtectedAdminRoutes />}>
         <Route path="/admin" element={<AdminMainPage />}>
           <Route path="" element={<ProductsView />} />
+          <Route path="productivity" element={<Pomodoro />} />
+
           <Route path="analitycs" element={<AnalitycsView />} />
           <Route path="line" element={<LineView />} />
           <Route path="area" element={<AreaView />} />

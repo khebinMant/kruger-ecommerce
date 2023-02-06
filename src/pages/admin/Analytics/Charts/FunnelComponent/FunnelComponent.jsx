@@ -36,7 +36,7 @@ const data = [
 const FunnelComponent = () => {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <FunnelChart width={730} height={250}>
+      <FunnelChart className="floating" width={730} height={250}>
         <Tooltip />
         <Funnel dataKey="value" data={data} isAnimationActive>
           <LabelList
