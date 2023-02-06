@@ -169,7 +169,7 @@ const Login = () => {
               placeholder="Contraseña"
               required
             />
-            <button className="sign_btn">Sign up</button>
+            <button className="sign_btn">Registrarse</button>
           </form>
           <i className="login-icon-carrot fa-solid fa-microphone"></i>
           <i className="login-icon-mug-hot fa-solid fa-mobile-screen"></i>
@@ -188,8 +188,8 @@ const Login = () => {
 
         <div className="sign_login">
           <form ref={loginForm} onSubmit={loginUser}>
-            <label className="sign_label" for="chk" aria-hidden="true">
-              Login
+            <label style={{textAlign:'center'}} className="sign_label" for="chk" aria-hidden="true">
+              Iniciar
             </label>
             <input
               className="sign_input"
@@ -206,7 +206,7 @@ const Login = () => {
               placeholder="Contraseña"
               required
             />
-            <button className="sign_btn">Login</button>
+            <button className="sign_btn">Ingresar</button>
           </form>
           <p className="password_recovery" onClick={()=>{navigation("/password-recovery")}}>¿Olvidaste tu contraseña?</p>
         </div>

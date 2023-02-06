@@ -1,10 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./Cart.scss";
 import CartItem from "./CartItem/CartItem";
 import { Toast } from "primereact/toast";
 import { resetCart } from "../../../store/cart/cartSlice";
+
+import Loading from "../../../components/Loading";
 
 
 const Cart = () => {
@@ -30,8 +32,8 @@ const Cart = () => {
 
         <div className="cart_items_container">
           {
-            cart.items.map((item,index) =>(
-                <CartItem  item={item} key={item.id} index={index}/>
+            cart.items.map(item =>(
+                <CartItem item={item} key={item.productId}/>
             ))
           }
         </div>

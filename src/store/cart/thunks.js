@@ -45,22 +45,29 @@ export const startCreateOrder = (shipmentAddress,orderCoupon= null,orderSubTotal
     }
 }
 
-export const startDeleteItemFromCart = (item, index) =>{
+export const startDeleteItemFromCart = (item) =>{
     return async (dispatch, getState)=>{
 
-        const {productId} = item
+        const {productId} = item;
+        const  cart  = getState().cart.cart
         let price = item.price * item.quantity       
-        // //Despachar
-        dispatch(deleteItemToCart({productId, index}))
+
+        let cartItems = []
+
+        cart.items.forEach(item => {
+            if(item.productId !== productId){
+                cartItems.push(item)
+            }
+        });
+
+        //Despachar
+        dispatch(deleteItemToCart({cartItems}))
         dispatch(updateTotalPrice({price}))
         
-        const  cart  = getState().cart.cart
+        const updatedCart=getState().cart.cart;
 
-        // if(cart.items.length()===0){
-        //     dispatch(resetCart())
-        // }
         //Almacenar en el local storage
-        localStorage.setItem('cart', JSON.stringify(cart))
+        localStorage.setItem('cart', JSON.stringify(updatedCart))
 
     }
 }

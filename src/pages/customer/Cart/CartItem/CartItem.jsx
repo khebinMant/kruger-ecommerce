@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import "./CartItem.scss";
 import defaultImg from "../../../../assets/default.png";
 
-const CartItem = ({ item, index }) => {
+const CartItem = ({item}) => {
   const [product, setProduct] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [newQuantity, setNewQuantity] = useState(1);
@@ -53,7 +53,7 @@ const CartItem = ({ item, index }) => {
   };
 
   const deleteItem = () => {
-    dispatch(startDeleteItemFromCart(item, index));
+    dispatch(startDeleteItemFromCart(item));
   };
 
   return (

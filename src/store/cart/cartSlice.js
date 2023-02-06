@@ -36,7 +36,7 @@ export const cartSlice = createSlice({
             state.cart.totalPrice += action.payload.item.price * action.payload.item.quantity
         },
         deleteItemToCart:(state,action)=>{
-            state.cart.items.splice(action.payload.index,1)
+            state.cart.items = action.payload.cartItems
         },
         updateTotalPrice:(state,action)=>{
             state.cart.totalPrice -= action.payload.price
