@@ -90,16 +90,8 @@ export const Order = () => {
   };
 
   const onPrintOrderInvoice = async (cart) => {
-    const responseReportCart = await Promise.resolve(getCartReportById(cart))
-    // const blob = new Blob([responseReportCart], { type: 'application/pdf' });
-
-    // const url1 = window.URL.createObjectURL(blob);
-    // window.open(url1);
-    // console.log(url1)
-    // console.log(responseReportCart)
-    // setSrc(URL.createObjectURL(blob));
-
-    window.open(`http://localhost:8082/api/carts/${cart.id}/report`, '_blank', 'noreferrer')  
+  
+    window.open(`http://krugercell-service.sistemaagil.net:8082/api//carts/${cart.id}/report`, '_blank', 'noreferrer')  
 
   };
 
