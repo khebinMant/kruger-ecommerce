@@ -7,6 +7,8 @@ const Banner = ({ t }) => {
   const settings = {
     dots: true,
     infinite: true,
+    autoplay: true,
+    autoplaySpeed: 3500,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -19,7 +21,7 @@ const Banner = ({ t }) => {
           <div className="slider_img_container">
             <img
               className="slider_img"
-              src="https://images.unsplash.com/photo-1624204731525-995bd565b9c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHw%3D&w=1000&q=80"
+              src="https://imagekit.androidphoria.com/wp-content/uploads/Fondo-negro-ahorra-bateria-en-movil.jpg"
               alt=""
             />
           </div>
@@ -43,7 +45,7 @@ const Banner = ({ t }) => {
           <div className="slider_img_container">
             <img
               className="slider_img"
-              src="https://cdn.pixabay.com/photo/2017/07/31/22/44/mobile-2561746__340.jpg"
+              src="https://firstsportz.com/wp-content/uploads/2020/11/IMG-20201120-WA0013-1024x576.jpg"
               alt=""
             />
           </div>
@@ -67,7 +69,7 @@ const Banner = ({ t }) => {
           <div className="slider_img_container">
             <img
               className="slider_img"
-              src="https://firstsportz.com/wp-content/uploads/2020/11/IMG-20201120-WA0013-1024x576.jpg"
+              src="https://www.movilzona.es/app/uploads-movilzona.es/2019/08/iPhone-XR-sobre-fondo-negro.jpg"
               alt=""
             />
           </div>
@@ -91,7 +93,7 @@ const Banner = ({ t }) => {
           <div className="slider_img_container">
             <img
               className="slider_img"
-              src="https://www.movilzona.es/app/uploads-movilzona.es/2019/08/iPhone-XR-sobre-fondo-negro.jpg"
+              src="https://cdn.pixabay.com/photo/2017/07/31/22/44/mobile-2561746__340.jpg"
               alt=""
             />
           </div>
@@ -163,7 +165,7 @@ const Banner = ({ t }) => {
           <div className="slider_img_container">
             <img
               className="slider_img"
-              src="https://imagekit.androidphoria.com/wp-content/uploads/Fondo-negro-ahorra-bateria-en-movil.jpg"
+              src="https://images.unsplash.com/photo-1624204731525-995bd565b9c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHw%3D&w=1000&q=80"
               alt=""
             />
           </div>
