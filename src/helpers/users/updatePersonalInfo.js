@@ -4,8 +4,7 @@ import { backEndApi } from "../../api/backEndApi";
 export const updatePersonalInfo = async (user) => {
     try {
         let resp;
-        console.log("updating user personal info");
-        //llamando el endpoint de user para loggear un user
+        //llamando este endpoint para actualizar la info personal del user
         resp = await backEndApi.put(`/users/update/personal/${user.id}`, user);
         
         

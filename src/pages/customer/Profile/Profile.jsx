@@ -125,6 +125,8 @@ const Profile = () => {
 
         //send the user with updated ubication
         const resp =await updateUserUbication(updatedUser);
+        //set the addresses array that come from the server to make sure that all addresses have ids
+        updatedUser.addresses=resp.addresses;
          updateLocalStorage(updatedUser,resp);
 
     }
